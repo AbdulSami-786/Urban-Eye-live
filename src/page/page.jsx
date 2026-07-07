@@ -3400,7 +3400,7 @@ export function HomePage({ navigate }) {
 
         <div style={{ height: 190, display: "flex", alignItems: "center", justifyContent: "center", background: hov ? CREAM : "#FAFAF5", transition: "background 0.3s", position: "relative" }}>
           {displayImage ? (
-            <img src={`./${displayImage}`} alt={product.name} style={{ width: "100%", height: "100%", objectFit: "contain", padding: 18, transform: hov ? "scale(1.04)" : "scale(1)", transition: "transform 0.3s" }} />
+            <img src={`../${displayImage}`} alt={product.name} style={{ width: "100%", height: "100%", objectFit: "contain", padding: 18, transform: hov ? "scale(1.04)" : "scale(1)", transition: "transform 0.3s" }} />
           ) : (
             <Frame shape="round" size={130} color={hov ? BRAND : "#4a4a4a"} />
           )}
@@ -3907,14 +3907,14 @@ export function ProductDetailPage({ productId, navigate }) {
                 )}
                 {/* Inner image border frame — subtle, matches reference design */}
                 <div style={{ width: "100%", height: "100%", border: "1.5px solid #d8cfc0", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "center", background: "#fff" }}>
-                  <img key={`${product.id}-${activeImg}-${displayLabel}`} src={`./${displayImage}`} alt={`${product.name} - ${displayLabel}`} style={{ width: "100%", height: "100%", objectFit: "contain", padding: "24px", animation: "fadeImgIn 0.35s ease", boxSizing: "border-box" }} />
+                  <img key={`${product.id}-${activeImg}-${displayLabel}`} src={`../${displayImage}`} alt={`${product.name} - ${displayLabel}`} style={{ width: "100%", height: "100%", objectFit: "contain", padding: "24px", animation: "fadeImgIn 0.35s ease", boxSizing: "border-box" }} />
                 </div>
               </div>
               {galleryImages.length > 1 && (
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                   {galleryImages.map((img, i) => (
                     <div key={`${product.id}-${i}`} onClick={() => setActiveImg(i)} style={{ width: 100, height: 76, overflow: "hidden", cursor: "pointer", background: CREAM, flexShrink: 0, border: i === activeImg ? `2px solid ${BLACK}` : "1px solid #e8e0d0", opacity: i === activeImg ? 1 : 0.45, transition: "border-color 0.15s, opacity 0.15s", boxSizing: "border-box" }}>
-                      <img src={`./${img}`} alt="" style={{ width: "100%", height: "100%", objectFit: "contain", padding: 8, boxSizing: "border-box" }} />
+                      <img src={`../${img}`} alt="" style={{ width: "100%", height: "100%", objectFit: "contain", padding: 8, boxSizing: "border-box" }} />
                     </div>
                   ))}
                 </div>
@@ -4169,7 +4169,7 @@ export function CartPage({ navigate }) {
               <div key={item.id} style={{ display: "grid", gridTemplateColumns: "1fr 130px 150px 40px", gap: 16, alignItems: "center", padding: "20px 0", borderBottom: "1px solid #e0ddd6" }}>
                 <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
                   <div style={{ width: 88, height: 70, flexShrink: 0, overflow: "hidden", background: CREAM, cursor: "pointer", border: "1px solid #e8e8e8" }} onClick={() => navigate(`#/products/${item.id}`)}>
-                    <img src={`./${item.image}`} alt={item.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    <img src={`../${item.image}`} alt={item.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   </div>
                   <div>
                     <div style={{ fontSize: 10, color: "#bbb", letterSpacing: "0.16em", fontFamily: ff, marginBottom: 3 }}>{item.category?.toUpperCase()}{item.gender ? ` · ${item.gender.toUpperCase()}` : ""}</div>
@@ -4432,7 +4432,7 @@ export function WishlistPage({ navigate }) {
                       >
                         {item.product?.imageUrl ? (
                           <img
-                            src={`./${item.product.imageUrl}`}
+                            src={`../${item.product.imageUrl}`}
                             alt={item.product.name}
                             style={{ width: "100%", height: "100%", objectFit: "contain", padding: "24px 32px", transition: "transform 0.4s ease" }}
                             onMouseEnter={e => e.currentTarget.style.transform = "scale(1.05)"}
@@ -4943,7 +4943,7 @@ export function CheckoutPage({ navigate }) {
                 {cartItems.map(item => (
                   <div key={item.id} style={{ display: "flex", gap: 16, alignItems: "center", padding: "14px 0", borderBottom: "1px solid #f0ece4" }}>
                     <div style={{ width: 72, height: 56, flexShrink: 0, overflow: "hidden", background: CREAM }}>
-                      <img src={`./${item.image}`} alt={item.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                      <img src={`../${item.image}`} alt={item.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     </div>
                     <div style={{ flex: 1 }}>
                       <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 13, color: BLACK }}>{item.name}</div>
@@ -4982,7 +4982,7 @@ export function CheckoutPage({ navigate }) {
             {cartItems.map(item => (
               <div key={item.id} style={{ display: "flex", gap: 12, marginBottom: 14, alignItems: "center" }}>
                 <div style={{ width: 52, height: 40, flexShrink: 0, overflow: "hidden", background: CREAM }}>
-                  <img src={`./${item.image}`} alt={item.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  <img src={`../${item.image}`} alt={item.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 </div>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 11, color: BLACK }}>{item.name}</div>
@@ -5141,7 +5141,7 @@ export function ReviewSubmissionPage({ productId, reviewId, navigate }) {
               <div style={{ display: "flex", gap: 20, alignItems: "center", background: "#fff", border: "1.5px solid #e8e0d0", padding: 20, marginBottom: 36 }}>
                 <div style={{ width: 90, height: 72, background: CREAM, flexShrink: 0, overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   {product.gallery?.[0]
-                    ? <img src={`./${product.gallery[0]}`} alt={product.name} style={{ width: "100%", height: "100%", objectFit: "contain", padding: 8 }} />
+                    ? <img src={`../${product.gallery[0]}`} alt={product.name} style={{ width: "100%", height: "100%", objectFit: "contain", padding: 8 }} />
                     : <span style={{ fontSize: 28 }}>👓</span>
                   }
                 </div>
