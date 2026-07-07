@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { applyProductFilters, sortProducts, formatPriceValue, getProductDiscountPercent } from '../src/services/productUtils.js';
+import { applyProductFilters, sortProducts, formatPriceValue, getProductDiscountPercent } from './services/productUtils.js';
 
 const products = [
   { id: 'b', name: 'Beta', category: 'Optical', subcategory: 'Round', gender: 'Men', price: 12000, discountPrice: 12000, rating: 4.2, brand: 'A', sizes: ['48 (Medium)'], availability: 'In stock', keywords: ['vintage'] },
