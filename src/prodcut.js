@@ -2876,8 +2876,8 @@ export const PRODUCTS_DATA = [
       {
         name: "Jet Black",
         swatch: "#1a1a1a",
-        image: "/src/assets/Alex 1.jpg",
-        gallery: ["/src/assets/Alex 1.jpg", "/src/assets/Alex 2.jpg", "/src/assets/Alex 3.jpg"],
+        image: "./assets/Alex 1.jpg",
+        gallery: ["./assets/Alex 1.jpg", "./assets/Alex 2.jpg", "./assets/Alex 3.jpg"],
       },
     ],
     price: 8000,
