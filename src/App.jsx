@@ -1412,7 +1412,7 @@ function AppInner() {
             <button onClick={() => goTo("#/cart")}
               style={{ ...iconBtn, position: "relative" }} aria-label="Cart">
               <img
-                src="../public/icon.png"
+                src="../icon.png"
                 alt="Cart"
                 style={{ width: 24, height: 24, objectFit: "contain" }}
               />
