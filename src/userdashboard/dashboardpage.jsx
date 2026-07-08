@@ -2812,7 +2812,7 @@ function ReviewsTab({ navigate, user }) {
                 display: "flex", alignItems: "center", justifyContent: "center",
               }}>
                 {product.image
-                  ? <img src={product.image} alt={product.name} style={{ width: "100%", height: "100%", objectFit: "contain", padding: 6 }} />
+                  ? <img src={product.image} alt={product.name} loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "contain", padding: 6 }} />
                   : <span style={{ fontSize: 24 }}>👓</span>
                 }
               </div>
@@ -3303,6 +3303,7 @@ export default function DashboardPage({ navigate }) {
                         <img
                           src={item.product.imageUrl}
                           alt={item.product.name}
+                          loading="lazy" decoding="async"
                           style={{ width: "100%", height: 140, objectFit: "contain", background: "#f8f8f8", marginBottom: 10 }}
                         />
                       )}

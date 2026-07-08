@@ -472,6 +472,7 @@ export function ProductCard({ product, navigate, type = "default" }) {
         }}>
         <img
           src={displayImage} alt={`${product.name} - ${displayLabel}`}
+          loading="lazy" decoding="async"
           style={{
             width: "100%", height: "100%", objectFit: "cover",
             transition: "transform 0.5s ease",
