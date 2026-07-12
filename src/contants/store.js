@@ -583,7 +583,7 @@ export const HERO_SLIDES = [
     // shape: "round",
   },
   {
-    image: "/assets/banners/DSC08310.jpg",
+    image: "/assets/banners/banner3.png",
     label: "LIMITED TIME",
     heading: "FIND YOUR\nFRAME",
     sub: "Quality eyewear, made for you.",
@@ -619,12 +619,12 @@ export const TESTIMONIALS = [
 ];
 
 export const PROCESS_STEPS = [
-  { num: "01", title: "SHOP THE COLLECTION", desc: "Browse 150+ curated frames." },
-  { num: "02", title: "VIRTUAL TRY-ON", desc: "See how each frame looks on your face." },
-  { num: "03", title: "ENTER PRESCRIPTION", desc: "Securely upload your Rx." },
-  { num: "04", title: "LENS CUSTOMISATION", desc: "Single vision, progressive, blue-light." },
-  { num: "05", title: "RECEIVE & ENJOY", desc: "Ships within 5–7 days." },
-];
+   { num: "01", title: "SHOP THE COLLECTION", desc: "Browse 150+ curated frames." },
+   { num: "02", title: "VIRTUAL TRY-ON", desc: "See how each frame looks on your face." },
+   { num: "03", title: "ENTER PRESCRIPTION", desc: "Securely upload your Rx." },
+   { num: "04", title: "LENS CUSTOMISATION", desc: "Single vision, progressive, blue-light." },
+   { num: "05", title: "RECEIVE & ENJOY", desc: "Ships within 5–7 days." },
+ ];
 
 export const CATEGORIES_HOME = [
   { label: "Men's Eyeglasses", count: "48 styles", dark: false, shape: "square", slug: "mens-eyeglasses" },

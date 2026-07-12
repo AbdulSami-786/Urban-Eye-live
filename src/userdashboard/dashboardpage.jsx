@@ -2579,6 +2579,18 @@ const ACCENT = "#89c4e1";
 const ff     = "'Franklin Gothic Medium','Arial Narrow', Arial, sans-serif";
 const mono   = "'Courier New', Courier, monospace";
 
+function useMediaQuery(query) {
+  const [matches, setMatches] = useState(() => typeof window !== "undefined" && window.matchMedia(query).matches);
+  useEffect(() => {
+    const media = window.matchMedia(query);
+    const fn = () => setMatches(media.matches);
+    fn();
+    media.addEventListener("change", fn);
+    return () => media.removeEventListener("change", fn);
+  }, [query]);
+  return matches;
+}
+
 const TABS = [
   { key: "profile",   label: "PROFILE"   },
   { key: "orders",    label: "ORDERS"    },
@@ -2613,6 +2625,7 @@ function enrichWishlistItems(rawItems) {
 
 // ─── Address Form ─────────────────────────────────────────────────────────────
 function AddressForm({ initial = {}, onSave, onCancel, saving }) {
+  const isMobile = useMediaQuery("(max-width: 767px)");
   const [form, setForm] = useState({
     fullName  : initial.fullName   || "",
     phone     : initial.phone      || "",
@@ -2625,11 +2638,11 @@ function AddressForm({ initial = {}, onSave, onCancel, saving }) {
   const set = k => v => setForm(f => ({ ...f, [k]: v }));
 
   return (
-    <div style={{ background: "#f8fbfd", border: `1.5px solid ${NAVY}`, padding: 24, marginBottom: 20 }}>
+    <div style={{ background: "#f8fbfd", border: `1.5px solid ${NAVY}`, padding: isMobile ? 16 : 24, marginBottom: 20 }}>
       <div style={{ fontFamily: ff, fontSize: 12, fontWeight: 900, letterSpacing: "0.14em", color: NAVY, marginBottom: 16 }}>
         {initial.addressId ? "EDIT ADDRESS" : "NEW ADDRESS"}
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 }}>
+      <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 12, marginBottom: 12 }}>
         {[
           { label: "FULL NAME",   key: "fullName",   placeholder: "Jane Smith"             },
           { label: "PHONE",       key: "phone",      placeholder: "+92 300 0000000"        },
@@ -2916,6 +2929,7 @@ function ReviewsTab({ navigate, user }) {
 // ─── MAIN DASHBOARD ───────────────────────────────────────────────────────────
 export default function DashboardPage({ navigate }) {
   const { user, updateProfile, logout } = useAuth();
+  const isMobile = useMediaQuery("(max-width: 767px)");
 
   const hashParams = new URLSearchParams(
     window.location.hash.replace(/^[^?]*/, "").replace("?", "")
@@ -3067,43 +3081,48 @@ export default function DashboardPage({ navigate }) {
 
   // ─── RENDER ─────────────────────────────────────────────────────────────────
   return (
-    <div style={{ maxWidth: 1100, margin: "0 auto", padding: "48px 24px 80px", fontFamily: ff }}>
+    <div style={{ maxWidth: 1100, margin: "0 auto", padding: isMobile ? "24px 16px 60px" : "48px 24px 80px", fontFamily: ff }}>
 
       {/* Header */}
-      <div style={{ borderBottom: `3px solid ${NAVY}`, paddingBottom: 24, marginBottom: 36 }}>
+      <div style={{ borderBottom: `3px solid ${NAVY}`, paddingBottom: isMobile ? 16 : 24, marginBottom: isMobile ? 20 : 36 }}>
         <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "#888", marginBottom: 6 }}>MY ACCOUNT</div>
-        <h1 style={{ fontSize: 32, fontWeight: 900, color: NAVY, margin: 0, letterSpacing: "0.02em" }}>
+        <h1 style={{ fontSize: isMobile ? 22 : 32, fontWeight: 900, color: NAVY, margin: 0, letterSpacing: "0.02em", wordBreak: "break-word" }}>
           {(user.name || user.fullName || "").toUpperCase()}
         </h1>
-        <div style={{ fontSize: 13, color: "#777", marginTop: 4, fontFamily: mono }}>{user.email}</div>
+        <div style={{ fontSize: 13, color: "#777", marginTop: 4, fontFamily: mono, wordBreak: "break-word" }}>{user.email}</div>
       </div>
 
-      <div style={{ display: "flex", gap: 40, alignItems: "flex-start" }}>
+      <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 20 : 40, alignItems: isMobile ? "stretch" : "flex-start" }}>
 
         {/* Sidebar */}
-        <nav style={{ width: 180, flexShrink: 0 }}>
+        <nav style={isMobile
+          ? { display: "flex", flexDirection: "row", overflowX: "auto", gap: 4, width: "100%", WebkitOverflowScrolling: "touch", paddingBottom: 4 }
+          : { width: 180, flexShrink: 0 }}>
           {TABS.map(tab => (
             <button key={tab.key} onClick={() => tabNav(tab.key)}
               style={{
-                display      : "block", width: "100%", textAlign: "left",
+                display      : "block", width: isMobile ? "auto" : "100%", textAlign: "left",
                 background   : activeTab === tab.key ? NAVY : "none",
                 color        : activeTab === tab.key ? "#fff" : NAVY,
-                border       : "none",
-                borderLeft   : `3px solid ${activeTab === tab.key ? ACCENT : "transparent"}`,
-                padding      : "12px 16px", fontSize: 11, fontWeight: 900,
+                border       : "none", flexShrink: 0,
+                borderLeft   : isMobile ? "none" : `3px solid ${activeTab === tab.key ? ACCENT : "transparent"}`,
+                borderBottom : isMobile ? `3px solid ${activeTab === tab.key ? ACCENT : "transparent"}` : "none",
+                padding      : isMobile ? "10px 14px" : "12px 16px", fontSize: 11, fontWeight: 900,
                 letterSpacing: "0.14em", cursor: "pointer", fontFamily: ff,
-                marginBottom : 2, transition: "all 0.15s",
+                marginBottom : isMobile ? 0 : 2, transition: "all 0.15s", whiteSpace: "nowrap",
               }}>
               {tab.label}
             </button>
           ))}
           <button onClick={() => { logout(); navigate("#/"); }}
             style={{
-              display      : "block", width: "100%", textAlign: "left",
-              background   : "none", color: "#c0392b", border: "none",
-              borderLeft   : "3px solid transparent", padding: "12px 16px",
+              display      : "block", width: isMobile ? "auto" : "100%", textAlign: "left",
+              background   : "none", color: "#c0392b", border: "none", flexShrink: 0,
+              borderLeft   : isMobile ? "none" : "3px solid transparent",
+              borderBottom : isMobile ? "3px solid transparent" : "none",
+              padding      : isMobile ? "10px 14px" : "12px 16px",
               fontSize     : 11, fontWeight: 900, letterSpacing: "0.14em",
-              cursor       : "pointer", fontFamily: ff, marginTop: 16,
+              cursor       : "pointer", fontFamily: ff, marginTop: isMobile ? 0 : 16, whiteSpace: "nowrap",
             }}>
             SIGN OUT
           </button>
@@ -3124,7 +3143,7 @@ export default function DashboardPage({ navigate }) {
           {activeTab === "profile" && (
             <div>
               <SectionTitle>PERSONAL INFORMATION</SectionTitle>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, maxWidth: 520 }}>
+              <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 16, maxWidth: 520 }}>
                 <FormField label="FULL NAME" value={profileForm.fullName}
                   onChange={v => setProfileForm(f => ({ ...f, fullName: v }))} />
                 <FormField label="PHONE" value={profileForm.phone}
@@ -3242,7 +3261,7 @@ export default function DashboardPage({ navigate }) {
               )}
               {loading ? <Loader /> : (
                 <>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 20 }}>
+                  <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 16, marginBottom: 20 }}>
                     {addresses.map(addr => (
                       <div key={addr.addressId}
                         style={{
@@ -3303,7 +3322,8 @@ export default function DashboardPage({ navigate }) {
                         <img
                           src={item.product.imageUrl}
                           alt={item.product.name}
-                          loading="lazy" decoding="async"
+                          loading="lazy"
+                          decoding="async"
                           style={{ width: "100%", height: 140, objectFit: "contain", background: "#f8f8f8", marginBottom: 10 }}
                         />
                       )}
