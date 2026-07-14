@@ -8,15 +8,24 @@ export function normalizeText(value) {
 export function normalizeCategory(value) {
   const normalized = String(value ?? "").trim();
   if (!normalized) return "Eyeglasses";
-  if (normalized.toLowerCase() === "optical") return "Eyeglasses";
+  const lower = normalized.toLowerCase();
+  if (lower === "optical" || lower === "eyeglass" || lower === "eyeglasses") return "Eyeglasses";
+  if (lower === "sunglass" || lower === "sunglasses" || lower === "sun glasses") return "Sunglasses";
   return normalized;
 }
 
 export function normalizeGender(value) {
-  const normalized = String(value ?? "").trim().toLowerCase();
-  if (normalized === "men") return "Men";
-  if (normalized === "women" || normalized === "woman" || normalized === "female") return "Women";
-  if (normalized === "men/women" || normalized === "unisex" || normalized === "both") return "Unisex";
+  const lower = String(value ?? "").trim().toLowerCase();
+  if (!lower) return "Unisex";
+  if (lower === "unisex" || lower === "both") return "Unisex";
+  // Data uses messy values: "Men", "Mens", "Women", "Womens", "Men/Women",
+  // "Mens/Women", etc. Detect each gender token, then decide.
+  const hasWomen = /wom[ae]ns?/.test(lower);
+  // Strip women tokens first so "women" doesn't count as containing "men".
+  const hasMen = /mens?/.test(lower.replace(/wom[ae]ns?/g, ""));
+  if (hasMen && hasWomen) return "Unisex";
+  if (hasWomen) return "Women";
+  if (hasMen) return "Men";
   return value || "Unisex";
 }
 
@@ -138,7 +147,11 @@ export function applyProductFilters(products, activeFilters = {}, sort = "featur
 
   const genderFilters = activeFilters.gender || [];
   if (genderFilters.length) {
-    list = list.filter((product) => genderFilters.includes(normalizeGender(product.gender)));
+    list = list.filter((product) => {
+      const gender = normalizeGender(product.gender);
+      // Unisex frames belong in both Men's and Women's results.
+      return gender === "Unisex" || genderFilters.includes(gender);
+    });
   }
 
   const colorFilters = activeFilters.color || [];

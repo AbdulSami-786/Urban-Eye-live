@@ -290,6 +290,14 @@ function LoginForm({ onSwitch, onSuccess }) {
   const [apiErr,   setApiErr]   = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [loading,  setLoading]  = useState(false);
+  const [resendIn, setResendIn] = useState(0); // OTP resend cooldown (seconds)
+
+  // Count down the resend cooldown once per second.
+  useEffect(() => {
+    if (resendIn <= 0) return;
+    const t = setInterval(() => setResendIn(s => (s <= 1 ? 0 : s - 1)), 1000);
+    return () => clearInterval(t);
+  }, [resendIn]);
 
   const validate = () => {
     const e = {};
@@ -328,11 +336,26 @@ function LoginForm({ onSwitch, onSuccess }) {
       await forgotPassword({ email });
       setLoading(false);
       setSuccessMsg("OTP sent to " + email);
+      setResendIn(60);
       setMode("otp");
     } catch (err) {
       setLoading(false);
       setApiErr(err.message || "Failed to send OTP.");
     }
+  };
+
+  // Resend the OTP without leaving the OTP screen. Backend also rate-limits.
+  const handleResend = async () => {
+    if (resendIn > 0 || loading) return;
+    setApiErr(""); setLoading(true);
+    try {
+      await forgotPassword({ email });
+      setSuccessMsg("A new OTP has been sent to " + email);
+      setResendIn(60);
+    } catch (err) {
+      setApiErr(err.message || "Failed to resend OTP.");
+    }
+    setLoading(false);
   };
 
   const handleVerifyOTP = async () => {
@@ -390,7 +413,7 @@ function LoginForm({ onSwitch, onSuccess }) {
   if (mode === "otp") return (
     <div style={S.body}>
       <div style={S.heading}>Enter OTP</div>
-      <div style={S.subheading}>{successMsg || "Check your email for the 6-digit code"}</div>
+      <div style={S.subheading}>{successMsg || "Check your email for the 6-digit code"} — it expires in 5 minutes.</div>
       {apiErr && <div style={S.apiError}>{IcoAlert} {apiErr}</div>}
       <Field
         label="6-digit OTP" placeholder="123456"
@@ -401,7 +424,15 @@ function LoginForm({ onSwitch, onSuccess }) {
         {loading ? <>{IcoSpin} Verifying…</> : "Verify OTP"}
       </button>
       <div style={S.footerText}>
-        <button style={S.footerLink} onClick={() => { setMode("forgot"); setApiErr(""); }}>← Resend OTP</button>
+        <button
+          style={{ ...S.footerLink, opacity: resendIn > 0 ? 0.5 : 1, cursor: resendIn > 0 || loading ? "not-allowed" : "pointer" }}
+          onClick={handleResend}
+          disabled={resendIn > 0 || loading}
+        >
+          {resendIn > 0 ? `Resend code in ${resendIn}s` : "Resend code"}
+        </button>
+        <span style={{ margin: "0 8px", color: "#cbd8e2" }}>·</span>
+        <button style={S.footerLink} onClick={() => { setMode("login"); setApiErr(""); setOtp(""); }}>← Back to sign in</button>
       </div>
     </div>
   );

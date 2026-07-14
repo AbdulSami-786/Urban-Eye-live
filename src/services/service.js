@@ -531,8 +531,46 @@
 // Handles all calls to the Google Apps Script backend.
 // ============================================================
 
+import { PRODUCTS_DATA } from "../prodcut.js";
+
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbze9KN95wQyC9LZPoGBC67rDwW1exAdDuv8jHmTX_837RYnPtulY1a2WLessqPX05eu/exec";
+  "https://script.google.com/macros/s/AKfycbz20WORJgVWxJlAtZ13zeKAuUGxyh0hn8GY7PxQWxBqpnFb3a2xuLtgAtonyS15qSU/exec";
+
+// ─── PRODUCT ENRICHMENT (for backend emails) ────────────────
+// Products live in the React frontend, so we resolve name/image/price/
+// description here and pass them to the backend purely so its transactional
+// emails (wishlist, review) can be rich. Nothing extra is persisted.
+
+/** Turn a relative asset path ("./assets/x.jpg") into an absolute URL. */
+function _absAssetUrl(path) {
+  if (!path) return "";
+  const s = String(path);
+  if (/^https?:\/\//i.test(s)) return s;
+  const clean = s.replace(/^\.?\//, ""); // "./assets/x.jpg" -> "assets/x.jpg"
+  try {
+    return window.location.origin + "/" + encodeURI(clean);
+  } catch {
+    return clean;
+  }
+}
+
+/** Look up a product from the frontend catalogue for email enrichment. */
+function _productInfo(productId) {
+  const p = PRODUCTS_DATA.find((x) => String(x.id) === String(productId));
+  if (!p) return null;
+  const rawImg =
+    (p.colors && p.colors[0] && (p.colors[0].image || (p.colors[0].gallery && p.colors[0].gallery[0]))) ||
+    (p.gallery && p.gallery[0]) ||
+    "";
+  const origin = (typeof window !== "undefined" && window.location) ? window.location.origin : "";
+  return {
+    productName: p.name || "",
+    productImage: _absAssetUrl(rawImg),
+    productPrice: p.discountPrice || p.price || "",
+    productDescription: (p.description || "").slice(0, 160),
+    productUrl: origin ? `${origin}/#/products/${p.id}` : "",
+  };
+}
 
 // ─── TOKEN HELPERS ──────────────────────────────────────────
 function getToken() {
@@ -638,7 +676,10 @@ export async function getWishlist() {
 }
 
 export async function addToWishlist({ productId }) {
-  return await apiPost("addToWishlist", { productId });
+  // Enrich with product details so the backend "Product Added to Your
+  // Wishlist" email can show image / name / price / description.
+  const info = _productInfo(productId) || {};
+  return await apiPost("addToWishlist", { productId, ...info });
 }
 
 export async function removeFromWishlist({ wishlistId }) {
@@ -719,8 +760,16 @@ export async function getUserReviews() {
 /**
  * Submit a new review for a product.
  */
-export async function submitReview({ productId, rating, review }) {
-  return await apiPost("submitReview", { productId, rating, review });
+export async function submitReview({ productId, rating, review, productName }) {
+  // Pass the product name so the "Thank You for Your Review" email and the
+  // admin dashboard can display which product was reviewed.
+  const info = _productInfo(productId);
+  return await apiPost("submitReview", {
+    productId,
+    rating,
+    review,
+    productName: productName || (info ? info.productName : ""),
+  });
 }
 
 /**

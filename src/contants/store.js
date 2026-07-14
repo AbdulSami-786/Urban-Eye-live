@@ -517,25 +517,34 @@ export const ff     = "'Franklin Gothic Medium','Arial Narrow', Arial, sans-seri
 export const mono   = "'Courier New', Courier, monospace";
 
 // COLLECTIONS
+// Product data stores categories as "Optical"/"Sunglass" and genders in mixed
+// forms ("Mens", "Womens", "Men/Women", ...). We normalise both sides via the
+// helpers below so these filters match the real data.
+import { normalizeCategory, normalizeGender } from "../services/productUtils.js";
+
+const isEyeglasses = p => normalizeCategory(p.category) === "Eyeglasses";
+const isSunglasses = p => normalizeCategory(p.category) === "Sunglasses";
+const isGender = (p, g) => { const n = normalizeGender(p.gender); return n === "Unisex" || n === g; };
+
 export const COLLECTIONS = {
-  "eyeglasses": { title: "EYEGLASSES", desc: "MOSCOT combines over 100 years of eyewear expertise.", filter: p => p.category === "Eyeglasses" },
-  "sunglasses": { title: "SUNGLASSES", desc: "All of our sunglasses reflect rich heritage.", filter: p => p.category === "Sunglasses" },
-  "mens-eyeglasses": { title: "MEN'S EYEGLASSES", desc: "Timeless frames for the modern gentleman.", filter: p => p.category === "Eyeglasses" && (p.gender === "Men" || p.gender === "Unisex") },
-  "womens-eyeglasses": { title: "WOMEN'S EYEGLASSES", desc: "Refined, bold, and beautifully crafted.", filter: p => p.category === "Eyeglasses" && (p.gender === "Women" || p.gender === "Unisex") },
-  "mens-sunglasses": { title: "MEN'S SUNGLASSES", desc: "UV protection meets effortless cool.", filter: p => p.category === "Sunglasses" && (p.gender === "Men" || p.gender === "Unisex") },
-  "womens-sunglasses": { title: "WOMEN'S SUNGLASSES", desc: "From oversized cat-eyes to sleek aviators.", filter: p => p.category === "Sunglasses" && (p.gender === "Women" || p.gender === "Unisex") },
-  "best-selling-eyeglasses": { title: "BEST SELLERS — EYEGLASSES", desc: "The frames everyone is wearing.", filter: p => p.category === "Eyeglasses" && (p.tag === "BEST SELLER" || p.tag === "ICONIC") },
-  "best-selling-sunglasses": { title: "BEST SELLERS — SUNGLASSES", desc: "Sun protection, elevated.", filter: p => p.category === "Sunglasses" && (p.tag === "BEST SELLER" || p.tag === "ICONIC") },
+  "eyeglasses": { title: "EYEGLASSES", desc: "MOSCOT combines over 100 years of eyewear expertise.", filter: p => isEyeglasses(p) },
+  "sunglasses": { title: "SUNGLASSES", desc: "All of our sunglasses reflect rich heritage.", filter: p => isSunglasses(p) },
+  "mens-eyeglasses": { title: "MEN'S EYEGLASSES", desc: "Timeless frames for the modern gentleman.", filter: p => isEyeglasses(p) && isGender(p, "Men") },
+  "womens-eyeglasses": { title: "WOMEN'S EYEGLASSES", desc: "Refined, bold, and beautifully crafted.", filter: p => isEyeglasses(p) && isGender(p, "Women") },
+  "mens-sunglasses": { title: "MEN'S SUNGLASSES", desc: "UV protection meets effortless cool.", filter: p => isSunglasses(p) && isGender(p, "Men") },
+  "womens-sunglasses": { title: "WOMEN'S SUNGLASSES", desc: "From oversized cat-eyes to sleek aviators.", filter: p => isSunglasses(p) && isGender(p, "Women") },
+  "best-selling-eyeglasses": { title: "BEST SELLERS — EYEGLASSES", desc: "The frames everyone is wearing.", filter: p => isEyeglasses(p) && (p.tag === "BEST SELLER" || p.tag === "ICONIC") },
+  "best-selling-sunglasses": { title: "BEST SELLERS — SUNGLASSES", desc: "Sun protection, elevated.", filter: p => isSunglasses(p) && (p.tag === "BEST SELLER" || p.tag === "ICONIC") },
   "new-eyeglasses-sunglasses": { title: "NEW ARRIVALS", desc: "Fresh off the bench.", filter: p => p.tag === "NEW" },
   "family-favorites": { title: "BEST SELLERS", desc: "Eye-conic frames chosen by the community.", filter: p => p.tag === "BEST SELLER" || p.tag === "ICONIC" },
-  "round-eyeglasses": { title: "ROUND EYEGLASSES", desc: "The shape that defined a generation.", filter: p => p.subcategory === "Round" && p.category === "Eyeglasses" },
-  "square-eyeglasses": { title: "SQUARE EYEGLASSES", desc: "Bold geometry. Sharp lines.", filter: p => p.subcategory === "Square" && p.category === "Eyeglasses" },
+  "round-eyeglasses": { title: "ROUND EYEGLASSES", desc: "The shape that defined a generation.", filter: p => p.subcategory === "Round" && isEyeglasses(p) },
+  "square-eyeglasses": { title: "SQUARE EYEGLASSES", desc: "Bold geometry. Sharp lines.", filter: p => p.subcategory === "Square" && isEyeglasses(p) },
   "aviator-sunglasses": { title: "AVIATOR SUNGLASSES", desc: "Heritage aviation style, reborn.", filter: p => p.subcategory === "Aviator" },
   "cateye-eyeglasses-sunglasses": { title: "CAT-EYE FRAMES", desc: "Old Hollywood glamour meets downtown cool.", filter: p => p.subcategory === "Cat-Eye" },
   "black-eyeglasses": { title: "BLACK FRAMES", desc: "Classic. Timeless.", filter: p => p.color?.toLowerCase().includes("black") },
   "tortoise-shell-eyeglasses": { title: "TORTOISE FRAMES", desc: "Warm tones, rich character.", filter: p => p.color?.toLowerCase().includes("tortoise") },
-  "polarized-sunglasses": { title: "POLARIZED SUNGLASSES", desc: "Cut the glare.", filter: p => p.category === "Sunglasses" },
-  "custom-made-tints": { title: "CUSTOM MADE TINTS™", desc: "20+ hand-applied tints.", filter: p => p.category === "Sunglasses" },
+  "polarized-sunglasses": { title: "POLARIZED SUNGLASSES", desc: "Cut the glare.", filter: p => isSunglasses(p) },
+  "custom-made-tints": { title: "CUSTOM MADE TINTS™", desc: "20+ hand-applied tints.", filter: p => isSunglasses(p) },
   "default": { title: "ALL FRAMES", desc: "Every frame. Handpicked.", filter: () => true },
 };
 

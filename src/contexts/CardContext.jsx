@@ -58,25 +58,45 @@ import { useAuth } from "../Auth/auth.jsx";
 
 export const CartContext = createContext(null);
 
+// Read the saved cart synchronously so the very first render already has the
+// items. Loading it in an effect instead created a race: the "save" effect
+// below ran on mount with the empty initial state and overwrote localStorage,
+// and under React StrictMode's double-invoked effects the reload permanently
+// emptied the cart.
+function readStoredCart() {
+  try {
+    const stored = JSON.parse(localStorage.getItem("os_cart") || "[]");
+    return Array.isArray(stored) ? stored : [];
+  } catch {
+    return [];
+  }
+}
+
+// Products keep their imagery inside colors[].image / colors[].gallery (and
+// sometimes a top-level gallery / imageUrl), not a plain `image`. Resolve one
+// here so cart rows, the mini-cart drawer and order emails have a picture.
+function resolveCartImage(product) {
+  if (!product) return "";
+  if (product.image) return product.image;
+  if (product.imageUrl) return product.imageUrl;
+  if (Array.isArray(product.gallery) && product.gallery[0]) return product.gallery[0];
+  const firstColor = Array.isArray(product.colors) ? product.colors[0] : null;
+  if (firstColor) {
+    if (firstColor.image) return firstColor.image;
+    if (Array.isArray(firstColor.gallery) && firstColor.gallery[0]) return firstColor.gallery[0];
+  }
+  return "";
+}
+
 export function CartProvider({ children }) {
-  const [cartItems, setCartItems] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [cartItems, setCartItems] = useState(readStoredCart);
+  const [loading, setLoading] = useState(false);
   const [syncing, setSyncing] = useState(false);
   const [pendingSync, setPendingSync] = useState(false);
   const { user } = useAuth();
 
-  // Load cart from localStorage FIRST on mount (fast)
-  useEffect(() => {
-    try {
-      const localCart = JSON.parse(localStorage.getItem("os_cart") || "[]");
-      setCartItems(localCart);
-    } catch { 
-      setCartItems([]); 
-    }
-    setLoading(false);
-  }, []);
-
-  // Save to localStorage whenever cart changes (always keep localStorage updated)
+  // Persist the cart to localStorage whenever it changes. Because cartItems is
+  // initialised from storage above, this never clobbers a saved cart on mount.
   useEffect(() => {
     if (!syncing) {
       localStorage.setItem("os_cart", JSON.stringify(cartItems));
@@ -91,12 +111,14 @@ export function CartProvider({ children }) {
       if (ex) {
         return prev.map(i => i.id === product.id ? { ...i, qty: i.qty + qty } : i);
       }
-      return [...prev, { 
-        ...product, 
-        qty, 
+      return [...prev, {
+        ...product,
+        qty,
         id: product.id,
+        // Resolve a displayable image so cart/drawer thumbnails render.
+        image: resolveCartImage(product),
         // Mark as not synced to database yet
-        _needsSync: true 
+        _needsSync: true
       }];
     });
   }, []);

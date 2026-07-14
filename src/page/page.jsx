@@ -15492,7 +15492,7 @@ export function CartPage({ navigate }) {
               <div key={item.id} style={{ display: isMobile ? "flex" : "grid", gridTemplateColumns: "1fr 130px 150px 40px", gap: isMobile ? 12 : 16, alignItems: "center", padding: isMobile ? "12px 0" : "20px 0", borderBottom: "1px solid #e0ddd6", flexDirection: isMobile ? "column" : "row" }}>
                 <div style={{ display: "flex", gap: 14, alignItems: "center", width: isMobile ? "100%" : "auto" }}>
                   <div style={{ width: isMobile ? 60 : 88, height: isMobile ? 50 : 70, flexShrink: 0, overflow: "hidden", background: CREAM, cursor: "pointer", border: "1px solid #e8e8e8" }} onClick={() => navigate(`#/products/${item.id}`)}>
-                    <img src={`${item.image}`} alt={item.name} loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    <img src={item.image} alt={item.name} loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   </div>
                   <div>
                     <div style={{ fontSize: 10, color: "#bbb", letterSpacing: "0.16em", fontFamily: ff, marginBottom: 3 }}>{item.category?.toUpperCase()}{item.gender ? ` · ${item.gender.toUpperCase()}` : ""}</div>
