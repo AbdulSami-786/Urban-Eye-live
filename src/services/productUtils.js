@@ -212,3 +212,93 @@ export function getRelatedProducts(products, currentProduct) {
   if (sameCategory.length) return sameCategory.slice(0, 3);
   return products.filter((product) => product.id !== currentProduct.id).slice(0, 3);
 }
+
+// ─────────────────────────────────────────────
+// SEARCH — free-text + price-aware product matching
+// (shared by the navbar search box and the Products page)
+// ─────────────────────────────────────────────
+
+// Turn a raw token into a number. Supports thousands separators and the "k"
+// shorthand: "8000", "8,000" and "8k" all resolve to 8000.
+export function parsePriceToken(raw) {
+  if (raw == null) return null;
+  const m = String(raw).replace(/[, ]/g, "").match(/^(\d+(?:\.\d+)?)(k)?$/i);
+  if (!m) return null;
+  let n = parseFloat(m[1]);
+  if (m[2]) n *= 1000;
+  return Number.isFinite(n) ? n : null;
+}
+
+// Detect price intent inside a search term. Returns null when the term carries
+// no numeric meaning, otherwise a descriptor consumed by matchesPriceQuery().
+// Understands: "under 8000", "above 20k", "8000-12000", "8k to 12k", "8000".
+export function parsePriceQuery(term) {
+  if (!term) return null;
+  const t = String(term).toLowerCase().trim();
+  const P = "(?:pkr|rs\\.?)?\\s*";
+  const N = "([\\d.,]+k?)";
+
+  let m = t.match(new RegExp(`(?:under|below|less than|upto|up to|max|<=?)\\s*${P}${N}`));
+  if (m) { const n = parsePriceToken(m[1]); if (n != null) return { type: "max", max: n }; }
+
+  m = t.match(new RegExp(`(?:above|over|more than|from|min|>=?)\\s*${P}${N}`));
+  if (m) { const n = parsePriceToken(m[1]); if (n != null) return { type: "min", min: n }; }
+
+  m = t.match(new RegExp(`${P}${N}\\s*(?:-|–|to|and)\\s*${P}${N}`));
+  if (m) {
+    const a = parsePriceToken(m[1]); const b = parsePriceToken(m[2]);
+    if (a != null && b != null) return { type: "range", min: Math.min(a, b), max: Math.max(a, b) };
+  }
+
+  m = t.match(new RegExp(`^${P}${N}$`));
+  if (m) { const n = parsePriceToken(m[1]); if (n != null) return { type: "approx", value: n }; }
+
+  return null;
+}
+
+// Does a product's price (or discounted price) satisfy the parsed price query?
+export function matchesPriceQuery(product, pq) {
+  if (!pq) return false;
+  const { price, discountPrice } = getProductDisplayPrice(product);
+  const values = [price, discountPrice].filter((v) => v > 0);
+  if (!values.length) return false;
+  return values.some((v) => {
+    if (pq.type === "max")   return v <= pq.max;
+    if (pq.type === "min")   return v >= pq.min;
+    if (pq.type === "range") return v >= pq.min && v <= pq.max;
+    if (pq.type === "approx") {
+      // Match when the price is within ±15% of the typed number, or when the
+      // typed digits (3+) literally appear in the price (e.g. "800" → 8000).
+      const tol = Math.max(500, pq.value * 0.15);
+      const digits = String(Math.round(pq.value));
+      const substrMatch = digits.length >= 3 && String(v).includes(digits);
+      return Math.abs(v - pq.value) <= tol || substrMatch;
+    }
+    return false;
+  });
+}
+
+// Does a product match a free-text / price search term?
+export function matchesSearchTerm(product, term) {
+  if (!product) return false;
+  const t = String(term ?? "").toLowerCase().trim();
+  if (!t) return true;
+  const textMatch =
+    (product.name && product.name.toLowerCase().includes(t)) ||
+    (product.category && product.category.toLowerCase().includes(t)) ||
+    (product.subcategory && product.subcategory.toLowerCase().includes(t)) ||
+    (product.gender && product.gender.toLowerCase().includes(t)) ||
+    (product.tag && product.tag.toLowerCase().includes(t)) ||
+    (product.color && product.color.toLowerCase().includes(t)) ||
+    (Array.isArray(product.colors) && product.colors.some((c) => c.name && c.name.toLowerCase().includes(t)));
+  return textMatch || matchesPriceQuery(product, parsePriceQuery(t));
+}
+
+// Filter a product list by a search term. `limit > 0` caps the result count
+// (handy for a suggestions dropdown).
+export function searchProducts(products, term, limit = 0) {
+  const t = String(term ?? "").trim();
+  if (!t) return [];
+  const results = (products || []).filter((product) => matchesSearchTerm(product, t));
+  return limit > 0 ? results.slice(0, limit) : results;
+}

@@ -1782,6 +1782,8 @@ import OpticsStudio from "./opticsStudio.jsx";
 import { CartProvider, useCart } from "./contexts/CardContext.jsx";
 import { useHashRouter } from "./hook/usehashrooter.js";
 import { AuthProvider, useAuth, AuthModal } from "./Auth/auth.jsx";
+import { PRODUCTS_DATA } from "./prodcut.js";
+import { searchProducts, getProductDisplayPrice, getProductVariants, formatPriceValue } from "./services/productUtils.js";
 
 // ─── RESPONSIVE HOOK ────────────────────────────────────────────────────────
 function useMediaQuery(query) {
@@ -2155,6 +2157,21 @@ function AppInner() {
   const activeNav = NAV_LINKS.find((n) => n.label === megaOpen);
   const goTo = (hash) => { navigate(hash); setMobileMenuOpen(false); setMegaOpen(null); };
 
+  // Live product suggestions for the navbar search (top 6 matches).
+  const searchSuggestions = searchVal.trim() ? searchProducts(PRODUCTS_DATA, searchVal, 6) : [];
+  const closeSearch = () => { setSearchOpen(false); setSearchVal(""); };
+  // Enter / "see all" → open the Products page pre-filtered by the query.
+  const submitSearch = () => {
+    const q = searchVal.trim();
+    if (!q) return;
+    goTo(`#/products?q=${encodeURIComponent(q)}`);
+    closeSearch();
+  };
+  // Clicking a suggestion → jump straight to that product's detail page.
+  const openProduct = (id) => { goTo(`#/products/${id}`); closeSearch(); };
+  const suggestionImage = (p) =>
+    getProductVariants(p)[0]?.image || p.image || p.gallery?.[0] || "";
+
   if (!checked) return null;
 
   return (
@@ -2330,19 +2347,16 @@ function AppInner() {
             animation: "slideDown 0.2s ease both"
           }}>
             <div style={{ maxWidth: 540, margin: "0 auto", position: "relative" }}>
-              <svg style={{ position: "absolute", left: 13, top: "50%", transform: "translateY(-50%)", color: "#6aadcc" }}
+              <svg style={{ position: "absolute", left: 13, top: 18, color: "#6aadcc" }}
                 width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
                 <circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
               </svg>
               <input autoFocus value={searchVal} onChange={(e) => setSearchVal(e.target.value)}
                 onKeyDown={(e) => {
-                  if (e.key === "Enter" && searchVal.trim()) {
-                    goTo(`#/search?q=${encodeURIComponent(searchVal)}`);
-                    setSearchOpen(false);
-                    setSearchVal("");
-                  }
+                  if (e.key === "Enter") submitSearch();
+                  else if (e.key === "Escape") closeSearch();
                 }}
-                placeholder="Search frames, styles, collections..."
+                placeholder="Search by name or price — e.g. “Alex” or “under 8000”"
                 style={{
                   width: "100%", padding: "11px 36px 11px 38px", border: `1.5px solid ${NAVY}`,
                   fontSize: isMobile ? 12 : 13, letterSpacing: "0.02em", outline: "none", background: "#fff",
@@ -2351,9 +2365,75 @@ function AppInner() {
               {searchVal && (
                 <button onClick={() => setSearchVal("")}
                   style={{
-                    position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)",
+                    position: "absolute", right: 12, top: 8,
                     background: "none", border: "none", cursor: "pointer", color: "#6aadcc", fontSize: 18
                   }}>×</button>
+              )}
+
+              {/* Live product suggestions */}
+              {searchVal.trim() && (
+                <div style={{
+                  marginTop: 6, background: "#fff", border: `1.5px solid ${NAVY}`,
+                  boxShadow: "0 12px 30px rgba(12,44,65,0.15)", maxHeight: "60vh", overflowY: "auto"
+                }}>
+                  {searchSuggestions.length > 0 ? (
+                    <>
+                      {searchSuggestions.map((p) => {
+                        const { price, discountPrice } = getProductDisplayPrice(p);
+                        const onSale = discountPrice < price;
+                        return (
+                          <button key={p.id} onClick={() => openProduct(p.id)}
+                            style={{
+                              display: "flex", alignItems: "center", gap: 12, width: "100%",
+                              padding: "10px 12px", background: "none", border: "none",
+                              borderBottom: "1px solid #eef4f8", cursor: "pointer", textAlign: "left"
+                            }}
+                            onMouseEnter={(e) => (e.currentTarget.style.background = "#f0f8fc")}
+                            onMouseLeave={(e) => (e.currentTarget.style.background = "none")}>
+                            <div style={{
+                              width: 46, height: 46, flexShrink: 0, background: "#f5f5f0",
+                              border: "1px solid #e8e0d0", display: "flex", alignItems: "center", justifyContent: "center"
+                            }}>
+                              <img src={suggestionImage(p)} alt={p.name} loading="lazy"
+                                style={{ width: "100%", height: "100%", objectFit: "contain", padding: 3 }} />
+                            </div>
+                            <div style={{ flex: 1, minWidth: 0 }}>
+                              <div style={{
+                                fontSize: 13, fontWeight: 900, color: BLACK, fontFamily: ff,
+                                letterSpacing: "0.04em", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"
+                              }}>{p.name}</div>
+                              <div style={{ fontSize: 11, color: "#7a8a95", fontFamily: "'Courier New',Courier,monospace" }}>
+                                {p.category}{p.subcategory ? ` · ${p.subcategory}` : ""}
+                              </div>
+                            </div>
+                            <div style={{ flexShrink: 0, textAlign: "right", fontFamily: ff }}>
+                              <span style={{ fontSize: 13, fontWeight: 900, color: NAVY }}>PKR {formatPriceValue(discountPrice)}</span>
+                              {onSale && (
+                                <div style={{ fontSize: 10, color: "#aaa", textDecoration: "line-through" }}>PKR {formatPriceValue(price)}</div>
+                              )}
+                            </div>
+                          </button>
+                        );
+                      })}
+                      <button onClick={submitSearch}
+                        style={{
+                          display: "block", width: "100%", padding: "11px 12px", background: "#f0f8fc",
+                          border: "none", cursor: "pointer", fontSize: 11, fontWeight: 900,
+                          letterSpacing: "0.12em", color: NAVY, fontFamily: ff
+                        }}>
+                        SEE ALL RESULTS FOR “{searchVal.trim().toUpperCase()}” →
+                      </button>
+                    </>
+                  ) : (
+                    <div style={{ padding: "16px 14px", fontSize: 12, color: "#7a8a95", fontFamily: "'Courier New',Courier,monospace" }}>
+                      No frames found for “{searchVal.trim()}”.
+                      <button onClick={submitSearch}
+                        style={{ marginLeft: 6, background: "none", border: "none", color: NAVY, fontWeight: 900, cursor: "pointer", fontFamily: ff }}>
+                        Browse all →
+                      </button>
+                    </div>
+                  )}
+                </div>
               )}
             </div>
           </div>

@@ -14011,7 +14011,7 @@ import { PRODUCTS_DATA } from "../prodcut.js";
 import { BLACK, CREAM, ff, mono, COLLECTIONS,
          HERO_SLIDES, HOME_PRODUCTS, TINTS, TESTIMONIALS, PROCESS_STEPS, CATEGORIES_HOME,
          tagColors } from "../contants/store.js";
-import { applyProductFilters, getProductColorOptions, getProductBrandOptions, getProductSizeOptions, getProductDisplayPrice, getProductDiscountPercent, getRelatedProducts, getProductVariants, normalizeCategory, formatPriceValue } from "../services/productUtils.js";
+import { applyProductFilters, getProductColorOptions, getProductBrandOptions, getProductSizeOptions, getProductDisplayPrice, getProductDiscountPercent, getRelatedProducts, getProductVariants, normalizeCategory, formatPriceValue, matchesSearchTerm } from "../services/productUtils.js";
 import { YBtn, OutlineBtn, FadeIn, Counter, Frame, ProductCard, ProductSlider, WishlistHeart, WishlistSkeleton } from "../components/shared";
 import { useCart } from "../contexts/CardContext";
 import { useAuth } from "../Auth/auth.jsx";
@@ -14172,6 +14172,44 @@ function applyFilters(products, activeFilters, sort, searchTerm = "") {
   filtered = applyProductFilters(filtered, otherFilters, sort, "");
 
   return filtered;
+}
+
+// NOTE: price parsing + free-text search matching now live in
+// ../services/productUtils.js (matchesSearchTerm / searchProducts) so the navbar
+// search box and this Products page share one implementation.
+
+// Build a "related products" list for a set of matched products. Pulls each
+// match's explicit relatedIds first, then fills with frames sharing the same
+// category / subcategory / gender. Excludes anything already on screen.
+function getRelatedForMatches(allProducts, matches, excludeIds = [], limit = 8) {
+  const exclude = new Set(excludeIds.map(String));
+  const picked = [];
+  const pushUnique = (p) => {
+    if (!p) return;
+    if (exclude.has(String(p.id))) return;
+    if (picked.some((x) => x.id === p.id)) return;
+    picked.push(p);
+  };
+
+  // 1. Explicit relatedIds from each matched product.
+  matches.forEach((m) => {
+    (m.relatedIds || []).forEach((rid) => pushUnique(allProducts.find((p) => p.id === rid)));
+  });
+
+  // 2. Same category / subcategory / gender as any match.
+  if (picked.length < limit) {
+    matches.forEach((m) => {
+      allProducts.forEach((p) => {
+        if (picked.length >= limit) return;
+        const sameCat = normalizeCategory(p.category) === normalizeCategory(m.category);
+        const sameSub = m.subcategory && p.subcategory && p.subcategory === m.subcategory;
+        const sameGender = m.gender && p.gender && p.gender.toLowerCase() === m.gender.toLowerCase();
+        if (sameCat || sameSub || sameGender) pushUnique(p);
+      });
+    });
+  }
+
+  return picked.slice(0, limit);
 }
 
 function sortProducts(arr, sort) {
@@ -14948,7 +14986,8 @@ export function ProductsPage({ navigate, queryParams }) {
   const [activeFilters, setActiveFilters] = useState(() => buildFiltersFromQuery(queryParams));
   const [sort, setSort] = useState("featured");
   const [filtersOpen, setFiltersOpen] = useState(() => !window.matchMedia("(max-width: 767px)").matches);
-  const [searchTerm, setSearchTerm] = useState("");
+  // `?q=` comes from the navbar search — seed the on-page search box with it.
+  const [searchTerm, setSearchTerm] = useState(() => queryParams?.q || "");
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -14956,6 +14995,7 @@ export function ProductsPage({ navigate, queryParams }) {
 
   useEffect(() => {
     setActiveFilters(buildFiltersFromQuery(queryParams));
+    setSearchTerm(queryParams?.q || "");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [JSON.stringify(queryParams)]);
 
@@ -14963,15 +15003,10 @@ export function ProductsPage({ navigate, queryParams }) {
   const applyFiltersLocal = (products, activeFilters, sort, searchTerm) => {
     let filtered = products;
 
-    // 1. Apply search
+    // 1. Apply search (matches name, category, color, tag — and price, e.g.
+    //    "8000", "under 10000", "8k-12k")
     if (searchTerm && searchTerm.trim()) {
-      const term = searchTerm.trim().toLowerCase();
-      filtered = filtered.filter(p =>
-        p.name.toLowerCase().includes(term) ||
-        (p.category && p.category.toLowerCase().includes(term)) ||
-        (p.subcategory && p.subcategory.toLowerCase().includes(term)) ||
-        (p.gender && p.gender.toLowerCase().includes(term))
-      );
+      filtered = filtered.filter(p => matchesSearchTerm(p, searchTerm));
     }
 
     // 2. Apply size filter (Small/Medium/Large categories)
@@ -14999,6 +15034,21 @@ export function ProductsPage({ navigate, queryParams }) {
   else if (isTablet) cols = 2;
   else cols = filtersOpen ? 3 : 4;
 
+  // Related products to surface alongside a search. When there are matches we
+  // relate to them; when nothing matched we suggest a few popular frames so the
+  // page never dead-ends on an empty result.
+  const searchActive = searchTerm.trim().length > 0;
+  const relatedLimit = isMobile ? 4 : 8;
+  let relatedProducts = [];
+  if (searchActive) {
+    if (filtered.length) {
+      relatedProducts = getRelatedForMatches(PRODUCTS_DATA, filtered, filtered.map(p => p.id), relatedLimit);
+    } else {
+      relatedProducts = PRODUCTS_DATA.filter(p => p.tag).slice(0, relatedLimit);
+      if (!relatedProducts.length) relatedProducts = PRODUCTS_DATA.slice(0, relatedLimit);
+    }
+  }
+
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
       <div style={{ background: BLACK, padding: isMobile ? "48px 20px" : "72px 40px 60px", textAlign: "center", position: "relative", overflow: "hidden" }}>
@@ -15011,8 +15061,18 @@ export function ProductsPage({ navigate, queryParams }) {
           <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(32px, 10vw, 48px)" : "clamp(48px, 8vw, 88px)", lineHeight: 0.9, color: "#fff", letterSpacing: "0.02em", margin: "0 0 20px" }}>THE COLLECTION</h1>
           <p style={{ fontSize: 14, color: "rgba(255,255,255,0.4)", fontFamily: mono, lineHeight: 1.8, maxWidth: 480, margin: "0 auto" }}>{PRODUCTS_DATA.length} frames. Each handpicked. All obsessively crafted.</p>
           <div style={{ marginTop: 20, display: "flex", justifyContent: "center" }}>
-            <input value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder="Search by name, category, or keyword" style={{ width: "min(520px, 100%)", border: "none", padding: "12px 16px", fontSize: 13, fontFamily: mono, outline: "none" }} />
+            <div style={{ display: "flex", width: "min(520px, 100%)", background: "#fff", overflow: "hidden" }}>
+              <input value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder="Search by name, price, or keyword — e.g. “Alex” or “under 8000”" style={{ flex: 1, minWidth: 0, border: "none", padding: "12px 16px", fontSize: 13, fontFamily: mono, outline: "none" }} />
+              {searchActive && (
+                <button onClick={() => setSearchTerm("")} aria-label="Clear search" style={{ border: "none", background: BRAND, color: BRAND_TEXT, padding: "0 16px", fontFamily: ff, fontWeight: 900, fontSize: 14, cursor: "pointer" }}>✕</button>
+              )}
+            </div>
           </div>
+          {searchActive && (
+            <div style={{ marginTop: 10, fontSize: 11, color: "rgba(255,255,255,0.5)", fontFamily: mono, letterSpacing: "0.04em" }}>
+              {filtered.length} {filtered.length === 1 ? "frame" : "frames"} found for “{searchTerm.trim()}”
+            </div>
+          )}
         </div>
       </div>
 
@@ -15022,7 +15082,11 @@ export function ProductsPage({ navigate, queryParams }) {
         <FilterSidebar allProducts={PRODUCTS_DATA} activeFilters={activeFilters} setActiveFilters={setActiveFilters} filtersOpen={filtersOpen} isMobile={isMobile} onClose={() => setFiltersOpen(false)} />
         <div style={{ flex: 1, padding: isMobile ? "20px 12px 60px" : "32px 24px 80px", minWidth: 0 }}>
           {filtered.length === 0 ? (
-            <div style={{ textAlign: "center", padding: "80px 0", color: "#aaa", fontFamily: mono }}>No frames match the current filters.</div>
+            <div style={{ textAlign: "center", padding: "80px 0", color: "#aaa", fontFamily: mono }}>
+              {searchActive
+                ? `No frames match “${searchTerm.trim()}”.${relatedProducts.length ? " Here are some you might like instead:" : ""}`
+                : "No frames match the current filters."}
+            </div>
           ) : (
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "75%" : `repeat(${cols}, 1fr)`, justifyContent: isMobile ? "center" : "stretch", gap: isMobile ? 12 : 20, transition: "grid-template-columns 0.3s" }}>
               {filtered.map((p, i) => (
@@ -15034,6 +15098,26 @@ export function ProductsPage({ navigate, queryParams }) {
           )}
         </div>
       </div>
+
+      {searchActive && relatedProducts.length > 0 && (
+        <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 12px 60px" : "0 24px 80px" }}>
+          <div style={{ borderTop: "1px solid #e8e0d0", paddingTop: isMobile ? 28 : 40 }}>
+            <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#aaa", marginBottom: 6, fontFamily: ff }}>
+              {filtered.length ? "YOU MAY ALSO LIKE" : "POPULAR PICKS"}
+            </div>
+            <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(20px, 6vw, 28px)" : "clamp(22px, 3vw, 34px)", margin: "0 0 24px", letterSpacing: "0.02em", color: BLACK }}>
+              RELATED FRAMES
+            </h2>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "repeat(3, 1fr)" : "repeat(4, 1fr)", gap: isMobile ? 12 : 20 }}>
+              {relatedProducts.map((p, i) => (
+                <FadeIn key={p.id} delay={Math.min(i * 60, 360)}>
+                  <ProductCard product={p} navigate={navigate} />
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -15219,7 +15303,7 @@ export function ProductDetailPage({ productId, navigate }) {
       </div>
 
       <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 16px 60px" : "0 40px 80px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: (isMobile || isTablet) ? "1fr" : "55% 45%", gap: 0, alignItems: "flex-start" }}>
+        <div style={{ display: "grid", gridTemplateColumns: (isMobile || isTablet) ? "1fr" : "70% 30%", gap: 0, alignItems: "flex-start" }}>
           <FadeIn>
             <div style={{ paddingRight: (isMobile || isTablet) ? 0 : 72 }}>
               <div style={{ position: "relative", overflow: "hidden", background: CREAM, marginBottom: 10, height: isMobile ? "50vh" : "calc(100vh - 110px)", minHeight: isMobile ? 300 : 560, maxHeight: isMobile ? 400 : 740, border: "1px solid #e8e0d0", boxSizing: "border-box", padding: isMobile ? "20px" : "64px 80px" }}>
@@ -15246,7 +15330,7 @@ export function ProductDetailPage({ productId, navigate }) {
           </FadeIn>
 
           <FadeIn delay={120}>
-            <div style={{ paddingTop: isMobile ? 32 : 52 }}>
+            <div style={{ paddingTop: isMobile ? 24 : 4 }}>
               <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 14, flexWrap: "wrap" }}>
                 <span style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.18em", color: "#aaa", fontFamily: ff }}>{product.category?.toUpperCase()}</span>
                 <span style={{ color: "#ddd" }}>·</span>
@@ -15268,6 +15352,9 @@ export function ProductDetailPage({ productId, navigate }) {
               </div>
 
               <div style={{ fontSize: 13, color: "#888", fontFamily: mono, marginBottom: 16, letterSpacing: "0.04em" }}>{displayLabel}</div>
+              {variants.length > 1 && (
+                <div style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", color: BLACK, fontFamily: ff, marginBottom: 10 }}>{variants.length} COLOURS</div>
+              )}
               {variants.length > 1 && (
                 <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 18, flexWrap: "wrap" }}>
                   {variants.map((variant) => {
@@ -15306,8 +15393,6 @@ export function ProductDetailPage({ productId, navigate }) {
                 </div>
               )}
 
-              <p style={{ fontSize: isMobile ? 12 : 13, color: "#555", lineHeight: 1.9, fontFamily: mono, marginBottom: 28, maxWidth: 420 }}>{product.description}</p>
-
               <div style={{ marginBottom: 26 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
                   <span style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", color: BLACK, fontFamily: ff }}>SIZE</span>
@@ -15322,22 +15407,26 @@ export function ProductDetailPage({ productId, navigate }) {
                 </div>
               </div>
 
-              <div style={{ display: "flex", gap: 10, marginBottom: 14, alignItems: "center", flexWrap: "wrap" }}>
-                <div style={{ display: "flex", border: "1.5px solid #e8e0d0", alignItems: "center", flexShrink: 0 }}>
-                  <button onClick={() => setQty(q => Math.max(1, q - 1))} style={{ background: "none", border: "none", width: 42, height: 50, fontSize: 18, cursor: "pointer", color: BLACK, fontFamily: ff, fontWeight: 900 }}>−</button>
-                  <span style={{ width: 38, textAlign: "center", fontFamily: ff, fontWeight: 900, fontSize: 14, color: BLACK }}>{qty}</span>
-                  <button onClick={() => setQty(q => q + 1)} style={{ background: "none", border: "none", width: 42, height: 50, fontSize: 18, cursor: "pointer", color: BLACK, fontFamily: ff, fontWeight: 900 }}>+</button>
+              <div style={{ marginBottom: 14 }}>
+                <span style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", color: BLACK, fontFamily: ff, display: "block", marginBottom: 10 }}>QUANTITY</span>
+                <div style={{ display: "inline-flex", border: "1.5px solid #e8e0d0", alignItems: "center" }}>
+                  <button onClick={() => setQty(q => Math.max(1, q - 1))} style={{ background: "none", border: "none", width: 42, height: 46, fontSize: 18, cursor: "pointer", color: BLACK, fontFamily: ff, fontWeight: 900 }}>−</button>
+                  <span style={{ width: 46, textAlign: "center", fontFamily: ff, fontWeight: 900, fontSize: 14, color: BLACK }}>{qty}</span>
+                  <button onClick={() => setQty(q => q + 1)} style={{ background: "none", border: "none", width: 42, height: 46, fontSize: 18, cursor: "pointer", color: BLACK, fontFamily: ff, fontWeight: 900 }}>+</button>
                 </div>
-                <button onClick={() => { addToCart(product, qty); setAdded(true); setTimeout(() => setAdded(false), 2500); }} style={{ flex: 1, background: added ? "#16a34a" : "#0c2c41", color: "#fff", border: "none", padding: "15px 24px", fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", cursor: "pointer", fontFamily: ff, transition: "background 0.3s" }}>
-                  {added ? "✓ ADDED TO BAG" : "ADD TO BAG"}
-                </button>
               </div>
+
+              <button onClick={() => { addToCart(product, qty); setAdded(true); setTimeout(() => setAdded(false), 2500); }} style={{ width: "100%", background: added ? "#16a34a" : "#0c2c41", color: "#fff", border: "none", padding: "16px 24px", fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", cursor: "pointer", fontFamily: ff, transition: "background 0.3s", marginBottom: 12 }}>
+                {added ? "✓ ADDED TO BAG" : "ADD TO BAG"}
+              </button>
 
               {added && (
                 <button onClick={() => navigate("#/cart")} style={{ width: "100%", background: BRAND, color: BRAND_TEXT, border: "none", padding: "13px", fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", cursor: "pointer", fontFamily: ff, marginBottom: 14 }}>
                   VIEW BAG & CHECKOUT →
                 </button>
               )}
+
+              <p style={{ fontSize: isMobile ? 12 : 13, color: "#555", lineHeight: 1.9, fontFamily: mono, marginBottom: 28, maxWidth: 420 }}>{product.description}</p>
 
               <div style={{ display: "flex", flexDirection: "column", gap: 9, padding: "18px 0", borderTop: "1px solid #f0ece4", borderBottom: "1px solid #f0ece4", marginBottom: 28 }}>
                 {[{ icon: "🚚", text: "Free shipping across Pakistan" }, { icon: "↩", text: "30-day hassle-free returns" }, { icon: "✦", text: "Prescription lenses available" }, { icon: "★", text: "Genuine Italian / Japanese craftsmanship" }].map((b, i) => (
