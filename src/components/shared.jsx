@@ -1211,16 +1211,22 @@ export function ProductCard({ product, navigate, type = "default" }) {
   };
 
   return (
-    <div
-      onClick={() => navigate(`#/products/${product.id}`)}
+    <a
+      href={`#/products/${product.id}`}
+      onClick={(event) => {
+        // Let ctrl/cmd/shift/middle-click fall through to native "open in new
+        // tab" behavior — only intercept a plain left click for SPA routing
+        // (navigate() also scrolls to top, which a bare href change wouldn't).
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button === 1) return;
+        event.preventDefault();
+        navigate(`#/products/${product.id}`);
+      }}
       onKeyDown={(event) => {
-        if (event.key === "Enter" || event.key === " ") {
+        if (event.key === " ") {
           event.preventDefault();
           navigate(`#/products/${product.id}`);
         }
       }}
-      role="button"
-      tabIndex={0}
       style={{
         cursor: "pointer",
         background: "#fff",
@@ -1230,6 +1236,8 @@ export function ProductCard({ product, navigate, type = "default" }) {
         display: "flex",
         flexDirection: "column",
         height: "100%",
+        textDecoration: "none",
+        color: "inherit",
       }}
     >
       {/* Tag badge */}
@@ -1370,7 +1378,7 @@ export function ProductCard({ product, navigate, type = "default" }) {
         </div>
 
         {/* Color swatches — centered under the price */}
-        {variants.length > 1 && (
+        {variants.length >= 1 && (
           <div
             style={{
               display: "flex",
@@ -1439,7 +1447,7 @@ export function ProductCard({ product, navigate, type = "default" }) {
           {addedMsg ? "✓ ADDED TO BAG" : "ADD TO BAG"}
         </button>
       </div>
-    </div>
+    </a>
   );
 }
 

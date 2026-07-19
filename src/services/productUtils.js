@@ -29,6 +29,38 @@ export function normalizeGender(value) {
   return value || "Unisex";
 }
 
+export function getProductShape(product) {
+  return String(product?.shape || product?.subcategory || "").trim();
+}
+
+// Compound shape values in the catalog (e.g. "Hexagon-Round") describe a frame
+// that belongs to more than one shape family. Split on "-" so filtering and
+// shape lists treat each half as its own shape instead of one unmatched blob.
+export function getProductShapeTokens(product) {
+  const raw = getProductShape(product);
+  if (!raw) return [];
+  return raw.split("-").map((token) => token.trim()).filter(Boolean);
+}
+
+export function productMatchesShape(product, shapeValue) {
+  return getProductShapeTokens(product).includes(shapeValue);
+}
+
+// Unique, alphabetically sorted list of shape tokens present in a product set,
+// optionally restricted to a single category (used by the navbar's per-category
+// "shop by shape" links).
+export function getUniqueShapesFromProducts(products, categoryFilter = null) {
+  const shapes = new Set();
+  (products || []).forEach((product) => {
+    if (categoryFilter) {
+      const cat = normalizeCategory(product?.category || "");
+      if (cat.toLowerCase() !== String(categoryFilter).toLowerCase()) return;
+    }
+    getProductShapeTokens(product).forEach((token) => shapes.add(token));
+  });
+  return Array.from(shapes).sort();
+}
+
 export function getProductVariants(product) {
   if (Array.isArray(product?.colors) && product.colors.length) return product.colors;
   if (product?.color) {
@@ -65,6 +97,30 @@ export function getProductDisplayImage(product, selectedVariantName) {
     displayImage: galleryImages[0] || selectedVariant?.image || product?.image || "",
     displayLabel: selectedVariant?.name || product?.color || "Default",
   };
+}
+
+// One normalized blob of every searchable field on a product — name, category,
+// subcategory, gender, tag, shape, brand, color variants, sizes, description,
+// keywords. Shared by the sidebar/on-page search and the navbar search so both
+// match on the exact same set of fields.
+export function getProductSearchText(product) {
+  if (!product) return "";
+  const parts = [
+    product.name,
+    product.category,
+    product.subcategory,
+    product.gender,
+    product.tag,
+    product.shape,
+    product.brand,
+    product.color,
+    product.shortDescription,
+    product.description,
+    ...(product.sizes || []),
+    ...(product.keywords || []),
+    ...getProductVariants(product).map((variant) => variant.name),
+  ];
+  return normalizeText(parts.filter(Boolean).join(" "));
 }
 
 export function getProductColorOptions(products) {
@@ -118,21 +174,7 @@ export function applyProductFilters(products, activeFilters = {}, sort = "featur
   const search = normalizeText(searchTerm);
 
   if (search) {
-    list = list.filter((product) => {
-      const haystack = [
-        product.name,
-        product.category,
-        product.shortDescription,
-        product.description,
-        product.brand,
-        product.subcategory,
-        product.gender,
-        ...(product.keywords || []),
-      ]
-        .filter(Boolean)
-        .join(" ");
-      return normalizeText(haystack).includes(search);
-    });
+    list = list.filter((product) => getProductSearchText(product).includes(search));
   }
 
   const categoryFilters = activeFilters.category || [];
@@ -283,14 +325,7 @@ export function matchesSearchTerm(product, term) {
   if (!product) return false;
   const t = String(term ?? "").toLowerCase().trim();
   if (!t) return true;
-  const textMatch =
-    (product.name && product.name.toLowerCase().includes(t)) ||
-    (product.category && product.category.toLowerCase().includes(t)) ||
-    (product.subcategory && product.subcategory.toLowerCase().includes(t)) ||
-    (product.gender && product.gender.toLowerCase().includes(t)) ||
-    (product.tag && product.tag.toLowerCase().includes(t)) ||
-    (product.color && product.color.toLowerCase().includes(t)) ||
-    (Array.isArray(product.colors) && product.colors.some((c) => c.name && c.name.toLowerCase().includes(t)));
+  const textMatch = getProductSearchText(product).includes(normalizeText(t));
   return textMatch || matchesPriceQuery(product, parsePriceQuery(t));
 }
 

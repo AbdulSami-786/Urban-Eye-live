@@ -51,7 +51,7 @@
 
 
 // // // ============================================================
-// // // service.js  —  Optics Studio API Client
+// // // service.js  —  Urban Eye API Client
 // // // Handles all calls to the Google Apps Script backend.
 // // // ============================================================
 
@@ -288,7 +288,7 @@
 
 
 // // ============================================================
-// // service.js  —  Optics Studio API Client
+// // service.js  —  Urban Eye API Client
 // // Handles all calls to the Google Apps Script backend.
 // // ============================================================
 
@@ -527,7 +527,7 @@
 
 
 // ============================================================
-// service.js  —  Optics Studio API Client
+// service.js  —  Urban Eye API Client
 // Handles all calls to the Google Apps Script backend.
 // ============================================================
 

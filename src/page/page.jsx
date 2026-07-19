@@ -449,7 +449,7 @@
 // // // //         </div>
 // // // //         <div style={{ position: "relative", maxWidth: 700, margin: "0 auto" }}>
 // // // //           <div style={{ width: 40, height: 3, background: BRAND, margin: "0 auto 20px" }} />
-// // // //           <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10 }}>OPTICS STUDIO</div>
+// // // //           <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10 }}>URBAN EYE</div>
 // // // //           <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: "clamp(48px, 8vw, 88px)", lineHeight: 0.9, color: "#fff", margin: "0 0 20px" }}>COLLECTIONS</h1>
 // // // //           <p style={{ fontSize: 14, color: "rgba(255,255,255,0.4)", fontFamily: mono, lineHeight: 1.8, maxWidth: 480, margin: "0 auto" }}>Curated groups of frames for every occasion, face, and personality.</p>
 // // // //         </div>
@@ -786,7 +786,7 @@
 // // // //             <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 28px" }}/>
 // // // //             <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 18 }}>EYE-CONIC EYEWEAR, SINCE 2015</div>
 // // // //             <blockquote style={{ fontFamily: mono, fontSize: isMobile ? "clamp(16px, 5vw, 22px)" : "clamp(18px, 2.8vw, 28px)", lineHeight: 1.5, color: BLACK, margin: "0 0 20px", fontStyle: "italic" }}>"For over a decade, our name has been on the front door. That means something."</blockquote>
-// // // //             <div style={{ fontSize: 11, letterSpacing: "0.16em", color: "#666", fontFamily: ff }}>TARIQ HASSAN · FOUNDER, OPTICS STUDIO</div>
+// // // //             <div style={{ fontSize: 11, letterSpacing: "0.16em", color: "#666", fontFamily: ff }}>TARIQ HASSAN · FOUNDER, URBAN EYE</div>
 // // // //             <div style={{ display: "flex", gap: 16, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
 // // // //               <a href="#/story" style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: BLACK, textDecoration: "none", borderBottom: `2px solid ${BRAND}`, paddingBottom: 2 }}>OUR STORY</a>
 // // // //               <a href="#/collections/eyeglasses" style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: "#888", textDecoration: "none", borderBottom: "2px solid #ddd", paddingBottom: 2 }}>SHOP EYEGLASSES</a>
@@ -860,7 +860,7 @@
 // // // //         <FadeIn>
 // // // //           <div style={{ maxWidth: 820, margin: "0 auto", position: "relative" }}>
 // // // //             <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 24px" }}/>
-// // // //             <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#444", marginBottom: 12 }}>EXCLUSIVE TO OPTICS STUDIO</div>
+// // // //             <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#444", marginBottom: 12 }}>EXCLUSIVE TO URBAN EYE</div>
 // // // //             <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 10vw, 48px)" : "clamp(44px,8vw,88px)", color: "#fff", lineHeight: 0.92, margin: "0 0 6px" }}>CUSTOM MADE</h2>
 // // // //             <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 10vw, 48px)" : "clamp(44px,8vw,88px)", color: "#89c4e1", lineHeight: 0.92, margin: "0 0 28px" }}>TINTS™</h2>
 // // // //             <p style={{ fontSize: isMobile ? 13 : 15, color: "rgba(255,255,255,0.4)", lineHeight: 1.85, maxWidth: 500, margin: "0 auto 44px", fontFamily: mono }}>Choose any frame. Choose any tint. Our opticians hand-apply your chosen colour — 20+ shades to make it yours.</p>
@@ -887,7 +887,7 @@
 // // // //   <FadeIn>
 // // // //     <div style={{ maxWidth: 820, margin: "0 auto", position: "relative" }}>
 // // // //       <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 24px" }}/>
-// // // //       <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#888", marginBottom: 12 }}>EXCLUSIVE TO OPTICS STUDIO</div>
+// // // //       <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#888", marginBottom: 12 }}>EXCLUSIVE TO URBAN EYE</div>
 // // // //       <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 10vw, 48px)" : "clamp(44px,8vw,88px)", color: BLACK, lineHeight: 0.92, margin: "0 0 6px" }}>CUSTOM MADE</h2>
 // // // //       <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 10vw, 48px)" : "clamp(44px,8vw,88px)", color: BRAND, lineHeight: 0.92, margin: "0 0 28px" }}>TINTS™</h2>
 // // // //       <p style={{ fontSize: isMobile ? 13 : 15, color: "#666", lineHeight: 1.85, maxWidth: 500, margin: "0 auto 44px", fontFamily: mono }}>Choose any frame. Choose any tint. Our opticians hand-apply your chosen colour — 20+ shades to make it yours.</p>
@@ -1032,7 +1032,7 @@
 // // // //         </div>
 // // // //         <div style={{ position: "relative", maxWidth: 700, margin: "0 auto" }}>
 // // // //           <div style={{ width: 40, height: 3, background: BRAND, margin: "0 auto 20px" }}/>
-// // // //           <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10, fontFamily: ff }}>OPTICS STUDIO · ALL FRAMES</div>
+// // // //           <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10, fontFamily: ff }}>URBAN EYE · ALL FRAMES</div>
 // // // //           <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(32px, 10vw, 48px)" : "clamp(48px, 8vw, 88px)", lineHeight: 0.9, color: "#fff", letterSpacing: "0.02em", margin: "0 0 20px" }}>THE COLLECTION</h1>
 // // // //           <p style={{ fontSize: 14, color: "rgba(255,255,255,0.4)", fontFamily: mono, lineHeight: 1.8, maxWidth: 480, margin: "0 auto" }}>{PRODUCTS_DATA.length} frames. Each handpicked. All obsessively crafted.</p>
 // // // //           <div style={{ marginTop: 20, display: "flex", justifyContent: "center" }}>
@@ -3238,7 +3238,7 @@
 // // //         </div>
 // // //         <div style={{ position: "relative", maxWidth: 700, margin: "0 auto" }}>
 // // //           <div style={{ width: 40, height: 3, background: BRAND, margin: "0 auto 20px" }} />
-// // //           <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10 }}>OPTICS STUDIO</div>
+// // //           <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10 }}>URBAN EYE</div>
 // // //           <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: "clamp(48px, 8vw, 88px)", lineHeight: 0.9, color: "#fff", margin: "0 0 20px" }}>COLLECTIONS</h1>
 // // //           <p style={{ fontSize: 14, color: "rgba(255,255,255,0.4)", fontFamily: mono, lineHeight: 1.8, maxWidth: 480, margin: "0 auto" }}>Curated groups of frames for every occasion, face, and personality.</p>
 // // //         </div>
@@ -3571,7 +3571,7 @@
 // // //             <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 28px" }}/>
 // // //             <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 18 }}>EYE-CONIC EYEWEAR, SINCE 2015</div>
 // // //             <blockquote style={{ fontFamily: mono, fontSize: isMobile ? "clamp(16px, 5vw, 22px)" : "clamp(18px, 2.8vw, 28px)", lineHeight: 1.5, color: BLACK, margin: "0 0 20px", fontStyle: "italic" }}>"For over a decade, our name has been on the front door. That means something."</blockquote>
-// // //             <div style={{ fontSize: 11, letterSpacing: "0.16em", color: "#666", fontFamily: ff }}>TARIQ HASSAN · FOUNDER, OPTICS STUDIO</div>
+// // //             <div style={{ fontSize: 11, letterSpacing: "0.16em", color: "#666", fontFamily: ff }}>TARIQ HASSAN · FOUNDER, URBAN EYE</div>
 // // //             <div style={{ display: "flex", gap: 16, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
 // // //               <a href="#/story" style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: BLACK, textDecoration: "none", borderBottom: `2px solid ${BRAND}`, paddingBottom: 2 }}>OUR STORY</a>
 // // //               <a href="#/collections/eyeglasses" style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: "#888", textDecoration: "none", borderBottom: "2px solid #ddd", paddingBottom: 2 }}>SHOP EYEGLASSES</a>
@@ -3645,7 +3645,7 @@
 // // //         <FadeIn>
 // // //           <div style={{ maxWidth: 820, margin: "0 auto", position: "relative" }}>
 // // //             <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 24px" }}/>
-// // //             <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#888", marginBottom: 12 }}>EXCLUSIVE TO OPTICS STUDIO</div>
+// // //             <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#888", marginBottom: 12 }}>EXCLUSIVE TO URBAN EYE</div>
 // // //             <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 10vw, 48px)" : "clamp(44px,8vw,88px)", color: BLACK, lineHeight: 0.92, margin: "0 0 6px" }}>CUSTOM MADE</h2>
 // // //             <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 10vw, 48px)" : "clamp(44px,8vw,88px)", color: BRAND, lineHeight: 0.92, margin: "0 0 28px" }}>TINTS™</h2>
 // // //             <p style={{ fontSize: isMobile ? 13 : 15, color: "#666", lineHeight: 1.85, maxWidth: 500, margin: "0 auto 44px", fontFamily: mono }}>Choose any frame. Choose any tint. Our opticians hand-apply your chosen colour — 20+ shades to make it yours.</p>
@@ -3782,7 +3782,7 @@
 // // //         </div>
 // // //         <div style={{ position: "relative", maxWidth: 700, margin: "0 auto" }}>
 // // //           <div style={{ width: 40, height: 3, background: BRAND, margin: "0 auto 20px" }}/>
-// // //           <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10, fontFamily: ff }}>OPTICS STUDIO · ALL FRAMES</div>
+// // //           <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10, fontFamily: ff }}>URBAN EYE · ALL FRAMES</div>
 // // //           <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(32px, 10vw, 48px)" : "clamp(48px, 8vw, 88px)", lineHeight: 0.9, color: "#fff", letterSpacing: "0.02em", margin: "0 0 20px" }}>THE COLLECTION</h1>
 // // //           <p style={{ fontSize: 14, color: "rgba(255,255,255,0.4)", fontFamily: mono, lineHeight: 1.8, maxWidth: 480, margin: "0 auto" }}>{PRODUCTS_DATA.length} frames. Each handpicked. All obsessively crafted.</p>
 // // //           <div style={{ marginTop: 20, display: "flex", justifyContent: "center" }}>
@@ -6012,7 +6012,7 @@
 // //         </div>
 // //         <div style={{ position: "relative", maxWidth: 700, margin: "0 auto" }}>
 // //           <div style={{ width: 40, height: 3, background: BRAND, margin: "0 auto 20px" }} />
-// //           <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10 }}>OPTICS STUDIO</div>
+// //           <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10 }}>URBAN EYE</div>
 // //           <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: "clamp(48px, 8vw, 88px)", lineHeight: 0.9, color: "#fff", margin: "0 0 20px" }}>COLLECTIONS</h1>
 // //           <p style={{ fontSize: 14, color: "rgba(255,255,255,0.4)", fontFamily: mono, lineHeight: 1.8, maxWidth: 480, margin: "0 auto" }}>Curated groups of frames for every occasion, face, and personality.</p>
 // //         </div>
@@ -6347,7 +6347,7 @@
 // //             <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 28px" }}/>
 // //             <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 18 }}>EYE-CONIC EYEWEAR, SINCE 2015</div>
 // //             <blockquote style={{ fontFamily: mono, fontSize: isMobile ? "clamp(16px, 5vw, 22px)" : "clamp(18px, 2.8vw, 28px)", lineHeight: 1.5, color: BLACK, margin: "0 0 20px", fontStyle: "italic" }}>"For over a decade, our name has been on the front door. That means something."</blockquote>
-// //             <div style={{ fontSize: 11, letterSpacing: "0.16em", color: "#666", fontFamily: ff }}>TARIQ HASSAN · FOUNDER, OPTICS STUDIO</div>
+// //             <div style={{ fontSize: 11, letterSpacing: "0.16em", color: "#666", fontFamily: ff }}>TARIQ HASSAN · FOUNDER, URBAN EYE</div>
 // //             <div style={{ display: "flex", gap: 16, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
 // //               <a href="#/story" style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: BLACK, textDecoration: "none", borderBottom: `2px solid ${BRAND}`, paddingBottom: 2 }}>OUR STORY</a>
 // //               <a href="#/collections/eyeglasses" style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: "#888", textDecoration: "none", borderBottom: "2px solid #ddd", paddingBottom: 2 }}>SHOP EYEGLASSES</a>
@@ -6420,7 +6420,7 @@
 // //         <FadeIn>
 // //           <div style={{ maxWidth: 820, margin: "0 auto", position: "relative" }}>
 // //             <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 24px" }}/>
-// //             <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#888", marginBottom: 12 }}>EXCLUSIVE TO OPTICS STUDIO</div>
+// //             <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#888", marginBottom: 12 }}>EXCLUSIVE TO URBAN EYE</div>
 // //             <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 10vw, 48px)" : "clamp(44px,8vw,88px)", color: BLACK, lineHeight: 0.92, margin: "0 0 6px" }}>CUSTOM MADE</h2>
 // //             <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 10vw, 48px)" : "clamp(44px,8vw,88px)", color: BRAND, lineHeight: 0.92, margin: "0 0 28px" }}>TINTS™</h2>
 // //             <p style={{ fontSize: isMobile ? 13 : 15, color: "#666", lineHeight: 1.85, maxWidth: 500, margin: "0 auto 44px", fontFamily: mono }}>Choose any frame. Choose any tint. Our opticians hand-apply your chosen colour — 20+ shades to make it yours.</p>
@@ -6603,7 +6603,7 @@
 // //         </div>
 // //         <div style={{ position: "relative", maxWidth: 700, margin: "0 auto" }}>
 // //           <div style={{ width: 40, height: 3, background: BRAND, margin: "0 auto 20px" }}/>
-// //           <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10, fontFamily: ff }}>OPTICS STUDIO · ALL FRAMES</div>
+// //           <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10, fontFamily: ff }}>URBAN EYE · ALL FRAMES</div>
 // //           <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(32px, 10vw, 48px)" : "clamp(48px, 8vw, 88px)", lineHeight: 0.9, color: "#fff", letterSpacing: "0.02em", margin: "0 0 20px" }}>THE COLLECTION</h1>
 // //           <p style={{ fontSize: 14, color: "rgba(255,255,255,0.4)", fontFamily: mono, lineHeight: 1.8, maxWidth: 480, margin: "0 auto" }}>{PRODUCTS_DATA.length} frames. Each handpicked. All obsessively crafted.</p>
 // //           <div style={{ marginTop: 20, display: "flex", justifyContent: "center" }}>
@@ -8947,7 +8947,7 @@
 //         </div>
 //         <div style={{ position: "relative", maxWidth: 700, margin: "0 auto" }}>
 //           <div style={{ width: 40, height: 3, background: BRAND, margin: "0 auto 20px" }} />
-//           <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10 }}>OPTICS STUDIO</div>
+//           <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10 }}>URBAN EYE</div>
 //           <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: "clamp(48px, 8vw, 88px)", lineHeight: 0.9, color: "#fff", margin: "0 0 20px" }}>COLLECTIONS</h1>
 //           <p style={{ fontSize: 14, color: "rgba(255,255,255,0.4)", fontFamily: mono, lineHeight: 1.8, maxWidth: 480, margin: "0 auto" }}>Curated groups of frames for every occasion, face, and personality.</p>
 //         </div>
@@ -9282,7 +9282,7 @@
 //             <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 28px" }}/>
 //             <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 18 }}>EYE-CONIC EYEWEAR, SINCE 2015</div>
 //             <blockquote style={{ fontFamily: mono, fontSize: isMobile ? "clamp(16px, 5vw, 22px)" : "clamp(18px, 2.8vw, 28px)", lineHeight: 1.5, color: BLACK, margin: "0 0 20px", fontStyle: "italic" }}>"For over a decade, our name has been on the front door. That means something."</blockquote>
-//             <div style={{ fontSize: 11, letterSpacing: "0.16em", color: "#666", fontFamily: ff }}>TARIQ HASSAN · FOUNDER, OPTICS STUDIO</div>
+//             <div style={{ fontSize: 11, letterSpacing: "0.16em", color: "#666", fontFamily: ff }}>TARIQ HASSAN · FOUNDER, URBAN EYE</div>
 //             <div style={{ display: "flex", gap: 16, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
 //               <a href="#/story" style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: BLACK, textDecoration: "none", borderBottom: `2px solid ${BRAND}`, paddingBottom: 2 }}>OUR STORY</a>
 //               <a href="#/collections/eyeglasses" style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: "#888", textDecoration: "none", borderBottom: "2px solid #ddd", paddingBottom: 2 }}>SHOP EYEGLASSES</a>
@@ -9355,7 +9355,7 @@
 //         <FadeIn>
 //           <div style={{ maxWidth: 820, margin: "0 auto", position: "relative" }}>
 //             <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 24px" }}/>
-//             <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#888", marginBottom: 12 }}>EXCLUSIVE TO OPTICS STUDIO</div>
+//             <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#888", marginBottom: 12 }}>EXCLUSIVE TO URBAN EYE</div>
 //             <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 10vw, 48px)" : "clamp(44px,8vw,88px)", color: BLACK, lineHeight: 0.92, margin: "0 0 6px" }}>CUSTOM MADE</h2>
 //             <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 10vw, 48px)" : "clamp(44px,8vw,88px)", color: BRAND, lineHeight: 0.92, margin: "0 0 28px" }}>TINTS™</h2>
 //             <p style={{ fontSize: isMobile ? 13 : 15, color: "#666", lineHeight: 1.85, maxWidth: 500, margin: "0 auto 44px", fontFamily: mono }}>Choose any frame. Choose any tint. Our opticians hand-apply your chosen colour — 20+ shades to make it yours.</p>
@@ -9544,7 +9544,7 @@
 //         </div>
 //         <div style={{ position: "relative", maxWidth: 700, margin: "0 auto" }}>
 //           <div style={{ width: 40, height: 3, background: BRAND, margin: "0 auto 20px" }}/>
-//           <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10, fontFamily: ff }}>OPTICS STUDIO · ALL FRAMES</div>
+//           <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10, fontFamily: ff }}>URBAN EYE · ALL FRAMES</div>
 //           <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(32px, 10vw, 48px)" : "clamp(48px, 8vw, 88px)", lineHeight: 0.9, color: "#fff", letterSpacing: "0.02em", margin: "0 0 20px" }}>THE COLLECTION</h1>
 //           <p style={{ fontSize: 14, color: "rgba(255,255,255,0.4)", fontFamily: mono, lineHeight: 1.8, maxWidth: 480, margin: "0 auto" }}>{PRODUCTS_DATA.length} frames. Each handpicked. All obsessively crafted.</p>
 //           <div style={{ marginTop: 20, display: "flex", justifyContent: "center" }}>
@@ -11419,7 +11419,7 @@ import { PRODUCTS_DATA } from "../prodcut.js";
 import { BLACK, CREAM, ff, mono, COLLECTIONS,
          HERO_SLIDES, HOME_PRODUCTS, TINTS, TESTIMONIALS, PROCESS_STEPS, CATEGORIES_HOME,
          tagColors } from "../contants/store.js";
-import { applyProductFilters, getProductColorOptions, getProductBrandOptions, getProductSizeOptions, getProductDisplayPrice, getProductDiscountPercent, getRelatedProducts, getProductVariants, normalizeCategory, formatPriceValue, matchesSearchTerm } from "../services/productUtils.js";
+import { applyProductFilters, getProductColorOptions, getProductBrandOptions, getProductSizeOptions, getProductDisplayPrice, getProductDiscountPercent, getProductDisplayImage, getRelatedProducts, getProductVariants, productMatchesShape, getUniqueShapesFromProducts, normalizeCategory, normalizeGender, formatPriceValue, matchesSearchTerm } from "../services/productUtils.js";
 import { YBtn, OutlineBtn, FadeIn, Counter, Frame, ProductCard, ProductSlider, WishlistHeart, WishlistSkeleton } from "../components/shared";
 import { useCart } from "../contexts/CardContext";
 import { useAuth } from "../Auth/auth.jsx";
@@ -11477,20 +11477,8 @@ function setStoredVariantName(productId, name) {
 // shape under `shape`, others under `subcategory` — this keeps both working
 // consistently across the whole app (navbar + sidebar filter) without ever
 // hardcoding a fixed list anywhere in the UI.
-function getProductShape(product) {
-  return String(product?.shape || product?.subcategory || "").trim();
-}
-
-// Unique, alphabetically sorted list of shapes actually present in a given
-// product set (e.g. all products, or a collection's base products).
-function getUniqueShapesFromProducts(products) {
-  const shapes = new Set();
-  (products || []).forEach((p) => {
-    const shape = getProductShape(p);
-    if (shape) shapes.add(shape);
-  });
-  return Array.from(shapes).sort();
-}
+// (getProductShape / getUniqueShapesFromProducts now live in productUtils.js
+// so App.jsx's navbar and this file's filter sidebar share one implementation.)
 
 // ============================================
 // HELPER — Join raw wishlist rows with product details
@@ -11519,17 +11507,17 @@ function enrichWishlistItems(rawItems) {
 // ============================================
 // COLLECTIONS DATA
 // ============================================
+// Only collections backed by a real, matching filter in COLLECTIONS (contants/store.js)
+// belong here — every card must open the exact matching set of products.
+// Each tile links straight to the filtered products page (not another
+// collection page) — `query` becomes the ?category=&gender=&shape= on
+// #/products, same params the navbar's shape/gender links already use.
 const COLLECTIONS_PAGE_DATA = [
-  { slug: "best-sellers", name: "Best Sellers", count: 24, desc: "The frames everyone's talking about.", tag: "MOST POPULAR", bg: BLACK, dark: true, shape: "round" },
-  { slug: "new-arrivals", name: "New Arrivals", count: 18, desc: "Fresh styles, just landed.", tag: "NEW", bg: BRAND, dark: false, shape: "square" },
-  { slug: "custom-tints", name: "Custom Made Tints™", count: 32, desc: "20+ hand-applied shades. Any frame.", tag: "EXCLUSIVE", bg: "#1a1a1a", dark: true, shape: "cateye" },
-  { slug: "reading-glasses", name: "Reading Glasses", count: 12, desc: "Crystal clear. Beautifully crafted.", tag: null, bg: CREAM, dark: false, shape: "round" },
-  { slug: "blue-light", name: "Blue Light Glasses", count: 15, desc: "Protect your eyes in the digital age.", tag: "DIGITAL RELIEF", bg: "#1a2a4a", dark: true, shape: "square" },
-  { slug: "mens-collection", name: "Men's Collection", count: 48, desc: "Bold frames for every face.", tag: null, bg: "#f5f5f5", dark: false, shape: "aviator" },
-  { slug: "womens-collection", name: "Women's Collection", count: 52, desc: "Refined eyewear for every occasion.", tag: null, bg: "#fdf4f4", dark: false, shape: "cateye" },
-  { slug: "limited-editions", name: "Limited Editions", count: 8, desc: "Before they're gone.", tag: "LIMITED", bg: "#2a1a3a", dark: true, shape: "round" },
-  { slug: "round", name: "Round Frames", count: 21, desc: "The timeless silhouette.", tag: null, bg: CREAM, dark: false, shape: "round" },
-  { slug: "square", name: "Square Frames", count: 19, desc: "Sharp. Structured. Striking.", tag: null, bg: "#f5f5f0", dark: false, shape: "square" },
+  { slug: "mens-collection", name: "Men's Collection", desc: "Bold frames for every face.", tag: null, bg: "#f5f5f5", dark: false, shape: "aviator", query: { gender: "Men" } },
+  { slug: "womens-collection", name: "Women's Collection", desc: "Refined eyewear for every occasion.", tag: null, bg: "#fdf4f4", dark: false, shape: "cateye", query: { gender: "Women" } },
+  { slug: "custom-made-tints", name: "Custom Made Tints™", desc: "20+ hand-applied shades. Any frame.", tag: "EXCLUSIVE", bg: "#1a1a1a", dark: true, shape: "cateye", query: { category: "Sunglasses" } },
+  { slug: "round", name: "Round Frames", desc: "The timeless silhouette.", tag: null, bg: CREAM, dark: false, shape: "round", query: { shape: "Round" } },
+  { slug: "square", name: "Square Frames", desc: "Sharp. Structured. Striking.", tag: null, bg: "#f5f5f0", dark: false, shape: "square", query: { shape: "Square" } },
 ];
 
 // ============================================
@@ -11596,7 +11584,7 @@ function applyFilters(products, activeFilters, sort, searchTerm = "") {
 
   // 3. Apply shape filter (dynamic — sourced from product.js via getProductShape)
   if (activeFilters.shape && activeFilters.shape.length) {
-    filtered = filtered.filter(p => activeFilters.shape.includes(getProductShape(p)));
+    filtered = filtered.filter(p => activeFilters.shape.some(shapeValue => productMatchesShape(p, shapeValue)));
   }
 
   // 4. Remove size/shape from activeFilters so applyProductFilters doesn't filter them again
@@ -11686,7 +11674,7 @@ function ShapeIcon({ shape, active }) {
 // ============================================
 
 function FilterSidebar({ allProducts, activeFilters, setActiveFilters, filtersOpen, isMobile, onClose }) {
-  const [open, setOpen] = useState({ category: true, color: true, brand: false, rating: false, price: true, size: false, availability: false });
+  const [open, setOpen] = useState({ category: true, gender: true, color: true, brand: false, rating: false, price: true, size: false, availability: false });
   if (!filtersOpen) return null;
 
   const toggleSec = k => setOpen(s => ({ ...s, [k]: !s[k] }));
@@ -11764,9 +11752,10 @@ function FilterSidebar({ allProducts, activeFilters, setActiveFilters, filtersOp
       <Section id="shape" title="SHAPE">
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6, paddingTop: 4 }}>
           {dynamicShapes.map((shapeValue) => {
-            const count = allProducts.filter((product) => getProductShape(product) === shapeValue).length;
-            if (count === 0) return null;
+            const matches = allProducts.filter((product) => productMatchesShape(product, shapeValue));
+            if (matches.length === 0) return null;
             const on = isOn("shape", shapeValue);
+            const thumbSrc = getProductDisplayImage(matches[0]).displayImage;
             return (
               <button key={shapeValue} onClick={() => toggle("shape", shapeValue)} style={{
                 border: `1.5px solid ${on ? BRAND : "#ddd"}`,
@@ -11774,11 +11763,15 @@ function FilterSidebar({ allProducts, activeFilters, setActiveFilters, filtersOp
                 padding: "10px 6px 8px", cursor: "pointer",
                 display: "flex", flexDirection: "column", alignItems: "center", gap: 5, transition: "all 0.18s",
               }}>
-                <ShapeIcon shape={shapeValue} active={on} />
+                {thumbSrc ? (
+                  <img src={thumbSrc} alt={shapeValue} style={{ width: 28, height: 28, objectFit: "cover", borderRadius: "50%", border: `1.5px solid ${on ? "#fff" : "#eee"}`, background: "#fff" }} />
+                ) : (
+                  <ShapeIcon shape={shapeValue} active={on} />
+                )}
                 <span style={{ fontSize: 9, fontWeight: 900, letterSpacing: "0.1em", fontFamily: ff, color: on ? BRAND_TEXT : "#555" }}>
                   {shapeValue.toUpperCase()}
                 </span>
-                <span style={{ fontSize: 9, color: on ? "rgba(255,255,255,0.6)" : "#aaa", fontFamily: mono }}>({count})</span>
+                <span style={{ fontSize: 9, color: on ? "rgba(255,255,255,0.6)" : "#aaa", fontFamily: mono }}>({matches.length})</span>
               </button>
             );
           })}
@@ -11793,6 +11786,21 @@ function FilterSidebar({ allProducts, activeFilters, setActiveFilters, filtersOp
       <Section id="category" title="CATEGORY">
         {Array.from(new Set(allProducts.map((product) => normalizeCategory(product.category || "Eyeglasses")).filter(Boolean))).map((value) => (
           <Check key={value} group="category" value={value} label={value} count={allProducts.filter((product) => normalizeCategory(product.category || "Eyeglasses") === value).length} />
+        ))}
+      </Section>
+
+      <Section id="gender" title="GENDER">
+        {["Men", "Women", "Unisex"].map((value) => (
+          <Check
+            key={value}
+            group="gender"
+            value={value}
+            label={value}
+            count={allProducts.filter((product) => {
+              const gender = normalizeGender(product.gender);
+              return gender === "Unisex" || gender === value;
+            }).length}
+          />
         ))}
       </Section>
 
@@ -11901,13 +11909,10 @@ export function CollectionsLandingPage({ navigate }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
-      <div style={{ background: BLACK, padding: "72px 20px 60px", textAlign: "center", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%)", opacity: 0.03, pointerEvents: "none" }}>
-          <Frame shape="cateye" size={700} color="#fff" />
-        </div>
+      <div style={{ background: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(/content/DSC08359.jpg) center/cover no-repeat`, padding: "72px 20px 60px", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "relative", maxWidth: 700, margin: "0 auto" }}>
           <div style={{ width: 40, height: 3, background: BRAND, margin: "0 auto 20px" }} />
-          <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10 }}>OPTICS STUDIO</div>
+          <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10 }}>URBAN EYE</div>
           <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: "clamp(48px, 8vw, 88px)", lineHeight: 0.9, color: "#fff", margin: "0 0 20px" }}>COLLECTIONS</h1>
           <p style={{ fontSize: 14, color: "rgba(255,255,255,0.4)", fontFamily: mono, lineHeight: 1.8, maxWidth: 480, margin: "0 auto" }}>Curated groups of frames for every occasion, face, and personality.</p>
         </div>
@@ -11921,14 +11926,14 @@ export function CollectionsLandingPage({ navigate }) {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 3 }}>
             {COLLECTIONS_PAGE_DATA.slice(0, 2).map((col, i) => (
               <FadeIn key={col.slug} delay={i * 80}>
-                <div onClick={() => navigate(`#/collections/${col.slug}`)} style={{ height: 380, background: col.bg, cursor: "pointer", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: 36, transition: "opacity 0.2s" }}
+                <div onClick={() => navigate(`#/products?${new URLSearchParams(col.query).toString()}`)} style={{ height: 380, background: col.bg, cursor: "pointer", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: 36, transition: "opacity 0.2s" }}
                   onMouseEnter={(e) => e.currentTarget.style.opacity = "0.92"}
                   onMouseLeave={(e) => e.currentTarget.style.opacity = "1"}>
                   <div style={{ position: "absolute", top: "35%", left: "50%", transform: "translate(-50%,-50%)", opacity: 0.08 }}>
                     <Frame shape={col.shape} size={220} color={col.dark ? "#fff" : "#000"} />
                   </div>
                   {col.tag && <div style={{ position: "absolute", top: 20, left: 20, background: BRAND, color: BRAND_TEXT, fontSize: 9, fontWeight: 900, letterSpacing: "0.18em", padding: "5px 12px", fontFamily: ff }}>{col.tag}</div>}
-                  <div style={{ fontSize: 10, letterSpacing: "0.16em", color: col.dark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)", marginBottom: 6 }}>{col.count} STYLES</div>
+                  <div style={{ fontSize: 10, letterSpacing: "0.16em", color: col.dark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)", marginBottom: 6 }}>{PRODUCTS_DATA.filter(COLLECTIONS[col.slug]?.filter || (() => false)).length} STYLES</div>
                   <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: 32, color: col.dark ? "#fff" : BLACK, margin: "0 0 8px", letterSpacing: "0.02em" }}>{col.name.toUpperCase()}</h2>
                   <p style={{ fontSize: 13, color: col.dark ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.5)", fontFamily: mono, margin: "0 0 16px" }}>{col.desc}</p>
                   <div style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: "#89c4e1", fontFamily: ff }}>SHOP COLLECTION →</div>
@@ -11943,14 +11948,14 @@ export function CollectionsLandingPage({ navigate }) {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 3 }}>
             {COLLECTIONS_PAGE_DATA.slice(2).map((col, i) => (
               <FadeIn key={col.slug} delay={i * 60}>
-                <div onClick={() => navigate(`#/collections/${col.slug}`)} style={{ height: 260, background: col.bg, cursor: "pointer", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: 24, transition: "opacity 0.2s" }}
+                <div onClick={() => navigate(`#/products?${new URLSearchParams(col.query).toString()}`)} style={{ height: 260, background: col.bg, cursor: "pointer", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: 24, transition: "opacity 0.2s" }}
                   onMouseEnter={(e) => e.currentTarget.style.opacity = "0.9"}
                   onMouseLeave={(e) => e.currentTarget.style.opacity = "1"}>
                   <div style={{ position: "absolute", top: "40%", left: "50%", transform: "translate(-50%,-50%)", opacity: 0.07 }}>
                     <Frame shape={col.shape} size={160} color={col.dark ? "#fff" : "#000"} />
                   </div>
                   {col.tag && <div style={{ position: "absolute", top: 14, left: 14, background: BRAND, color: BRAND_TEXT, fontSize: 8, fontWeight: 900, letterSpacing: "0.16em", padding: "4px 10px", fontFamily: ff }}>{col.tag}</div>}
-                  <div style={{ fontSize: 9, letterSpacing: "0.16em", color: col.dark ? "rgba(255,255,255,0.35)" : "rgba(0,0,0,0.35)", marginBottom: 4 }}>{col.count} STYLES</div>
+                  <div style={{ fontSize: 9, letterSpacing: "0.16em", color: col.dark ? "rgba(255,255,255,0.35)" : "rgba(0,0,0,0.35)", marginBottom: 4 }}>{PRODUCTS_DATA.filter(COLLECTIONS[col.slug]?.filter || (() => false)).length} STYLES</div>
                   <h3 style={{ fontFamily: ff, fontWeight: 900, fontSize: 20, color: col.dark ? "#fff" : BLACK, margin: "0 0 6px" }}>{col.name.toUpperCase()}</h3>
                   <div style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.14em", color: "#89c4e1" }}>EXPLORE →</div>
                 </div>
@@ -11963,7 +11968,94 @@ export function CollectionsLandingPage({ navigate }) {
   );
 }
 
+// ============ ABOUT US / OUR STORY PAGE ============
+const SHOP_IMAGES = ["/contact/20251018_175251.jpg", "/contact/20251018_180105.jpg"];
+const CRAFT_IMAGES = [
+  "/content/20250304_164413.jpg",
+  "/content/20250304_183750.jpg",
+  "/content/20250305_192958.jpg",
+  "/content/20250306_181037.jpg",
+  "/content/20250306_184828.jpg",
+  "/content/20250306_190752.jpg",
+];
+const CRAFT_VIDEO = "/content/1.mp4";
+
+export function AboutUsPage({ navigate }) {
+  useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, []);
+  const isMobile = useMediaQuery("(max-width: 767px)");
+
+  return (
+    <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
+      <div style={{ background: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(/content/20251018_140030.jpg) center/cover no-repeat`, padding: isMobile ? "56px 20px" : "80px 40px 64px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "relative", maxWidth: 700, margin: "0 auto" }}>
+          <div style={{ width: 40, height: 3, background: BRAND, margin: "0 auto 20px" }} />
+          <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10 }}>URBAN EYE</div>
+          <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(32px, 10vw, 48px)" : "clamp(48px, 8vw, 88px)", lineHeight: 0.9, color: "#fff", margin: "0 0 16px" }}>OUR STORY</h1>
+          <p style={{ fontSize: 14, color: "rgba(255,255,255,0.4)", fontFamily: mono, lineHeight: 1.8, maxWidth: 480, margin: "0 auto" }}>Eye-conic eyewear, crafted with care — since 2015.</p>
+        </div>
+      </div>
+
+      <Breadcrumb crumbs={[{ label: "HOME", path: "#/" }, { label: "OUR STORY", path: null }]} />
+
+      <div style={{ maxWidth: 1000, margin: "0 auto", padding: isMobile ? "48px 20px" : "72px 40px" }}>
+        <FadeIn>
+          <blockquote style={{ fontFamily: mono, fontSize: isMobile ? "clamp(16px, 5vw, 20px)" : "clamp(18px, 2.4vw, 26px)", lineHeight: 1.6, color: BLACK, textAlign: "center", margin: "0 0 20px", fontStyle: "italic" }}>
+            "For over a decade, our name has been on the front door. That means something."
+          </blockquote>
+          <div style={{ textAlign: "center", fontSize: 11, letterSpacing: "0.16em", color: "#666", marginBottom: 60 }}>TARIQ HASSAN · FOUNDER, URBAN EYE</div>
+        </FadeIn>
+
+        <FadeIn delay={80}>
+          <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 8, textAlign: "center" }}>VISIT US</div>
+          <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(22px, 6vw, 30px)" : "clamp(28px, 3.6vw, 40px)", textAlign: "center", margin: "0 0 40px" }}>OUR STORE</h2>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 12 }}>
+            {SHOP_IMAGES.map((src, i) => (
+              <div key={i} style={{ background: CREAM, display: "flex" }}>
+                <img src={src} alt="Urban Eye store" loading="lazy" decoding="async" style={{ width: "100%", height: "auto", display: "block" }} />
+              </div>
+            ))}
+          </div>
+        </FadeIn>
+
+        <FadeIn delay={140}>
+          <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 8, textAlign: "center", marginTop: 64 }}>THE CRAFT</div>
+          <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(22px, 6vw, 30px)" : "clamp(28px, 3.6vw, 40px)", textAlign: "center", margin: "0 0 40px" }}>EVERY FRAME, UP CLOSE</h2>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(2,1fr)" : "repeat(3,1fr)", gap: 10, marginBottom: 32 }}>
+            {CRAFT_IMAGES.map((src) => (
+              <div key={src} style={{ background: CREAM, display: "flex" }}>
+                <img src={src} alt="Urban Eye craftsmanship detail" loading="lazy" decoding="async" style={{ width: "100%", height: "auto", display: "block" }} />
+              </div>
+            ))}
+          </div>
+          <video
+            src={CRAFT_VIDEO}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            poster={CRAFT_IMAGES[0]}
+            style={{ width: "100%", maxHeight: isMobile ? 300 : 480, objectFit: "cover", display: "block", background: CREAM }}
+          />
+        </FadeIn>
+      </div>
+    </div>
+  );
+}
+
 // ============ HOME PAGE (FIXED) ============
+const GALLERY_IMAGES = [
+  "/content/DSC08310.jpg",
+  "/content/DSC08314.jpg",
+  "/content/DSC08347.jpg",
+  "/content/DSC08357.jpg",
+  "/content/DSC08362.jpg",
+  "/content/DSC08367.jpg",
+  "/content/DSC08374.jpg",
+  "/content/20251018_140021.jpg",
+];
+const GALLERY_VIDEO = "/content/2.mp4";
+
 export function HomePage({ navigate }) {
   const [heroSlide, setHeroSlide] = useState(0);
   const [filter, setFilter] = useState("All");
@@ -12134,70 +12226,6 @@ export function HomePage({ navigate }) {
       >
         <div style={{
           position: "absolute",
-          inset: 0,
-          background: slide.dark
-            ? "rgba(0,0,0,0.55)"
-            : "rgba(255,255,255,0.25)",
-          zIndex: 0,
-        }} />
-
-        <div style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          padding: isMobile ? "40px 20px" : "80px 40px",
-          display: "grid",
-          gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
-          gap: isMobile ? 40 : 80,
-          alignItems: "center",
-          width: "100%",
-          position: "relative",
-          zIndex: 1,
-        }}>
-          <div>
-            <div style={{
-              display: "inline-block",
-              fontSize: 10,
-              letterSpacing: "0.2em",
-              border: `1px solid ${slide.dark ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.15)"}`,
-              color: slide.dark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.45)",
-              padding: "5px 14px",
-              marginBottom: 24
-            }}>
-              {slide.label}
-            </div>
-            <h1 style={{
-              fontWeight: 900,
-              fontSize: isMobile ? "clamp(40px, 12vw, 60px)" : "clamp(54px, 8vw, 108px)",
-              lineHeight: 0.92,
-              margin: "0 0 20px",
-              color: slide.dark ? "#fff" : BLACK,
-              letterSpacing: "0.01em",
-              whiteSpace: "pre-line"
-            }}>
-              {slide.heading}
-            </h1>
-            <p style={{
-              fontSize: isMobile ? 14 : 15,
-              lineHeight: 1.8,
-              maxWidth: 400,
-              margin: "0 0 36px",
-              color: slide.dark ? "rgba(255,255,255,0.6)" : "rgba(0,0,0,0.55)",
-              fontFamily: mono
-            }}>
-              {slide.sub}
-            </p>
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <button onClick={() => navigate("#/products")} style={{ background: BRAND, color: "#fff", border: "none", padding: "12px 24px", fontSize: isMobile ? 13 : 15, cursor: "pointer" }}>
-                SHOP NOW
-              </button>
-              <OutlineBtn dark={!!slide.dark}>{slide.ctaSecond} →</OutlineBtn>
-            </div>
-          </div>
-          <div />
-        </div>
-
-        <div style={{
-          position: "absolute",
           bottom: 28,
           left: "50%",
           transform: "translateX(-50%)",
@@ -12224,7 +12252,7 @@ export function HomePage({ navigate }) {
       </section>
 
       {/* STATS */}
-      <section style={{ background: BLACK, padding: isMobile ? "32px 20px" : "56px 40px" }}>
+      {/* <section style={{ background: BLACK, padding: isMobile ? "32px 20px" : "56px 40px" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "repeat(2,1fr)" : "repeat(4,1fr)", gap: isMobile ? 16 : 0 }}>
           {[{ v: 150, s: "+", l: "Frame Styles" }, { v: 10, s: "+", l: "Years in Karachi" }, { v: 8500, s: "+", l: "Happy Customers" }, { v: 99, s: "%", l: "Satisfaction Rate" }].map((st, i) => (
             <FadeIn key={st.l} delay={i * 100} style={{ textAlign: "center", padding: "16px 0", borderRight: (i < 3 && !isMobile) ? "1px solid #1e1e1e" : "none" }}>
@@ -12233,7 +12261,7 @@ export function HomePage({ navigate }) {
             </FadeIn>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* HERITAGE QUOTE */}
       <section style={{ background: CREAM, padding: isMobile ? "48px 20px" : "72px 40px", textAlign: "center", borderBottom: "2px solid #e8ddd0" }}>
@@ -12242,7 +12270,7 @@ export function HomePage({ navigate }) {
             <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 28px" }}/>
             <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 18 }}>EYE-CONIC EYEWEAR, SINCE 2015</div>
             <blockquote style={{ fontFamily: mono, fontSize: isMobile ? "clamp(16px, 5vw, 22px)" : "clamp(18px, 2.8vw, 28px)", lineHeight: 1.5, color: BLACK, margin: "0 0 20px", fontStyle: "italic" }}>"For over a decade, our name has been on the front door. That means something."</blockquote>
-            <div style={{ fontSize: 11, letterSpacing: "0.16em", color: "#666", fontFamily: ff }}>TARIQ HASSAN · FOUNDER, OPTICS STUDIO</div>
+            <div style={{ fontSize: 11, letterSpacing: "0.16em", color: "#666", fontFamily: ff }}>TARIQ HASSAN · FOUNDER, URBAN EYE</div>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
               <a href="#/story" style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: BLACK, textDecoration: "none", borderBottom: `2px solid ${BRAND}`, paddingBottom: 2 }}>OUR STORY</a>
               <a href="#/collections/eyeglasses" style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: "#888", textDecoration: "none", borderBottom: "2px solid #ddd", paddingBottom: 2 }}>SHOP EYEGLASSES</a>
@@ -12315,7 +12343,7 @@ export function HomePage({ navigate }) {
         <FadeIn>
           <div style={{ maxWidth: 820, margin: "0 auto", position: "relative" }}>
             <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 24px" }}/>
-            <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#888", marginBottom: 12 }}>EXCLUSIVE TO OPTICS STUDIO</div>
+            <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#888", marginBottom: 12 }}>EXCLUSIVE TO URBAN EYE</div>
             <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 10vw, 48px)" : "clamp(44px,8vw,88px)", color: BLACK, lineHeight: 0.92, margin: "0 0 6px" }}>CUSTOM MADE</h2>
             <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 10vw, 48px)" : "clamp(44px,8vw,88px)", color: BRAND, lineHeight: 0.92, margin: "0 0 28px" }}>TINTS™</h2>
             <p style={{ fontSize: isMobile ? 13 : 15, color: "#666", lineHeight: 1.85, maxWidth: 500, margin: "0 auto 44px", fontFamily: mono }}>Choose any frame. Choose any tint. Our opticians hand-apply your chosen colour — 20+ shades to make it yours.</p>
@@ -12380,6 +12408,39 @@ export function HomePage({ navigate }) {
                 <button key={i} onClick={() => setTIdx(i)} style={{ height: 3, border: "none", cursor: "pointer", background: i === testimonialIdx ? BRAND : "#ccc", width: i === testimonialIdx ? 28 : 10, transition: "all 0.35s" }}/>
               ))}
             </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* GALLERY — real studio shots from public/content */}
+      <section style={{ padding: isMobile ? "48px 20px" : "72px 40px", background: "#fff" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <FadeIn>
+            <div style={{ textAlign: "center", marginBottom: 36 }}>
+              <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 6 }}>CRAFTSMANSHIP</div>
+              <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(22px, 6vw, 32px)" : "clamp(28px,4vw,46px)", margin: 0, letterSpacing: "0.02em" }}>UP CLOSE</h2>
+            </div>
+          </FadeIn>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(2,1fr)" : "repeat(4,1fr)", gap: 3, marginBottom: 3 }}>
+            {GALLERY_IMAGES.map((src, i) => (
+              <FadeIn key={src} delay={i * 60}>
+                <div style={{ background: CREAM, display: "flex" }}>
+                  <img src={src} alt="Urban Eye frame detail" loading="lazy" decoding="async" style={{ width: "100%", height: "auto", display: "block" }} />
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+          <FadeIn delay={GALLERY_IMAGES.length * 60}>
+            <video
+              src={GALLERY_VIDEO}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              poster={GALLERY_IMAGES[0]}
+              style={{ width: "100%", maxHeight: isMobile ? 320 : 560, objectFit: "cover", display: "block", background: CREAM }}
+            />
           </FadeIn>
         </div>
       </section>
@@ -12461,7 +12522,7 @@ export function ProductsPage({ navigate, queryParams }) {
 
     // 3. Apply shape filter — dynamic, sourced only from product.js
     if (activeFilters.shape && activeFilters.shape.length) {
-      filtered = filtered.filter(p => activeFilters.shape.includes(getProductShape(p)));
+      filtered = filtered.filter(p => activeFilters.shape.some(shapeValue => productMatchesShape(p, shapeValue)));
     }
 
     // 4. Remove size/shape from activeFilters for the utility function
@@ -12498,13 +12559,10 @@ export function ProductsPage({ navigate, queryParams }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
-      <div style={{ background: BLACK, padding: isMobile ? "48px 20px" : "72px 40px 60px", textAlign: "center", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%)", opacity: 0.03, pointerEvents: "none" }}>
-          <Frame shape="round" size={isMobile ? 400 : 700} color="#fff"/>
-        </div>
+      <div style={{ background: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(/content/20251018_140450.jpg) center/cover no-repeat`, padding: isMobile ? "48px 20px" : "72px 40px 60px", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "relative", maxWidth: 700, margin: "0 auto" }}>
           <div style={{ width: 40, height: 3, background: BRAND, margin: "0 auto 20px" }}/>
-          <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10, fontFamily: ff }}>OPTICS STUDIO · ALL FRAMES</div>
+          <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10, fontFamily: ff }}>URBAN EYE · ALL FRAMES</div>
           <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(32px, 10vw, 48px)" : "clamp(48px, 8vw, 88px)", lineHeight: 0.9, color: "#fff", letterSpacing: "0.02em", margin: "0 0 20px" }}>THE COLLECTION</h1>
           <p style={{ fontSize: 14, color: "rgba(255,255,255,0.4)", fontFamily: mono, lineHeight: 1.8, maxWidth: 480, margin: "0 auto" }}>{PRODUCTS_DATA.length} frames. Each handpicked. All obsessively crafted.</p>
           <div style={{ marginTop: 20, display: "flex", justifyContent: "center" }}>
@@ -12606,7 +12664,7 @@ export function CollectionDetailPage({ slug, navigate }) {
 
     // 2. Apply shape filter — dynamic, sourced only from product.js
     if (activeFilters.shape && activeFilters.shape.length) {
-      filtered = filtered.filter(p => activeFilters.shape.includes(getProductShape(p)));
+      filtered = filtered.filter(p => activeFilters.shape.some(shapeValue => productMatchesShape(p, shapeValue)));
     }
 
     // 3. Remove size/shape from activeFilters for utility
@@ -12628,10 +12686,7 @@ export function CollectionDetailPage({ slug, navigate }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
-      <div style={{ background: BLACK, padding: isMobile ? "40px 20px" : "56px 40px 48px", textAlign: "center", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%)", opacity: 0.025, pointerEvents: "none" }}>
-          <Frame shape="round" size={isMobile ? 300 : 600} color="#fff"/>
-        </div>
+      <div style={{ background: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(/content/20251018_140653.jpg) center/cover no-repeat`, padding: isMobile ? "40px 20px" : "56px 40px 48px", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "relative", maxWidth: 700, margin: "0 auto" }}>
           <div style={{ width: 36, height: 3, background: BRAND, margin: "0 auto 16px" }}/>
           <div style={{ fontSize: 10, letterSpacing: "0.18em", color: "#555", marginBottom: 12, fontFamily: ff }}>
@@ -12713,6 +12768,11 @@ export function ProductDetailPage({ productId, navigate }) {
   const { price, discountPrice } = getProductDisplayPrice(product);
   const discount = getProductDiscountPercent(product);
   const tc = product.tag ? tagColors[product.tag] : null;
+  // Same collection slugs the navbar's Eyeglasses/Sunglasses + gender links use,
+  // so tapping the category or gender tag here lands on the matching collection.
+  const categorySlug = normalizeCategory(product.category) === "Sunglasses" ? "sunglasses" : "eyeglasses";
+  const genderNorm = normalizeGender(product.gender);
+  const genderCollectionSlug = genderNorm === "Men" ? `mens-${categorySlug}` : genderNorm === "Women" ? `womens-${categorySlug}` : categorySlug;
   const sizes = product.sizes?.length ? product.sizes : ["44 (Narrow)", "46 (Average)", "49 (Wide)", "52 (Extra Wide)"];
   const variants = getProductVariants(product);
   const selectedVariant = variants.find(v => normalizeVariantName(v.name) === normalizeVariantName(selectedVariantName)) || variants[0] || null;
@@ -12745,7 +12805,7 @@ export function ProductDetailPage({ productId, navigate }) {
     <div style={{ minHeight: "100vh", background: "#f5f0e8", fontFamily: ff }}>
       <div style={{ borderBottom: "1px solid #e8e0d0", padding: "13px 20px" }}>
         <div style={{ maxWidth: 1400, margin: "0 auto", display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
-          {[{ label: "HOME", path: "#/" }, { label: "COLLECTION", path: "#/products" }, { label: product.name.toUpperCase(), path: null }].map((crumb, i) => (
+          {[{ label: "HOME", path: "#/" }, { label: "COLLECTION", path: `#/collections/${categorySlug}` }, { label: product.name.toUpperCase(), path: null }].map((crumb, i) => (
             <span key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
               {i > 0 && <span style={{ color: "#ccc", fontSize: 10 }}>›</span>}
               {crumb.path ? <a href={crumb.path} style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: "#888", textDecoration: "none", fontFamily: ff }}>{crumb.label}</a>
@@ -12756,18 +12816,18 @@ export function ProductDetailPage({ productId, navigate }) {
       </div>
 
       <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 16px 60px" : "0 40px 80px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: (isMobile || isTablet) ? "1fr" : "70% 30%", gap: 0, alignItems: "flex-start" }}>
+        <div style={{ display: "grid", gridTemplateColumns: (isMobile || isTablet) ? "1fr" : "76% 24%", gap: 0, alignItems: "flex-start" }}>
           <FadeIn>
-            <div style={{ paddingRight: (isMobile || isTablet) ? 0 : 72 }}>
-              <div style={{ position: "relative", overflow: "hidden", background: CREAM, marginBottom: 10, height: isMobile ? "50vh" : "calc(100vh - 110px)", minHeight: isMobile ? 300 : 560, maxHeight: isMobile ? 400 : 740, border: "1px solid #e8e0d0", boxSizing: "border-box", padding: isMobile ? "20px" : "64px 80px" }}>
+            <div style={{ paddingRight: (isMobile || isTablet) ? 0 : 48 }}>
+              <div style={{ position: "relative", overflow: "hidden", background: CREAM, marginBottom: 10, height: isMobile ? "78vh" : "calc(100vh - 10px)", minHeight: isMobile ? 460 : 780, maxHeight: isMobile ? 620 : 1080, boxSizing: "border-box", padding: isMobile ? "2px" : "4px 6px" }}>
                 {product.tag && tc && (
                   <div style={{ position: "absolute", top: 20, left: 20, zIndex: 3, background: tc.bg, color: tc.color, fontSize: 10, fontWeight: 900, letterSpacing: "0.16em", padding: "6px 14px", fontFamily: ff }}>{product.tag}</div>
                 )}
                 {discount > 0 && (
                   <div style={{ position: "absolute", top: 20, right: 20, zIndex: 3, background: BRAND, color: BRAND_TEXT, fontSize: 10, fontWeight: 900, letterSpacing: "0.1em", padding: "5px 12px", fontFamily: ff }}>−{discount}% OFF</div>
                 )}
-                <div style={{ width: "100%", height: "100%", border: "1.5px solid #d8cfc0", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "center", background: "#fff" }}>
-                  <img key={`${product.id}-${activeImg}-${displayLabel}`} src={`${displayImage}`} alt={`${product.name} - ${displayLabel}`} loading="eager" decoding="async" style={{ width: "100%", height: "100%", objectFit: "contain", padding: isMobile ? 12 : 24, animation: "fadeImgIn 0.35s ease", boxSizing: "border-box" }} />
+                <div style={{ width: "100%", height: "100%", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "center", background: "#fff" }}>
+                  <img key={`${product.id}-${activeImg}-${displayLabel}`} src={`${displayImage}`} alt={`${product.name} - ${displayLabel}`} loading="eager" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", padding: 0, animation: "fadeImgIn 0.35s ease", boxSizing: "border-box" }} />
                 </div>
               </div>
               {galleryImages.length > 1 && (
@@ -12785,11 +12845,11 @@ export function ProductDetailPage({ productId, navigate }) {
           <FadeIn delay={120}>
             <div style={{ paddingTop: isMobile ? 24 : 4 }}>
               <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 14, flexWrap: "wrap" }}>
-                <span style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.18em", color: "#aaa", fontFamily: ff }}>{product.category?.toUpperCase()}</span>
+                <a href={`#/collections/${categorySlug}`} style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.18em", color: "#aaa", fontFamily: ff, textDecoration: "none" }}>{product.category?.toUpperCase()}</a>
                 <span style={{ color: "#ddd" }}>·</span>
                 <span style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.18em", color: "#aaa", fontFamily: ff }}>{product.subcategory?.toUpperCase()}</span>
                 <span style={{ color: "#ddd" }}>·</span>
-                <span style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.18em", color: "#aaa", fontFamily: ff }}>{product.gender?.toUpperCase()}</span>
+                <a href={`#/collections/${genderCollectionSlug}`} style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.18em", color: "#aaa", fontFamily: ff, textDecoration: "none" }}>{product.gender?.toUpperCase()}</a>
               </div>
 
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 7, flexWrap: "wrap" }}>
@@ -12882,15 +12942,24 @@ export function ProductDetailPage({ productId, navigate }) {
               <p style={{ fontSize: isMobile ? 12 : 13, color: "#555", lineHeight: 1.9, fontFamily: mono, marginBottom: 28, maxWidth: 420 }}>{product.description}</p>
 
               <div style={{ display: "flex", flexDirection: "column", gap: 9, padding: "18px 0", borderTop: "1px solid #f0ece4", borderBottom: "1px solid #f0ece4", marginBottom: 28 }}>
-                {[{ icon: "🚚", text: "Free shipping across Pakistan" }, { icon: "↩", text: "30-day hassle-free returns" }, { icon: "✦", text: "Prescription lenses available" }, { icon: "★", text: "Genuine Italian / Japanese craftsmanship" }].map((b, i) => (
+                {(product.features || []).map((feature, i) => (
                   <div key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                    <span style={{ fontSize: 13 }}>{b.icon}</span>
-                    <span style={{ fontSize: 12, color: "#666", fontFamily: mono, letterSpacing: "0.02em" }}>{b.text}</span>
+                    <span style={{ fontSize: 12, fontWeight: 900, color: BRAND, fontFamily: ff }}>{i + 1}.</span>
+                    <span style={{ fontSize: 12, color: "#666", fontFamily: mono, letterSpacing: "0.02em" }}>{feature}</span>
                   </div>
                 ))}
               </div>
 
               <div style={{ borderTop: "1px solid #e8e0d0" }}>
+                {product.features?.length > 0 && (
+                  <AccordionItem id="features" label="FEATURES">
+                    <ol style={{ margin: 0, paddingLeft: 20, fontSize: 12, color: BLACK, fontFamily: mono, lineHeight: 2 }}>
+                      {product.features.map((feature, i) => (
+                        <li key={i}>{feature}</li>
+                      ))}
+                    </ol>
+                  </AccordionItem>
+                )}
                 <AccordionItem id="details" label="DETAILS">
                   <div style={{ width: "100%", overflowX: "auto" }}>
                     <table style={{ width: "100%", minWidth: 280, borderCollapse: "collapse" }}>
@@ -13007,8 +13076,7 @@ export function CartPage({ navigate }) {
           {shipping === 0 ? "YOU'VE UNLOCKED FREE WORLDWIDE EXPRESS SHIPPING!" : `ADD PKR ${(5000 - cartTotal).toLocaleString()} MORE FOR FREE SHIPPING`}
         </span>
       </div>
-      <div style={{ background: BLACK, padding: isMobile ? "32px 20px" : "40px 40px 36px", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", right: -40, top: "50%", transform: "translateY(-50%)", opacity: 0.04, pointerEvents: "none", fontSize: 320, lineHeight: 1, color: "#fff", fontWeight: 900 }}>◻</div>
+      <div style={{ background: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(/content/20250306_172543.jpg) center/cover no-repeat`, padding: isMobile ? "32px 20px" : "40px 40px 36px", position: "relative", overflow: "hidden" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ width: 32, height: 3, background: NAVY, marginBottom: 14 }} />
           <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 8vw, 40px)" : "clamp(36px, 5vw, 64px)", lineHeight: 0.92, color: "#fff", margin: 0, letterSpacing: "0.04em" }}>YOUR CART</h1>
@@ -13178,10 +13246,7 @@ export function WishlistPage({ navigate }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
-      <div style={{ background: BLACK, padding: isMobile ? "40px 20px" : "56px 40px 48px", textAlign: "center", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%)", opacity: 0.025, pointerEvents: "none" }}>
-          <Frame shape="round" size={isMobile ? 300 : 600} color="#fff"/>
-        </div>
+      <div style={{ background: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(/content/20251018_140811.jpg) center/cover no-repeat`, padding: isMobile ? "40px 20px" : "56px 40px 48px", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "relative", maxWidth: 600, margin: "0 auto" }}>
           <div style={{ width: 36, height: 3, background: BRAND, margin: "0 auto 16px" }}/>
           <div style={{ fontSize: 10, letterSpacing: "0.2em", color: "#555", marginBottom: 10, fontFamily: ff }}>MY ACCOUNT</div>
@@ -13642,7 +13707,7 @@ export function CheckoutPage({ navigate }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
-      <div style={{ background: BLACK, padding: isMobile ? "32px 20px" : "44px 40px 36px" }}>
+      <div style={{ background: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(/content/20250306_183818.jpg) center/cover no-repeat`, padding: isMobile ? "32px 20px" : "44px 40px 36px" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ width: 32, height: 3, background: BRAND, marginBottom: 14 }} />
           <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 8vw, 40px)" : "clamp(36px, 5vw, 64px)", lineHeight: 0.92, color: "#fff", margin: "0 0 12px" }}>CHECKOUT</h1>
@@ -13902,10 +13967,7 @@ export function OrderSuccessPage({ navigate }) {
   }, [navigate]);
 
   return (
-    <div style={{ minHeight: "100vh", background: BLACK, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: ff, position: "relative", overflow: "hidden", padding: "20px" }}>
-      <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%)", opacity: 0.03, pointerEvents: "none" }}>
-        <Frame shape="round" size={isMobile ? 400 : 900} color="#fff"/>
-      </div>
+    <div style={{ minHeight: "100vh", background: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(/content/15-1.png) center/cover no-repeat`, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: ff, position: "relative", overflow: "hidden", padding: "20px" }}>
       <div style={{ textAlign: "center", maxWidth: 560, padding: "0 20px", position: "relative", zIndex: 1 }}>
         <div style={{ width: 80, height: 80, borderRadius: "50%", background: BRAND, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 32px", fontSize: 36, color: BRAND_TEXT }}>✓</div>
         <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 24px" }}/>
@@ -13987,10 +14049,7 @@ export function ReviewSubmissionPage({ productId, reviewId, navigate }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
-      <div style={{ background: BLACK, padding: isMobile ? "40px 20px" : "56px 40px 48px", textAlign: "center", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%)", opacity: 0.025, pointerEvents: "none" }}>
-          <Frame shape="round" size={isMobile ? 300 : 600} color="#fff" />
-        </div>
+      <div style={{ background: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(/content/20250306_175757.jpg) center/cover no-repeat`, padding: isMobile ? "40px 20px" : "56px 40px 48px", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "relative", maxWidth: 600, margin: "0 auto" }}>
           <div style={{ width: 36, height: 3, background: BRAND, margin: "0 auto 16px" }} />
           <div style={{ fontSize: 10, letterSpacing: "0.2em", color: "#555", marginBottom: 10, fontFamily: ff }}>MY ACCOUNT · REVIEWS</div>

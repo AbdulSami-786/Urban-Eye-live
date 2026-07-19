@@ -477,7 +477,7 @@
 
 // // // //           {/* Logo */}
 // // // //           <a href="#/" style={{ textDecoration: "none", flexShrink: 0 }}>
-// // // //             <img src="./logo.jpeg" alt="Optics Studio" style={{ height: 50, width: "auto" }} />
+// // // //             <img src="./logo.jpeg" alt="Urban Eye" style={{ height: 50, width: "auto" }} />
 // // // //           </a>
 
 // // // //           {/* Nav Links */}
@@ -734,7 +734,7 @@
 // // // //         }}>
 // // // //           <div>
 // // // //             <div style={{ fontFamily: ff, fontSize: 22, fontWeight: 900, letterSpacing: "0.06em", marginBottom: 2, color: "#fff" }}>
-// // // //               OPTICS STUDIO
+// // // //               URBAN EYE
 // // // //             </div>
 // // // //             <div style={{ fontSize: 9, letterSpacing: "0.28em", color: "#3a6a8a", marginBottom: 16 }}>
 // // // //               EST. 2015 · KARACHI
@@ -785,7 +785,7 @@
 // // // //           justifyContent: "space-between", alignItems: "center", gap: 10
 // // // //         }}>
 // // // //           <div style={{ fontSize: 11, color: "#3a6a8a", letterSpacing: "0.05em", fontFamily: ff }}>
-// // // //             © 2026 Optics Studio. All rights reserved.
+// // // //             © 2026 Urban Eye. All rights reserved.
 // // // //           </div>
 // // // //           <div style={{ display: "flex", gap: 18 }}>
 // // // //             {["Privacy Policy", "Terms of Service", "Accessibility"].map((link) => (
@@ -1349,7 +1349,7 @@
 
 // // //           {/* Logo */}
 // // //           <a href="#/" style={{ textDecoration: "none", flexShrink: 0 }}>
-// // //             <img src="./logo.jpeg" alt="Optics Studio" style={{ height: 50, width: "auto" }} />
+// // //             <img src="./logo.jpeg" alt="Urban Eye" style={{ height: 50, width: "auto" }} />
 // // //           </a>
 
 // // //           {/* Nav Links */}
@@ -1597,7 +1597,7 @@
 // // //         }}>
 // // //           <div>
 // // //             <div style={{ fontFamily: ff, fontSize: 22, fontWeight: 900, letterSpacing: "0.06em", marginBottom: 2, color: "#fff" }}>
-// // //               OPTICS STUDIO
+// // //               URBAN EYE
 // // //             </div>
 // // //             <div style={{ fontSize: 9, letterSpacing: "0.28em", color: "#3a6a8a", marginBottom: 16 }}>
 // // //               EST. 2015 · KARACHI
@@ -1648,7 +1648,7 @@
 // // //           justifyContent: "space-between", alignItems: "center", gap: 10
 // // //         }}>
 // // //           <div style={{ fontSize: 11, color: "#3a6a8a", letterSpacing: "0.05em", fontFamily: ff }}>
-// // //             © 2026 Optics Studio. All rights reserved.
+// // //             © 2026 Urban Eye. All rights reserved.
 // // //           </div>
 // // //           <div style={{ display: "flex", gap: 18 }}>
 // // //             {["Privacy Policy", "Terms of Service", "Accessibility"].map((link) => (
@@ -2223,7 +2223,7 @@
 
 // //           {/* Logo */}
 // //           <a href="#/" style={{ textDecoration: "none", flexShrink: 0 }}>
-// //             <img src="./logo.jpeg" alt="Optics Studio" style={{ height: isMobile ? 38 : 50, width: "auto" }} />
+// //             <img src="./logo.jpeg" alt="Urban Eye" style={{ height: isMobile ? 38 : 50, width: "auto" }} />
 // //           </a>
 
 // //           {/* Nav Links — hidden on mobile (shown in overlay) */}
@@ -2676,7 +2676,7 @@
 // //               fontFamily: ff, fontSize: isMobile ? 18 : 22, fontWeight: 900,
 // //               letterSpacing: "0.06em", marginBottom: 2, color: "#fff"
 // //             }}>
-// //               OPTICS STUDIO
+// //               URBAN EYE
 // //             </div>
 // //             <div style={{ fontSize: 9, letterSpacing: "0.28em", color: "#3a6a8a", marginBottom: 16 }}>
 // //               EST. 2015 · KARACHI
@@ -2728,7 +2728,7 @@
 // //           justifyContent: "space-between", alignItems: "center", gap: 10
 // //         }}>
 // //           <div style={{ fontSize: isMobile ? 10 : 11, color: "#3a6a8a", letterSpacing: "0.05em", fontFamily: ff }}>
-// //             © 2026 Optics Studio. All rights reserved.
+// //             © 2026 Urban Eye. All rights reserved.
 // //           </div>
 // //           <div style={{ display: "flex", gap: isMobile ? 12 : 18, flexWrap: "wrap" }}>
 // //             {["Privacy Policy", "Terms of Service", "Accessibility"].map((link) => (
@@ -3360,7 +3360,7 @@
 
 //           {/* Logo */}
 //           <a href="#/" style={{ textDecoration: "none", flexShrink: 0 }}>
-//             <img src="./logo.jpeg" alt="Optics Studio" style={{ height: isMobile ? 38 : 50, width: "auto" }} />
+//             <img src="./logo.jpeg" alt="Urban Eye" style={{ height: isMobile ? 38 : 50, width: "auto" }} />
 //           </a>
 
 //           {/* Nav Links — hidden on mobile */}
@@ -3813,7 +3813,7 @@
 //               fontFamily: ff, fontSize: isMobile ? 18 : 22, fontWeight: 900,
 //               letterSpacing: "0.06em", marginBottom: 2, color: "#fff"
 //             }}>
-//               OPTICS STUDIO
+//               URBAN EYE
 //             </div>
 //             <div style={{ fontSize: 9, letterSpacing: "0.28em", color: "#3a6a8a", marginBottom: 16 }}>
 //               EST. 2015 · KARACHI
@@ -3865,7 +3865,7 @@
 //           justifyContent: "space-between", alignItems: "center", gap: 10
 //         }}>
 //           <div style={{ fontSize: isMobile ? 10 : 11, color: "#3a6a8a", letterSpacing: "0.05em", fontFamily: ff }}>
-//             © 2026 Optics Studio. All rights reserved.
+//             © 2026 Urban Eye. All rights reserved.
 //           </div>
 //           <div style={{ display: "flex", gap: isMobile ? 12 : 18, flexWrap: "wrap" }}>
 //             {["Privacy Policy", "Terms of Service", "Accessibility"].map((link) => (
@@ -4025,7 +4025,7 @@ import { CartProvider, useCart } from "./contexts/CardContext.jsx";
 import { useHashRouter } from "./hook/usehashrooter.js";
 import { AuthProvider, useAuth, AuthModal } from "./Auth/auth.jsx";
 import { PRODUCTS_DATA } from "./prodcut.js";
-import { searchProducts, getProductDisplayPrice, getProductVariants, formatPriceValue, normalizeCategory } from "./services/productUtils.js";
+import { searchProducts, getProductDisplayPrice, getProductVariants, formatPriceValue, getUniqueShapesFromProducts } from "./services/productUtils.js";
 
 // ─── RESPONSIVE HOOK ────────────────────────────────────────────────────────
 function useMediaQuery(query) {
@@ -4046,35 +4046,9 @@ const ACCENT = "#89c4e1";
 const BLACK = "#0a1628";
 // ─────────────────────────────────────────────────────────────────────────────
 
-// ─── HELPER: Resolve a product's shape value ──────────────────────────────
-// Tolerant of either `shape` or `subcategory` field naming in product.js so
-// every shape UI in the app (navbar + sidebar filter) stays 100% dynamic and
-// in sync — no matter which field the catalog actually stores shapes under.
-function getProductShape(product) {
-  return String(product?.shape || product?.subcategory || "").trim();
-}
-
-// ─── HELPER: Get unique shapes from products (optional category filter) ──
-// Shapes are sourced ONLY from product.js — no hardcoded list anywhere.
-function getUniqueShapes(products, categoryFilter = null) {
-  const shapeSet = new Set();
-  products.forEach(p => {
-    const shape = getProductShape(p);
-    if (!shape) return;
-    if (categoryFilter) {
-      // Normalize before comparing — raw category values in product.js (e.g.
-      // "Optical"/"Sunglass") don't always match the nav's "Eyeglasses"/
-      // "Sunglasses" labels directly, so this keeps the match reliable.
-      const cat = normalizeCategory(p.category || "");
-      if (cat.toLowerCase() === categoryFilter.toLowerCase()) {
-        shapeSet.add(shape);
-      }
-    } else {
-      shapeSet.add(shape);
-    }
-  });
-  return Array.from(shapeSet).sort();
-}
+// getProductShape / getUniqueShapesFromProducts (which splits compound shapes
+// like "Hexagon-Round" so a frame surfaces under both "Hexagon" and "Round")
+// now live in productUtils.js, shared with the products page filter sidebar.
 
 // ─── NAV LINKS — data-driven; shape links are now generated dynamically ──
 // We keep the structure but remove hardcoded shape links; they will be injected later.
@@ -4087,6 +4061,11 @@ const NAV_LINKS_BASE = [
           title: "EYEGLASSES",
           links: [
             { label: "SHOP ALL", to: { category: "Eyeglasses" } },
+          ],
+        },
+        {
+          title: "SHOP BY GENDER",
+          links: [
             { label: "MEN'S", to: { category: "Eyeglasses", gender: "Men" } },
             { label: "WOMEN'S", to: { category: "Eyeglasses", gender: "Women" } },
             { label: "UNISEX", to: { category: "Eyeglasses", gender: "Unisex" } },
@@ -4111,6 +4090,11 @@ const NAV_LINKS_BASE = [
           title: "SUNGLASSES",
           links: [
             { label: "SHOP ALL", to: { category: "Sunglasses" } },
+          ],
+        },
+        {
+          title: "SHOP BY GENDER",
+          links: [
             { label: "MEN'S", to: { category: "Sunglasses", gender: "Men" } },
             { label: "WOMEN'S", to: { category: "Sunglasses", gender: "Women" } },
             { label: "UNISEX", to: { category: "Sunglasses", gender: "Unisex" } },
@@ -4155,7 +4139,7 @@ function buildProductsLink(to) {
 
 // ─── Generate dynamic shape links for a given category ────────────────────
 function getShapeLinksForCategory(category) {
-  const shapes = getUniqueShapes(PRODUCTS_DATA, category);
+  const shapes = getUniqueShapesFromProducts(PRODUCTS_DATA, category);
   return shapes.map(shape => ({
     label: shape.toUpperCase(),
     to: { category, shape },
@@ -4523,7 +4507,7 @@ function AppInner() {
 
           {/* Logo */}
           <a href="#/" style={{ textDecoration: "none", flexShrink: 0 }}>
-            <img src="./logo.jpeg" alt="Optics Studio" style={{ height: isMobile ? 38 : 50, width: "auto" }} />
+            <img src="./logo.jpeg" alt="Urban Eye" style={{ height: isMobile ? 38 : 50, width: "auto" }} />
           </a>
 
           {/* Nav Links — hidden on mobile */}
@@ -4976,7 +4960,7 @@ function AppInner() {
               fontFamily: ff, fontSize: isMobile ? 18 : 22, fontWeight: 900,
               letterSpacing: "0.06em", marginBottom: 2, color: "#fff"
             }}>
-              OPTICS STUDIO
+              URBAN EYE
             </div>
             <div style={{ fontSize: 9, letterSpacing: "0.28em", color: "#3a6a8a", marginBottom: 16 }}>
               EST. 2015 · KARACHI
@@ -5028,7 +5012,7 @@ function AppInner() {
           justifyContent: "space-between", alignItems: "center", gap: 10
         }}>
           <div style={{ fontSize: isMobile ? 10 : 11, color: "#3a6a8a", letterSpacing: "0.05em", fontFamily: ff }}>
-            © 2026 Optics Studio. All rights reserved.
+            © 2026 Urban Eye. All rights reserved.
           </div>
           <div style={{ display: "flex", gap: isMobile ? 12 : 18, flexWrap: "wrap" }}>
             {["Privacy Policy", "Terms of Service", "Accessibility"].map((link) => (

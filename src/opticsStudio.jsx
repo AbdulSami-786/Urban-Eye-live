@@ -4,7 +4,7 @@ import { CartProvider } from "./contexts/CardContext";
 import { useHashRouter } from "./hook/usehashrooter.js";
 import {
   HomePage, ProductsPage, CollectionPage, ProductDetailPage, CartPage,
-  CheckoutPage, OrderSuccessPage, WishlistPage, ReviewSubmissionPage,
+  CheckoutPage, OrderSuccessPage, WishlistPage, ReviewSubmissionPage, AboutUsPage,
 } from "./page/page.jsx";
 import DashboardPage from "./userdashboard/dashboardpage.jsx";
 
@@ -22,6 +22,7 @@ export default function OpticsStudio() {
       {route === "order-success" && <OrderSuccessPage navigate={navigate} />}
       {route === "dashboard"     && <DashboardPage navigate={navigate} />}
       {route === "wishlist"      && <WishlistPage navigate={navigate} />}
+      {route === "story"         && <AboutUsPage navigate={navigate} />}
       {route === "review"        && (
         <ReviewSubmissionPage
           productId={reviewProductId}

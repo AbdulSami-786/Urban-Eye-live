@@ -458,7 +458,7 @@ function LoginForm({ onSwitch, onSuccess }) {
   return (
     <div style={S.body}>
       <div style={S.heading}>Welcome back</div>
-      <div style={S.subheading}>Sign in to your Optics Studio account</div>
+      <div style={S.subheading}>Sign in to your Urban Eye account</div>
 
       {successMsg && <div style={S.success}>{IcoCheck} {successMsg}</div>}
       {apiErr     && <div style={S.apiError}>{IcoAlert} {apiErr}</div>}
@@ -488,7 +488,7 @@ function LoginForm({ onSwitch, onSuccess }) {
       </button>
 
       <div style={S.footerText}>
-        New to Optics Studio?{" "}
+        New to Urban Eye?{" "}
         <button style={S.footerLink} onClick={onSwitch}>Create account</button>
       </div>
     </div>
@@ -552,7 +552,7 @@ function SignupForm({ onSwitch, onSuccess }) {
   return (
     <div style={S.body}>
       <div style={S.heading}>Create your account</div>
-      <div style={S.subheading}>Join Optics Studio — your vision, our priority</div>
+      <div style={S.subheading}>Join Urban Eye — your vision, our priority</div>
 
       {success && <div style={S.success}>{IcoCheck} Account created! Redirecting to sign in…</div>}
       {apiErr  && <div style={S.apiError}>{IcoAlert} {apiErr}</div>}

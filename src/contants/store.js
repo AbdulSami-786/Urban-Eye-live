@@ -545,6 +545,10 @@ export const COLLECTIONS = {
   "tortoise-shell-eyeglasses": { title: "TORTOISE FRAMES", desc: "Warm tones, rich character.", filter: p => p.color?.toLowerCase().includes("tortoise") },
   "polarized-sunglasses": { title: "POLARIZED SUNGLASSES", desc: "Cut the glare.", filter: p => isSunglasses(p) },
   "custom-made-tints": { title: "CUSTOM MADE TINTS™", desc: "20+ hand-applied tints.", filter: p => isSunglasses(p) },
+  "mens-collection": { title: "MEN'S COLLECTION", desc: "Bold frames for every face.", filter: p => isGender(p, "Men") },
+  "womens-collection": { title: "WOMEN'S COLLECTION", desc: "Refined eyewear for every occasion.", filter: p => isGender(p, "Women") },
+  "round": { title: "ROUND FRAMES", desc: "The timeless silhouette.", filter: p => String(p.shape ?? "").toLowerCase() === "round" },
+  "square": { title: "SQUARE FRAMES", desc: "Sharp. Structured. Striking.", filter: p => String(p.shape ?? "").toLowerCase() === "square" },
   "default": { title: "ALL FRAMES", desc: "Every frame. Handpicked.", filter: () => true },
 };
 
@@ -572,7 +576,7 @@ export const SORT_OPTS = [
 // dev server and production build, unlike "../banners/..." relative paths.
 export const HERO_SLIDES = [
   {
-    image: "/assets/banners/banner1.png",
+    image: "/content/20241211_173909.jpg",
     label: "NEW ARRIVALS",
     heading: "SEE THE\nDIFFERENCE",
     sub: "Explore our latest collection.",
@@ -582,7 +586,7 @@ export const HERO_SLIDES = [
     // shape: "round",
   },
   {
-    image: "/assets/banners/banneer2.png",
+    image: "/content/20250304_190049.jpg",
     label: "OUR COLLECTION",
     heading: "STYLE THAT\nSPEAKS",
     // sub: "Handpicked frames for every look.",
@@ -592,7 +596,7 @@ export const HERO_SLIDES = [
     // shape: "round",
   },
   {
-    image: "/assets/banners/banner3.png",
+    image: "/content/20250305_193723.jpg",
     label: "LIMITED TIME",
     heading: "FIND YOUR\nFRAME",
     sub: "Quality eyewear, made for you.",
