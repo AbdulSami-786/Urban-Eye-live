@@ -4189,9 +4189,9 @@ const iconBtn = {
   background: "none",
   border: "none",
   cursor: "pointer",
-  padding: "10px",
-  minWidth: "40px",
-  minHeight: "40px",
+  padding: "8px",
+  minWidth: "36px",
+  minHeight: "36px",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -4500,9 +4500,9 @@ function AppInner() {
         zIndex: 49,
       }}>
         <div style={{
-          maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 12px" : "0 24px",
+          maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 10px" : "0 24px",
           height: isMobile ? 56 : 62,
-          display: "flex", alignItems: "center", justifyContent: "space-between", gap: isMobile ? 8 : 12
+          display: "flex", alignItems: "center", justifyContent: "space-between", gap: isMobile ? 4 : 12
         }}>
 
           {/* Logo */}
@@ -4552,7 +4552,7 @@ function AppInner() {
           )}
 
           {/* Right icons */}
-          <div style={{ display: "flex", alignItems: "center", gap: isMobile ? 6 : 14, flexShrink: 0 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: isMobile ? 2 : 14, flexShrink: 0 }}>
 
             {/* Hamburger (mobile) */}
             {isMobile && (
@@ -4933,13 +4933,13 @@ function AppInner() {
           <div style={{ display: "flex", maxWidth: 400, width: "100%" }}>
             <input type="email" placeholder="Your email address"
               style={{
-                flex: 1, background: "#0e1f2e", border: `1px solid #1a3a52`, borderRight: "none",
-                color: "#fff", padding: "12px 16px", fontSize: isMobile ? 12 : 13, outline: "none",
+                flex: 1, minWidth: 0, background: "#0e1f2e", border: `1px solid #1a3a52`, borderRight: "none",
+                color: "#fff", padding: isMobile ? "12px 10px" : "12px 16px", fontSize: isMobile ? 12 : 13, outline: "none",
                 letterSpacing: "0.02em", fontFamily: "'Courier New',Courier,monospace"
               }} />
             <button style={{
               background: NAVY, color: ACCENT, border: `1px solid ${NAVY}`,
-              padding: "12px 18px", fontSize: isMobile ? 10 : 11, fontWeight: 900,
+              padding: isMobile ? "12px 12px" : "12px 18px", fontSize: isMobile ? 10 : 11, fontWeight: 900,
               letterSpacing: "0.14em", cursor: "pointer", whiteSpace: "nowrap", fontFamily: ff
             }}>
               SUBSCRIBE
