@@ -640,10 +640,10 @@ export const PROCESS_STEPS = [
  ];
 
 export const CATEGORIES_HOME = [
-  { label: "Men's Eyeglasses", count: "48 styles", dark: false, shape: "square", slug: "mens-eyeglasses" },
-  { label: "Women's Eyeglasses", count: "52 styles", dark: true, shape: "cateye", slug: "womens-eyeglasses" },
-  { label: "Men's Sunglasses", count: "36 styles", dark: false, shape: "aviator", slug: "mens-sunglasses" },
-  { label: "Women's Sunglasses", count: "41 styles", dark: true, shape: "round", slug: "womens-sunglasses" },
+  { label: "Men's Eyeglasses", count: "48 styles", dark: false, shape: "square", slug: "mens-eyeglasses", category: "Eyeglasses", gender: "Men" },
+  { label: "Women's Eyeglasses", count: "52 styles", dark: true, shape: "cateye", slug: "womens-eyeglasses", category: "Eyeglasses", gender: "Women" },
+  { label: "Men's Sunglasses", count: "36 styles", dark: false, shape: "aviator", slug: "mens-sunglasses", category: "Sunglasses", gender: "Men" },
+  { label: "Women's Sunglasses", count: "41 styles", dark: true, shape: "round", slug: "womens-sunglasses", category: "Sunglasses", gender: "Women" },
 ];
 
 // TAG COLORS

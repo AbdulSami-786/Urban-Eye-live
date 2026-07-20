@@ -3,7 +3,7 @@
 import { CartProvider } from "./contexts/CardContext";
 import { useHashRouter } from "./hook/usehashrooter.js";
 import {
-  HomePage, ProductsPage, CollectionPage, ProductDetailPage, CartPage,
+  HomePage, ProductsPage, CollectionDetailPage, CollectionsLandingPage, ProductDetailPage, CartPage,
   CheckoutPage, OrderSuccessPage, WishlistPage, ReviewSubmissionPage, AboutUsPage,
 } from "./page/page.jsx";
 import DashboardPage from "./userdashboard/dashboardpage.jsx";
@@ -15,7 +15,8 @@ export default function OpticsStudio() {
     <CartProvider>
       {route === "home"          && <HomePage navigate={navigate} />}
       {route === "products"      && <ProductsPage navigate={navigate} queryParams={queryParams} />}
-      {route === "collection"    && <CollectionPage slug={collectionSlug} navigate={navigate} />}
+      {route === "collection"    && <CollectionDetailPage slug={collectionSlug} navigate={navigate} />}
+      {route === "collections-landing" && <CollectionsLandingPage navigate={navigate} />}
       {route === "product"       && <ProductDetailPage productId={productId} navigate={navigate} />}
       {route === "cart"          && <CartPage navigate={navigate} />}
       {route === "checkout"      && <CheckoutPage navigate={navigate} />}

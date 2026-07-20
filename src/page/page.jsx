@@ -12294,7 +12294,7 @@ export function HomePage({ navigate }) {
           <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "repeat(2,1fr)" : "repeat(4,1fr)", gap: 2 }}>
             {CATEGORIES_HOME.map((cat, i) => (
               <FadeIn key={cat.label} delay={i * 80}>
-                <div onClick={() => navigate(`#/collections/${cat.slug}`)} style={{ minHeight: isMobile ? 220 : 330, display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: isMobile ? 16 : 28, cursor: "pointer", position: "relative", overflow: "hidden", background: cat.dark ? BLACK : CREAM, color: cat.dark ? "#fff" : BLACK }}>
+                <div onClick={() => navigate(`#/products?${new URLSearchParams({ category: cat.category, gender: cat.gender }).toString()}`)} style={{ minHeight: isMobile ? 220 : 330, display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: isMobile ? 16 : 28, cursor: "pointer", position: "relative", overflow: "hidden", background: cat.dark ? BLACK : CREAM, color: cat.dark ? "#fff" : BLACK }}>
                   <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: BRAND }}/>
                   <div style={{ position: "absolute", top: "38%", left: "50%", transform: "translate(-50%,-50%)", opacity: 0.07 }}>
                     <Frame shape={cat.shape} size={isMobile ? 120 : 190} color={cat.dark ? "#fff" : "#000"}/>
