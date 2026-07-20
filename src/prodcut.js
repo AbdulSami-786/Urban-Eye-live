@@ -4383,7 +4383,7 @@ export const PRODUCTS_DATA = [
         name: "Light Brown",
         swatch: "#b5651d",
         image: "./assets/Sunglass/Andrew 1.jpg",
-        gallery: ["./assets/Sunglass/ANDREW 1.jpg", "./assets/Sunglass/ANDREW 2.jpg", "./assets/Sunglass/ANDREW 3.jpg", "./10.jpg"],
+        gallery: ["./assets/Sunglass/Andrew 1.jpg", "./assets/Sunglass/Andrew 2.jpg", "./assets/Sunglass/Andrew 3.jpg", "./10.jpg"],
       },
     ],
     price: 12500,

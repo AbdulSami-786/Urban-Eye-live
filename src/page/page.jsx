@@ -11764,7 +11764,7 @@ function FilterSidebar({ allProducts, activeFilters, setActiveFilters, filtersOp
                 display: "flex", flexDirection: "column", alignItems: "center", gap: 5, transition: "all 0.18s",
               }}>
                 {thumbSrc ? (
-                  <img src={thumbSrc} alt={shapeValue} style={{ width: 28, height: 28, objectFit: "cover", borderRadius: "50%", border: `1.5px solid ${on ? "#fff" : "#eee"}`, background: "#fff" }} />
+                  <img src={thumbSrc} alt={shapeValue} loading="lazy" decoding="async" style={{ width: 28, height: 28, objectFit: "cover", borderRadius: "50%", border: `1.5px solid ${on ? "#fff" : "#eee"}`, background: "#fff" }} />
                 ) : (
                   <ShapeIcon shape={shapeValue} active={on} />
                 )}
@@ -13967,7 +13967,7 @@ export function OrderSuccessPage({ navigate }) {
   }, [navigate]);
 
   return (
-    <div style={{ minHeight: "100vh", background: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(/content/15-1.png) center/cover no-repeat`, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: ff, position: "relative", overflow: "hidden", padding: "20px" }}>
+    <div style={{ minHeight: "100vh", background: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(/content/15-1.jpg) center/cover no-repeat`, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: ff, position: "relative", overflow: "hidden", padding: "20px" }}>
       <div style={{ textAlign: "center", maxWidth: 560, padding: "0 20px", position: "relative", zIndex: 1 }}>
         <div style={{ width: 80, height: 80, borderRadius: "50%", background: BRAND, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 32px", fontSize: 36, color: BRAND_TEXT }}>✓</div>
         <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 24px" }}/>
