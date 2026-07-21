@@ -12824,7 +12824,7 @@ export function ProductDetailPage({ productId, navigate }) {
                   <div style={{ position: "absolute", top: 20, right: 20, zIndex: 3, background: BRAND, color: BRAND_TEXT, fontSize: 10, fontWeight: 900, letterSpacing: "0.1em", padding: "5px 12px", fontFamily: ff }}>−{discount}% OFF</div>
                 )}
                 <div style={{ width: "100%", height: "100%", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "center", background: "#fff" }}>
-                  <img key={`${product.id}-${activeImg}-${displayLabel}`} src={`${displayImage}`} alt={`${product.name} - ${displayLabel}`} loading="eager" decoding="async" style={{ width: "100%", height: "100%", objectFit: isMobile ? "contain" : "cover", objectPosition: "center", padding: 0, animation: "fadeImgIn 0.35s ease", boxSizing: "border-box" }} />
+                  <img key={`${product.id}-${activeImg}-${displayLabel}`} src={`${displayImage}`} alt={`${product.name} - ${displayLabel}`} loading="eager" decoding="async" style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", padding: 0, animation: "fadeImgIn 0.35s ease", boxSizing: "border-box" }} />
                 </div>
               </div>
               {galleryImages.length > 1 && (

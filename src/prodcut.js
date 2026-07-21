@@ -3220,7 +3220,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "alex",
-    name: "The Alex",
+    name: " Alex",
     category: "Optical",
     subcategory: "",
     gender: "women",
@@ -3271,7 +3271,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "felix",
-    name: "The Felix",
+    name: " Felix",
     category: "Optical",
     subcategory: "",
     gender: "women",
@@ -3328,7 +3328,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "daniel",
-    name: "The Daniel",
+    name: " Daniel",
     category: "Optical",
     subcategory: "",
     gender: "Men",
@@ -3379,7 +3379,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "james",
-    name: "The James",
+    name: " James",
     category: "Optical",
     subcategory: "",
     gender: "Men/Women",
@@ -3430,7 +3430,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "jenny",
-    name: "The Jenny",
+    name: " Jenny",
     category: "Optical",
     subcategory: "",
     gender: "women",
@@ -3481,7 +3481,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "drew",
-    name: "The Drew",
+    name: " Drew",
     category: "Optical",
     subcategory: "",
     gender: "women",
@@ -3538,7 +3538,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "lily",
-    name: "The Lily",
+    name: " Lily",
     category: "Optical",
     subcategory: "",
     gender: "women",
@@ -3589,7 +3589,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "tim",
-    name: "The Tim",
+    name: " Tim",
     category: "Optical",
     subcategory: "",
     gender: "Men/Women",
@@ -3640,7 +3640,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "bond",
-    name: "The Bond",
+    name: " Bond",
     category: "Optical",
     subcategory: "",
     gender: "Men/Women",
@@ -3691,7 +3691,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "charlotte",
-    name: "The Charlotte",
+    name: " Charlotte",
     category: "Optical",
     subcategory: "",
     gender: "Men/Women",
@@ -3748,7 +3748,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "amelia",
-    name: "The Amelia",
+    name: " Amelia",
     category: "Optical",
     subcategory: "",
     gender: "women",
@@ -3799,7 +3799,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "isla",
-    name: "The Isla",
+    name: "Isla",
     category: "Optical",
     subcategory: "",
     gender: "Women",
@@ -3850,7 +3850,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "miles",
-    name: "The Miles",
+    name: " Miles",
     category: "Optical",
     subcategory: "",
     gender: "Men",
@@ -3901,7 +3901,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "mount",
-    name: "The Mount",
+    name: "Mount",
     category: "Optical",
     subcategory: "",
     gender: "Men",
@@ -3952,7 +3952,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "gerard",
-    name: "The Gerard",
+    name: "Gerard",
     category: "Optical",
     subcategory: "",
     gender: "Men",
@@ -4009,7 +4009,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "darton",
-    name: "The Darton",
+    name: "Darton",
     category: "Optical",
     subcategory: "",
     gender: "women",
@@ -4066,7 +4066,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "oliver",
-    name: "The Oliver",
+    name: " Oliver",
     category: "Optical",
     subcategory: "",
     gender: "Men/Women",
@@ -4117,7 +4117,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "henry",
-    name: "The Henry",
+    name: " Henry",
     category: "Optical",
     subcategory: "",
     gender: "Men/Women",
@@ -4168,7 +4168,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "ava",
-    name: "The Ava",
+    name: " Ava",
     category: "Optical",
     subcategory: "",
     gender: "Women",
@@ -4219,7 +4219,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "linda",
-    name: "The Linda",
+    name: "Linda",
     category: "Optical",
     subcategory: "",
     gender: "Women",
@@ -4270,7 +4270,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "zegna",
-    name: "The Zegna",
+    name: " Zegna",
     category: "Optical",
     subcategory: "",
     gender: "Men/Women",
@@ -4321,7 +4321,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "dott",
-    name: "The Dott",
+    name: " Dott",
     category: "Optical",
     subcategory: "",
     gender: "Women",
@@ -4374,7 +4374,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "andrew",
-    name: "The Andrew",
+    name: " Andrew",
     category: "Sunglass",
     subcategory: "",
     gender: "Mens",
@@ -4425,7 +4425,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "garfield",
-    name: "The Garfield",
+    name: " Garfield",
     category: "Sunglass",
     subcategory: "",
     gender: "Mens/Women",
@@ -4476,7 +4476,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "karl",
-    name: "The Karl",
+    name: "Karl",
     category: "Sunglass",
     subcategory: "",
     gender: "Mens/Women",
@@ -4527,7 +4527,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "bevis",
-    name: "The Bevis",
+    name: "Bevis",
     category: "Sunglass",
     subcategory: "",
     gender: "Mens",
@@ -4578,7 +4578,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "violet",
-    name: "The Violet",
+    name: " Violet",
     category: "Sunglass",
     subcategory: "",
     gender: "Womens",
@@ -4629,7 +4629,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "monaco",
-    name: "The Monaco",
+    name: "Monaco",
     category: "Sunglass",
     subcategory: "",
     gender: "Mens/Women",
@@ -4680,7 +4680,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "sarah",
-    name: "The Sarah",
+    name: "Sarah",
     category: "Sunglass",
     subcategory: "",
     gender: "Womens",
@@ -4731,7 +4731,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "xrp",
-    name: "The Xrp",
+    name: "Xrp",
     category: "Sunglass",
     subcategory: "",
     gender: "Womens",
@@ -4782,7 +4782,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "tom",
-    name: "The Tom",
+    name: " Tom",
     category: "Sunglass",
     subcategory: "",
     gender: "Mens",
