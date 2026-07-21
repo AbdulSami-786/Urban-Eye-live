@@ -11540,19 +11540,23 @@ function Breadcrumb({ crumbs }) {
   );
 }
 
-// Plain photo banner used at the top of most pages — no text on it.
-// Desktop keeps a fixed-height cropped strip; mobile shows the image at its
-// natural ratio so nothing gets cropped off.
-function PageBanner({ image, alt = "", height = 400 }) {
+// Plain photo banner used at the top of most pages — no text on it, and the
+// full image is always visible, never cropped on any side.
+// Mobile: shown at its natural ratio (narrow screens suit these portrait
+// photos, so no letterboxing is needed).
+// Desktop: these are tall portrait photos, so showing them at natural size
+// would make the banner 1500-2500px tall. Instead they're letterboxed —
+// fixed, sane height, full photo fully visible, empty space fills the sides.
+function PageBanner({ image, alt = "", height = 440 }) {
   const isMobile = useMediaQuery("(max-width: 767px)");
   return (
-    <div style={{ width: "100%", overflow: "hidden", background: "#111", height: isMobile ? "auto" : height }}>
+    <div style={{ width: "100%", height: isMobile ? "auto" : height, overflow: "hidden", background: "#111", display: "flex", alignItems: "center", justifyContent: "center" }}>
       <img
         src={image}
         alt={alt}
         loading="eager"
         decoding="async"
-        style={{ width: "100%", height: isMobile ? "auto" : "100%", display: "block", objectFit: "cover" }}
+        style={{ width: "100%", height: isMobile ? "auto" : "100%", display: "block", objectFit: isMobile ? undefined : "contain" }}
       />
     </div>
   );
