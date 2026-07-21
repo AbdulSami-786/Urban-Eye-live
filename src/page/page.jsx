@@ -12723,6 +12723,38 @@ export function CollectionDetailPage({ slug, navigate }) {
   );
 }
 
+// Small inline flag so it always renders as an actual flag — Unicode flag
+// emoji (regional-indicator pairs) fall back to plain "PK"-style letters on
+// some platforms/fonts, unlike ordinary emoji which render everywhere.
+function PakistanFlagIcon() {
+  return (
+    <svg width="18" height="13" viewBox="0 0 24 16" style={{ flexShrink: 0, borderRadius: 2 }}>
+      <rect width="24" height="16" fill="#01411C" />
+      <rect width="6" height="16" fill="#fff" />
+      <circle cx="16.5" cy="8" r="4.3" fill="#fff" />
+      <circle cx="18" cy="6.8" r="3.6" fill="#01411C" />
+      <path d="M20.3 4.6 L20.9 6.3 L22.7 6.3 L21.2 7.3 L21.8 9 L20.3 7.9 L18.8 9 L19.4 7.3 L17.9 6.3 L19.7 6.3 Z" fill="#fff" />
+    </svg>
+  );
+}
+
+// Picks a small icon for a feature line so the list reads at a glance
+// instead of a plain numbered list — e.g. the Pakistan engraving feature
+// gets the actual Pakistan flag.
+function FeatureIcon({ feature }) {
+  const text = String(feature || "").toLowerCase();
+  if (text.includes("pakistan")) return <PakistanFlagIcon />;
+  let emoji = "✨";
+  if (text.includes("hinge")) emoji = "🔩";
+  else if (text.includes("nose") || text.includes("bridge")) emoji = "👃";
+  else if (text.includes("hand") || text.includes("acetate") || text.includes("craft")) emoji = "✋";
+  else if (text.includes("uv") || text.includes("polarized") || text.includes("sun")) emoji = "☀️";
+  else if (text.includes("light") || text.includes("weight")) emoji = "🪶";
+  else if (text.includes("warranty") || text.includes("guarantee")) emoji = "🛡️";
+  else if (text.includes("lens")) emoji = "🔍";
+  return <span style={{ fontSize: 16, lineHeight: 1 }}>{emoji}</span>;
+}
+
 // ============ PRODUCT DETAIL PAGE ============
 export function ProductDetailPage({ productId, navigate }) {
   const product = PRODUCTS_DATA.find(p => p.id === productId);
@@ -12936,25 +12968,19 @@ export function ProductDetailPage({ productId, navigate }) {
                 </button>
               )}
 
-              <p style={{ fontSize: isMobile ? 12 : 13, color: "#555", lineHeight: 1.9, fontFamily: mono, marginBottom: 28, maxWidth: 420 }}>{product.description}</p>
-
               <div style={{ display: "flex", flexDirection: "column", gap: 9, padding: "18px 0", borderTop: "1px solid #f0ece4", borderBottom: "1px solid #f0ece4", marginBottom: 28 }}>
                 {(product.features || []).map((feature, i) => (
                   <div key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                    <span style={{ fontSize: 12, fontWeight: 900, color: BRAND, fontFamily: ff }}>{i + 1}.</span>
+                    <FeatureIcon feature={feature} />
                     <span style={{ fontSize: 12, color: "#666", fontFamily: mono, letterSpacing: "0.02em" }}>{feature}</span>
                   </div>
                 ))}
               </div>
 
               <div style={{ borderTop: "1px solid #e8e0d0" }}>
-                {product.features?.length > 0 && (
-                  <AccordionItem id="features" label="FEATURES">
-                    <ol style={{ margin: 0, paddingLeft: 20, fontSize: 12, color: BLACK, fontFamily: mono, lineHeight: 2 }}>
-                      {product.features.map((feature, i) => (
-                        <li key={i}>{feature}</li>
-                      ))}
-                    </ol>
+                {product.description && (
+                  <AccordionItem id="description" label="DESCRIPTION">
+                    <p style={{ margin: 0, fontSize: 12, color: BLACK, fontFamily: mono, lineHeight: 1.9 }}>{product.description}</p>
                   </AccordionItem>
                 )}
                 <AccordionItem id="details" label="DETAILS">
