@@ -11540,6 +11540,24 @@ function Breadcrumb({ crumbs }) {
   );
 }
 
+// Plain photo banner used at the top of most pages — no text on it.
+// Desktop keeps a fixed-height cropped strip; mobile shows the image at its
+// natural ratio so nothing gets cropped off.
+function PageBanner({ image, alt = "", height = 400 }) {
+  const isMobile = useMediaQuery("(max-width: 767px)");
+  return (
+    <div style={{ width: "100%", overflow: "hidden", background: "#111", height: isMobile ? "auto" : height }}>
+      <img
+        src={image}
+        alt={alt}
+        loading="eager"
+        decoding="async"
+        style={{ width: "100%", height: isMobile ? "auto" : "100%", display: "block", objectFit: "cover" }}
+      />
+    </div>
+  );
+}
+
 // ─────────────────────────────────────────────
 // SORT OPTIONS
 // ─────────────────────────────────────────────
@@ -11909,14 +11927,7 @@ export function CollectionsLandingPage({ navigate }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
-      <div style={{ background: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(/content/DSC08359.jpg) center/cover no-repeat`, padding: "72px 20px 60px", textAlign: "center", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "relative", maxWidth: 700, margin: "0 auto" }}>
-          <div style={{ width: 40, height: 3, background: BRAND, margin: "0 auto 20px" }} />
-          <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10 }}>URBAN EYE</div>
-          <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: "clamp(48px, 8vw, 88px)", lineHeight: 0.9, color: "#fff", margin: "0 0 20px" }}>COLLECTIONS</h1>
-          <p style={{ fontSize: 14, color: "rgba(255,255,255,0.4)", fontFamily: mono, lineHeight: 1.8, maxWidth: 480, margin: "0 auto" }}>Curated groups of frames for every occasion, face, and personality.</p>
-        </div>
-      </div>
+      <PageBanner image="/content/DSC08359.jpg" alt="Urban Eye collections" />
 
       <Breadcrumb crumbs={[{ label: "HOME", path: "#/" }, { label: "COLLECTIONS", path: null }]} />
 
@@ -11986,14 +11997,7 @@ export function AboutUsPage({ navigate }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
-      <div style={{ background: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(/content/20251018_140030.jpg) center/cover no-repeat`, padding: isMobile ? "56px 20px" : "80px 40px 64px", textAlign: "center", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "relative", maxWidth: 700, margin: "0 auto" }}>
-          <div style={{ width: 40, height: 3, background: BRAND, margin: "0 auto 20px" }} />
-          <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10 }}>URBAN EYE</div>
-          <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(32px, 10vw, 48px)" : "clamp(48px, 8vw, 88px)", lineHeight: 0.9, color: "#fff", margin: "0 0 16px" }}>OUR STORY</h1>
-          <p style={{ fontSize: 14, color: "rgba(255,255,255,0.4)", fontFamily: mono, lineHeight: 1.8, maxWidth: 480, margin: "0 auto" }}>Eye-conic eyewear, crafted with care — since 2015.</p>
-        </div>
-      </div>
+      <PageBanner image="/content/20251018_140030.jpg" alt="Urban Eye — our story" />
 
       <Breadcrumb crumbs={[{ label: "HOME", path: "#/" }, { label: "OUR STORY", path: null }]} />
 
@@ -12559,22 +12563,20 @@ export function ProductsPage({ navigate, queryParams }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
-      <div style={{ background: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(/content/20251018_140450.jpg) center/cover no-repeat`, padding: isMobile ? "48px 20px" : "72px 40px 60px", textAlign: "center", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "relative", maxWidth: 700, margin: "0 auto" }}>
-          <div style={{ width: 40, height: 3, background: BRAND, margin: "0 auto 20px" }}/>
-          <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#555", marginBottom: 10, fontFamily: ff }}>URBAN EYE · ALL FRAMES</div>
-          <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(32px, 10vw, 48px)" : "clamp(48px, 8vw, 88px)", lineHeight: 0.9, color: "#fff", letterSpacing: "0.02em", margin: "0 0 20px" }}>THE COLLECTION</h1>
-          <p style={{ fontSize: 14, color: "rgba(255,255,255,0.4)", fontFamily: mono, lineHeight: 1.8, maxWidth: 480, margin: "0 auto" }}>{PRODUCTS_DATA.length} frames. Each handpicked. All obsessively crafted.</p>
-          <div style={{ marginTop: 20, display: "flex", justifyContent: "center" }}>
-            <div style={{ display: "flex", width: "min(520px, 100%)", background: "#fff", overflow: "hidden" }}>
-              <input value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder="Search by name, price, or keyword — e.g. “Alex” or “under 8000”" style={{ flex: 1, minWidth: 0, border: "none", padding: "12px 16px", fontSize: 13, fontFamily: mono, outline: "none" }} />
+      <PageBanner image="/content/20251018_140450.jpg" alt="The collection" />
+
+      <div style={{ background: "#fff", borderBottom: "1px solid #eee", padding: isMobile ? "20px 20px" : "24px 40px" }}>
+        <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <div style={{ display: "flex", width: "min(520px, 100%)", background: "#FAFAF8", border: "1px solid #e5e0d8", overflow: "hidden" }}>
+              <input value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder="Search by name, price, or keyword — e.g. “Alex” or “under 8000”" style={{ flex: 1, minWidth: 0, border: "none", background: "transparent", padding: "12px 16px", fontSize: 13, fontFamily: mono, outline: "none" }} />
               {searchActive && (
                 <button onClick={() => setSearchTerm("")} aria-label="Clear search" style={{ border: "none", background: BRAND, color: BRAND_TEXT, padding: "0 16px", fontFamily: ff, fontWeight: 900, fontSize: 14, cursor: "pointer" }}>✕</button>
               )}
             </div>
           </div>
           {searchActive && (
-            <div style={{ marginTop: 10, fontSize: 11, color: "rgba(255,255,255,0.5)", fontFamily: mono, letterSpacing: "0.04em" }}>
+            <div style={{ marginTop: 10, fontSize: 11, color: "#888", fontFamily: mono, letterSpacing: "0.04em" }}>
               {filtered.length} {filtered.length === 1 ? "frame" : "frames"} found for “{searchTerm.trim()}”
             </div>
           )}
@@ -12686,18 +12688,9 @@ export function CollectionDetailPage({ slug, navigate }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
-      <div style={{ background: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(/content/20251018_140653.jpg) center/cover no-repeat`, padding: isMobile ? "40px 20px" : "56px 40px 48px", textAlign: "center", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "relative", maxWidth: 700, margin: "0 auto" }}>
-          <div style={{ width: 36, height: 3, background: BRAND, margin: "0 auto 16px" }}/>
-          <div style={{ fontSize: 10, letterSpacing: "0.18em", color: "#555", marginBottom: 12, fontFamily: ff }}>
-            <a href="#/" style={{ color: "#555", textDecoration: "none" }}>HOME</a>
-            <span style={{ margin: "0 8px", color: "#333" }}>›</span>
-            <span style={{ color: "#aaa" }}>{col.title}</span>
-          </div>
-          <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 8vw, 42px)" : "clamp(38px, 6vw, 72px)", lineHeight: 0.92, color: "#fff", letterSpacing: "0.02em", margin: "0 0 16px" }}>{col.title}</h1>
-          <p style={{ fontSize: 13, color: "rgba(255,255,255,0.4)", fontFamily: mono, lineHeight: 1.7, maxWidth: 480, margin: "0 auto" }}>{col.desc}</p>
-        </div>
-      </div>
+      <PageBanner image="/content/20251018_140653.jpg" alt={col.title} />
+
+      <Breadcrumb crumbs={[{ label: "HOME", path: "#/" }, { label: "COLLECTIONS", path: "#/collections" }, { label: col.title, path: null }]} />
 
       <FilterSortBar filtersOpen={filtersOpen} toggleFilters={() => { isMobile ? setFiltersOpen(true) : setFiltersOpen(v => !v); }} isMobile={isMobile} sort={sort} setSort={setSort} count={filtered.length} activeFilters={activeFilters} setActiveFilters={setActiveFilters} />
 
@@ -13076,15 +13069,9 @@ export function CartPage({ navigate }) {
           {shipping === 0 ? "YOU'VE UNLOCKED FREE WORLDWIDE EXPRESS SHIPPING!" : `ADD PKR ${(5000 - cartTotal).toLocaleString()} MORE FOR FREE SHIPPING`}
         </span>
       </div>
-      <div style={{ background: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(/content/20250306_172543.jpg) center/cover no-repeat`, padding: isMobile ? "32px 20px" : "40px 40px 36px", position: "relative", overflow: "hidden" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ width: 32, height: 3, background: NAVY, marginBottom: 14 }} />
-          <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 8vw, 40px)" : "clamp(36px, 5vw, 64px)", lineHeight: 0.92, color: "#fff", margin: 0, letterSpacing: "0.04em" }}>YOUR CART</h1>
-          <p style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", fontFamily: mono, marginTop: 12, letterSpacing: "0.06em" }}>
-            {localCart.length} ITEM{localCart.length !== 1 ? "S" : ""} &nbsp;·&nbsp; PKR {cartTotal.toLocaleString()} SUBTOTAL
-          </p>
-        </div>
-      </div>
+      <PageBanner image="/content/20250306_172543.jpg" alt="Your cart" />
+
+      <Breadcrumb crumbs={[{ label: "HOME", path: "#/" }, { label: "CART", path: null }]} />
 
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: isMobile ? "20px 16px 60px" : "40px 40px 60px", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 360px", gap: isMobile ? 24 : 40, alignItems: "flex-start" }}>
         <div>
@@ -13246,20 +13233,7 @@ export function WishlistPage({ navigate }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
-      <div style={{ background: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(/content/20251018_140811.jpg) center/cover no-repeat`, padding: isMobile ? "40px 20px" : "56px 40px 48px", textAlign: "center", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "relative", maxWidth: 600, margin: "0 auto" }}>
-          <div style={{ width: 36, height: 3, background: BRAND, margin: "0 auto 16px" }}/>
-          <div style={{ fontSize: 10, letterSpacing: "0.2em", color: "#555", marginBottom: 10, fontFamily: ff }}>MY ACCOUNT</div>
-          <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 8vw, 42px)" : "clamp(36px, 6vw, 68px)", lineHeight: 0.92, color: "#fff", letterSpacing: "0.02em", margin: "0 0 12px" }}>
-            MY WISHLIST
-          </h1>
-          {!loading && (
-            <p style={{ fontSize: 13, color: "rgba(255,255,255,0.4)", fontFamily: mono }}>
-              {wishlist.length} saved {wishlist.length === 1 ? "frame" : "frames"}
-            </p>
-          )}
-        </div>
-      </div>
+      <PageBanner image="/content/20251018_140811.jpg" alt="My wishlist" />
 
       <Breadcrumb crumbs={[{ label: "HOME", path: "#/" }, { label: "MY ACCOUNT", path: "#/dashboard" }, { label: "WISHLIST", path: null }]} />
 
@@ -13707,31 +13681,31 @@ export function CheckoutPage({ navigate }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
-      <div style={{ background: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(/content/20250306_183818.jpg) center/cover no-repeat`, padding: isMobile ? "32px 20px" : "44px 40px 36px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ width: 32, height: 3, background: BRAND, marginBottom: 14 }} />
-          <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 8vw, 40px)" : "clamp(36px, 5vw, 64px)", lineHeight: 0.92, color: "#fff", margin: "0 0 12px" }}>CHECKOUT</h1>
-          <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 16, flexWrap: "wrap" }}>
-            {[{ n: 1, l: "DELIVERY" }, { n: 2, l: "REVIEW & PAY" }].map((s, i) => (
-              <div key={s.n} style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                {i > 0 && <div style={{ width: isMobile ? 20 : 40, height: 1, background: step > i ? BRAND : "#333" }} />}
-                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <div style={{
-                    width: 28, height: 28, borderRadius: "50%",
-                    background: step >= s.n ? BRAND : "#222",
-                    border: `2px solid ${step >= s.n ? BRAND : "#333"}`,
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    fontSize: 11, fontWeight: 900, color: step >= s.n ? BRAND_TEXT : "#555", fontFamily: ff,
-                  }}>
-                    {step > s.n ? "✓" : s.n}
-                  </div>
-                  <span style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.12em", color: step >= s.n ? "#fff" : "#555", fontFamily: ff }}>
-                    {s.l}
-                  </span>
+      <PageBanner image="/content/20250306_183818.jpg" alt="Checkout" />
+
+      <Breadcrumb crumbs={[{ label: "HOME", path: "#/" }, { label: "CART", path: "#/cart" }, { label: "CHECKOUT", path: null }]} />
+
+      <div style={{ background: "#fff", borderBottom: "1px solid #eee", padding: isMobile ? "16px 20px" : "20px 40px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+          {[{ n: 1, l: "DELIVERY" }, { n: 2, l: "REVIEW & PAY" }].map((s, i) => (
+            <div key={s.n} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              {i > 0 && <div style={{ width: isMobile ? 20 : 40, height: 1, background: step > i ? BRAND : "#ddd" }} />}
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <div style={{
+                  width: 28, height: 28, borderRadius: "50%",
+                  background: step >= s.n ? BRAND : "#f0f0f0",
+                  border: `2px solid ${step >= s.n ? BRAND : "#ddd"}`,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  fontSize: 11, fontWeight: 900, color: step >= s.n ? BRAND_TEXT : "#999", fontFamily: ff,
+                }}>
+                  {step > s.n ? "✓" : s.n}
                 </div>
+                <span style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.12em", color: step >= s.n ? BLACK : "#999", fontFamily: ff }}>
+                  {s.l}
+                </span>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -14049,15 +14023,7 @@ export function ReviewSubmissionPage({ productId, reviewId, navigate }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
-      <div style={{ background: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(/content/20250306_175757.jpg) center/cover no-repeat`, padding: isMobile ? "40px 20px" : "56px 40px 48px", textAlign: "center", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "relative", maxWidth: 600, margin: "0 auto" }}>
-          <div style={{ width: 36, height: 3, background: BRAND, margin: "0 auto 16px" }} />
-          <div style={{ fontSize: 10, letterSpacing: "0.2em", color: "#555", marginBottom: 10, fontFamily: ff }}>MY ACCOUNT · REVIEWS</div>
-          <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(24px, 8vw, 36px)" : "clamp(32px, 5vw, 60px)", lineHeight: 0.92, color: "#fff", letterSpacing: "0.02em", margin: "0 0 12px" }}>
-            {existingReview ? "EDIT REVIEW" : "WRITE A REVIEW"}
-          </h1>
-        </div>
-      </div>
+      <PageBanner image="/content/20250306_175757.jpg" alt={existingReview ? "Edit review" : "Write a review"} />
 
       <Breadcrumb crumbs={[
         { label: "HOME", path: "#/" },
