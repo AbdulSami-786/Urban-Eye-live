@@ -11555,8 +11555,8 @@ function PageBanner({ image, alt = "", overlayText }) {
         style={{ width: "100%", height: "auto", display: "block" }}
       />
       {overlayText && (
-        <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", paddingLeft: "clamp(20px, 6vw, 80px)", pointerEvents: "none" }}>
-          <span style={{ fontFamily: ff, fontWeight: 900, letterSpacing: "0.14em", fontSize: "clamp(20px, 4vw, 44px)", color: BLACK }}>
+        <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", paddingLeft: "clamp(20px, 6vw, 80px)", paddingRight: "8%", pointerEvents: "none" }}>
+          <span style={{ fontFamily: mono, fontStyle: "italic", fontWeight: 500, letterSpacing: "0.01em", fontSize: "clamp(13px, 2.1vw, 23px)", lineHeight: 1.55, color: BLACK, maxWidth: "48%" }}>
             {overlayText}
           </span>
         </div>
@@ -12004,7 +12004,11 @@ export function AboutUsPage({ navigate }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
-      <PageBanner image="/assets/banners/banneer2.png" alt="Urban Eye — our story" overlayText="OUR STORY" />
+      <PageBanner
+        image="/assets/banners/banneer2.png"
+        alt="Urban Eye — our story"
+        overlayText={<>"Elevating everyday style with thoughtfully crafted eyewear.<br />Inspired by our family legacy, designed for today's trendsetters."</>}
+      />
 
       <Breadcrumb crumbs={[{ label: "HOME", path: "#/" }, { label: "OUR STORY", path: null }]} />
 
