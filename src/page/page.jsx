@@ -11544,9 +11544,9 @@ function Breadcrumb({ crumbs }) {
 // wide (2.5:1) banner photography in assets/banners/, so the full image
 // spans the full width of the screen at its natural ratio on any device,
 // with no cropping and no letterboxing needed.
-function PageBanner({ image, alt = "" }) {
+function PageBanner({ image, alt = "", overlayText }) {
   return (
-    <div style={{ width: "100%", overflow: "hidden", background: "#111" }}>
+    <div style={{ width: "100%", overflow: "hidden", background: "#111", position: "relative" }}>
       <img
         src={image}
         alt={alt}
@@ -11554,6 +11554,13 @@ function PageBanner({ image, alt = "" }) {
         decoding="async"
         style={{ width: "100%", height: "auto", display: "block" }}
       />
+      {overlayText && (
+        <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", paddingLeft: "clamp(20px, 6vw, 80px)", pointerEvents: "none" }}>
+          <span style={{ fontFamily: ff, fontWeight: 900, letterSpacing: "0.14em", fontSize: "clamp(20px, 4vw, 44px)", color: BLACK }}>
+            {overlayText}
+          </span>
+        </div>
+      )}
     </div>
   );
 }
@@ -11997,7 +12004,7 @@ export function AboutUsPage({ navigate }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
-      <PageBanner image="/assets/banners/banneer2.png" alt="Urban Eye — our story" />
+      <PageBanner image="/assets/banners/banneer2.png" alt="Urban Eye — our story" overlayText="OUR STORY" />
 
       <Breadcrumb crumbs={[{ label: "HOME", path: "#/" }, { label: "OUR STORY", path: null }]} />
 
