@@ -12279,7 +12279,7 @@ export function HomePage({ navigate }) {
             <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 28px" }}/>
             <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 18 }}>EYE-CONIC EYEWEAR, SINCE 2015</div>
             <blockquote style={{ fontFamily: mono, fontSize: isMobile ? "clamp(16px, 5vw, 22px)" : "clamp(18px, 2.8vw, 28px)", lineHeight: 1.5, color: BLACK, margin: "0 0 20px", fontStyle: "italic" }}>"Elevating everyday style with thoughtfully crafted eyewear.<br />Inspired by our family legacy, designed for today's trendsetters."</blockquote>
-            <div style={{ fontSize: 11, letterSpacing: "0.16em", color: "#666", fontFamily: ff }}>TARIQ HASSAN · FOUNDER, URBAN EYE</div>
+            <div style={{ fontSize: 11, letterSpacing: "0.16em", color: "#666", fontFamily: ff }}>  URBAN EYE</div>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
               <a href="#/story" style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: BLACK, textDecoration: "none", borderBottom: `2px solid ${BRAND}`, paddingBottom: 2 }}>OUR STORY</a>
               <a href="#/collections/eyeglasses" style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: "#888", textDecoration: "none", borderBottom: "2px solid #ddd", paddingBottom: 2 }}>SHOP EYEGLASSES</a>

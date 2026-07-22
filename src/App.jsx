@@ -4974,8 +4974,7 @@ function AppInner() {
                 "Your vision is our concern."
               </p>
               <div style={{ fontSize: 10, letterSpacing: "0.12em", color: "#3a6a8a", marginTop: 8, fontFamily: ff }}>
-                TARIQ HASSAN · FOUNDER
-              </div>
+                               </div>
             </div>
             <p style={{
               fontSize: isMobile ? 12 : 13, color: "#5a8aaa", lineHeight: 1.8, maxWidth: 260,
