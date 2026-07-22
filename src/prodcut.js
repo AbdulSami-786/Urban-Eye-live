@@ -3477,7 +3477,7 @@ export const PRODUCTS_DATA = [
     ],
     specifications: {
       "Model Number": "IP8025",
-      "Frame Material": "Hand crafted acetate",
+      "Frame Material": "Titanium",
       "Lens Width": "54mm",
       "Bridge Width": "18mm",
       "Temple Length": "138mm",
@@ -3835,7 +3835,7 @@ export const PRODUCTS_DATA = [
     ],
     specifications: {
       "Model Number": "IP8026",
-      "Frame Material": "Hand crafted acetate",
+      "Frame Material": "Titanium",
       "Lens Width": "53mm",
       "Bridge Width": "18mm",
       "Temple Length": "138mm",
@@ -4380,7 +4380,7 @@ export const PRODUCTS_DATA = [
     ],
     specifications: {
       "Model Number": "22SM016",
-      "Frame Material": "Hand crafted acetate",
+      "Frame Material": "Titanium",
       "Lens Width": "57mm",
       "Bridge Width": "17mm",
       "Temple Length": "140mm",
@@ -4470,7 +4470,7 @@ export const PRODUCTS_DATA = [
     ],
     specifications: {
       "Model Number": "22SM021",
-      "Frame Material": "Hand crafted acetate",
+      "Frame Material": "Titanium",
       "Lens Width": "58mm",
       "Bridge Width": "12mm",
       "Temple Length": "140mm",
