@@ -576,7 +576,7 @@ export const SORT_OPTS = [
 // dev server and production build, unlike "../banners/..." relative paths.
 export const HERO_SLIDES = [
   {
-    image: "/content/20241211_173909.jpg",
+    image: "/assets/banners/banner1.png",
     label: "NEW ARRIVALS",
     heading: "SEE THE\nDIFFERENCE",
     sub: "Explore our latest collection.",
@@ -586,7 +586,7 @@ export const HERO_SLIDES = [
     // shape: "round",
   },
   {
-    image: "/content/20250304_190049.jpg",
+    image: "/assets/banners/banneer2.png",
     label: "OUR COLLECTION",
     heading: "STYLE THAT\nSPEAKS",
     // sub: "Handpicked frames for every look.",
@@ -596,7 +596,7 @@ export const HERO_SLIDES = [
     // shape: "round",
   },
   {
-    image: "/content/20250305_193723.jpg",
+    image: "/assets/banners/banner3.png",
     label: "LIMITED TIME",
     heading: "FIND YOUR\nFRAME",
     sub: "Quality eyewear, made for you.",

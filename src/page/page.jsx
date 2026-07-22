@@ -12219,20 +12219,15 @@ export function HomePage({ navigate }) {
   return (
     <div style={{ color: BLACK }}>
       {/* HERO */}
-      <section
-        style={{
-          minHeight: isMobile ? "60vh" : "88vh",
-          backgroundImage: `url(${slide.image})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          position: "relative",
-          overflow: "hidden",
-          transition: "background-image 1.1s ease",
-        }}
-      >
+      <section style={{ position: "relative", overflow: "hidden", background: "#111" }}>
+        <img
+          key={slide.image}
+          src={slide.image}
+          alt=""
+          loading="eager"
+          decoding="async"
+          style={{ width: "100%", height: "auto", display: "block" }}
+        />
         <div style={{
           position: "absolute",
           bottom: 28,
