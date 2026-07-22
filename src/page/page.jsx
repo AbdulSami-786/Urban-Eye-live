@@ -11540,23 +11540,19 @@ function Breadcrumb({ crumbs }) {
   );
 }
 
-// Plain photo banner used at the top of most pages — no text on it, and the
-// full image is always visible, never cropped on any side.
-// Mobile: shown at its natural ratio (narrow screens suit these portrait
-// photos, so no letterboxing is needed).
-// Desktop: these are tall portrait photos, so showing them at natural size
-// would make the banner 1500-2500px tall. Instead they're letterboxed —
-// fixed, sane height, full photo fully visible, empty space fills the sides.
-function PageBanner({ image, alt = "", height = 440 }) {
-  const isMobile = useMediaQuery("(max-width: 767px)");
+// Plain photo banner used at the top of most pages — no text on it. Uses the
+// wide (2.5:1) banner photography in assets/banners/, so the full image
+// spans the full width of the screen at its natural ratio on any device,
+// with no cropping and no letterboxing needed.
+function PageBanner({ image, alt = "" }) {
   return (
-    <div style={{ width: "100%", height: isMobile ? "auto" : height, overflow: "hidden", background: "#111", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <div style={{ width: "100%", overflow: "hidden", background: "#111" }}>
       <img
         src={image}
         alt={alt}
         loading="eager"
         decoding="async"
-        style={{ width: "100%", height: isMobile ? "auto" : "100%", display: "block", objectFit: isMobile ? undefined : "contain" }}
+        style={{ width: "100%", height: "auto", display: "block" }}
       />
     </div>
   );
@@ -11931,7 +11927,7 @@ export function CollectionsLandingPage({ navigate }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
-      <PageBanner image="/content/DSC08359.jpg" alt="Urban Eye collections" />
+      <PageBanner image="/assets/banners/banner1.png" alt="Urban Eye collections" />
 
       <Breadcrumb crumbs={[{ label: "HOME", path: "#/" }, { label: "COLLECTIONS", path: null }]} />
 
@@ -12001,7 +11997,7 @@ export function AboutUsPage({ navigate }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
-      <PageBanner image="/content/20251018_140030.jpg" alt="Urban Eye — our story" />
+      <PageBanner image="/assets/banners/banneer2.png" alt="Urban Eye — our story" />
 
       <Breadcrumb crumbs={[{ label: "HOME", path: "#/" }, { label: "OUR STORY", path: null }]} />
 
@@ -12567,7 +12563,7 @@ export function ProductsPage({ navigate, queryParams }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
-      <PageBanner image="/content/20251018_140450.jpg" alt="The collection" />
+      <PageBanner image="/assets/banners/banner3.png" alt="The collection" />
 
       <div style={{ background: "#fff", borderBottom: "1px solid #eee", padding: isMobile ? "20px 20px" : "24px 40px" }}>
         <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
@@ -12692,7 +12688,7 @@ export function CollectionDetailPage({ slug, navigate }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
-      <PageBanner image="/content/20251018_140653.jpg" alt={col.title} />
+      <PageBanner image="/assets/banners/banner1.png" alt={col.title} />
 
       <Breadcrumb crumbs={[{ label: "HOME", path: "#/" }, { label: "COLLECTIONS", path: "#/collections" }, { label: col.title, path: null }]} />
 
@@ -12962,6 +12958,12 @@ export function ProductDetailPage({ productId, navigate }) {
                 {added ? "✓ ADDED TO BAG" : "ADD TO BAG"}
               </button>
 
+              <button onClick={() => { addToCart(product, qty); navigate("#/checkout"); }} style={{ width: "100%", background: "#fff", color: "#0c2c41", border: "1.5px solid #0c2c41", padding: "15px 24px", fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", cursor: "pointer", fontFamily: ff, transition: "background 0.2s, color 0.2s", marginBottom: 12 }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = "#0c2c41"; e.currentTarget.style.color = "#fff"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = "#fff"; e.currentTarget.style.color = "#0c2c41"; }}>
+                BUY NOW
+              </button>
+
               {added && (
                 <button onClick={() => navigate("#/cart")} style={{ width: "100%", background: BRAND, color: BRAND_TEXT, border: "none", padding: "13px", fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", cursor: "pointer", fontFamily: ff, marginBottom: 14 }}>
                   VIEW BAG & CHECKOUT →
@@ -13099,7 +13101,7 @@ export function CartPage({ navigate }) {
           {shipping === 0 ? "YOU'VE UNLOCKED FREE WORLDWIDE EXPRESS SHIPPING!" : `ADD PKR ${(5000 - cartTotal).toLocaleString()} MORE FOR FREE SHIPPING`}
         </span>
       </div>
-      <PageBanner image="/content/20250306_172543.jpg" alt="Your cart" />
+      <PageBanner image="/assets/banners/banneer2.png" alt="Your cart" />
 
       <Breadcrumb crumbs={[{ label: "HOME", path: "#/" }, { label: "CART", path: null }]} />
 
@@ -13263,7 +13265,7 @@ export function WishlistPage({ navigate }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
-      <PageBanner image="/content/20251018_140811.jpg" alt="My wishlist" />
+      <PageBanner image="/assets/banners/banner3.png" alt="My wishlist" />
 
       <Breadcrumb crumbs={[{ label: "HOME", path: "#/" }, { label: "MY ACCOUNT", path: "#/dashboard" }, { label: "WISHLIST", path: null }]} />
 
@@ -13711,7 +13713,7 @@ export function CheckoutPage({ navigate }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
-      <PageBanner image="/content/20250306_183818.jpg" alt="Checkout" />
+      <PageBanner image="/assets/banners/banner1.png" alt="Checkout" />
 
       <Breadcrumb crumbs={[{ label: "HOME", path: "#/" }, { label: "CART", path: "#/cart" }, { label: "CHECKOUT", path: null }]} />
 
@@ -14053,7 +14055,7 @@ export function ReviewSubmissionPage({ productId, reviewId, navigate }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
-      <PageBanner image="/content/20250306_175757.jpg" alt={existingReview ? "Edit review" : "Write a review"} />
+      <PageBanner image="/assets/banners/banneer2.png" alt={existingReview ? "Edit review" : "Write a review"} />
 
       <Breadcrumb crumbs={[
         { label: "HOME", path: "#/" },
