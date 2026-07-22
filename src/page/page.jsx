@@ -12724,7 +12724,7 @@ function FeatureIcon({ feature }) {
   if (text.includes("pakistan")) return <PakistanFlagIcon />;
   let emoji = "✨";
   if (text.includes("hinge")) emoji = "🔩";
-  else if (text.includes("nose") || text.includes("bridge")) emoji = "👃";
+  else if (text.includes("nose") || text.includes("bridge")) emoji = "✓";
   else if (text.includes("hand") || text.includes("acetate") || text.includes("craft")) emoji = "✋";
   else if (text.includes("uv") || text.includes("polarized") || text.includes("sun")) emoji = "☀️";
   else if (text.includes("light") || text.includes("weight")) emoji = "🪶";
