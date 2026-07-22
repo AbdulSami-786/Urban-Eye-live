@@ -12430,16 +12430,28 @@ export function HomePage({ navigate }) {
             ))}
           </div>
           <FadeIn delay={GALLERY_IMAGES.length * 60}>
-            <video
-              src={GALLERY_VIDEO}
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              poster={GALLERY_IMAGES[0]}
-              style={{ width: "100%", maxHeight: isMobile ? 320 : 560, objectFit: "cover", display: "block", background: CREAM }}
-            />
+            {/* Source clip is vertical (9:16, phone-shot) — sizing the box to
+                match that ratio instead of forcing it into a wide frame is
+                what stops it from being cropped in tight and "zoomed". */}
+            <div style={{ width: "100%", background: "#0a0a0a", display: "flex", justifyContent: "center" }}>
+              <video
+                src={GALLERY_VIDEO}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                poster={GALLERY_IMAGES[0]}
+                style={{
+                  width: isMobile ? "100%" : "auto",
+                  height: isMobile ? "auto" : 640,
+                  maxWidth: "100%",
+                  aspectRatio: "9 / 16",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+            </div>
           </FadeIn>
         </div>
       </section>
