@@ -11417,7 +11417,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { PRODUCTS_DATA } from "../prodcut.js";
 import { BLACK, CREAM, ff, mono, COLLECTIONS,
-         HERO_SLIDES, HOME_PRODUCTS, TINTS, TESTIMONIALS, PROCESS_STEPS, CATEGORIES_HOME,
+         HERO_SLIDES, HOME_PRODUCTS, TESTIMONIALS, PROCESS_STEPS, CATEGORIES_HOME,
          tagColors } from "../contants/store.js";
 import { applyProductFilters, getProductColorOptions, getProductBrandOptions, getProductSizeOptions, getProductDisplayPrice, getProductDiscountPercent, getProductDisplayImage, getRelatedProducts, getProductVariants, productMatchesShape, getUniqueShapesFromProducts, normalizeCategory, normalizeGender, formatPriceValue, matchesSearchTerm } from "../services/productUtils.js";
 import { YBtn, OutlineBtn, FadeIn, Counter, Frame, ProductCard, ProductSlider, WishlistHeart, WishlistSkeleton } from "../components/shared";
@@ -12059,6 +12059,12 @@ const GALLERY_IMAGES = [
   "/content/20251018_140021.jpg",
 ];
 const GALLERY_VIDEO = "/content/2.mp4";
+const CATALOG_IMAGES = [
+  "/content/DSC08359.jpg",
+  "/content/DSC08362.jpg",
+  "/content/DSC08364 (1).jpg",
+  "/content/DSC08367.jpg",
+];
 
 export function HomePage({ navigate }) {
   const [heroSlide, setHeroSlide] = useState(0);
@@ -12339,30 +12345,19 @@ export function HomePage({ navigate }) {
         </div>
       </section>
 
-      {/* CUSTOM TINTS (active version) */}
-      <section style={{ background: CREAM, padding: isMobile ? "60px 20px" : "96px 40px", textAlign: "center", position: "relative", overflow: "hidden", borderTop: "2px solid #e8ddd0", borderBottom: "2px solid #e8ddd0" }}>
-        <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%)", opacity: 0.04, pointerEvents: "none" }}>
-          <Frame shape="cateye" size={isMobile ? 400 : 900} color={BLACK}/>
-        </div>
-        <FadeIn>
-          <div style={{ maxWidth: 820, margin: "0 auto", position: "relative" }}>
-            <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 24px" }}/>
-            <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#888", marginBottom: 12 }}>EXCLUSIVE TO URBAN EYE</div>
-            <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 10vw, 48px)" : "clamp(44px,8vw,88px)", color: BLACK, lineHeight: 0.92, margin: "0 0 6px" }}>CUSTOM MADE</h2>
-            <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 10vw, 48px)" : "clamp(44px,8vw,88px)", color: BRAND, lineHeight: 0.92, margin: "0 0 28px" }}>TINTS™</h2>
-            <p style={{ fontSize: isMobile ? 13 : 15, color: "#666", lineHeight: 1.85, maxWidth: 500, margin: "0 auto 44px", fontFamily: mono }}>Choose any frame. Choose any tint. Our opticians hand-apply your chosen colour — 20+ shades to make it yours.</p>
-            <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap", marginBottom: 44 }}>
-              {TINTS.map(t => (
-                <div key={t.name} title={t.name} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6, cursor: "pointer" }}>
-                  <div style={{ width: isMobile ? 36 : 46, height: isMobile ? 36 : 46, borderRadius: "50%", background: t.color, border: "1px solid rgba(0,0,0,0.08)", boxShadow: "0 2px 10px rgba(0,0,0,0.15)" }}/>
-                  <span style={{ fontSize: 8, letterSpacing: "0.14em", color: "#999", fontFamily: ff }}>{t.name}</span>
+      {/* IMAGE CATALOG */}
+      <section style={{ padding: isMobile ? "48px 20px" : "72px 40px", background: CREAM }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(2,1fr)" : "repeat(4,1fr)", gap: 3 }}>
+            {CATALOG_IMAGES.map((src, i) => (
+              <FadeIn key={src} delay={i * 60}>
+                <div style={{ aspectRatio: "1 / 1", overflow: "hidden", background: "#fff" }}>
+                  <img src={src} alt="Urban Eye frame detail" loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                 </div>
-              ))}
-              <div style={{ display: "flex", alignItems: "center", fontSize: 12, color: "#999", marginLeft: 8 }}>+12 more</div>
-            </div>
-            <YBtn onClick={() => navigate("#/collections/custom-made-tints")} style={{ padding: "14px 32px", fontSize: isMobile ? 10 : 12 }}>SHOP CUSTOM TINTS™</YBtn>
+              </FadeIn>
+            ))}
           </div>
-        </FadeIn>
+        </div>
       </section>
 
       {/* HOW IT WORKS */}
@@ -12428,8 +12423,8 @@ export function HomePage({ navigate }) {
           <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(2,1fr)" : "repeat(4,1fr)", gap: 3, marginBottom: 3 }}>
             {GALLERY_IMAGES.map((src, i) => (
               <FadeIn key={src} delay={i * 60}>
-                <div style={{ background: CREAM, display: "flex" }}>
-                  <img src={src} alt="Urban Eye frame detail" loading="lazy" decoding="async" style={{ width: "100%", height: "auto", display: "block" }} />
+                <div style={{ aspectRatio: "1 / 1", overflow: "hidden", background: CREAM }}>
+                  <img src={src} alt="Urban Eye frame detail" loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                 </div>
               </FadeIn>
             ))}
