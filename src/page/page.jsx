@@ -12058,7 +12058,6 @@ const GALLERY_IMAGES = [
   "/content/DSC08374.jpg",
   "/content/20251018_140021.jpg",
 ];
-const GALLERY_VIDEO = "/content/2.mp4";
 const CATALOG_IMAGES = [
   "/content/DSC08359.jpg",
   "/content/DSC08362.jpg",
@@ -12429,30 +12428,6 @@ export function HomePage({ navigate }) {
               </FadeIn>
             ))}
           </div>
-          <FadeIn delay={GALLERY_IMAGES.length * 60}>
-            {/* Source clip is vertical (9:16, phone-shot). Full width with no
-                bars means it has to crop in — using a much bigger box than a
-                typical wide banner keeps most of the frame instead of
-                zooming into a thin sliver of it. */}
-            <video
-              src={GALLERY_VIDEO}
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              poster={GALLERY_IMAGES[0]}
-              style={{
-                width: "100%",
-                height: isMobile ? "60vh" : "75vh",
-                minHeight: isMobile ? 380 : 500,
-                maxHeight: isMobile ? 560 : 820,
-                objectFit: "cover",
-                display: "block",
-                background: CREAM,
-              }}
-            />
-          </FadeIn>
         </div>
       </section>
 
