@@ -11996,7 +11996,6 @@ const CRAFT_IMAGES = [
   "/content/20250306_184828.jpg",
   "/content/20250306_190752.jpg",
 ];
-const CRAFT_VIDEO = "/content/1.mp4";
 
 export function AboutUsPage({ navigate }) {
   useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, []);
@@ -12014,11 +12013,15 @@ export function AboutUsPage({ navigate }) {
 
       <div style={{ maxWidth: 1000, margin: "0 auto", padding: isMobile ? "48px 20px" : "72px 40px" }}>
         <FadeIn>
-          <blockquote style={{ fontFamily: mono, fontSize: isMobile ? "clamp(16px, 5vw, 20px)" : "clamp(18px, 2.4vw, 26px)", lineHeight: 1.6, color: BLACK, textAlign: "center", margin: "0 0 20px", fontStyle: "italic" }}>
-            "Elevating everyday style with thoughtfully crafted eyewear.<br />
-            Inspired by our family legacy, designed for today's trendsetters."
-          </blockquote>
-          <div style={{ textAlign: "center", fontSize: 11, letterSpacing: "0.16em", color: "#666", marginBottom: 60 }}>TARIQ HASSAN · FOUNDER, URBAN EYE</div>
+          <div style={{ textAlign: "center", fontSize: 11, letterSpacing: "0.16em", color: "#666", marginBottom: 24 }}>URBAN EYE</div>
+          <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
+            <p style={{ fontFamily: mono, fontSize: isMobile ? 13 : 14, lineHeight: 1.9, color: "#444", margin: "0 0 20px" }}>
+              With a legacy spanning three generations, Urban Eye has become one of Karachi's most trusted destinations for premium eyewear. From our flagship store in Zamzama, we bring together iconic global brands, timeless elegance, and personalized service to deliver an eyewear experience defined by style, quality, and customer satisfaction.
+            </p>
+            <p style={{ fontFamily: mono, fontSize: isMobile ? 13 : 14, lineHeight: 1.9, color: "#444", margin: "0 0 60px" }}>
+              Combining over 30 years of expertise in eyewear craftsmanship with a refined, contemporary aesthetic, Urban Eye curates timeless eyeglasses and frames that blend fashion with functionality. While we have grown into a recognized fashion destination, we remain true to our roots as a neighborhood optical boutique—committed to expert eye care, genuine relationships, and exceptional service for every customer who walks through our doors.
+            </p>
+          </div>
         </FadeIn>
 
         <FadeIn delay={80}>
@@ -12043,16 +12046,6 @@ export function AboutUsPage({ navigate }) {
               </div>
             ))}
           </div>
-          <video
-            src={CRAFT_VIDEO}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            poster={CRAFT_IMAGES[0]}
-            style={{ width: "100%", maxHeight: isMobile ? 300 : 480, objectFit: "cover", display: "block", background: CREAM }}
-          />
         </FadeIn>
       </div>
     </div>
