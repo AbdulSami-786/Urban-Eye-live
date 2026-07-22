@@ -12430,28 +12430,28 @@ export function HomePage({ navigate }) {
             ))}
           </div>
           <FadeIn delay={GALLERY_IMAGES.length * 60}>
-            {/* Source clip is vertical (9:16, phone-shot) — sizing the box to
-                match that ratio instead of forcing it into a wide frame is
-                what stops it from being cropped in tight and "zoomed". */}
-            <div style={{ width: "100%", background: "#0a0a0a", display: "flex", justifyContent: "center" }}>
-              <video
-                src={GALLERY_VIDEO}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                poster={GALLERY_IMAGES[0]}
-                style={{
-                  width: isMobile ? "100%" : "auto",
-                  height: isMobile ? "auto" : 640,
-                  maxWidth: "100%",
-                  aspectRatio: "9 / 16",
-                  objectFit: "cover",
-                  display: "block",
-                }}
-              />
-            </div>
+            {/* Source clip is vertical (9:16, phone-shot). Full width with no
+                bars means it has to crop in — using a much bigger box than a
+                typical wide banner keeps most of the frame instead of
+                zooming into a thin sliver of it. */}
+            <video
+              src={GALLERY_VIDEO}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              poster={GALLERY_IMAGES[0]}
+              style={{
+                width: "100%",
+                height: isMobile ? "60vh" : "75vh",
+                minHeight: isMobile ? 380 : 500,
+                maxHeight: isMobile ? 560 : 820,
+                objectFit: "cover",
+                display: "block",
+                background: CREAM,
+              }}
+            />
           </FadeIn>
         </div>
       </section>
