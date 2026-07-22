@@ -12836,6 +12836,35 @@ export function ProductDetailPage({ productId, navigate }) {
                 <div style={{ width: "100%", height: "100%", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "center", background: "#fff" }}>
                   <img key={`${product.id}-${activeImg}-${displayLabel}`} src={`${displayImage}`} alt={`${product.name} - ${displayLabel}`} loading="eager" decoding="async" style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", padding: 0, animation: "fadeImgIn 0.35s ease", boxSizing: "border-box" }} />
                 </div>
+                {galleryImages.length > 1 && (
+                  <>
+                    <button
+                      onClick={() => setActiveImg(i => (i - 1 + galleryImages.length) % galleryImages.length)}
+                      aria-label="Previous image"
+                      style={{
+                        position: "absolute", top: "50%", left: isMobile ? 10 : 18, transform: "translateY(-50%)", zIndex: 4,
+                        width: isMobile ? 38 : 44, height: isMobile ? 38 : 44, borderRadius: "50%",
+                        background: "rgba(255,255,255,0.92)", border: "1px solid #e5e0d8", boxShadow: "0 4px 16px rgba(0,0,0,0.14)",
+                        display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer",
+                        color: BLACK, fontSize: 20, lineHeight: 1, fontFamily: ff, backdropFilter: "blur(4px)",
+                      }}
+                    >‹</button>
+                    <button
+                      onClick={() => setActiveImg(i => (i + 1) % galleryImages.length)}
+                      aria-label="Next image"
+                      style={{
+                        position: "absolute", top: "50%", right: isMobile ? 10 : 18, transform: "translateY(-50%)", zIndex: 4,
+                        width: isMobile ? 38 : 44, height: isMobile ? 38 : 44, borderRadius: "50%",
+                        background: "rgba(255,255,255,0.92)", border: "1px solid #e5e0d8", boxShadow: "0 4px 16px rgba(0,0,0,0.14)",
+                        display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer",
+                        color: BLACK, fontSize: 20, lineHeight: 1, fontFamily: ff, backdropFilter: "blur(4px)",
+                      }}
+                    >›</button>
+                    <div style={{ position: "absolute", bottom: 14, left: "50%", transform: "translateX(-50%)", zIndex: 4, fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", color: BLACK, background: "rgba(255,255,255,0.9)", padding: "4px 10px", borderRadius: 999, fontFamily: mono }}>
+                      {activeImg + 1} / {galleryImages.length}
+                    </div>
+                  </>
+                )}
               </div>
               {galleryImages.length > 1 && (
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
