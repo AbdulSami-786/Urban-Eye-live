@@ -3468,9 +3468,9 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["54 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Drew embeds a new sleek design, made from high quality acetate, with Silver frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Drew embeds a new sleek design, made from premium titanium, with Silver frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
-      "Made from Hand crafted acetate",
+      "Made from Premium Titanium",
       "Pakistan Landmarks Engraving",
       "Comfortable Nose Bridge",
       "Steel hinges",
@@ -3826,9 +3826,9 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["53 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Mount embeds a new sleek design, made from high quality acetate, with Titanium Blue frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Mount embeds a new sleek design, made from premium titanium, with Titanium Blue frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
-      "Made from Hand crafted acetate",
+      "Made from Premium Titanium",
       "Pakistan Landmarks Engraving",
       "Comfortable Nose Bridge",
       "Steel hinges",
@@ -4371,9 +4371,9 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["57 (Small)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Bevis embeds a new sleek design, made from high quality acetate, with Matt Black frame & Gradient Red lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Bevis embeds a new sleek design, made from premium titanium, with Matt Black frame & Gradient Red lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
-      "Made from Hand crafted acetate",
+      "Made from Premium Titanium",
       "Pakistan Landmarks Engraving",
       "Comfortable Nose Bridge",
       "Steel hinges",
@@ -4461,9 +4461,9 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["58 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Monaco embeds a new sleek design, made from high quality acetate, with Silver frame & Gradient blue lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Monaco embeds a new sleek design, made from premium titanium, with Silver frame & Gradient blue lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
-      "Made from Hand crafted acetate",
+      "Made from Premium Titanium",
       "Pakistan Landmarks Engraving",
       "Comfortable Nose Bridge",
       "Steel hinges",
