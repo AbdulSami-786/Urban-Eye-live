@@ -11987,7 +11987,7 @@ export function CollectionsLandingPage({ navigate }) {
 }
 
 // ============ ABOUT US / OUR STORY PAGE ============
-const SHOP_IMAGES = ["/contact/20251018_175251.jpg", "/contact/20251018_180105.jpg"];
+const SHOP_IMAGES = ["/contact/20251018_175251.jpg"];
 const CRAFT_IMAGES = [
   "/content/20250304_164413.jpg",
   "/content/20250304_183750.jpg",
@@ -12013,7 +12013,7 @@ export function AboutUsPage({ navigate }) {
 
       <div style={{ maxWidth: 1000, margin: "0 auto", padding: isMobile ? "48px 20px" : "72px 40px" }}>
         <FadeIn>
-          <div style={{ textAlign: "center", fontSize: 11, letterSpacing: "0.16em", color: "#666", marginBottom: 24 }}>URBAN EYE</div>
+          <div style={{ textAlign: "center", fontSize: 11, fontWeight: 900, letterSpacing: "0.16em", color: "#666", marginBottom: 24 }}>URBAN EYE</div>
           <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
             <p style={{ fontFamily: mono, fontSize: isMobile ? 13 : 14, lineHeight: 1.9, color: "#444", margin: "0 0 20px" }}>
               With a legacy spanning three generations, Urban Eye has become one of Karachi's most trusted destinations for premium eyewear. From our flagship store in Zamzama, we bring together iconic global brands, timeless elegance, and personalized service to deliver an eyewear experience defined by style, quality, and customer satisfaction.
@@ -12027,7 +12027,7 @@ export function AboutUsPage({ navigate }) {
         <FadeIn delay={80}>
           <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 8, textAlign: "center" }}>VISIT US</div>
           <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(22px, 6vw, 30px)" : "clamp(28px, 3.6vw, 40px)", textAlign: "center", margin: "0 0 40px" }}>OUR STORE</h2>
-          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 12 }}>
+          <div style={{ maxWidth: 560, margin: "0 auto" }}>
             {SHOP_IMAGES.map((src, i) => (
               <div key={i} style={{ background: CREAM, display: "flex" }}>
                 <img src={src} alt="Urban Eye store" loading="lazy" decoding="async" style={{ width: "100%", height: "auto", display: "block" }} />
