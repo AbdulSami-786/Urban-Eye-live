@@ -12875,7 +12875,8 @@ export function ProductDetailPage({ productId, navigate }) {
                   <div style={{ position: "absolute", top: 20, right: 20, zIndex: 3, background: BRAND, color: BRAND_TEXT, fontSize: 10, fontWeight: 900, letterSpacing: "0.1em", padding: "5px 12px", fontFamily: ff }}>−{discount}% OFF</div>
                 )}
                 <div style={{ width: "100%", height: "100%", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "center", background: "#fff" }}>
-                  <img key={`${product.id}-${activeImg}-${displayLabel}`} src={`${displayImage}`} alt={`${product.name} - ${displayLabel}`} loading="eager" decoding="async" style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", padding: 0, animation: "fadeImgIn 0.35s ease", boxSizing: "border-box" }} />
+                    {console.log("displayImage", displayImage)}
+                  <img key={`${product.id}-${activeImg}-${displayLabel}`} src={`.${displayImage}`} alt={`${product.name} - ${displayLabel}`} loading="eager" decoding="async" style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", padding: 0, animation: "fadeImgIn 0.35s ease", boxSizing: "border-box" }} />
                 </div>
                 {galleryImages.length > 1 && (
                   <>
@@ -12911,7 +12912,7 @@ export function ProductDetailPage({ productId, navigate }) {
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                   {galleryImages.map((img, i) => (
                     <div key={`${product.id}-${i}`} onClick={() => setActiveImg(i)} style={{ width: isMobile ? 64 : isTablet ? 80 : 100, height: isMobile ? 54 : isTablet ? 64 : 76, overflow: "hidden", cursor: "pointer", background: CREAM, flexShrink: 0, border: i === activeImg ? `2px solid ${BLACK}` : "1px solid #e8e0d0", opacity: i === activeImg ? 1 : 0.45, transition: "border-color 0.15s, opacity 0.15s", boxSizing: "border-box" }}>
-                      <img src={`${img}`} alt="" loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "contain", padding: isMobile ? 4 : 8, boxSizing: "border-box" }} />
+                      <img src={`.${img}`} alt="" loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "contain", padding: isMobile ? 4 : 8, boxSizing: "border-box" }} />
                     </div>
                   ))}
                 </div>

@@ -1299,7 +1299,7 @@ export function ProductCard({ product, navigate, type = "default" }) {
         }}
       >
         <img
-          src={displayImage}
+          src={`.${displayImage}`}
           alt={`${product.name} - ${displayLabel}`}
           loading="lazy"
           decoding="async"
