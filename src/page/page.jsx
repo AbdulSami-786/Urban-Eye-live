@@ -12409,7 +12409,7 @@ export function HomePage({ navigate }) {
       </section>
 
       {/* TESTIMONIALS */}
-      <section style={{ padding: isMobile ? "48px 20px" : "72px 40px", background: CREAM }}>
+      <section style={{ padding: isMobile ? "20px 0px" : "40px 0px", background: CREAM }}>
         <div style={{ maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
           <FadeIn>
             <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 20px" }}/>
@@ -12425,7 +12425,7 @@ export function HomePage({ navigate }) {
                 </div>
               ))}
             </div>
-            <div style={{ display: "flex", gap: 8, justifyContent: "center", marginTop: isMobile ? 280 : 210 }}>
+            <div style={{ display: "flex", gap: 8, justifyContent: "center", marginTop: isMobile ? "10px": "10px" }}>
               {TESTIMONIALS.map((_, i) => (
                 <button key={i} onClick={() => setTIdx(i)} style={{ height: 3, border: "none", cursor: "pointer", background: i === testimonialIdx ? BRAND : "#ccc", width: i === testimonialIdx ? 28 : 10, transition: "all 0.35s" }}/>
               ))}
