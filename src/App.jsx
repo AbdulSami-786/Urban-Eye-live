@@ -4134,7 +4134,7 @@ const NAV_LINKS_BASE = [
 function buildProductsLink(to) {
   const params = new URLSearchParams(to || {});
   const qs = params.toString();
-  return qs ? `#/products?${qs}` : "#/products";
+  return qs ? `/products?${qs}` : "/products";
 }
 
 // ─── Generate dynamic shape links for a given category ────────────────────
@@ -4506,19 +4506,19 @@ function AppInner() {
         }}>
 
           {/* Logo */}
-          <a href="#/" style={{ textDecoration: "none", flexShrink: 0 }}>
+          <a href="/" style={{ textDecoration: "none", flexShrink: 0 }}>
             <img src="./logo.jpeg" alt="Urban Eye" style={{ height: isMobile ? 38 : 50, width: "auto" }} />
           </a>
 
           {/* Nav Links — hidden on mobile */}
           {!isMobile && (
             <nav style={{ display: "flex", alignItems: "center", flex: 1, justifyContent: "center" }}>
-              <a href="#/products"
+              <a href="/products"
                 style={{
                   background: "none", border: "none", fontSize: 12, fontWeight: 900,
                   letterSpacing: "0.1em", padding: "0 18px", height: 62, cursor: "pointer",
                   color: BLACK, fontFamily: ff,
-                  borderBottom: window.location.hash === "#/products" ? `3px solid ${NAVY}` : "3px solid transparent",
+                  borderBottom: window.location.pathname === "/products" ? `3px solid ${NAVY}` : "3px solid transparent",
                   transition: "border-color 0.2s", display: "flex", alignItems: "center", textDecoration: "none"
                 }}>
                 PRODUCTS
@@ -4741,7 +4741,7 @@ function AppInner() {
             }}
           >
             <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-              <a href="#/products" onClick={() => goTo("#/products")}
+              <a href="/products" onClick={() => goTo("/products")}
                 style={{
                   padding: "12px 0", fontSize: 14, fontWeight: 900, color: BLACK,
                   borderBottom: "1px solid #eee", fontFamily: ff, textDecoration: "none",

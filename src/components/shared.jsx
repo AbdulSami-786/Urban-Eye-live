@@ -1212,7 +1212,7 @@ export function ProductCard({ product, navigate, type = "default" }) {
 
   return (
     <a
-      href={`#/products/${product.id}`}
+      href={`/products/${product.id}`}
       onClick={(event) => {
         // Let ctrl/cmd/shift/middle-click fall through to native "open in new
         // tab" behavior — only intercept a plain left click for SPA routing

@@ -2933,10 +2933,9 @@ export default function DashboardPage({ navigate }) {
   const { user, updateProfile, logout } = useAuth();
   const isMobile = useMediaQuery("(max-width: 767px)");
 
-  const hashParams = new URLSearchParams(
-    window.location.hash.replace(/^[^?]*/, "").replace("?", "")
+  const [activeTab, setActiveTab] = useState(
+    new URLSearchParams(window.location.search).get("tab") || "profile"
   );
-  const [activeTab, setActiveTab] = useState(hashParams.get("tab") || "profile");
 
   const [orders,    setOrders]    = useState([]);
   const [addresses, setAddresses] = useState([]);
@@ -3078,7 +3077,7 @@ export default function DashboardPage({ navigate }) {
 
   const tabNav = (key) => {
     setActiveTab(key);
-    window.history.replaceState(null, "", `#/dashboard?tab=${key}`);
+    window.history.replaceState(null, "", `/dashboard?tab=${key}`);
   };
 
   // ─── RENDER ─────────────────────────────────────────────────────────────────

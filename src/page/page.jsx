@@ -11540,7 +11540,7 @@ function Breadcrumb({ crumbs }) {
           <span key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
             {i > 0 && <span style={{ color: "#bbb", fontSize: 10 }}>›</span>}
             {crumb.path
-              ? <a href={crumb.path} style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.14em", color: "#888", textDecoration: "none", fontFamily: ff }}>{crumb.label}</a>
+              ? <a href={crumb.path.startsWith("#") ? crumb.path.slice(1) : crumb.path} style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.14em", color: "#888", textDecoration: "none", fontFamily: ff }}>{crumb.label}</a>
               : <span aria-current="page" style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.14em", color: BLACK, fontFamily: ff }}>{crumb.label}</span>}
           </span>
         ))}
@@ -12305,8 +12305,8 @@ export function HomePage({ navigate }) {
             <blockquote style={{ fontFamily: mono, fontSize: isMobile ? "clamp(16px, 5vw, 22px)" : "clamp(18px, 2.8vw, 28px)", lineHeight: 1.5, color: BLACK, margin: "0 0 20px", fontStyle: "italic" }}>"Elevating everyday style with thoughtfully crafted eyewear.<br />Inspired by our family legacy, designed for today's trendsetters."</blockquote>
             <div style={{ fontSize: 11, letterSpacing: "0.16em", color: "#666", fontFamily: ff }}>  URBAN EYE</div>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
-              <a href="#/story" style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: BLACK, textDecoration: "none", borderBottom: `2px solid ${BRAND}`, paddingBottom: 2 }}>OUR STORY</a>
-              <a href="#/collections/eyeglasses" style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: "#888", textDecoration: "none", borderBottom: "2px solid #ddd", paddingBottom: 2 }}>SHOP EYEGLASSES</a>
+              <a href="/story" style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: BLACK, textDecoration: "none", borderBottom: `2px solid ${BRAND}`, paddingBottom: 2 }}>OUR STORY</a>
+              <a href="/collections/eyeglasses" style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: "#888", textDecoration: "none", borderBottom: "2px solid #ddd", paddingBottom: 2 }}>SHOP EYEGLASSES</a>
             </div>
           </div>
         </FadeIn>
@@ -12321,7 +12321,7 @@ export function HomePage({ navigate }) {
                 <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 6 }}>BROWSE</div>
                 <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(22px, 6vw, 32px)" : "clamp(28px,4vw,46px)", margin: 0, letterSpacing: "0.02em" }}>SHOP BY CATEGORY</h2>
               </div>
-              <a href="#/collections/eyeglasses" style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", color: "#888", textDecoration: "none", borderBottom: `2px solid ${BRAND}`, paddingBottom: 2 }}>VIEW ALL →</a>
+              <a href="/collections/eyeglasses" style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", color: "#888", textDecoration: "none", borderBottom: `2px solid ${BRAND}`, paddingBottom: 2 }}>VIEW ALL →</a>
             </div>
           </FadeIn>
           <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "repeat(2,1fr)" : "repeat(4,1fr)", gap: 2 }}>
@@ -12853,7 +12853,7 @@ export function ProductDetailPage({ productId, navigate }) {
     <div style={{ minHeight: "100vh", background: "#f5f0e8", fontFamily: ff }}>
       <div style={{ borderBottom: "1px solid #e8e0d0", padding: "13px 20px" }}>
         <div style={{ maxWidth: 1400, margin: "0 auto", display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
-          {[{ label: "HOME", path: "#/" }, { label: "COLLECTION", path: `#/collections/${categorySlug}` }, { label: product.name.toUpperCase(), path: null }].map((crumb, i) => (
+          {[{ label: "HOME", path: "/" }, { label: "COLLECTION", path: `/collections/${categorySlug}` }, { label: product.name.toUpperCase(), path: null }].map((crumb, i) => (
             <span key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
               {i > 0 && <span style={{ color: "#ccc", fontSize: 10 }}>›</span>}
               {crumb.path ? <a href={crumb.path} style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: "#888", textDecoration: "none", fontFamily: ff }}>{crumb.label}</a>
@@ -12922,11 +12922,11 @@ export function ProductDetailPage({ productId, navigate }) {
           <FadeIn delay={120}>
             <div style={{ paddingTop: isMobile ? 24 : 4 }}>
               <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 14, flexWrap: "wrap" }}>
-                <a href={`#/collections/${categorySlug}`} style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.18em", color: "#aaa", fontFamily: ff, textDecoration: "none" }}>{product.category?.toUpperCase()}</a>
+                <a href={`/collections/${categorySlug}`} style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.18em", color: "#aaa", fontFamily: ff, textDecoration: "none" }}>{product.category?.toUpperCase()}</a>
                 <span style={{ color: "#ddd" }}>·</span>
                 <span style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.18em", color: "#aaa", fontFamily: ff }}>{product.subcategory?.toUpperCase()}</span>
                 <span style={{ color: "#ddd" }}>·</span>
-                <a href={`#/collections/${genderCollectionSlug}`} style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.18em", color: "#aaa", fontFamily: ff, textDecoration: "none" }}>{product.gender?.toUpperCase()}</a>
+                <a href={`/collections/${genderCollectionSlug}`} style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.18em", color: "#aaa", fontFamily: ff, textDecoration: "none" }}>{product.gender?.toUpperCase()}</a>
               </div>
 
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 7, flexWrap: "wrap" }}>
