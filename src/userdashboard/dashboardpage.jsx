@@ -2573,6 +2573,7 @@ import {
   getPurchasedProducts,
 } from "../services/service.js";
 import { useCart } from "../contexts/CardContext.jsx";
+import { useDocumentHead } from "../hook/useDocumentHead.js";
 
 const NAVY   = "#0c2c41";
 const ACCENT = "#89c4e1";
@@ -2928,6 +2929,7 @@ function ReviewsTab({ navigate, user }) {
 
 // ─── MAIN DASHBOARD ───────────────────────────────────────────────────────────
 export default function DashboardPage({ navigate }) {
+  useDocumentHead({ title: "My Account", noindex: true });
   const { user, updateProfile, logout } = useAuth();
   const isMobile = useMediaQuery("(max-width: 767px)");
 

@@ -11427,10 +11427,19 @@ import {
   getWishlist, removeFromWishlist, getReviews, getAddresses,
   submitReview, updateReview, getProductReviewStats, getUserReviews,
 } from "../services/service.js";
+import { useDocumentHead } from "../hook/useDocumentHead.js";
 
 const BRAND      = "#0c2c41";
 const BRAND_TEXT = "#ffffff";
 const NAVY = BRAND;
+
+// Visually hides an element while keeping it in the accessibility tree and
+// readable by search engines — used for the one <h1> each page needs but
+// whose text would be redundant next to the existing hero/banner imagery.
+const srOnly = {
+  position: "absolute", width: 1, height: 1, padding: 0, margin: -1,
+  overflow: "hidden", clip: "rect(0,0,0,0)", whiteSpace: "nowrap", border: 0,
+};
 
 // ============================================
 // RESPONSIVE HOOK
@@ -11931,9 +11940,14 @@ function FilterSortBar({ filtersOpen, toggleFilters, isMobile, sort, setSort, co
 // ============ COLLECTIONS LANDING PAGE ============
 export function CollectionsLandingPage({ navigate }) {
   useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, []);
+  useDocumentHead({
+    title: "Eyewear Collections",
+    description: "Explore Urban Eye's eyewear collections — Men's, Women's, Custom Made Tints™, Round & Square frames. Premium eyeglasses and sunglasses in Karachi, Pakistan.",
+  });
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
+      <h1 style={srOnly}>Eyewear Collections | Urban Eye</h1>
       <PageBanner image="/assets/banners/banner1.png" alt="Urban Eye collections" />
 
       <Breadcrumb crumbs={[{ label: "HOME", path: "#/" }, { label: "COLLECTIONS", path: null }]} />
@@ -12000,9 +12014,14 @@ const CRAFT_IMAGES = [
 export function AboutUsPage({ navigate }) {
   useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, []);
   const isMobile = useMediaQuery("(max-width: 767px)");
+  useDocumentHead({
+    title: "Our Story",
+    description: "Urban Eye's story — a legacy spanning three generations, bringing premium eyewear and personalized service from our flagship store in Zamzama, Karachi.",
+  });
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
+      <h1 style={srOnly}>Our Story | Urban Eye</h1>
       <PageBanner
         image="/assets/banners/banneer2.png"
         alt="Urban Eye — our story"
@@ -12075,6 +12094,10 @@ export function HomePage({ navigate }) {
   const [filter, setFilter] = useState("All");
   const [testimonialIdx, setTIdx] = useState(0);
   const { addToCart } = useCart();
+  useDocumentHead({
+    title: "Premium Eyeglasses & Sunglasses in Karachi, Pakistan",
+    description: "Urban Eye is Karachi's destination for iconic eyewear since 2015. Browse 150+ curated eyeglasses, sunglasses & custom-made tints, with expert fitting and free shipping across Pakistan.",
+  });
   // Use all products for filtering, then slice to 8 for display
   const allProducts = PRODUCTS_DATA;
 
@@ -12223,6 +12246,7 @@ export function HomePage({ navigate }) {
 
   return (
     <div style={{ color: BLACK }}>
+      <h1 style={srOnly}>Urban Eye — Premium Eyeglasses &amp; Sunglasses in Karachi, Pakistan</h1>
       {/* HERO */}
       <section style={{ position: "relative", overflow: "hidden", background: "#111" }}>
         <img
@@ -12456,6 +12480,10 @@ export function HomePage({ navigate }) {
 
 // ============ PRODUCTS PAGE ============
 export function ProductsPage({ navigate, queryParams }) {
+  useDocumentHead({
+    title: queryParams?.category ? `Shop ${queryParams.category}` : "Shop Eyeglasses & Sunglasses",
+    description: "Shop 150+ eyeglasses and sunglasses frames at Urban Eye — filter by shape, size, and gender. Expert fitting and free shipping across Pakistan.",
+  });
   const buildFiltersFromQuery = (qp) => {
     if (!qp) return {};
     const result = {};
@@ -12545,6 +12573,7 @@ export function ProductsPage({ navigate, queryParams }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
+      <h1 style={srOnly}>Shop Eyeglasses &amp; Sunglasses | Urban Eye</h1>
       <PageBanner image="/assets/banners/banner3.png" alt="The collection" />
 
       <div style={{ background: "#fff", borderBottom: "1px solid #eee", padding: isMobile ? "20px 20px" : "24px 40px" }}>
@@ -12615,6 +12644,10 @@ export function ProductsPage({ navigate, queryParams }) {
 export function CollectionDetailPage({ slug, navigate }) {
   const col = COLLECTIONS[slug] || COLLECTIONS["default"];
   const baseProducts = PRODUCTS_DATA.filter(col.filter);
+  useDocumentHead({
+    title: col.title ? `${col.title} Collection` : "Collection",
+    description: `Shop the ${col.title || "featured"} collection at Urban Eye — premium eyeglasses and sunglasses in Karachi, Pakistan.`,
+  });
   const [activeFilters, setActiveFilters] = useState({});
   const [sort, setSort] = useState("featured");
   const [filtersOpen, setFiltersOpen] = useState(() => {
@@ -12670,6 +12703,7 @@ export function CollectionDetailPage({ slug, navigate }) {
 
   return (
     <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
+      <h1 style={srOnly}>{col.title} Collection | Urban Eye</h1>
       <PageBanner image="/assets/banners/banner1.png" alt={col.title} />
 
       <Breadcrumb crumbs={[{ label: "HOME", path: "#/" }, { label: "COLLECTIONS", path: "#/collections" }, { label: col.title, path: null }]} />
@@ -12736,6 +12770,13 @@ function FeatureIcon({ feature }) {
 // ============ PRODUCT DETAIL PAGE ============
 export function ProductDetailPage({ productId, navigate }) {
   const product = PRODUCTS_DATA.find(p => p.id === productId);
+  useDocumentHead({
+    title: product ? product.name : "Product Not Found",
+    description: product
+      ? `${product.name} — ${(product.description || "").slice(0, 140) || `${product.category || "premium eyewear"} from Urban Eye, Karachi.`}`
+      : undefined,
+    noindex: !product,
+  });
   const [activeImg, setActiveImg] = useState(0);
   const [qty, setQty] = useState(1);
   const [added, setAdded] = useState(false);
@@ -13062,6 +13103,7 @@ export function ProductDetailPage({ productId, navigate }) {
 
 // ============ CART PAGE ============
 export function CartPage({ navigate }) {
+  useDocumentHead({ title: "Your Cart", noindex: true });
   const { cartItems, removeFromCart, updateQty, cartTotal, clearCart, loading, syncing, pendingSync } = useCart();
   const { user } = useAuth();
   const [localCart, setLocalCart] = useState([]);
@@ -13227,6 +13269,7 @@ export function CartPage({ navigate }) {
 
 // ============ WISHLIST PAGE ============
 export function WishlistPage({ navigate }) {
+  useDocumentHead({ title: "My Wishlist", noindex: true });
   const { user } = useAuth();
   const [wishlist, setWishlist] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13578,6 +13621,7 @@ const Field = ({ label, value, onChange, placeholder, type = "text", error, full
 );
 
 export function CheckoutPage({ navigate }) {
+  useDocumentHead({ title: "Checkout", noindex: true });
   const { cartItems, cartTotal, clearCart, loading: cartLoading, syncCartToDatabase, getCheckoutItems } = useCart();
   const { user } = useAuth();
 
@@ -13971,6 +14015,7 @@ export function CheckoutPage({ navigate }) {
 
 // ============ ORDER SUCCESS PAGE ============
 export function OrderSuccessPage({ navigate }) {
+  useDocumentHead({ title: "Order Placed", noindex: true });
   const [count, setCount] = useState(8);
   const isMobile = useMediaQuery("(max-width: 767px)");
 
@@ -13988,8 +14033,10 @@ export function OrderSuccessPage({ navigate }) {
       <div style={{ textAlign: "center", maxWidth: 560, padding: "0 20px", position: "relative", zIndex: 1 }}>
         <div style={{ width: 80, height: 80, borderRadius: "50%", background: BRAND, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 32px", fontSize: 36, color: BRAND_TEXT }}>✓</div>
         <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 24px" }}/>
-        <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(32px, 10vw, 48px)" : "clamp(48px, 8vw, 80px)", lineHeight: 0.92, color: "#fff", margin: "0 0 10px" }}>ORDER</h1>
-        <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(32px, 10vw, 48px)" : "clamp(48px, 8vw, 80px)", lineHeight: 0.92, color: "#89c4e1", margin: "0 0 28px" }}>PLACED!</h1>
+        <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(32px, 10vw, 48px)" : "clamp(48px, 8vw, 80px)", lineHeight: 0.92, margin: 0 }}>
+          <span style={{ display: "block", color: "#fff", marginBottom: 10 }}>ORDER</span>
+          <span style={{ display: "block", color: "#89c4e1", marginBottom: 28 }}>PLACED!</span>
+        </h1>
         <p style={{ fontSize: isMobile ? 13 : 14, color: "rgba(255,255,255,0.45)", fontFamily: mono, lineHeight: 1.8, marginBottom: 36 }}>
           Thank you for your order. Our team will call you to confirm delivery details. Your frames will arrive within 5–7 business days.
         </p>
@@ -14005,6 +14052,7 @@ export function OrderSuccessPage({ navigate }) {
 
 // ============ REVIEW SUBMISSION PAGE ============
 export function ReviewSubmissionPage({ productId, reviewId, navigate }) {
+  useDocumentHead({ title: reviewId ? "Edit Review" : "Write a Review", noindex: true });
   const { user } = useAuth();
   const [product, setProduct] = useState(null);
   const [existingReview, setExistingReview] = useState(null);
