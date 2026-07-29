@@ -4507,7 +4507,7 @@ function AppInner() {
 
           {/* Logo */}
           <a href="/" style={{ textDecoration: "none", flexShrink: 0 }}>
-            <img src="./logo.jpeg" alt="Urban Eye" style={{ height: isMobile ? 38 : 50, width: "auto" }} />
+            <img src="/logo.jpeg" alt="Urban Eye" style={{ height: isMobile ? 38 : 50, width: "auto" }} />
           </a>
 
           {/* Nav Links — hidden on mobile */}

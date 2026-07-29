@@ -12943,7 +12943,7 @@ export function ProductDetailPage({ productId, navigate }) {
               </div>
 
               <div style={{ fontSize: 13, color: "#888", fontFamily: mono, marginBottom: 16, letterSpacing: "0.04em" }}>{displayLabel}</div>
-              {variants.length > 1 && (
+              {/* {variants.length > 1 && (
                 <div style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", color: BLACK, fontFamily: ff, marginBottom: 10 }}>{variants.length} COLOURS</div>
               )}
               {variants.length > 1 && (
@@ -12973,7 +12973,48 @@ export function ProductDetailPage({ productId, navigate }) {
                       </button>
                     );
                   })}
-                </div>
+                </div> */}
+
+
+{/* Show color label for all products */}
+{variants.length >= 1 && (
+  <div style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", color: BLACK, fontFamily: ff, marginBottom: 10 }}>
+    {variants.length > 1 ? `${variants.length} COLOURS` : "COLOUR"}
+  </div>
+)}
+
+{/* Show color swatches for all products (single or multiple) */}
+{variants.length >= 1 && (
+  <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 18, flexWrap: "wrap" }}>
+    {variants.map((variant) => {
+      const active = normalizeVariantName(variant.name) === normalizeVariantName(selectedVariantName);
+      return (
+        <button
+          key={variant.name}
+          onClick={() => handleSelectVariant(variant)}
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            border: active ? `1.5px solid ${BLACK}` : "1px solid #d8d0c8",
+            background: active ? "#fff" : "#faf7f2",
+            padding: "8px 12px",
+            cursor: "pointer",
+            fontFamily: ff,
+            fontSize: 11,
+            letterSpacing: "0.08em",
+            color: BLACK,
+          }}
+        >
+          <span style={{ width: 14, height: 14, borderRadius: "50%", background: variant.swatch || "#d9d9d9", border: "1px solid rgba(0,0,0,0.12)" }} />
+          {variant.name}
+        </button>
+      );
+    })}
+  </div>
+
+
+
               )}
               <div style={{ width: 36, height: 3, background: BRAND, marginBottom: 18 }} />
 
