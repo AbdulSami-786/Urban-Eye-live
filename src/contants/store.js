@@ -555,7 +555,7 @@ export const COLLECTIONS = {
 // FILTERS
 export const FILTER_GROUPS = [
   { key: "category", label: "FRAME TYPE", options: ["Eyeglasses", "Sunglasses"] },
-  { key: "gender", label: "GENDER", options: ["Men", "Women", "Unisex"] },
+  { key: "gender", label: "GENDER", options: ["Men", "Women"] },
   { key: "shape", label: "FRAME SHAPE", options: ["Round", "Square", "Aviator", "Cat-Eye", "Geometric", "Browline"] },
   { key: "color", label: "COLOR", options: ["Black", "Tortoise", "Crystal", "Amber", "Cobalt", "Olive", "Lavender", "Wine", "Rose Gold", "Ivory"] },
   { key: "price", label: "PRICE", options: ["Under PKR 20K", "PKR 20K–30K", "Above PKR 30K"] },

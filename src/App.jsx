@@ -4068,7 +4068,6 @@ const NAV_LINKS_BASE = [
           links: [
             { label: "MEN'S", to: { category: "Eyeglasses", gender: "Men" } },
             { label: "WOMEN'S", to: { category: "Eyeglasses", gender: "Women" } },
-            { label: "UNISEX", to: { category: "Eyeglasses", gender: "Unisex" } },
           ],
         },
         {
@@ -4097,7 +4096,6 @@ const NAV_LINKS_BASE = [
           links: [
             { label: "MEN'S", to: { category: "Sunglasses", gender: "Men" } },
             { label: "WOMEN'S", to: { category: "Sunglasses", gender: "Women" } },
-            { label: "UNISEX", to: { category: "Sunglasses", gender: "Unisex" } },
           ],
         },
         {

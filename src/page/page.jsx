@@ -11824,7 +11824,7 @@ function FilterSidebar({ allProducts, activeFilters, setActiveFilters, filtersOp
       </Section>
 
       <Section id="gender" title="GENDER">
-        {["Men", "Women", "Unisex"].map((value) => (
+        {["Men", "Women"].map((value) => (
           <Check
             key={value}
             group="gender"
