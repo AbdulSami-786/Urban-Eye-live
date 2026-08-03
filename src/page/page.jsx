@@ -12605,10 +12605,10 @@ export function ProductsPage({ navigate, queryParams }) {
                 : "No frames match the current filters."}
             </div>
           ) : (
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : `repeat(${cols}, 1fr)`, gap: isMobile ? 0 : 20, transition: "grid-template-columns 0.3s" }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "75%" : `repeat(${cols}, 1fr)`, justifyContent: isMobile ? "center" : "stretch", gap: isMobile ? 12 : 20, transition: "grid-template-columns 0.3s" }}>
               {filtered.map((p, i) => (
                 <FadeIn key={p.id} delay={Math.min(i * 40, 400)}>
-                  <ProductCard product={p} navigate={navigate} layout={isMobile ? "list" : "grid"} />
+                  <ProductCard product={p} navigate={navigate} />
                 </FadeIn>
               ))}
             </div>
@@ -12625,10 +12625,10 @@ export function ProductsPage({ navigate, queryParams }) {
             <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(20px, 6vw, 28px)" : "clamp(22px, 3vw, 34px)", margin: "0 0 24px", letterSpacing: "0.02em", color: BLACK }}>
               RELATED FRAMES
             </h2>
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : isTablet ? "repeat(3, 1fr)" : "repeat(4, 1fr)", gap: isMobile ? 0 : 20 }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "repeat(3, 1fr)" : "repeat(4, 1fr)", gap: isMobile ? 12 : 20 }}>
               {relatedProducts.map((p, i) => (
                 <FadeIn key={p.id} delay={Math.min(i * 60, 360)}>
-                  <ProductCard product={p} navigate={navigate} layout={isMobile ? "list" : "grid"} />
+                  <ProductCard product={p} navigate={navigate} />
                 </FadeIn>
               ))}
             </div>
@@ -12720,10 +12720,10 @@ export function CollectionDetailPage({ slug, navigate }) {
               <button onClick={() => setActiveFilters({})} style={{ background: BLACK, color: "#fff", border: "none", padding: "12px 32px", fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", cursor: "pointer", fontFamily: ff }}>CLEAR FILTERS</button>
             </div>
           ) : (
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : `repeat(${cols}, 1fr)`, gap: isMobile ? 0 : 16, transition: "grid-template-columns 0.35s ease" }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "75%" : `repeat(${cols}, 1fr)`, justifyContent: isMobile ? "center" : "stretch", gap: isMobile ? 12 : 16, transition: "grid-template-columns 0.35s ease" }}>
               {filtered.map((p, i) => (
                 <FadeIn key={p.id} delay={Math.min(i * 35, 300)}>
-                  <ProductCard product={p} navigate={navigate} layout={isMobile ? "list" : "grid"} />
+                  <ProductCard product={p} navigate={navigate} />
                 </FadeIn>
               ))}
             </div>
@@ -13087,10 +13087,10 @@ export function ProductDetailPage({ productId, navigate }) {
                 <button onClick={() => navigate("#/products")} style={{ background: "none", border: `1.5px solid ${BLACK}`, padding: "10px 20px", fontSize: isMobile ? 10 : 11, fontWeight: 900, letterSpacing: "0.12em", cursor: "pointer", color: BLACK, fontFamily: ff }}>VIEW ALL →</button>
               </div>
             </FadeIn>
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : isTablet ? "repeat(2,1fr)" : "repeat(3,1fr)", gap: isMobile ? 0 : 20 }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "repeat(2,1fr)" : "repeat(3,1fr)", gap: isMobile ? 12 : 20 }}>
               {related.map((p, i) => (
                 <FadeIn key={p.id} delay={i * 80}>
-                  <ProductCard product={p} navigate={navigate} layout={isMobile ? "list" : "grid"} />
+                  <ProductCard product={p} navigate={navigate} />
                 </FadeIn>
               ))}
             </div>
