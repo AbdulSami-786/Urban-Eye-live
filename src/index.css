@@ -14,19 +14,3 @@ html, body {
 img, video, svg, canvas, iframe {
   max-width: 100%;
 }
-
-/* Visible horizontal scrollbar for color swatches in mobile list-row product cards */
-.pc-hscroll {
-  scrollbar-width: thin;
-  scrollbar-color: #c9beac transparent;
-}
-.pc-hscroll::-webkit-scrollbar {
-  height: 5px;
-}
-.pc-hscroll::-webkit-scrollbar-track {
-  background: transparent;
-}
-.pc-hscroll::-webkit-scrollbar-thumb {
-  background: #c9beac;
-  border-radius: 999px;
-}
