@@ -33,13 +33,35 @@ export function getProductShape(product) {
   return String(product?.shape || product?.subcategory || "").trim();
 }
 
-// Compound shape values in the catalog (e.g. "Hexagon-Round") describe a frame
-// that belongs to more than one shape family. Split on "-" so filtering and
-// shape lists treat each half as its own shape instead of one unmatched blob.
+// Shape names that are legitimately two words (not two separate shapes
+// joined together) — kept intact instead of being split on whitespace.
+const COMPOUND_SHAPE_NAMES = new Set(["cat eye"]);
+
+function normalizeShapeToken(word) {
+  const w = word.trim().toLowerCase();
+  return w.charAt(0).toUpperCase() + w.slice(1);
+}
+
+// Compound shape values in the catalog (e.g. "Hexagon-Round" or "Square
+// Round") describe a frame that belongs to more than one shape family. Split
+// on "-" and on whitespace (unless the segment is a known two-word shape
+// like "Cat Eye") so filtering and shape lists treat each half as its own
+// shape instead of one unmatched blob. Casing is normalized so "square" and
+// "Square" collapse into the same token.
 export function getProductShapeTokens(product) {
   const raw = getProductShape(product);
   if (!raw) return [];
-  return raw.split("-").map((token) => token.trim()).filter(Boolean);
+  const tokens = [];
+  raw.split("-").forEach((segment) => {
+    const trimmed = segment.trim();
+    if (!trimmed) return;
+    if (COMPOUND_SHAPE_NAMES.has(trimmed.toLowerCase().replace(/\s+/g, " "))) {
+      tokens.push(trimmed.toLowerCase().split(" ").map(normalizeShapeToken).join(" "));
+    } else {
+      trimmed.split(/\s+/).filter(Boolean).forEach((word) => tokens.push(normalizeShapeToken(word)));
+    }
+  });
+  return [...new Set(tokens)];
 }
 
 export function productMatchesShape(product, shapeValue) {
@@ -225,7 +247,7 @@ export function applyProductFilters(products, activeFilters = {}, sort = "featur
 
   const shapeFilters = activeFilters.shape || [];
   if (shapeFilters.length) {
-    list = list.filter((product) => shapeFilters.includes(product.subcategory));
+    list = list.filter((product) => shapeFilters.some((shapeValue) => productMatchesShape(product, shapeValue)));
   }
 
   const genderFilters = activeFilters.gender || [];
