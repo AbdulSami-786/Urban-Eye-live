@@ -11419,7 +11419,7 @@ import { PRODUCTS_DATA } from "../prodcut.js";
 import { BLACK, CREAM, ff, mono, COLLECTIONS,
          HERO_SLIDES, HOME_PRODUCTS, TESTIMONIALS, PROCESS_STEPS, CATEGORIES_HOME,
          tagColors } from "../contants/store.js";
-import { applyProductFilters, getProductColorOptions, getProductBrandOptions, getProductSizeOptions, getProductDisplayPrice, getProductDiscountPercent, getProductDisplayImage, getRelatedProducts, getProductVariants, productMatchesShape, getUniqueShapesFromProducts, normalizeCategory, normalizeGender, formatPriceValue, matchesSearchTerm } from "../services/productUtils.js";
+import { applyProductFilters, getProductColorOptions, getProductBrandOptions, getProductSizeOptions, getProductDisplayPrice, getProductDiscountPercent, getProductDisplayImage, getProductDescription, getRelatedProducts, getProductVariants, productMatchesShape, getUniqueShapesFromProducts, normalizeCategory, normalizeGender, formatPriceValue, matchesSearchTerm } from "../services/productUtils.js";
 import { YBtn, OutlineBtn, FadeIn, Counter, Frame, ProductCard, ProductSlider, WishlistHeart, WishlistSkeleton } from "../components/shared";
 import { useCart } from "../contexts/CardContext";
 import { useAuth, AuthModal } from "../Auth/auth.jsx";
@@ -12605,10 +12605,10 @@ export function ProductsPage({ navigate, queryParams }) {
                 : "No frames match the current filters."}
             </div>
           ) : (
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "75%" : `repeat(${cols}, 1fr)`, justifyContent: isMobile ? "center" : "stretch", gap: isMobile ? 12 : 20, transition: "grid-template-columns 0.3s" }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : `repeat(${cols}, 1fr)`, gap: isMobile ? 0 : 20, transition: "grid-template-columns 0.3s" }}>
               {filtered.map((p, i) => (
                 <FadeIn key={p.id} delay={Math.min(i * 40, 400)}>
-                  <ProductCard product={p} navigate={navigate} />
+                  <ProductCard product={p} navigate={navigate} layout={isMobile ? "list" : "grid"} />
                 </FadeIn>
               ))}
             </div>
@@ -12625,10 +12625,10 @@ export function ProductsPage({ navigate, queryParams }) {
             <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(20px, 6vw, 28px)" : "clamp(22px, 3vw, 34px)", margin: "0 0 24px", letterSpacing: "0.02em", color: BLACK }}>
               RELATED FRAMES
             </h2>
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "repeat(3, 1fr)" : "repeat(4, 1fr)", gap: isMobile ? 12 : 20 }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : isTablet ? "repeat(3, 1fr)" : "repeat(4, 1fr)", gap: isMobile ? 0 : 20 }}>
               {relatedProducts.map((p, i) => (
                 <FadeIn key={p.id} delay={Math.min(i * 60, 360)}>
-                  <ProductCard product={p} navigate={navigate} />
+                  <ProductCard product={p} navigate={navigate} layout={isMobile ? "list" : "grid"} />
                 </FadeIn>
               ))}
             </div>
@@ -12720,10 +12720,10 @@ export function CollectionDetailPage({ slug, navigate }) {
               <button onClick={() => setActiveFilters({})} style={{ background: BLACK, color: "#fff", border: "none", padding: "12px 32px", fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", cursor: "pointer", fontFamily: ff }}>CLEAR FILTERS</button>
             </div>
           ) : (
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "75%" : `repeat(${cols}, 1fr)`, justifyContent: isMobile ? "center" : "stretch", gap: isMobile ? 12 : 16, transition: "grid-template-columns 0.35s ease" }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : `repeat(${cols}, 1fr)`, gap: isMobile ? 0 : 16, transition: "grid-template-columns 0.35s ease" }}>
               {filtered.map((p, i) => (
                 <FadeIn key={p.id} delay={Math.min(i * 35, 300)}>
-                  <ProductCard product={p} navigate={navigate} />
+                  <ProductCard product={p} navigate={navigate} layout={isMobile ? "list" : "grid"} />
                 </FadeIn>
               ))}
             </div>
@@ -13036,7 +13036,7 @@ export function ProductDetailPage({ productId, navigate }) {
               <div style={{ borderTop: "1px solid #e8e0d0" }}>
                 {product.description && (
                   <AccordionItem id="description" label="DESCRIPTION">
-                    <p style={{ margin: 0, fontSize: 12, color: BLACK, fontFamily: mono, lineHeight: 1.9 }}>{product.description}</p>
+                    <p style={{ margin: 0, fontSize: 12, color: BLACK, fontFamily: mono, lineHeight: 1.9 }}>{getProductDescription(product, selectedVariantName)}</p>
                   </AccordionItem>
                 )}
                 <AccordionItem id="details" label="DETAILS">
@@ -13087,10 +13087,10 @@ export function ProductDetailPage({ productId, navigate }) {
                 <button onClick={() => navigate("#/products")} style={{ background: "none", border: `1.5px solid ${BLACK}`, padding: "10px 20px", fontSize: isMobile ? 10 : 11, fontWeight: 900, letterSpacing: "0.12em", cursor: "pointer", color: BLACK, fontFamily: ff }}>VIEW ALL →</button>
               </div>
             </FadeIn>
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "repeat(2,1fr)" : "repeat(3,1fr)", gap: isMobile ? 12 : 20 }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : isTablet ? "repeat(2,1fr)" : "repeat(3,1fr)", gap: isMobile ? 0 : 20 }}>
               {related.map((p, i) => (
                 <FadeIn key={p.id} delay={i * 80}>
-                  <ProductCard product={p} navigate={navigate} />
+                  <ProductCard product={p} navigate={navigate} layout={isMobile ? "list" : "grid"} />
                 </FadeIn>
               ))}
             </div>

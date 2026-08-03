@@ -5369,8 +5369,8 @@ export const PRODUCTS_DATA = [
       {
         name: "Havana Brown",
         swatch: "#901d00",
-        image: "/assets/GERARD 4.jpg",
-        gallery: ["/assets/GERARD 4.jpg", "/assets/GERARD 5.jpg", "/assets/GERARD 6.jpg", "./10.jpg"],
+        image: "./assets/GERARD 4.jpg",
+        gallery: ["./assets/GERARD 4.jpg", "./assets/GERARD 5.jpg", "./assets/GERARD 6.jpg", "./10.jpg"],
       },
       {
         name: "Jet Black",
@@ -5691,49 +5691,49 @@ export const PRODUCTS_DATA = [
     relatedIds: [],
   },
 
-  {
-    id: "dott",
-    name: "Dott",
-    category: "Optical",
-    subcategory: "",
-    gender: "Women",
-    colors: [
-      {
-        name: "Emerald Green",
-        swatch: "#50c878",
-        image: "./assets/DOTT 1.jpg",
-        gallery: ["./assets/DOTT 1.jpg", "./assets/DOTT 2.jpg", "./assets/DOTT 3.jpg", "./10.jpg"],
-      },
-    ],
-    price: 8500,
-    tag: "Out of Stock",
-    sizes: ["51 (Large)"],
-    description:
-      "Redefine your success with Urban Eyes latest design. Dott embeds a new sleek design, made from high quality acetate, with Emerald Green color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
-    features: [
-      "Made from Hand crafted acetate",
-      "Pakistan Landmarks Engraving",
-      "Comfortable Nose Bridge",
-      "Steel hinges",
-    ],
-    specifications: {
-      "Model Number": "H2812",
-      "Frame Material": "Hand crafted acetate",
-      "Lens Width": "51mm",
-      "Bridge Width": "19mm",
-      "Temple Length": "142mm",
-      "Lens Color": "Clear",
-    },
-    measurements: {
-      Size: "Large",
-      "Lens Width": "51mm",
-      "Bridge Width": "19mm",
-      "Temple Length": "142mm",
-    },
-    shape: "Square",
-    size: "Large",
-    relatedIds: [],
-  },
+  // {
+  //   id: "dott",
+  //   name: "Dott",
+  //   category: "Optical",
+  //   subcategory: "",
+  //   gender: "Women",
+  //   colors: [
+  //     {
+  //       name: "Emerald Green",
+  //       swatch: "#50c878",
+  //       image: "./assets/DOTT 1.jpg",
+  //       gallery: ["./assets/DOTT 1.jpg", "./assets/DOTT 2.jpg", "./assets/DOTT 3.jpg", "./10.jpg"],
+  //     },
+  //   ],
+  //   price: 8500,
+  //   tag: "Out of Stock",
+  //   sizes: ["51 (Large)"],
+  //   description:
+  //     "Redefine your success with Urban Eyes latest design. Dott embeds a new sleek design, made from high quality acetate, with Emerald Green color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+  //   features: [
+  //     "Made from Hand crafted acetate",
+  //     "Pakistan Landmarks Engraving",
+  //     "Comfortable Nose Bridge",
+  //     "Steel hinges",
+  //   ],
+  //   specifications: {
+  //     "Model Number": "H2812",
+  //     "Frame Material": "Hand crafted acetate",
+  //     "Lens Width": "51mm",
+  //     "Bridge Width": "19mm",
+  //     "Temple Length": "142mm",
+  //     "Lens Color": "Clear",
+  //   },
+  //   measurements: {
+  //     Size: "Large",
+  //     "Lens Width": "51mm",
+  //     "Bridge Width": "19mm",
+  //     "Temple Length": "142mm",
+  //   },
+  //   shape: "Square",
+  //   size: "Large",
+  //   relatedIds: [],
+  // },
 
   {
     id: "alexa",
@@ -5833,7 +5833,7 @@ export const PRODUCTS_DATA = [
       {
         name: "Royal Blue",
         swatch: "#4169e1",
-        image: "./assets/Bradley 1.jpg  ",
+        image: "./assets/Bradley 1.jpg",
         gallery: ["./assets/Bradley 1.jpg", "./assets/Bradley 2.jpg", "./assets/Bradley 3.jpg", "./10.jpg"],
       },
     ],
@@ -5919,14 +5919,14 @@ export const PRODUCTS_DATA = [
     gender: "women",
     colors: [
       {
-        name: "Havana Brown",
-        swatch: "#8a4b28",
+        name: "Cobalt Blue",
+        swatch: "#0047ab",
         image: "./assets/Clair 1.jpg",
         gallery: ["./assets/Clair 1.jpg", "./assets/Clair 2.jpg", "./assets/Clair 3.jpg", "./10.jpg"],
       },
       {
-        name: "Cobalt Blue",
-        swatch: "#0047ab",
+        name: "Havana Brown",
+        swatch: "#8a4b28",
         image: "./assets/CLAIR 4.jpg",
         gallery: ["./assets/CLAIR 4.jpg", "./assets/CLAIR 5.jpg", "./assets/CLAIR 6.jpg", "./10.jpg"],
       },
@@ -6013,14 +6013,14 @@ export const PRODUCTS_DATA = [
     gender: "Man",
     colors: [
       {
-        name: "Steel Grey",
-        swatch: "#71797e",
+        name: "Forest Green",
+        swatch: "#228b22",
         image: "./assets/LEGEND 1.jpg",
         gallery: ["./assets/LEGEND 1.jpg", "./assets/LEGEND 2.jpg", "./assets/LEGEND 3.jpg", "./10.jpg"],
       },
       {
-        name: "Forest Green",
-        swatch: "#228b22",
+        name: " Steel Grey",
+        swatch: " #71797e",
         image: "./assets/LEGEND 4.jpg",
         gallery: ["./assets/LEGEND 4.jpg", "./assets/LEGEND 5.jpg", "./assets/LEGEND 6.jpg", "./10.jpg"],
       },
@@ -6286,7 +6286,7 @@ export const PRODUCTS_DATA = [
         name: "Basil",
         swatch: "#3f4d33",
         image: "./assets/Sydney 1.jpg",
-        gallery: ["./assets/sydney 1.jpg","./assets/sydney 2.jpg","./assets/Sydney 3.jpg" ,"./10.jpg"],
+        gallery: ["./assets/Sydney 1.jpg","./assets/Sydney 2.jpg","./assets/Sydney 3.jpg" ,"./10.jpg"],
       },
     ],
     price: 8500,

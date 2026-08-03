@@ -99,6 +99,47 @@ export function getProductDisplayImage(product, selectedVariantName) {
   };
 }
 
+// Most catalog descriptions follow one of two fixed marketing templates,
+// written out by hand per colour variant:
+//   full:  "... {name} embeds a new sleek design, made from {material},
+//           with {frame colour} frame & {lens colour} lense color; ..."
+//   short: "... {name} embeds a new sleek design, made from {material},
+//           with {colour} color; ..." (used on some multi-colour products,
+//           with no lens mention at all)
+// That means picking a different swatch on the product page shows a
+// description that was authored for a *different* colour. These regexes
+// recognize both templates so the colour can be swapped for whichever
+// variant is currently selected, and (for the full template) the lens
+// colour sourced from `specifications["Lens Color"]` — the single source of
+// truth for lens colour — instead of copy-pasted text. Descriptions that
+// don't match either template are returned unchanged.
+const DESCRIPTION_FULL_RE = /^Redefine your success with Urban Eyes latest design\.\s*(.+?)\s+embeds a new sleek design, made from ([^,]+), with (.+?) frame & (.+?) lense color; effortless style & unmatched functionality to elevate your everyday lifestyle\.$/i;
+const DESCRIPTION_SHORT_RE = /^Redefine your success with Urban Eyes latest design\.\s*(.+?)\s+embeds a new sleek design, made from ([^,]+), with (.+?) color; effortless style & unmatched functionality to elevate your everyday lifestyle\.$/i;
+
+export function getProductDescription(product, selectedVariantName) {
+  const raw = product?.description || "";
+  const variants = getProductVariants(product);
+  const selectedVariant =
+    variants.find((v) => normalizeText(v.name) === normalizeText(selectedVariantName)) || variants[0] || null;
+
+  const fullMatch = raw.match(DESCRIPTION_FULL_RE);
+  if (fullMatch) {
+    const [, productName, material, staticFrameColor, fallbackLensColor] = fullMatch;
+    const frameColor = selectedVariant?.name || staticFrameColor;
+    const lensColor = product?.specifications?.["Lens Color"] || fallbackLensColor;
+    return `Redefine your success with Urban Eyes latest design. ${productName} embeds a new sleek design, made from ${material}, with ${frameColor} frame & ${lensColor} lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.`;
+  }
+
+  const shortMatch = raw.match(DESCRIPTION_SHORT_RE);
+  if (shortMatch) {
+    const [, productName, material, staticColor] = shortMatch;
+    const color = selectedVariant?.name || staticColor;
+    return `Redefine your success with Urban Eyes latest design. ${productName} embeds a new sleek design, made from ${material}, with ${color} color; effortless style & unmatched functionality to elevate your everyday lifestyle.`;
+  }
+
+  return raw;
+}
+
 // One normalized blob of every searchable field on a product — name, category,
 // subcategory, gender, tag, shape, brand, color variants, sizes, description,
 // keywords. Shared by the sidebar/on-page search and the navbar search so both
