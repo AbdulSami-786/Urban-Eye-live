@@ -1005,7 +1005,7 @@
 // // // //   const isDesktop = useMediaQuery("(min-width: 1024px)");
 
 // // // //   const [activeFilters, setActiveFilters] = useState(() => buildFiltersFromQuery(queryParams));
-// // // //   const [sort, setSort] = useState("featured");
+// // // //   const [sort, setSort] = useState("relevant");
 // // // //   const [filtersOpen, setFiltersOpen] = useState(true);
 // // // //   const [searchTerm, setSearchTerm] = useState("");
 
@@ -1068,7 +1068,7 @@
 // // // //   const col = COLLECTIONS[slug] || COLLECTIONS["default"];
 // // // //   const baseProducts = PRODUCTS_DATA.filter(col.filter);
 // // // //   const [activeFilters, setActiveFilters] = useState({});
-// // // //   const [sort, setSort] = useState("featured");
+// // // //   const [sort, setSort] = useState("relevant");
 // // // //   const [filtersOpen, setFiltersOpen] = useState(() => {
 // // // //     try { return JSON.parse(localStorage.getItem("os_filters_open") ?? "true"); } catch { return true; }
 // // // //   });
@@ -3755,7 +3755,7 @@
 // // //   const isDesktop = useMediaQuery("(min-width: 1024px)");
 
 // // //   const [activeFilters, setActiveFilters] = useState(() => buildFiltersFromQuery(queryParams));
-// // //   const [sort, setSort] = useState("featured");
+// // //   const [sort, setSort] = useState("relevant");
 // // //   const [filtersOpen, setFiltersOpen] = useState(true);
 // // //   const [searchTerm, setSearchTerm] = useState("");
 
@@ -3818,7 +3818,7 @@
 // // //   const col = COLLECTIONS[slug] || COLLECTIONS["default"];
 // // //   const baseProducts = PRODUCTS_DATA.filter(col.filter);
 // // //   const [activeFilters, setActiveFilters] = useState({});
-// // //   const [sort, setSort] = useState("featured");
+// // //   const [sort, setSort] = useState("relevant");
 // // //   const [filtersOpen, setFiltersOpen] = useState(() => {
 // // //     try { return JSON.parse(localStorage.getItem("os_filters_open") ?? "true"); } catch { return true; }
 // // //   });
@@ -6530,7 +6530,7 @@
 // //   const isDesktop = useMediaQuery("(min-width: 1024px)");
 
 // //   const [activeFilters, setActiveFilters] = useState(() => buildFiltersFromQuery(queryParams));
-// //   const [sort, setSort] = useState("featured");
+// //   const [sort, setSort] = useState("relevant");
 // //   const [filtersOpen, setFiltersOpen] = useState(() => !window.matchMedia("(max-width: 767px)").matches);
 // //   // `?q=` comes from the navbar search — seed the on-page search box with it.
 // //   const [searchTerm, setSearchTerm] = useState(() => queryParams?.q || "");
@@ -6673,7 +6673,7 @@
 // //   const col = COLLECTIONS[slug] || COLLECTIONS["default"];
 // //   const baseProducts = PRODUCTS_DATA.filter(col.filter);
 // //   const [activeFilters, setActiveFilters] = useState({});
-// //   const [sort, setSort] = useState("featured");
+// //   const [sort, setSort] = useState("relevant");
 // //   const [filtersOpen, setFiltersOpen] = useState(() => {
 // //     if (window.matchMedia("(max-width: 767px)").matches) return false;
 // //     try { return JSON.parse(localStorage.getItem("os_filters_open") ?? "true"); } catch { return true; }
@@ -9465,7 +9465,7 @@
 //   const isDesktop = useMediaQuery("(min-width: 1024px)");
 
 //   const [activeFilters, setActiveFilters] = useState(() => buildFiltersFromQuery(queryParams));
-//   const [sort, setSort] = useState("featured");
+//   const [sort, setSort] = useState("relevant");
 //   const [filtersOpen, setFiltersOpen] = useState(() => !window.matchMedia("(max-width: 767px)").matches);
 //   // `?q=` comes from the navbar search — seed the on-page search box with it.
 //   const [searchTerm, setSearchTerm] = useState(() => queryParams?.q || "");
@@ -9614,7 +9614,7 @@
 //   const col = COLLECTIONS[slug] || COLLECTIONS["default"];
 //   const baseProducts = PRODUCTS_DATA.filter(col.filter);
 //   const [activeFilters, setActiveFilters] = useState({});
-//   const [sort, setSort] = useState("featured");
+//   const [sort, setSort] = useState("relevant");
 //   const [filtersOpen, setFiltersOpen] = useState(() => {
 //     if (window.matchMedia("(max-width: 767px)").matches) return false;
 //     try { return JSON.parse(localStorage.getItem("os_filters_open") ?? "true"); } catch { return true; }
@@ -11422,7 +11422,7 @@ import { BLACK, CREAM, ff, mono, COLLECTIONS,
 import { applyProductFilters, getProductColorOptions, getProductBrandOptions, getProductSizeOptions, getProductDisplayPrice, getProductDiscountPercent, getProductDisplayImage, getRelatedProducts, getProductVariants, productMatchesShape, getUniqueShapesFromProducts, normalizeCategory, normalizeGender, formatPriceValue, matchesSearchTerm } from "../services/productUtils.js";
 import { YBtn, OutlineBtn, FadeIn, Counter, Frame, ProductCard, ProductSlider, WishlistHeart, WishlistSkeleton } from "../components/shared";
 import { useCart } from "../contexts/CardContext";
-import { useAuth } from "../Auth/auth.jsx";
+import { useAuth, AuthModal } from "../Auth/auth.jsx";
 import {
   getWishlist, removeFromWishlist, getReviews, getAddresses,
   submitReview, updateReview, getProductReviewStats, getUserReviews,
@@ -11578,7 +11578,6 @@ function PageBanner({ image, alt = "", overlayText }) {
 // SORT OPTIONS
 // ─────────────────────────────────────────────
 const SORT_OPTS = [
-  { key: "featured",    label: "Featured" },
   { key: "relevant",    label: "Most relevant" },
   { key: "bestSelling", label: "Best selling" },
   { key: "alphaAZ",     label: "Alphabetically, A-Z" },
@@ -12500,7 +12499,7 @@ export function ProductsPage({ navigate, queryParams }) {
   const isDesktop = useMediaQuery("(min-width: 1024px)");
 
   const [activeFilters, setActiveFilters] = useState(() => buildFiltersFromQuery(queryParams));
-  const [sort, setSort] = useState("featured");
+  const [sort, setSort] = useState("relevant");
   const [filtersOpen, setFiltersOpen] = useState(() => !window.matchMedia("(max-width: 767px)").matches);
   // `?q=` comes from the navbar search — seed the on-page search box with it.
   const [searchTerm, setSearchTerm] = useState(() => queryParams?.q || "");
@@ -12649,7 +12648,7 @@ export function CollectionDetailPage({ slug, navigate }) {
     description: `Shop the ${col.title || "featured"} collection at Urban Eye — premium eyeglasses and sunglasses in Karachi, Pakistan.`,
   });
   const [activeFilters, setActiveFilters] = useState({});
-  const [sort, setSort] = useState("featured");
+  const [sort, setSort] = useState("relevant");
   const [filtersOpen, setFiltersOpen] = useState(() => {
     if (window.matchMedia("(max-width: 767px)").matches) return false;
     try { return JSON.parse(localStorage.getItem("os_filters_open") ?? "true"); } catch { return true; }
@@ -12735,38 +12734,6 @@ export function CollectionDetailPage({ slug, navigate }) {
   );
 }
 
-// Small inline flag so it always renders as an actual flag — Unicode flag
-// emoji (regional-indicator pairs) fall back to plain "PK"-style letters on
-// some platforms/fonts, unlike ordinary emoji which render everywhere.
-function PakistanFlagIcon() {
-  return (
-    <svg width="18" height="13" viewBox="0 0 24 16" style={{ flexShrink: 0, borderRadius: 2 }}>
-      <rect width="24" height="16" fill="#01411C" />
-      <rect width="6" height="16" fill="#fff" />
-      <circle cx="16.5" cy="8" r="4.3" fill="#fff" />
-      <circle cx="18" cy="6.8" r="3.6" fill="#01411C" />
-      <path d="M20.3 4.6 L20.9 6.3 L22.7 6.3 L21.2 7.3 L21.8 9 L20.3 7.9 L18.8 9 L19.4 7.3 L17.9 6.3 L19.7 6.3 Z" fill="#fff" />
-    </svg>
-  );
-}
-
-// Picks a small icon for a feature line so the list reads at a glance
-// instead of a plain numbered list — e.g. the Pakistan engraving feature
-// gets the actual Pakistan flag.
-function FeatureIcon({ feature }) {
-  const text = String(feature || "").toLowerCase();
-  if (text.includes("pakistan")) return <PakistanFlagIcon />;
-  let emoji = "✨";
-  if (text.includes("hinge")) emoji = "🔩";
-  else if (text.includes("nose") || text.includes("bridge")) emoji = "✓";
-  else if (text.includes("hand") || text.includes("acetate") || text.includes("craft")) emoji = "✋";
-  else if (text.includes("uv") || text.includes("polarized") || text.includes("sun")) emoji = "☀️";
-  else if (text.includes("light") || text.includes("weight")) emoji = "🪶";
-  else if (text.includes("warranty") || text.includes("guarantee")) emoji = "🛡️";
-  else if (text.includes("lens")) emoji = "🔍";
-  return <span style={{ fontSize: 16, lineHeight: 1 }}>{emoji}</span>;
-}
-
 // ============ PRODUCT DETAIL PAGE ============
 export function ProductDetailPage({ productId, navigate }) {
   const product = PRODUCTS_DATA.find(p => p.id === productId);
@@ -12783,7 +12750,9 @@ export function ProductDetailPage({ productId, navigate }) {
   const [openTab, setOpenTab] = useState("details");
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedVariantName, setSelectedVariantName] = useState("");
+  const [showAuthPrompt, setShowAuthPrompt] = useState(false);
   const { addToCart } = useCart();
+  const { user } = useAuth();
 
   const isMobile = useMediaQuery("(max-width: 767px)");
   const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1023px)");
@@ -13052,7 +13021,7 @@ export function ProductDetailPage({ productId, navigate }) {
                 {added ? "✓ ADDED TO BAG" : "ADD TO BAG"}
               </button>
 
-              <button onClick={() => { addToCart(product, qty); navigate("#/checkout"); }} style={{ width: "100%", background: "#fff", color: "#0c2c41", border: "1.5px solid #0c2c41", padding: "15px 24px", fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", cursor: "pointer", fontFamily: ff, transition: "background 0.2s, color 0.2s", marginBottom: 12 }}
+              <button onClick={() => { if (!user) { setShowAuthPrompt(true); return; } addToCart(product, qty); navigate("#/checkout"); }} style={{ width: "100%", background: "#fff", color: "#0c2c41", border: "1.5px solid #0c2c41", padding: "15px 24px", fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", cursor: "pointer", fontFamily: ff, transition: "background 0.2s, color 0.2s", marginBottom: 12 }}
                 onMouseEnter={(e) => { e.currentTarget.style.background = "#0c2c41"; e.currentTarget.style.color = "#fff"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.background = "#fff"; e.currentTarget.style.color = "#0c2c41"; }}>
                 BUY NOW
@@ -13063,15 +13032,6 @@ export function ProductDetailPage({ productId, navigate }) {
                   VIEW BAG & CHECKOUT →
                 </button>
               )}
-
-              <div style={{ display: "flex", flexDirection: "column", gap: 9, padding: "18px 0", borderTop: "1px solid #f0ece4", borderBottom: "1px solid #f0ece4", marginBottom: 28 }}>
-                {(product.features || []).map((feature, i) => (
-                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                    <FeatureIcon feature={feature} />
-                    <span style={{ fontSize: 12, color: "#666", fontFamily: mono, letterSpacing: "0.02em" }}>{feature}</span>
-                  </div>
-                ))}
-              </div>
 
               <div style={{ borderTop: "1px solid #e8e0d0" }}>
                 {product.description && (
@@ -13137,6 +13097,8 @@ export function ProductDetailPage({ productId, navigate }) {
           </div>
         </div>
       )}
+
+      <AuthModal isOpen={showAuthPrompt} onClose={() => setShowAuthPrompt(false)} defaultTab="signup" />
 
       <style>{`@keyframes fadeImgIn { from { opacity: 0; transform: scale(1.02); } to { opacity: 1; transform: scale(1); } }`}</style>
     </div>

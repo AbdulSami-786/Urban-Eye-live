@@ -3214,13 +3214,1490 @@
 
 
 
+// // product.js
+// export const PRODUCTS_DATA = [
+//   // ======================= OPTICAL PRODUCTS =======================
+
+//   {
+//     id: "alex",
+//     name: " Alex",
+//     category: "Optical",
+//     subcategory: "",
+//     gender: "women",
+//     colors: [
+//       {
+//         name: "Jet Black",
+//         swatch: "#1a1a1a",
+//         image: "./assets/Alex 1.jpg",
+//         gallery: ["./assets/Alex 1.jpg", "./assets/Alex 2.jpg", "./assets/Alex 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 8500,
+//     tag: "",
+//     sizes: ["48 (Medium)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Alex embeds a new sleek design, made from high quality acetate, with Jet Black frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "H2832",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "48mm",
+//       "Bridge Width": "22mm",
+//       "Temple Length": "140mm",
+//       "Lens Color": "Clear",
+//     },
+//     measurements: {
+//       Size: "Medium",
+//       "Lens Width": "48mm",
+//       "Bridge Width": "22mm",
+//       "Temple Length": "140mm",
+//     },
+//     shape: "Square",
+//     size: "Medium",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "felix",
+//     name: " Felix",
+//     category: "Optical",
+//     subcategory: "",
+//     gender: "women",
+//     colors: [
+//       {
+//         name: "Tangerine",
+//         swatch: "#ff9500",
+//         image: "./assets/FELIX 1.jpg",
+//         gallery: ["./assets/FELIX 1.jpg", "./assets/FELIX 2.jpg", "./assets/FELIX 3.jpg", "./10.jpg"],
+//       },
+//       {
+//         name: "Sage Green",
+//         swatch: "#8f9779",
+//         image: "./assets/FELIX 4.jpg",
+//         gallery: ["./assets/FELIX 4.jpg", "./assets/FELIX 5.jpg", "./assets/FELIX 6.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 8500,
+//     tag: "",
+//     sizes: ["49 (Medium)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Felix embeds a new sleek design, made from high quality acetate, with Tangerine frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "H2851",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "49mm",
+//       "Bridge Width": "21mm",
+//       "Temple Length": "145mm",
+//       "Lens Color": "Clear",
+//     },
+//     measurements: {
+//       Size: "Medium",
+//       "Lens Width": "49mm",
+//       "Bridge Width": "21mm",
+//       "Temple Length": "145mm",
+//     },
+//     shape: "Rectangle",
+//     size: "Medium",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "daniel",
+//     name: " Daniel",
+//     category: "Optical",
+//     subcategory: "",
+//     gender: "Men",
+//     colors: [
+//       {
+//         name: "Sky Blue",
+//         swatch: "#87ceeb",
+//         image: "./assets/DANIAL 1.jpg",
+//         gallery: ["./assets/DANIAL 1.jpg", "./assets/DANIAL 2.jpg", "./assets/DANIAL 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 8500,
+//     tag: "",
+//     sizes: ["50 (Medium)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Daniel embeds a new sleek design, made from high quality acetate, with Sky Blue frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "H2860",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "50mm",
+//       "Bridge Width": "21mm",
+//       "Temple Length": "145mm",
+//       "Lens Color": "Clear",
+//     },
+//     measurements: {
+//       Size: "Medium",
+//       "Lens Width": "50mm",
+//       "Bridge Width": "21mm",
+//       "Temple Length": "145mm",
+//     },
+//     shape: "Rectangle",
+//     size: "Medium",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "james",
+//     name: " James",
+//     category: "Optical",
+//     subcategory: "",
+//     gender: "Men/Women",
+//     colors: [
+//       {
+//         name: "Cobalt Blue",
+//         swatch: "#0047ab",
+//         image: "./assets/JAMES 1.jpg",
+//         gallery: ["./assets/JAMES 1.jpg", "./assets/JAMES 2.jpg", "./assets/JAMES 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 8500,
+//     tag: "",
+//     sizes: ["54 (Medium)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. James embeds a new sleek design, made from high quality acetate, with Cobalt Blue frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "A1439",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "54mm",
+//       "Bridge Width": "20mm",
+//       "Temple Length": "145mm",
+//       "Lens Color": "Clear",
+//     },
+//     measurements: {
+//       Size: "Medium",
+//       "Lens Width": "54mm",
+//       "Bridge Width": "20mm",
+//       "Temple Length": "145mm",
+//     },
+//     shape: "Square",
+//     size: "Medium",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "jenny",
+//     name: " Jenny",
+//     category: "Optical",
+//     subcategory: "",
+//     gender: "women",
+//     colors: [
+//       {
+//         name: "Honey Yellow",
+//         swatch: "#ffc700",
+//         image: "./assets/JENNY 1.jpg",
+//         gallery: ["./assets/JENNY 1.jpg", "./assets/JENNY 2.jpg", "./assets/JENNY 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 8500,
+//     tag: "",
+//     sizes: ["49 (Medium)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Jenny embeds a new sleek design, made from high quality acetate, with Honey Yellow frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "H2855",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "49mm",
+//       "Bridge Width": "22mm",
+//       "Temple Length": "145mm",
+//       "Lens Color": "Clear",
+//     },
+//     measurements: {
+//       Size: "Medium",
+//       "Lens Width": "49mm",
+//       "Bridge Width": "22mm",
+//       "Temple Length": "145mm",
+//     },
+//     shape: "Square",
+//     size: "Medium",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "drew",
+//     name: " Drew",
+//     category: "Optical",
+//     subcategory: "",
+//     gender: "women",
+//     colors: [
+//       {
+//         name: "Silver",
+//         swatch: "#c7c9cc",
+//         image: "./assets/DREW 1.jpg",
+//         gallery: ["./assets/DREW 1.jpg", "./assets/DREW 2.jpg", "./assets/DREW 3.jpg", "./10.jpg"],
+//       },
+//       {
+//         name: "Rose Gold",
+//         swatch: "#c0a06f",
+//         image: "./assets/DREW 4.jpg",
+//         gallery: ["./assets/DREW 4.jpg", "./assets/DREW5.jpg", "./assets/DREW 6.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 8500,
+//     tag: "",
+//     sizes: ["54 (Medium)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Drew embeds a new sleek design, made from premium titanium, with Silver frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Premium Titanium",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "IP8025",
+//       "Frame Material": "Titanium",
+//       "Lens Width": "54mm",
+//       "Bridge Width": "18mm",
+//       "Temple Length": "138mm",
+//       "Lens Color": "Clear",
+//     },
+//     measurements: {
+//       Size: "Medium",
+//       "Lens Width": "54mm",
+//       "Bridge Width": "18mm",
+//       "Temple Length": "138mm",
+//     },
+//     shape: "Square",
+//     size: "Medium",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "lily",
+//     name: " Lily",
+//     category: "Optical",
+//     subcategory: "",
+//     gender: "women",
+//     colors: [
+//       {
+//         name: "Bright Yellow",
+//         swatch: "#927f73",
+//         image: "./assets/LILY 1.jpg",
+//         gallery: ["./assets/LILY 1.jpg", "./assets/LILY 2.jpg", "./assets/LILY 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 8500,
+//     tag: "",
+//     sizes: ["48 (Medium)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Lily embeds a new sleek design, made from high quality acetate, with Bright Yellow frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "882249",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "48mm",
+//       "Bridge Width": "21mm",
+//       "Temple Length": "145mm",
+//       "Lens Color": "Clear",
+//     },
+//     measurements: {
+//       Size: "Medium",
+//       "Lens Width": "48mm",
+//       "Bridge Width": "21mm",
+//       "Temple Length": "145mm",
+//     },
+//     shape: "Rectangle",
+//     size: "Medium",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "tim",
+//     name: " Tim",
+//     category: "Optical",
+//     subcategory: "",
+//     gender: "Men/Women",
+//     colors: [
+//       {
+//         name: "Tropical Brown",
+//         swatch: "#8b5a2b",
+//         image: "./assets/TIM 1.jpg",
+//         gallery: ["./assets/TIM 1.jpg", "./assets/TIM 2.jpg", "./assets/TIM 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 8500,
+//     tag: "",
+//     sizes: ["53 (Medium)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Tim embeds a new sleek design, made from high quality acetate, with Tropical Brown frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "H2813",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "53mm",
+//       "Bridge Width": "18mm",
+//       "Temple Length": "142mm",
+//       "Lens Color": "Clear",
+//     },
+//     measurements: {
+//       Size: "Medium",
+//       "Lens Width": "53mm",
+//       "Bridge Width": "18mm",
+//       "Temple Length": "142mm",
+//     },
+//     shape: "Rectangle",
+//     size: "Medium",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "bond",
+//     name: " Bond",
+//     category: "Optical",
+//     subcategory: "",
+//     gender: "Men/Women",
+//     colors: [
+//       {
+//         name: "Ocean Blue",
+//         swatch: "#0077be",
+//         image: "./assets/BOND 1.jpg",
+//         gallery: ["./assets/BOND 1.jpg", "./assets/BOND 2.jpg", "./assets/BOND 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 8500,
+//     tag: "",
+//     sizes: ["42 (Small)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Bond embeds a new sleek design, made from high quality acetate, with Ocean Blue frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "H2822",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "42mm",
+//       "Bridge Width": "28mm",
+//       "Temple Length": "145mm",
+//       "Lens Color": "Clear",
+//     },
+//     measurements: {
+//       Size: "Small",
+//       "Lens Width": "42mm",
+//       "Bridge Width": "28mm",
+//       "Temple Length": "145mm",
+//     },
+//     shape: "Round",
+//     size: "Small",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "charlotte",
+//     name: " Charlotte",
+//     category: "Optical",
+//     subcategory: "",
+//     gender: "Men/Women",
+//     colors: [
+//       {
+//         name: "Amber Brown",
+//         swatch: "#600500",
+//         image: "./assets/CHARLOTTE 1.jpg",
+//         gallery: ["./assets/CHARLOTTE 1.jpg", "./assets/CHARLOTTE 2.jpg", "./assets/CHARLOTTE 3.jpg", "./10.jpg"],
+//       },
+//       {
+//         name: "Caramel Brown",
+//         swatch: "#a0522d",
+//         image: "./assets/CHARLOTTE 4.jpg",
+//         gallery: ["./assets/CHARLOTTE 4.jpg", "./assets/CHARLOTTE 5.jpg", "./assets/CHARLOTTE 6.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 8500,
+//     tag: "",
+//     sizes: ["55 (Large)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Charlotte embeds a new sleek design, made from high quality acetate, with Amber Brown frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "24SA020",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "55mm",
+//       "Bridge Width": "19mm",
+//       "Temple Length": "145mm",
+//       "Lens Color": "Clear",
+//     },
+//     measurements: {
+//       Size: "Large",
+//       "Lens Width": "55mm",
+//       "Bridge Width": "19mm",
+//       "Temple Length": "145mm",
+//     },
+//     shape: "Rectangle",
+//     size: "Large",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "amelia",
+//     name: " Amelia",
+//     category: "Optical",
+//     subcategory: "",
+//     gender: "women",
+//     colors: [
+//       {
+//         name: "Honey Tortoise",
+//         swatch: "#c4a77d",
+//         image: "./assets/AMELIA 1.jpg",
+//         gallery: ["./assets/AMELIA 1.jpg", "./assets/AMELIA 2.jpg", "./assets/AMELIA 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 8500,
+//     tag: "",
+//     sizes: ["49 (Large)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Amelia embeds a new sleek design, made from high quality acetate, with Honey Tortoise frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "882285",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "49mm",
+//       "Bridge Width": "22mm",
+//       "Temple Length": "148mm",
+//       "Lens Color": "Clear",
+//     },
+//     measurements: {
+//       Size: "Large",
+//       "Lens Width": "49mm",
+//       "Bridge Width": "22mm",
+//       "Temple Length": "148mm",
+//     },
+//     shape: "Square",
+//     size: "Large",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "isla",
+//     name: "Isla",
+//     category: "Optical",
+//     subcategory: "",
+//     gender: "Women",
+//     colors: [
+//       {
+//         name: "Berry Pink",
+//         swatch: "#e91e63",
+//         image: "./assets/ISLA 1.jpg",
+//         gallery: ["./assets/ISLA 1.jpg", "./assets/ISLA 2.jpg", "./assets/ISLA 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 8500,
+//     tag: "",
+//     sizes: ["51 (Large)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Isla embeds a new sleek design, made from high quality acetate, with Berry Pink frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "H2818",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "51mm",
+//       "Bridge Width": "19mm",
+//       "Temple Length": "142mm",
+//       "Lens Color": "Clear",
+//     },
+//     measurements: {
+//       Size: "Large",
+//       "Lens Width": "51mm",
+//       "Bridge Width": "19mm",
+//       "Temple Length": "142mm",
+//     },
+//     shape: "Square",
+//     size: "Large",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "miles",
+//     name: " Miles",
+//     category: "Optical",
+//     subcategory: "",
+//     gender: "Men",
+//     colors: [
+//       {
+//         name: "Smoke Grey",
+//         swatch: "#c5b8cc",
+//         image: "./assets/MILES 1.jpg",
+//         gallery: ["./assets/MILES 1.jpg", "./assets/MILES 2.jpg", "./assets/MILES 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 8500,
+//     tag: "",
+//     sizes: ["49 (Medium)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Miles embeds a new sleek design, made from high quality acetate, with Smoke Grey frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "23SA046",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "49mm",
+//       "Bridge Width": "22mm",
+//       "Temple Length": "145mm",
+//       "Lens Color": "Clear",
+//     },
+//     measurements: {
+//       Size: "Medium",
+//       "Lens Width": "49mm",
+//       "Bridge Width": "22mm",
+//       "Temple Length": "145mm",
+//     },
+//     shape: "Rectangle",
+//     size: "Medium",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "mount",
+//     name: "Mount",
+//     category: "Optical",
+//     subcategory: "",
+//     gender: "Men",
+//     colors: [
+//       {
+//         name: "Titanium Blue",
+//         swatch: "#4c4d50",
+//         image: "./assets/MOUNT 1.jpg",
+//         gallery: ["./assets/MOUNT 1.jpg", "./assets/MOUNT 2.jpg", "./assets/MOUNT 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 8500,
+//     tag: "",
+//     sizes: ["53 (Medium)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Mount embeds a new sleek design, made from premium titanium, with Titanium Blue frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Premium Titanium",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "IP8026",
+//       "Frame Material": "Titanium",
+//       "Lens Width": "53mm",
+//       "Bridge Width": "18mm",
+//       "Temple Length": "138mm",
+//       "Lens Color": "Clear",
+//     },
+//     measurements: {
+//       Size: "Medium",
+//       "Lens Width": "53mm",
+//       "Bridge Width": "18mm",
+//       "Temple Length": "138mm",
+//     },
+//     shape: "Rectangle",
+//     size: "Medium",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "gerard",
+//     name: "Gerard",
+//     category: "Optical",
+//     subcategory: "",
+//     gender: "Men",
+//     colors: [
+//       {
+//         name: "Jet Black",
+//         swatch: "#010303",
+//         image: "./assets/GERARD 1.jpg",
+//         gallery: ["./assets/GERARD 1.jpg", "./assets/GERARD 2.jpg", "./assets/GERARD 3.jpg", "./10.jpg"],
+//       },
+//       {
+//         name: "Havana Brown",
+//         swatch: "#901d00",
+//         image: "/assets/GERARD 4.jpg",
+//         gallery: ["/assets/GERARD 4.jpg", "/assets/GERARD 5.jpg", "/assets/GERARD 6.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 12500,
+//     tag: "",
+//     sizes: ["46 (Small)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Gerard embeds a new sleek design, made from high quality acetate, with Jet Black frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "1846",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "46mm",
+//       "Bridge Width": "22mm",
+//       "Temple Length": "145mm",
+//       "Lens Color": "Clear",
+//     },
+//     measurements: {
+//       Size: "Small",
+//       "Lens Width": "46mm",
+//       "Bridge Width": "22mm",
+//       "Temple Length": "145mm",
+//     },
+//     shape: "Round",
+//     size: "Small",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "darton",
+//     name: "Darton",
+//     category: "Optical",
+//     subcategory: "",
+//     gender: "women",
+//     colors: [
+//       {
+//         name: "Smoke Grey",
+//         swatch: "#60586e",
+//         image: "./assets/DARTON 1.jpg",
+//         gallery: ["./assets/DARTON 1.jpg", "./assets/DARTON 2.jpg", "./assets/DARTON 3.jpg", "./10.jpg"],
+//       },
+//       {
+//         name: "Tortoise Shell",
+//         swatch: "#931e00",
+//         image: "./assets/DARTON 4.jpg",
+//         gallery: ["./assets/DARTON 4.jpg", "./assets/DARTON 5.jpg", "./assets/DARTON 6.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 8500,
+//     tag: "",
+//     sizes: ["55 (Large)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Darton embeds a new sleek design, made from high quality acetate, with Smoke Grey frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "882286",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "55mm",
+//       "Bridge Width": "20mm",
+//       "Temple Length": "145mm",
+//       "Lens Color": "Clear",
+//     },
+//     measurements: {
+//       Size: "Large",
+//       "Lens Width": "55mm",
+//       "Bridge Width": "20mm",
+//       "Temple Length": "145mm",
+//     },
+//     shape: "Rectangle",
+//     size: "Large",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "oliver",
+//     name: " Oliver",
+//     category: "Optical",
+//     subcategory: "",
+//     gender: "Men/Women",
+//     colors: [
+//       {
+//         name: "Olive Green",
+//         swatch: "#97979a",
+//         image: "./assets/OLIVER 1.jpg",
+//         gallery: ["./assets/OLIVER 1.jpg", "./assets/OLIVER 2.jpg", "./assets/OLIVER 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 8500,
+//     tag: "",
+//     sizes: ["44 (Medium)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Oliver embeds a new sleek design, made from high quality acetate, with Olive Green frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "23SA036",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "44mm",
+//       "Bridge Width": "26mm",
+//       "Temple Length": "145mm",
+//       "Lens Color": "Clear",
+//     },
+//     measurements: {
+//       Size: "Medium",
+//       "Lens Width": "44mm",
+//       "Bridge Width": "26mm",
+//       "Temple Length": "145mm",
+//     },
+//     shape: "Round",
+//     size: "Medium",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "henry",
+//     name: " Henry",
+//     category: "Optical",
+//     subcategory: "",
+//     gender: "Men/Women",
+//     colors: [
+//       {
+//         name: "Crystal Grey",
+//         swatch: "#bfbcd3",
+//         image: "./assets/HENREY 1.jpg",
+//         gallery: ["./assets/HENREY 1.jpg", "./assets/HENREY 2.jpg", "./assets/HENREY 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 8500,
+//     tag: "",
+//     sizes: ["49 (Medium)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Henry embeds a new sleek design, made from high quality acetate, with Crystal Grey frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "23SA035",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "49mm",
+//       "Bridge Width": "25mm",
+//       "Temple Length": "145mm",
+//       "Lens Color": "Clear",
+//     },
+//     measurements: {
+//       Size: "Medium",
+//       "Lens Width": "49mm",
+//       "Bridge Width": "25mm",
+//       "Temple Length": "145mm",
+//     },
+//     shape: "Round",
+//     size: "Medium",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "ava",
+//     name: " Ava",
+//     category: "Optical",
+//     subcategory: "",
+//     gender: "Women",
+//     colors: [
+//       {
+//         name: "Jet Black",
+//         swatch: "#1a1a1a",
+//         image: "./assets/AVA 1.jpg",
+//         gallery: ["./assets/AVA 1.jpg", "./assets/AVA 2.jpg", "./assets/AVA 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 8500,
+//     tag: "",
+//     sizes: ["55 (Medium)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Ava embeds a new sleek design, made from high quality acetate, with Jet Black frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "882294",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "55mm",
+//       "Bridge Width": "15mm",
+//       "Temple Length": "145mm",
+//       "Lens Color": "Clear",
+//     },
+//     measurements: {
+//       Size: "Medium",
+//       "Lens Width": "55mm",
+//       "Bridge Width": "15mm",
+//       "Temple Length": "145mm",
+//     },
+//     shape: "Cat Eye",
+//     size: "Medium",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "linda",
+//     name: "Linda",
+//     category: "Optical",
+//     subcategory: "",
+//     gender: "Women",
+//     colors: [
+//       {
+//         name: "Deep Red",
+//         swatch: "#8b0000",
+//         image: "./assets/LINDA 1.jpg",
+//         gallery: ["./assets/LINDA 1.jpg", "./assets/LINDA 2.jpg", "./assets/LINDA 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 8500,
+//     tag: "",
+//     sizes: ["51 (Medium)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Linda embeds a new sleek design, made from high quality acetate, with Deep Red frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "H2847",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "51mm",
+//       "Bridge Width": "23mm",
+//       "Temple Length": "145mm",
+//       "Lens Color": "Clear",
+//     },
+//     measurements: {
+//       Size: "Medium",
+//       "Lens Width": "51mm",
+//       "Bridge Width": "23mm",
+//       "Temple Length": "145mm",
+//     },
+//     shape: "Cat Eye",
+//     size: "Medium",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "zegna",
+//     name: " Zegna",
+//     category: "Optical",
+//     subcategory: "",
+//     gender: "Men/Women",
+//     colors: [
+//       {
+//         name: "Ice Blue",
+//         swatch: "#b0e0e6",
+//         image: "./assets/ZEGNA 1.jpg",
+//         gallery: ["./assets/ZEGNA 1.jpg", "./assets/ZEGNA 2.jpg", "./assets/ZEGNA 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 8500,
+//     tag: "",
+//     sizes: ["51 (Medium)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Zegna embeds a new sleek design, made from high quality acetate, with Ice Blue frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "H2805",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "51mm",
+//       "Bridge Width": "18mm",
+//       "Temple Length": "142mm",
+//       "Lens Color": "Clear",
+//     },
+//     measurements: {
+//       Size: "Medium",
+//       "Lens Width": "51mm",
+//       "Bridge Width": "18mm",
+//       "Temple Length": "142mm",
+//     },
+//     shape: "Square",
+//     size: "Medium",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "dott",
+//     name: " Dott",
+//     category: "Optical",
+//     subcategory: "",
+//     gender: "Women",
+//     colors: [
+//       {
+//         name: "Emerald Green",
+//         swatch: "#50c878",
+//         image: "./assets/DOTT 1.jpg",
+//         gallery: ["./assets/DOTT 1.jpg", "./assets/DOTT 2.jpg", "./assets/DOTT 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 8500,
+//     tag: "",
+//     sizes: ["51 (Large)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Dott embeds a new sleek design, made from high quality acetate, with Emerald Green frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "H2812",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "51mm",
+//       "Bridge Width": "19mm",
+//       "Temple Length": "142mm",
+//       "Lens Color": "Clear",
+//     },
+//     measurements: {
+//       Size: "Large",
+//       "Lens Width": "51mm",
+//       "Bridge Width": "19mm",
+//       "Temple Length": "142mm",
+//     },
+//     shape: "Square",
+//     size: "Large",
+//     relatedIds: [],
+//   },
+
+//   // ======================= SUNGLASS PRODUCTS =======================
+
+//   {
+//     id: "andrew",
+//     name: " Andrew",
+//     category: "Sunglass",
+//     subcategory: "",
+//     gender: "Mens",
+//     colors: [
+//       {
+//         name: "Light Brown",
+//         swatch: "#b5651d",
+//         image: "./assets/Sunglass/Andrew 1.jpg",
+//         gallery: ["./assets/Sunglass/Andrew 1.jpg", "./assets/Sunglass/Andrew 2.jpg", "./assets/Sunglass/Andrew 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 12500,
+//     tag: "",
+//     sizes: ["55 (Medium)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Andrew embeds a new sleek design, made from high quality acetate, with Light Brown frame & Olive green lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "RT2034A",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "55mm",
+//       "Bridge Width": "19mm",
+//       "Temple Length": "145mm",
+//       "Lens Color": "Olive green",
+//       "UV Protection": "Yes",
+//     },
+//     measurements: {
+//       Size: "Medium",
+//       "Lens Width": "55mm",
+//       "Bridge Width": "19mm",
+//       "Temple Length": "145mm",
+//     },
+//     shape: "Rectangle",
+//     size: "Medium",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "garfield",
+//     name: " Garfield",
+//     category: "Sunglass",
+//     subcategory: "",
+//     gender: "Mens/Women",
+//     colors: [
+//       {
+//         name: "Jet Black",
+//         swatch: "#1a1a1a",
+//         image: "/assets/Sunglass/Garfield 1.jpg",
+//         gallery: ["/assets/Sunglass/Garfield 1.jpg", "/assets/Sunglass/Garfield 2.jpg", "/assets/Sunglass/Garfield 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 12500,
+//     tag: "",
+//     sizes: ["39 (Small)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Garfield embeds a new sleek design, made from high quality acetate, with Jet Black frame & Honey Brown lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "FG1582",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "39mm",
+//       "Bridge Width": "26mm",
+//       "Temple Length": "145mm",
+//       "Lens Color": "Honey Brown",
+//       "UV Protection": "Yes",
+//     },
+//     measurements: {
+//       Size: "Small",
+//       "Lens Width": "39mm",
+//       "Bridge Width": "26mm",
+//       "Temple Length": "145mm",
+//     },
+//     shape: "Hexagon-Round",
+//     size: "Small",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "karl",
+//     name: "Karl",
+//     category: "Sunglass",
+//     subcategory: "",
+//     gender: "Mens/Women",
+//     colors: [
+//       {
+//         name: "Blue",
+//         swatch: "#5b6c95",
+//         image: "/assets/Sunglass/Karl 1.jpg",
+//         gallery: ["/assets/Sunglass/Karl 1.jpg", "/assets/Sunglass/Karl 2.jpg", "/assets/Sunglass/Karl 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 12500,
+//     tag: "",
+//     sizes: ["49 (Medium)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Karl embeds a new sleek design, made from high quality acetate, with Blue frame & Brown lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "22SA037",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "49mm",
+//       "Bridge Width": "24mm",
+//       "Temple Length": "142mm",
+//       "Lens Color": "Brown",
+//       "UV Protection": "Yes",
+//     },
+//     measurements: {
+//       Size: "Medium",
+//       "Lens Width": "49mm",
+//       "Bridge Width": "24mm",
+//       "Temple Length": "142mm",
+//     },
+//     shape: "Hexagon-Rectangle",
+//     size: "Medium",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "bevis",
+//     name: "Bevis",
+//     category: "Sunglass",
+//     subcategory: "",
+//     gender: "Mens",
+//     colors: [
+//       {
+//         name: "Matt Black",
+//         swatch: "#2b2b2b",
+//         image: "./assets/Sunglass/BEVIS 1.jpg",
+//         gallery: ["./assets/Sunglass/BEVIS 1.jpg", "./assets/Sunglass/BEVIS 2.jpg", "./assets/Sunglass/BEVIS 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 12500,
+//     tag: "",
+//     sizes: ["57 (Small)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Bevis embeds a new sleek design, made from premium titanium, with Matt Black frame & Gradient Red lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Premium Titanium",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "22SM016",
+//       "Frame Material": "Titanium",
+//       "Lens Width": "57mm",
+//       "Bridge Width": "17mm",
+//       "Temple Length": "140mm",
+//       "Lens Color": "Gradient Red",
+//       "UV Protection": "Yes",
+//     },
+//     measurements: {
+//       Size: "Small",
+//       "Lens Width": "57mm",
+//       "Bridge Width": "17mm",
+//       "Temple Length": "140mm",
+//     },
+//     shape: "Hexagon-Rectangle",
+//     size: "Small",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "violet",
+//     name: " Violet",
+//     category: "Sunglass",
+//     subcategory: "",
+//     gender: "Womens",
+//     colors: [
+//       {
+//         name: "Jet Black",
+//         swatch: "#1a1a1a",
+//         image: "./assets/Sunglass/VIOLET 1.jpg",
+//         gallery: ["./assets/Sunglass/VIOLET 1.jpg", "./assets/Sunglass/VIOLET 2.jpg", "./assets/Sunglass/VIOLET 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 12500,
+//     tag: "",
+//     sizes: ["54 (Medium)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Violet embeds a new sleek design, made from high quality acetate, with Jet Black frame & Black lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "23SA033",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "54mm",
+//       "Bridge Width": "18mm",
+//       "Temple Length": "145mm",
+//       "Lens Color": "Black",
+//       "UV Protection": "Yes",
+//     },
+//     measurements: {
+//       Size: "Medium",
+//       "Lens Width": "54mm",
+//       "Bridge Width": "18mm",
+//       "Temple Length": "145mm",
+//     },
+//     shape: "Hexagon-Rectangle",
+//     size: "Medium",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "monaco",
+//     name: "Monaco",
+//     category: "Sunglass",
+//     subcategory: "",
+//     gender: "Mens/Women",
+//     colors: [
+//       {
+//         name: "Silver",
+//         swatch: "#c0c0c0",
+//         image: "/assets/Sunglass/Monaco 1.jpg",
+//         gallery: ["/assets/Sunglass/Monaco 1.jpg", "/assets/Sunglass/Monaco 2.jpg", "/assets/Sunglass/Monaco 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 12500,
+//     tag: "",
+//     sizes: ["58 (Medium)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Monaco embeds a new sleek design, made from premium titanium, with Silver frame & Gradient blue lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Premium Titanium",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "22SM021",
+//       "Frame Material": "Titanium",
+//       "Lens Width": "58mm",
+//       "Bridge Width": "12mm",
+//       "Temple Length": "140mm",
+//       "Lens Color": "Gradient Blue",
+//       "UV Protection": "Yes",
+//     },
+//     measurements: {
+//       Size: "Medium",
+//       "Lens Width": "58mm",
+//       "Bridge Width": "12mm",
+//       "Temple Length": "140mm",
+//     },
+//     shape: "Hexagon-Rectangle",
+//     size: "Medium",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "sarah",
+//     name: "Sarah",
+//     category: "Sunglass",
+//     subcategory: "",
+//     gender: "Womens",
+//     colors: [
+//       {
+//         name: "Green Tortoise Shell",
+//         swatch: "#15150d",
+//         image: "./assets/Sunglass/Sarah 1.jpg",
+//         gallery: ["./assets/Sunglass/Sarah 1.jpg", "./assets/Sunglass/Sarah 2.jpg", "./assets/Sunglass/Sarah 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 12500,
+//     tag: "",
+//     sizes: ["44 (Medium)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Sarah embeds a new sleek design, made from high quality acetate, with Green Tortoise Shell frame & Amber lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "23SA015",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "44mm",
+//       "Bridge Width": "20mm",
+//       "Temple Length": "145mm",
+//       "Lens Color": "Amber",
+//       "UV Protection": "Yes",
+//     },
+//     measurements: {
+//       Size: "Medium",
+//       "Lens Width": "44mm",
+//       "Bridge Width": "20mm",
+//       "Temple Length": "145mm",
+//     },
+//     shape: "Cat Eye",
+//     size: "Medium",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "xrp",
+//     name: "Xrp",
+//     category: "Sunglass",
+//     subcategory: "",
+//     gender: "Womens",
+//     colors: [
+//       {
+//         name: "Gold",
+//         swatch: "#484841",
+//         image: "./assets/Sunglass/Xrp 1.jpg",
+//         gallery: ["./assets/Sunglass/Xrp 1.jpg", "./assets/Sunglass/Xrp 2.jpg", "./assets/Sunglass/Xrp 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 12500,
+//     tag: "",
+//     sizes: ["53 (Medium)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Xrp embeds a new sleek design, made from high quality acetate, with Gold frame & Gradient Green lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "22SM012",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "53mm",
+//       "Bridge Width": "18mm",
+//       "Temple Length": "140mm",
+//       "Lens Color": "Gradient Green",
+//       "UV Protection": "Yes",
+//     },
+//     measurements: {
+//       Size: "Medium",
+//       "Lens Width": "53mm",
+//       "Bridge Width": "18mm",
+//       "Temple Length": "140mm",
+//     },
+//     shape: "Round",
+//     size: "Medium",
+//     relatedIds: [],
+//   },
+
+//   {
+//     id: "tom",
+//     name: " Tom",
+//     category: "Sunglass",
+//     subcategory: "",
+//     gender: "Mens",
+//     colors: [
+//       {
+//         name: "Honey Brown",
+//         swatch: "#b87a3b",
+//         image: "./assets/Sunglass/Tom 1.jpg",
+//         gallery: ["./assets/Sunglass/Tom 1.jpg", "./assets/Sunglass/Tom 2.jpg", "./assets/Sunglass/Tom 3.jpg", "./10.jpg"],
+//       },
+//     ],
+//     price: 12500,
+//     tag: "",
+//     sizes: ["56 (Medium)"],
+//     description:
+//       "Redefine your success with Urban Eyes latest design. Tom embeds a new sleek design, made from high quality acetate, with Honey Brown frame & Dark Green lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+//     features: [
+//       "Made from Hand crafted acetate",
+//       "Pakistan Landmarks Engraving",
+//       "Comfortable Nose Bridge",
+//       "Steel hinges",
+//     ],
+//     specifications: {
+//       "Model Number": "23SA027",
+//       "Frame Material": "Hand crafted acetate",
+//       "Lens Width": "56mm",
+//       "Bridge Width": "18mm",
+//       "Temple Length": "145mm",
+//       "Lens Color": "Dark Green",
+//       "UV Protection": "Yes",
+//     },
+//     measurements: {
+//       Size: "Medium",
+//       "Lens Width": "56mm",
+//       "Bridge Width": "18mm",
+//       "Temple Length": "145mm",
+//     },
+//     shape: "Rectangle",
+//     size: "Medium",
+//     relatedIds: [],
+//   },
+// ];
+
+// export default PRODUCTS_DATA;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // product.js
 export const PRODUCTS_DATA = [
   // ======================= OPTICAL PRODUCTS =======================
 
   {
     id: "alex",
-    name: " Alex",
+    name: "Alex",
     category: "Optical",
     subcategory: "",
     gender: "women",
@@ -3236,7 +4713,7 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["48 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Alex embeds a new sleek design, made from high quality acetate, with Jet Black frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Alex embeds a new sleek design, made from high quality acetate, with Jet black color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Hand crafted acetate",
       "Pakistan Landmarks Engraving",
@@ -3264,7 +4741,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "felix",
-    name: " Felix",
+    name: "Felix",
     category: "Optical",
     subcategory: "",
     gender: "women",
@@ -3286,7 +4763,7 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["49 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Felix embeds a new sleek design, made from high quality acetate, with Tangerine frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Felix embeds a new sleek design, made from high quality acetate, with Tangerine color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Hand crafted acetate",
       "Pakistan Landmarks Engraving",
@@ -3314,7 +4791,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "daniel",
-    name: " Daniel",
+    name: "Daniel",
     category: "Optical",
     subcategory: "",
     gender: "Men",
@@ -3330,7 +4807,7 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["50 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Daniel embeds a new sleek design, made from high quality acetate, with Sky Blue frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Daniel embeds a new sleek design, made from high quality acetate, with Sky Blue color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Hand crafted acetate",
       "Pakistan Landmarks Engraving",
@@ -3358,7 +4835,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "james",
-    name: " James",
+    name: "James",
     category: "Optical",
     subcategory: "",
     gender: "Men/Women",
@@ -3374,7 +4851,7 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["54 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. James embeds a new sleek design, made from high quality acetate, with Cobalt Blue frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. James embeds a new sleek design, made from high quality acetate, with Cobalt Blue color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Hand crafted acetate",
       "Pakistan Landmarks Engraving",
@@ -3402,7 +4879,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "jenny",
-    name: " Jenny",
+    name: "Jenny",
     category: "Optical",
     subcategory: "",
     gender: "women",
@@ -3418,7 +4895,7 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["49 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Jenny embeds a new sleek design, made from high quality acetate, with Honey Yellow frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Jenny embeds a new sleek design, made from high quality acetate, with Honey Yellow color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Hand crafted acetate",
       "Pakistan Landmarks Engraving",
@@ -3446,7 +4923,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "drew",
-    name: " Drew",
+    name: "Drew",
     category: "Optical",
     subcategory: "",
     gender: "women",
@@ -3468,7 +4945,7 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["54 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Drew embeds a new sleek design, made from premium titanium, with Silver frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Drew embeds a new sleek design, made from high quality acetate, with Silver color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Premium Titanium",
       "Pakistan Landmarks Engraving",
@@ -3496,7 +4973,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "lily",
-    name: " Lily",
+    name: "Lily",
     category: "Optical",
     subcategory: "",
     gender: "women",
@@ -3540,7 +5017,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "tim",
-    name: " Tim",
+    name: "Tim",
     category: "Optical",
     subcategory: "",
     gender: "Men/Women",
@@ -3584,7 +5061,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "bond",
-    name: " Bond",
+    name: "Bond",
     category: "Optical",
     subcategory: "",
     gender: "Men/Women",
@@ -3628,7 +5105,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "charlotte",
-    name: " Charlotte",
+    name: "Charlotte",
     category: "Optical",
     subcategory: "",
     gender: "Men/Women",
@@ -3644,6 +5121,24 @@ export const PRODUCTS_DATA = [
         swatch: "#a0522d",
         image: "./assets/CHARLOTTE 4.jpg",
         gallery: ["./assets/CHARLOTTE 4.jpg", "./assets/CHARLOTTE 5.jpg", "./assets/CHARLOTTE 6.jpg", "./10.jpg"],
+      },
+      {
+        name: "Earth",
+        swatch: "#7a5230",
+        image: "./assets/CHARLOTTE 7.jpg",
+        gallery: ["./assets/CHARLOTTE 7.jpg", "./assets/Charlotte 8.jpg", "./assets/Charlotte 9.jpg" , "./10.jpg"],
+      },
+      {
+        name: "Havana",
+        swatch: "#8a4b28",
+        image: "./assets/CHARLOTTE 10.jpg",
+        gallery: ["./assets/CHARLOTTE 10.jpg", "./assets/CHARLOTTE 11.jpg", "./assets/CHARLOTTE 12.jpg" ,"./10.jpg"],
+      },
+      {
+        name: "Jet Black",
+        swatch: "#1a1a1a",
+        image: "./assets/CHARLOTTE 13.jpg",
+        gallery: ["./assets/CHARLOTTE 13.jpg", "./assets/CHARLOTTE 14.jpg", "./assets/CHARLOTTE 15.jpg" ,"./10.jpg"],
       },
     ],
     price: 8500,
@@ -3678,7 +5173,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "amelia",
-    name: " Amelia",
+    name: "Amelia",
     category: "Optical",
     subcategory: "",
     gender: "women",
@@ -3766,7 +5261,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "miles",
-    name: " Miles",
+    name: "Miles",
     category: "Optical",
     subcategory: "",
     gender: "Men",
@@ -3776,6 +5271,18 @@ export const PRODUCTS_DATA = [
         swatch: "#c5b8cc",
         image: "./assets/MILES 1.jpg",
         gallery: ["./assets/MILES 1.jpg", "./assets/MILES 2.jpg", "./assets/MILES 3.jpg", "./10.jpg"],
+      },
+      {
+        name: "Lemon",
+        swatch: "#fff44f",
+        image: "./assets/Miles 4.jpg",
+        gallery: ["./assets/Miles 4.jpg", "./assets/Miles 5.jpg", "./assets/Miles 6.jpg" , "./10.jpg"],
+      },
+      {
+        name: "Transparent",
+        swatch: "#e8e8e8",
+        image: "./assets/MILES 7.jpg",
+        gallery: ["./assets/MILES 7.jpg", "./assets/MILES 8.jpg", "./assets/MILES 9.jpg" , "./10.jpg"],
       },
     ],
     price: 8500,
@@ -3826,7 +5333,7 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["53 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Mount embeds a new sleek design, made from premium titanium, with Titanium Blue frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Mount embeds a new sleek design, made from high quality acetate, with Titanium Blue frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Premium Titanium",
       "Pakistan Landmarks Engraving",
@@ -3860,23 +5367,23 @@ export const PRODUCTS_DATA = [
     gender: "Men",
     colors: [
       {
-        name: "Jet Black",
-        swatch: "#010303",
-        image: "./assets/GERARD 1.jpg",
-        gallery: ["./assets/GERARD 1.jpg", "./assets/GERARD 2.jpg", "./assets/GERARD 3.jpg", "./10.jpg"],
-      },
-      {
         name: "Havana Brown",
         swatch: "#901d00",
         image: "/assets/GERARD 4.jpg",
         gallery: ["/assets/GERARD 4.jpg", "/assets/GERARD 5.jpg", "/assets/GERARD 6.jpg", "./10.jpg"],
+      },
+      {
+        name: "Jet Black",
+        swatch: "#010303",
+        image: "./assets/GERARD 1.jpg",
+        gallery: ["./assets/GERARD 1.jpg", "./assets/GERARD 2.jpg", "./assets/GERARD 3.jpg", "./10.jpg"],
       },
     ],
     price: 12500,
     tag: "",
     sizes: ["46 (Small)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Gerard embeds a new sleek design, made from high quality acetate, with Jet Black frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Gerard embeds a new sleek design, made from high quality acetate, with Havana Brown color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Hand crafted acetate",
       "Pakistan Landmarks Engraving",
@@ -3884,7 +5391,7 @@ export const PRODUCTS_DATA = [
       "Steel hinges",
     ],
     specifications: {
-      "Model Number": "1846",
+      "Model Number": "1846,",
       "Frame Material": "Hand crafted acetate",
       "Lens Width": "46mm",
       "Bridge Width": "22mm",
@@ -3910,23 +5417,23 @@ export const PRODUCTS_DATA = [
     gender: "women",
     colors: [
       {
-        name: "Smoke Grey",
-        swatch: "#60586e",
-        image: "./assets/DARTON 1.jpg",
-        gallery: ["./assets/DARTON 1.jpg", "./assets/DARTON 2.jpg", "./assets/DARTON 3.jpg", "./10.jpg"],
-      },
-      {
         name: "Tortoise Shell",
         swatch: "#931e00",
         image: "./assets/DARTON 4.jpg",
         gallery: ["./assets/DARTON 4.jpg", "./assets/DARTON 5.jpg", "./assets/DARTON 6.jpg", "./10.jpg"],
+      },
+      {
+        name: "Smoke Grey",
+        swatch: "#60586e",
+        image: "./assets/DARTON 1.jpg",
+        gallery: ["./assets/DARTON 1.jpg", "./assets/DARTON 2.jpg", "./assets/DARTON 3.jpg", "./10.jpg"],
       },
     ],
     price: 8500,
     tag: "",
     sizes: ["55 (Large)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Darton embeds a new sleek design, made from high quality acetate, with Smoke Grey frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Darton embeds a new sleek design, made from high quality acetate, with Tortoise Shell color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Hand crafted acetate",
       "Pakistan Landmarks Engraving",
@@ -3954,7 +5461,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "oliver",
-    name: " Oliver",
+    name: "Oliver",
     category: "Optical",
     subcategory: "",
     gender: "Men/Women",
@@ -3970,7 +5477,7 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["44 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Oliver embeds a new sleek design, made from high quality acetate, with Olive Green frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Oliver embeds a new sleek design, made from high quality acetate, with Oilve Green color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Hand crafted acetate",
       "Pakistan Landmarks Engraving",
@@ -3998,7 +5505,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "henry",
-    name: " Henry",
+    name: "Henry",
     category: "Optical",
     subcategory: "",
     gender: "Men/Women",
@@ -4014,7 +5521,7 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["49 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Henry embeds a new sleek design, made from high quality acetate, with Crystal Grey frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Henry embeds a new sleek design, made from high quality acetate, with Crystal Grey color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Hand crafted acetate",
       "Pakistan Landmarks Engraving",
@@ -4042,7 +5549,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "ava",
-    name: " Ava",
+    name: "Ava",
     category: "Optical",
     subcategory: "",
     gender: "Women",
@@ -4058,7 +5565,7 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["55 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Ava embeds a new sleek design, made from high quality acetate, with Jet Black frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Ava embeds a new sleek design, made from high quality acetate, with Jet Black color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Hand crafted acetate",
       "Pakistan Landmarks Engraving",
@@ -4095,14 +5602,26 @@ export const PRODUCTS_DATA = [
         name: "Deep Red",
         swatch: "#8b0000",
         image: "./assets/LINDA 1.jpg",
-        gallery: ["./assets/LINDA 1.jpg", "./assets/LINDA 2.jpg", "./assets/LINDA 3.jpg", "./10.jpg"],
+        gallery: ["./assets/LINDA 1.jpg", "./assets/LINDA 2.jpg", "./assets/LINDA 3.jpg" , "./10.jpg"],
+      },
+      {
+        name: "Green",
+        swatch: "#2e7d32",
+        image: "./assets/LINDA 4.jpg",
+        gallery: ["./assets/LINDA 4.jpg", "./assets/LINDA 5.jpg", "./assets/LINDA 6.jpg", "./10.jpg"],
+      },
+      {
+        name: "Havana",
+        swatch: "#8a4b28",
+        image: "./assets/LINDA 7.jpg",
+        gallery: ["./assets/LINDA 7.jpg", "./assets/LINDA 8.jpg", "./assets/LINDA 9.jpg" , "./10.jpg"],
       },
     ],
     price: 8500,
     tag: "",
     sizes: ["51 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Linda embeds a new sleek design, made from high quality acetate, with Deep Red frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Linda embeds a new sleek design, made from high quality acetate, with Havana color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Hand crafted acetate",
       "Pakistan Landmarks Engraving",
@@ -4130,7 +5649,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "zegna",
-    name: " Zegna",
+    name: "Zegna",
     category: "Optical",
     subcategory: "",
     gender: "Men/Women",
@@ -4146,7 +5665,7 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["51 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Zegna embeds a new sleek design, made from high quality acetate, with Ice Blue frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Zegna embeds a new sleek design, made from high quality acetate, with Ice Blue color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Hand crafted acetate",
       "Pakistan Landmarks Engraving",
@@ -4174,7 +5693,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "dott",
-    name: " Dott",
+    name: "Dott",
     category: "Optical",
     subcategory: "",
     gender: "Women",
@@ -4187,10 +5706,10 @@ export const PRODUCTS_DATA = [
       },
     ],
     price: 8500,
-    tag: "",
+    tag: "Out of Stock",
     sizes: ["51 (Large)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Dott embeds a new sleek design, made from high quality acetate, with Emerald Green frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Dott embeds a new sleek design, made from high quality acetate, with Emerald Green color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Hand crafted acetate",
       "Pakistan Landmarks Engraving",
@@ -4216,11 +5735,595 @@ export const PRODUCTS_DATA = [
     relatedIds: [],
   },
 
+  {
+    id: "alexa",
+    name: "Alexa",
+    category: "Optical",
+    subcategory: "",
+    gender: "women",
+    colors: [
+      {
+        name: "Ruby Red",
+        swatch: "#9b111e",
+        image: "./assets/ALEXA 1.jpg",
+        gallery: ["./assets/ALEXA 1.jpg", "./assets/ALEXA 2.jpg", "./assets/ALEXA 3.jpg", "./10.jpg"],
+      },
+    ],
+    price: 8500,
+    tag: "",
+    sizes: ["46 (Medium)"],
+    description:
+      "Redefine your success with Urban Eyes latest design. Alexa embeds a new sleek design, made from high quality acetate, with Ruby Red frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+    features: [
+      "Made from Hand crafted acetate",
+      "Pakistan Landmarks Engraving",
+      "Comfortable Nose Bridge",
+      "Steel hinges",
+    ],
+    specifications: {
+      "Model Number": "H2844",
+      "Frame Material": "Hand crafted acetate",
+      "Lens Width": "46mm",
+      "Bridge Width": "25mm",
+      "Temple Length": "145mm",
+      "Lens Color": "Clear",
+    },
+    measurements: {
+      Size: "Medium",
+      "Lens Width": "46mm",
+      "Bridge Width": "25mm",
+      "Temple Length": "145mm",
+    },
+    shape: "Cat Eye-Rectangle",
+    size: "Medium",
+    relatedIds: [],
+  },
+
+  {
+    id: "bella",
+    name: "Bella",
+    category: "Optical",
+    subcategory: "",
+    gender: "women",
+    colors: [
+      {
+        name: "pink",
+        swatch: "#ffc0cb",
+          image: "./assets/BELLA (2).jpg",
+          gallery: ["./assets/BELLA (1).jpg", "./assets/BELLA (2).jpg", "./assets/BELLA (3).jpg", "./10.jpg"],
+      },
+    ],
+    price: 8500,
+    tag: "",
+    sizes: ["51 (Medium)"],
+    description:
+      "Redefine your success with Urban Eyes latest design. Bella embeds a new sleek design, made from high quality acetate, with pink frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+    features: [
+      "Made from Hand crafted acetate",
+      "Pakistan Landmarks Engraving",
+      "Comfortable Nose Bridge",
+      "Steel hinges",
+    ],
+    specifications: {
+      "Model Number": "H2827",
+      "Frame Material": "Hand crafted acetate",
+      "Lens Width": "51mm",
+      "Bridge Width": "21mm",
+      "Temple Length": "142mm",
+      "Lens Color": "Clear",
+    },
+    measurements: {
+      Size: "Medium",
+      "Lens Width": "51mm",
+      "Bridge Width": "21mm",
+      "Temple Length": "142mm",
+    },
+    shape: "square",
+    size: "Medium",
+    relatedIds: [],
+  },
+
+  {
+    id: "bradley",
+    name: "Bradley",
+    category: "Optical",
+    subcategory: "",
+    gender: "Man",
+    colors: [
+      {
+        name: "Royal Blue",
+        swatch: "#4169e1",
+        image: "./assets/Bradley 1.jpg  ",
+        gallery: ["./assets/Bradley 1.jpg", "./assets/Bradley 2.jpg", "./assets/Bradley 3.jpg", "./10.jpg"],
+      },
+    ],
+    price: 8500,
+    tag: "",
+    sizes: ["50 (Medium)"],
+    description:
+      "Redefine your success with Urban Eyes latest design. Bradley embeds a new sleek design, made from high quality acetate, with Royal Blue frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+    features: [
+      "Made from Hand crafted acetate",
+      "Pakistan Landmarks Engraving",
+      "Comfortable Nose Bridge",
+      "Steel hinges",
+    ],
+    specifications: {
+      "Model Number": "882275",
+      "Frame Material": "Hand crafted acetate",
+      "Lens Width": "50mm",
+      "Bridge Width": "19mm",
+      "Temple Length": "145mm",
+      "Lens Color": "Clear",
+    },
+    measurements: {
+      Size: "Medium",
+      "Lens Width": "50mm",
+      "Bridge Width": "19mm",
+      "Temple Length": "145mm",
+    },
+    shape: "square",
+    size: "Medium",
+    relatedIds: [],
+  },
+
+  {
+    id: "celine",
+    name: "Celine",
+    category: "Optical",
+    subcategory: "",
+    gender: "women",
+    colors: [
+      {
+        name: "Royal Blue",
+        swatch: "#4169e1",
+        image: "./assets/Celine 1.jpg",
+        gallery: ["./assets/Celine 1.jpg", "./assets/Celine 2.jpg", "./assets/Celine 3.jpg", "./10.jpg"],
+      },
+    ],
+    price: 8500,
+    tag: "",
+    sizes: ["50 (Medium)"],
+    description:
+      "Redefine your success with Urban Eyes latest design. Celine embeds a new sleek design, made from high quality acetate, with Royal Blue frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+    features: [
+      "Made from Hand crafted acetate",
+      "Pakistan Landmarks Engraving",
+      "Comfortable Nose Bridge",
+      "Steel hinges",
+    ],
+    specifications: {
+      "Model Number": "882252",
+      "Frame Material": "Hand crafted acetate",
+      "Lens Width": "50mm",
+      "Bridge Width": "23mm",
+      "Temple Length": "145mm",
+      "Lens Color": "Clear",
+    },
+    measurements: {
+      Size: "Medium",
+      "Lens Width": "50mm",
+      "Bridge Width": "23mm",
+      "Temple Length": "145mm",
+    },
+    shape: "oval-cat eye",
+    size: "Medium",
+    relatedIds: [],
+  },
+
+  {
+    id: "clair",
+    name: "Clair",
+    category: "Optical",
+    subcategory: "",
+    gender: "women",
+    colors: [
+      {
+        name: "Havana Brown",
+        swatch: "#8a4b28",
+        image: "./assets/Clair 1.jpg",
+        gallery: ["./assets/Clair 1.jpg", "./assets/Clair 2.jpg", "./assets/Clair 3.jpg", "./10.jpg"],
+      },
+      {
+        name: "Cobalt Blue",
+        swatch: "#0047ab",
+        image: "./assets/CLAIR 4.jpg",
+        gallery: ["./assets/CLAIR 4.jpg", "./assets/CLAIR 5.jpg", "./assets/CLAIR 6.jpg", "./10.jpg"],
+      },
+    ],
+    price: 8500,
+    tag: "",
+    sizes: ["55 (Medium)"],
+    description:
+      "Redefine your success with Urban Eyes latest design. Clair embeds a new sleek design, made from high quality acetate, with Havana Brown frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+    features: [
+      "Made from Hand crafted acetate",
+      "Pakistan Landmarks Engraving",
+      "Comfortable Nose Bridge",
+      "Steel hinges",
+    ],
+    specifications: {
+      "Model Number": "H2862",
+      "Frame Material": "Hand crafted acetate",
+      "Lens Width": "55mm",
+      "Bridge Width": "16mm",
+      "Temple Length": "145mm",
+      "Lens Color": "Clear",
+    },
+    measurements: {
+      Size: "Medium",
+      "Lens Width": "55mm",
+      "Bridge Width": "16mm",
+      "Temple Length": "145mm",
+    },
+    shape: "Cat eye-Rectangle",
+    size: "Medium",
+    relatedIds: [],
+  },
+
+  {
+    id: "emerald",
+    name: "Emerald",
+    category: "Optical",
+    subcategory: "",
+    gender: "Man",
+    colors: [
+      {
+        name: "Forest Green",
+        swatch: "#228b22",
+        image: "./assets/EMERALD 1.jpg",
+        gallery: ["./assets/EMERALD 1.jpg", "./assets/EMERALD 2.jpg", "./assets/EMERALD 3.jpg", "./10.jpg"],
+      },
+    ],
+    price: 8500,
+    tag: "",
+    sizes: ["47 (Medium)"],
+    description:
+      "Redefine your success with Urban Eyes latest design. Emerald embeds a new sleek design, made from high quality acetate, with Forest Green frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+    features: [
+      "Made from Hand crafted acetate",
+      "Pakistan Landmarks Engraving",
+      "Comfortable Nose Bridge",
+      "Steel hinges",
+    ],
+    specifications: {
+      "Model Number": "882258",
+      "Frame Material": "Hand crafted acetate",
+      "Lens Width": "47mm",
+      "Bridge Width": "25mm",
+      "Temple Length": "150mm",
+      "Lens Color": "Clear",
+    },
+    measurements: {
+      Size: "Medium",
+      "Lens Width": "47mm",
+      "Bridge Width": "25mm",
+      "Temple Length": "150mm",
+    },
+    shape: "square-Rectangle",
+    size: "Medium",
+    relatedIds: [],
+  },
+
+  {
+    id: "legend",
+    name: "Legend",
+    category: "Optical",
+    subcategory: "",
+    gender: "Man",
+    colors: [
+      {
+        name: "Steel Grey",
+        swatch: "#71797e",
+        image: "./assets/LEGEND 1.jpg",
+        gallery: ["./assets/LEGEND 1.jpg", "./assets/LEGEND 2.jpg", "./assets/LEGEND 3.jpg", "./10.jpg"],
+      },
+      {
+        name: "Forest Green",
+        swatch: "#228b22",
+        image: "./assets/LEGEND 4.jpg",
+        gallery: ["./assets/LEGEND 4.jpg", "./assets/LEGEND 5.jpg", "./assets/LEGEND 6.jpg", "./10.jpg"],
+      },
+    ],
+    price: 8500,
+    tag: "",
+    sizes: ["52 (Medium)"],
+    description:
+      "Redefine your success with Urban Eyes latest design. Legend embeds a new sleek design, made from high quality acetate, with Steel Grey frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+    features: [
+      "Made from Hand crafted acetate",
+      "Pakistan Landmarks Engraving",
+      "Comfortable Nose Bridge",
+      "Steel hinges",
+    ],
+    specifications: {
+      "Model Number": "882240",
+      "Frame Material": "Hand crafted acetate",
+      "Lens Width": "52mm",
+      "Bridge Width": "21mm",
+      "Temple Length": "148mm",
+      "Lens Color": "Clear",
+    },
+    measurements: {
+      Size: "Medium",
+      "Lens Width": "52mm",
+      "Bridge Width": "21mm",
+      "Temple Length": "148mm",
+    },
+    shape: "square",
+    size: "Medium",
+    relatedIds: [],
+  },
+
+  {
+    id: "model-23sa025",
+    name: "MELISA",
+    category: "Optical",
+    subcategory: "",
+    gender: "women",
+    colors: [
+      {
+        name: "Transparent",
+        swatch: "#e8e8e8",
+        image: "./assets/MELISA 4.jpg",
+        gallery: ["./assets/MELISA 4.jpg", "./assets/MELISA 5.jpg", "./assets/MELISA 6.jpg", "./10.jpg"],
+      },
+    ],
+    price: 8500,
+    tag: "",
+    sizes: ["49 (Small)"],
+    description:
+      "Redefine your success with Urban Eyes latest design. MELISA embeds a new sleek design, made from high quality acetate, with Transparent frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+    features: [
+      "Made from Hand crafted acetate",
+      "Pakistan Landmarks Engraving",
+      "Comfortable Nose Bridge",
+      "Steel hinges",
+    ],
+    specifications: {
+      "Model Number": "23SA025",
+      "Frame Material": "Hand crafted acetate",
+      "Lens Width": "49mm",
+      "Bridge Width": "20mm",
+      "Temple Length": "143mm",
+      "Lens Color": "Clear",
+    },
+    measurements: {
+      Size: "Small",
+      "Lens Width": "49mm",
+      "Bridge Width": "20mm",
+      "Temple Length": "143mm",
+    },
+    shape: "oval",
+    size: "Small",
+    relatedIds: [],
+  },
+
+  {
+    id: "orange",
+    name: "Orange",
+    category: "Optical",
+    subcategory: "",
+    gender: "women",
+    colors: [
+      {
+        name: "Blue tortoise",
+        swatch: "#3b4a6b",
+        image: "./assets/ORANGE 1.jpg",
+        gallery: ["./assets/ORANGE 1.jpg", "./assets/ORANGE 2.jpg", "./assets/ORANGE 3.jpg", "./10.jpg"],
+      },
+    ],
+    price: 8500,
+    tag: "",
+    sizes: ["50 (Small)"],
+    description:
+      "Redefine your success with Urban Eyes latest design. Orange embeds a new sleek design, made from high quality acetate, with Blue tortoise frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+    features: [
+      "Made from Hand crafted acetate",
+      "Pakistan Landmarks Engraving",
+      "Comfortable Nose Bridge",
+      "Steel hinges",
+    ],
+    specifications: {
+      "Model Number": "MB1338",
+      "Frame Material": "Hand crafted acetate",
+      "Lens Width": "50mm",
+      "Bridge Width": "19mm",
+      "Temple Length": "145mm",
+      "Lens Color": "Clear",
+    },
+    measurements: {
+      Size: "Small",
+      "Lens Width": "50mm",
+      "Bridge Width": "19mm",
+      "Temple Length": "145mm",
+    },
+    shape: "Square Round",
+    size: "Small",
+    relatedIds: [],
+  },
+
+  {
+    id: "persol",
+    name: "Persol",
+    category: "Optical",
+    subcategory: "",
+    gender: "Man",
+    colors: [
+      {
+        name: "Tortoise Shell",
+        swatch: "#8a5a30",
+        image: "./assets/PERSOL 1.jpg",
+        gallery: ["./assets/PERSOL 1.jpg", "./assets/PERSOL 2.jpg", "./assets/PERSOL 3.jpg", "./10.jpg"],
+      },
+    ],
+    price: 8500,
+    tag: "",
+    sizes: ["56 (Large)"],
+    description:
+      "Redefine your success with Urban Eyes latest design. Persol embeds a new sleek design, made from high quality acetate, with Tortoise Shell frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+    features: [
+      "Made from Hand crafted acetate",
+      "Pakistan Landmarks Engraving",
+      "Comfortable Nose Bridge",
+      "Steel hinges",
+    ],
+    specifications: {
+      "Model Number": "882225",
+      "Frame Material": "Hand crafted acetate",
+      "Lens Width": "56mm",
+      "Bridge Width": "19mm",
+      "Temple Length": "148mm",
+      "Lens Color": "Clear",
+    },
+    measurements: {
+      Size: "Large",
+      "Lens Width": "56mm",
+      "Bridge Width": "19mm",
+      "Temple Length": "148mm",
+    },
+    shape: "Square",
+    size: "Large",
+    relatedIds: [],
+  },
+
+  {
+    id: "ruby",
+    name: "Ruby",
+    category: "Optical",
+    subcategory: "",
+    gender: "women",
+    colors: [
+      {
+        name: "Tangerine",
+        swatch: "#ff9500",
+        image: "./assets/RUBY 1.jpg",
+        gallery: ["./assets/RUBY 1.jpg", "./assets/RUBY 2.jpg", "./assets/RUBY 3.jpg", "./10.jpg"],
+      },
+    ],
+    price: 8500,
+    tag: "",
+    sizes: ["50 (Medium)"],
+    description:
+      "Redefine your success with Urban Eyes latest design. Ruby embeds a new sleek design, made from high quality acetate, with Tangerine frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+    features: [
+      "Made from Hand crafted acetate",
+      "Pakistan Landmarks Engraving",
+      "Comfortable Nose Bridge",
+      "Steel hinges",
+    ],
+    specifications: {
+      "Model Number": "HC037",
+      "Frame Material": "Hand crafted acetate",
+      "Lens Width": "50mm",
+      "Bridge Width": "20mm",
+      "Temple Length": "142mm",
+      "Lens Color": "Clear",
+    },
+    measurements: {
+      Size: "Medium",
+      "Lens Width": "50mm",
+      "Bridge Width": "20mm",
+      "Temple Length": "142mm",
+    },
+    shape: "Oval",
+    size: "Medium",
+    relatedIds: [],
+  },
+
+  {
+    id: "sarah-optical",
+    name: "Sarah",
+    category: "Optical",
+    subcategory: "",
+    gender: "women",
+    colors: [
+      {
+        name: "Dusty Rose",
+        swatch: "#c08081",
+        image: "./assets/SARAH 4.jpg",
+        gallery: ["./assets/SARAH 4.jpg", "./assets/SARAH 5.jpg", "./assets/SARAH 6.jpg", "./10.jpg"],
+      },
+    ],
+    price: 8500,
+    tag: "",
+    sizes: ["49 (Small)"],
+    description:
+      "Redefine your success with Urban Eyes latest design. Sarah embeds a new sleek design, made from high quality acetate, with Dusty Rose frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+    features: [
+      "Made from Hand crafted acetate",
+      "Pakistan Landmarks Engraving",
+      "Comfortable Nose Bridge",
+      "Steel hinges",
+    ],
+    specifications: {
+      "Model Number": "23SA015",
+      "Frame Material": "Hand crafted acetate",
+      "Lens Width": "49mm",
+      "Bridge Width": "20mm",
+      "Temple Length": "145mm",
+      "Lens Color": "Clear",
+    },
+    measurements: {
+      Size: "Small",
+      "Lens Width": "49mm",
+      "Bridge Width": "20mm",
+      "Temple Length": "145mm",
+    },
+    shape: "Cat Eye-Rectangle",
+    size: "Small",
+    relatedIds: [],
+  },
+
+  {
+    id: "sydney",
+    name: "Sydney",
+    category: "Optical",
+    subcategory: "",
+    gender: "women",
+    colors: [
+      {
+        name: "Basil",
+        swatch: "#3f4d33",
+        image: "./assets/Sydney 1.jpg",
+        gallery: ["./assets/sydney 1.jpg","./assets/sydney 2.jpg","./assets/Sydney 3.jpg" ,"./10.jpg"],
+      },
+    ],
+    price: 8500,
+    tag: "",
+    sizes: ["49 (Medium)"],
+    description:
+      "Redefine your success with Urban Eyes latest design. Sydney embeds a new sleek design, made from high quality acetate, with Basil frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+    features: [
+      "Made from Hand crafted acetate",
+      "Pakistan Landmarks Engraving",
+      "Comfortable Nose Bridge",
+      "Steel hinges",
+    ],
+    specifications: {
+      "Model Number": "H2836",
+      "Frame Material": "Hand crafted acetate",
+      "Lens Width": "49mm",
+      "Bridge Width": "20mm",
+      "Temple Length": "142mm",
+      "Lens Color": "Clear",
+    },
+    measurements: {
+      Size: "Medium",
+      "Lens Width": "49mm",
+      "Bridge Width": "20mm",
+      "Temple Length": "142mm",
+    },
+    shape: "square Round",
+    size: "Medium",
+    relatedIds: [],
+  },
+
   // ======================= SUNGLASS PRODUCTS =======================
 
   {
     id: "andrew",
-    name: " Andrew",
+    name: "Andrew",
     category: "Sunglass",
     subcategory: "",
     gender: "Mens",
@@ -4236,7 +6339,7 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["55 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Andrew embeds a new sleek design, made from high quality acetate, with Light Brown frame & Olive green lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Andrew embeds a new sleek design, made from high quality acetate, with Light brown frame & Olive green lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Hand crafted acetate",
       "Pakistan Landmarks Engraving",
@@ -4265,7 +6368,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "garfield",
-    name: " Garfield",
+    name: "Garfield",
     category: "Sunglass",
     subcategory: "",
     gender: "Mens/Women",
@@ -4371,7 +6474,7 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["57 (Small)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Bevis embeds a new sleek design, made from premium titanium, with Matt Black frame & Gradient Red lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Bevis embeds a new sleek design, made from high quality acetate, with Matt Black frame & Gradient Red lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Premium Titanium",
       "Pakistan Landmarks Engraving",
@@ -4400,7 +6503,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "violet",
-    name: " Violet",
+    name: "Violet",
     category: "Sunglass",
     subcategory: "",
     gender: "Womens",
@@ -4461,7 +6564,7 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["58 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Monaco embeds a new sleek design, made from premium titanium, with Silver frame & Gradient blue lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Monaco embeds a new sleek design, made from high quality acetate, with Silver frame & gradient blue lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Premium Titanium",
       "Pakistan Landmarks Engraving",
@@ -4506,7 +6609,7 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["44 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Sarah embeds a new sleek design, made from high quality acetate, with Green Tortoise Shell frame & Amber lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Sarah embeds a new sleek design, made from high quality acetate, with Green Tortoise shell & amber lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Hand crafted acetate",
       "Pakistan Landmarks Engraving",
@@ -4551,7 +6654,7 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["53 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Xrp embeds a new sleek design, made from high quality acetate, with Gold frame & Gradient Green lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Xrp embeds a new sleek design, made from high quality acetate, with Gold frame & Gradient green lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Hand crafted acetate",
       "Pakistan Landmarks Engraving",
@@ -4580,7 +6683,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "tom",
-    name: " Tom",
+    name: "Tom",
     category: "Sunglass",
     subcategory: "",
     gender: "Mens",
@@ -4596,7 +6699,7 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["56 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Tom embeds a new sleek design, made from high quality acetate, with Honey Brown frame & Dark Green lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Tom embeds a new sleek design, made from high quality acetate, with Honey brown frame & Dark green lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Hand crafted acetate",
       "Pakistan Landmarks Engraving",
@@ -4622,6 +6725,7 @@ export const PRODUCTS_DATA = [
     size: "Medium",
     relatedIds: [],
   },
+
 ];
 
 export default PRODUCTS_DATA;

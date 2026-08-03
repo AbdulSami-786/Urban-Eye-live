@@ -4116,7 +4116,6 @@ const NAV_LINKS_BASE = [
           title: "COLLECTIONS",
           links: [
             { label: "NEW ARRIVALS", to: { tag: "NEW" } },
-            { label: "FEATURED", to: { tag: "BEST SELLER" } },
           ],
         },
       ],
