@@ -5787,8 +5787,8 @@ export const PRODUCTS_DATA = [
     gender: "women",
     colors: [
       {
-        name: "pink",
-        swatch: "#ffc0cb",
+        name: "rose taupe",
+        swatch: "#8a6f6a",
           image: "./assets/BELLA (2).jpg",
           gallery: ["./assets/BELLA (1).jpg", "./assets/BELLA (2).jpg", "./assets/BELLA (3).jpg", "./10.jpg"],
       },
