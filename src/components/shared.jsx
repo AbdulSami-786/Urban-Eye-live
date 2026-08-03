@@ -878,6 +878,7 @@ export function WishlistHeart({ productId, size = "md", placement = "card" }) {
   }, [user, productId]);
 
   const toggle = async (e) => {
+    e.preventDefault();
     e.stopPropagation();
 
     if (!user) {
@@ -1198,6 +1199,7 @@ export function ProductCard({ product, navigate, type = "default" }) {
   const displayLabel = selectedVariant?.name || product?.color || "Default";
 
   const handleAdd = (e) => {
+    e.preventDefault();
     e.stopPropagation();
     addToCart(product, 1);
     setAddedMsg(true);
@@ -1205,6 +1207,7 @@ export function ProductCard({ product, navigate, type = "default" }) {
   };
 
   const handleSelectColor = (variant, e) => {
+    e.preventDefault();
     e.stopPropagation();
     setSelectedVariantName(variant.name);
     setStoredVariantName(product.id, variant.name);
