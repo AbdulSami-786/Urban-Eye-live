@@ -5038,7 +5038,7 @@ function AppInner() {
       </footer>
 
       {/* WhatsApp FAB */}
-      <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer"
+      <a href="https://wa.me/923142246016" target="_blank" rel="noopener noreferrer"
         style={{
           position: "fixed", bottom: 26, right: 26, width: isMobile ? 44 : 52,
           height: isMobile ? 44 : 52, borderRadius: "50%",

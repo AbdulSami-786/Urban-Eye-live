@@ -5105,7 +5105,7 @@ export const PRODUCTS_DATA = [
 
   {
     id: "charlotte",
-    name: "Charlotte",
+    name: "Robert",
     category: "Optical",
     subcategory: "",
     gender: "Men/Women",
@@ -5145,7 +5145,7 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["55 (Large)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Charlotte embeds a new sleek design, made from high quality acetate, with Amber Brown frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Robert embeds a new sleek design, made from high quality acetate, with Amber Brown frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Hand crafted acetate",
       "Pakistan Landmarks Engraving",
