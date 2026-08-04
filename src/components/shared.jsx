@@ -1301,20 +1301,26 @@ export function ProductCard({ product, navigate, type = "default" }) {
           flexShrink: 0,
         }}
       >
-        <img
-          src={`.${displayImage}`}
-          alt={`${product.name} - ${displayLabel}`}
-          loading="lazy"
-          decoding="async"
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "contain",
-            display: "block",
-          }}
-        />
+        {displayImage ? (
+          <img
+            src={displayImage}
+            alt={`${product.name} - ${displayLabel}`}
+            loading="lazy"
+            decoding="async"
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+              display: "block",
+            }}
+          />
+        ) : (
+          <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <Frame shape="round" size={110} color="#4a4a4a" />
+          </div>
+        )}
       </div>
 
       {/* Info — centered, minimal (name · price · swatches) */}
