@@ -4754,7 +4754,7 @@ export const PRODUCTS_DATA = [
       },
       {
         name: "Sage Green",
-        swatch: "#8f9779",
+        swatch: "#b8cbde",
         image: "/assets/FELIX 4.jpg",
         gallery: ["/assets/FELIX 4.jpg", "/assets/FELIX 5.jpg", "/assets/FELIX 6.jpg", "/10.jpg"],
       },
@@ -5024,7 +5024,7 @@ export const PRODUCTS_DATA = [
     colors: [
       {
         name: "Tropical Brown",
-        swatch: "#8b5a2b",
+        swatch: "#a13002",
         image: "/assets/TIM 1.jpg",
         gallery: ["/assets/TIM 1.jpg", "/assets/TIM 2.jpg", "/assets/TIM 3.jpg", "/10.jpg"],
       },
@@ -5274,13 +5274,13 @@ export const PRODUCTS_DATA = [
       },
       {
         name: "Lemon",
-        swatch: "#fff44f",
+        swatch: "#c6c5af",
         image: "/assets/Miles 4.jpg",
         gallery: ["/assets/Miles 4.jpg", "/assets/Miles 5.jpg", "/assets/Miles 6.jpg" , "/10.jpg"],
       },
       {
         name: "Transparent",
-        swatch: "#e8e8e8",
+        swatch: "#bec4d7",
         image: "/assets/MILES 7.jpg",
         gallery: ["/assets/MILES 7.jpg", "/assets/MILES 8.jpg", "/assets/MILES 9.jpg" , "/10.jpg"],
       },
@@ -5368,7 +5368,7 @@ export const PRODUCTS_DATA = [
     colors: [
       {
         name: "Havana Brown",
-        swatch: "#901d00",
+        swatch: "#c65f00",
         image: "/assets/GERARD 4.jpg",
         gallery: ["/assets/GERARD 4.jpg", "/assets/GERARD 5.jpg", "/assets/GERARD 3.jpg", "/10.jpg"],
       },
@@ -5418,13 +5418,13 @@ export const PRODUCTS_DATA = [
     colors: [
       {
         name: "Tortoise Shell",
-        swatch: "#931e00",
+        swatch: "#4b1816",
         image: "/assets/DARTON 4.jpg",
         gallery: ["/assets/DARTON 4.jpg", "/assets/DARTON 5.jpg", "/assets/DARTON 6.jpg", "/10.jpg"],
       },
       {
         name: "Smoke Grey",
-        swatch: "#60586e",
+        swatch: "#584b65",
         image: "/assets/DARTON 1.jpg",
         gallery: ["/assets/DARTON 1.jpg", "/assets/DARTON 2.jpg", "/assets/DARTON 3.jpg", "/10.jpg"],
       },
@@ -5606,13 +5606,13 @@ export const PRODUCTS_DATA = [
       },
       {
         name: "Green",
-        swatch: "#2e7d32",
+        swatch: "#003e38",
         image: "/assets/LINDA 4.jpg",
         gallery: ["/assets/LINDA 4.jpg", "/assets/LINDA 5.jpg", "/assets/LINDA 6.jpg", "/10.jpg"],
       },
       {
         name: "Tortoise Shell Black",
-        swatch: "#8a4b28",
+        swatch: "#2a1c0a",
         image: "/assets/LINDA 7.jpg",
         gallery: ["/assets/LINDA 7.jpg", "/assets/LINDA 8.jpg", "/assets/LINDA 9.jpg" , "/10.jpg"],
       },
@@ -5788,7 +5788,7 @@ export const PRODUCTS_DATA = [
     colors: [
       {
         name: "Rose Pink",
-        swatch: "#d68fa0",
+        swatch: "#806459",
           image: "/assets/BELLA (2).jpg",
           gallery: ["/assets/BELLA (1).jpg", "/assets/BELLA (2).jpg", "/assets/BELLA (3).jpg", "/10.jpg"],
       },
@@ -5926,7 +5926,7 @@ export const PRODUCTS_DATA = [
       },
       {
         name: "Havana Brown",
-        swatch: "#8a4b28",
+        swatch: "#000200",
         image: "/assets/CLAIR 4.jpg",
         gallery: ["/assets/CLAIR 4.jpg", "/assets/CLAIR 5.jpg", "/assets/CLAIR 6.jpg", "/10.jpg"],
       },
@@ -5970,7 +5970,7 @@ export const PRODUCTS_DATA = [
     colors: [
       {
         name: "Forest Green",
-        swatch: "#228b22",
+        swatch: "#4f613c",
         image: "/assets/EMERALD 1.jpg",
         gallery: ["/assets/EMERALD 1.jpg", "/assets/EMERALD 2.jpg", "/assets/EMERALD 3.jpg", "/10.jpg"],
       },
@@ -6014,7 +6014,7 @@ export const PRODUCTS_DATA = [
     colors: [
       {
         name: "Forest Green",
-        swatch: "#228b22",
+        swatch: "#274628",
         image: "/assets/LEGEND 1.jpg",
         gallery: ["/assets/LEGEND 1.jpg", "/assets/LEGEND 2.jpg", "/assets/LEGEND 3.jpg", "/10.jpg"],
       },
@@ -6108,7 +6108,7 @@ export const PRODUCTS_DATA = [
     colors: [
       {
         name: "Blue tortoise",
-        swatch: "#3b4a6b",
+        swatch: "#081438",
         image: "/assets/ORANGE 1.jpg",
         gallery: ["/assets/ORANGE 1.jpg", "/assets/ORANGE 2.jpg", "/assets/ORANGE 3.jpg", "/10.jpg"],
       },
@@ -6152,7 +6152,7 @@ export const PRODUCTS_DATA = [
     colors: [
       {
         name: "Tortoise Shell",
-        swatch: "#8a5a30",
+        swatch: "#0b100a",
         image: "/assets/PERSOL 1.jpg",
         gallery: ["/assets/PERSOL 1.jpg", "/assets/PERSOL 2.jpg", "/assets/PERSOL 3.jpg", "/10.jpg"],
       },
@@ -6196,7 +6196,7 @@ export const PRODUCTS_DATA = [
     colors: [
       {
         name: "Tangerine",
-        swatch: "#ff9500",
+        swatch: "#b27c30",
         image: "/assets/RUBY 1.jpg",
         gallery: ["/assets/RUBY 1.jpg", "/assets/RUBY 2.jpg", "/assets/RUBY 3.jpg", "/10.jpg"],
       },
@@ -6240,7 +6240,7 @@ export const PRODUCTS_DATA = [
     colors: [
       {
         name: "Dusty Rose",
-        swatch: "#c08081",
+        swatch: "#786f71",
         image: "/assets/SARAH 4.jpg",
         gallery: ["/assets/SARAH 4.jpg", "/assets/SARAH 5.jpg", "/assets/SARAH 6.jpg", "/10.jpg"],
       },
@@ -6933,7 +6933,7 @@ export const PRODUCTS_DATA = [
     colors: [
       {
         name: "Rose Pink",
-        swatch: "#d68fa0",
+        swatch: "#bca496",
         image: "/assets/Sunglass/Melisa 1.jpg",
         gallery: ["/assets/Sunglass/Melisa 1.jpg", "/assets/Sunglass/Melisa 2.jpg", "/assets/Sunglass/Melisa 3.jpg", "/10.jpg"],
       },
