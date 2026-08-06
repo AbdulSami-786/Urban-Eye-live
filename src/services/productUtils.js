@@ -107,6 +107,18 @@ export function formatPriceValue(value) {
   return numericValue.toLocaleString();
 }
 
+// Some color variants of a product have a different lens color than the
+// product's default (e.g. Violet's Honey frame ships with smoke lenses while
+// its Jet Black frame ships with black lenses). `colors[].lensColor` carries
+// that override; products where every variant shares one lens color don't
+// need to set it, and this falls back to the product-level spec.
+export function getProductDisplaySpecifications(product, selectedVariantName) {
+  const variants = getProductVariants(product);
+  const selectedVariant = variants.find((variant) => normalizeText(variant.name) === normalizeText(selectedVariantName)) || variants[0] || null;
+  if (!selectedVariant?.lensColor) return product?.specifications || {};
+  return { ...product.specifications, "Lens Color": selectedVariant.lensColor };
+}
+
 export function getProductDisplayImage(product, selectedVariantName) {
   const variants = getProductVariants(product);
   const selectedVariant = variants.find((variant) => normalizeText(variant.name) === normalizeText(selectedVariantName)) || variants[0] || null;
@@ -148,7 +160,7 @@ export function getProductDescription(product, selectedVariantName) {
   if (fullMatch) {
     const [, productName, material, staticFrameColor, fallbackLensColor] = fullMatch;
     const frameColor = selectedVariant?.name || staticFrameColor;
-    const lensColor = product?.specifications?.["Lens Color"] || fallbackLensColor;
+    const lensColor = selectedVariant?.lensColor || product?.specifications?.["Lens Color"] || fallbackLensColor;
     return `Redefine your success with Urban Eyes latest design. ${productName} embeds a new sleek design, made from ${material}, with ${frameColor} frame & ${lensColor} lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.`;
   }
 

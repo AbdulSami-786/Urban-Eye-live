@@ -11419,7 +11419,7 @@ import { PRODUCTS_DATA } from "../prodcut.js";
 import { BLACK, CREAM, ff, mono, COLLECTIONS,
          HERO_SLIDES, HOME_PRODUCTS, TESTIMONIALS, PROCESS_STEPS, CATEGORIES_HOME,
          tagColors } from "../contants/store.js";
-import { applyProductFilters, getProductColorOptions, getProductBrandOptions, getProductSizeOptions, getProductDisplayPrice, getProductDiscountPercent, getProductDisplayImage, getProductDescription, getRelatedProducts, getProductVariants, productMatchesShape, getUniqueShapesFromProducts, normalizeCategory, normalizeGender, formatPriceValue, matchesSearchTerm } from "../services/productUtils.js";
+import { applyProductFilters, getProductColorOptions, getProductBrandOptions, getProductSizeOptions, getProductDisplayPrice, getProductDiscountPercent, getProductDisplayImage, getProductDisplaySpecifications, getProductDescription, getRelatedProducts, getProductVariants, productMatchesShape, getUniqueShapesFromProducts, normalizeCategory, normalizeGender, formatPriceValue, matchesSearchTerm } from "../services/productUtils.js";
 import { YBtn, OutlineBtn, FadeIn, Counter, Frame, ProductCard, ProductSlider, WishlistHeart, WishlistSkeleton } from "../components/shared";
 import { useCart } from "../contexts/CardContext";
 import { useAuth, AuthModal } from "../Auth/auth.jsx";
@@ -12798,6 +12798,7 @@ export function ProductDetailPage({ productId, navigate }) {
     : (product.gallery?.length ? product.gallery : (selectedVariant?.image ? [selectedVariant.image] : []));
   const displayImage = galleryImages[activeImg] || selectedVariant?.image || product.image || "";
   const displayLabel = selectedVariant?.name || product.color || "Default";
+  const displaySpecifications = getProductDisplaySpecifications(product, selectedVariantName);
 
   const handleSelectVariant = (variant) => {
     setSelectedVariantName(variant.name);
@@ -13046,7 +13047,7 @@ export function ProductDetailPage({ productId, navigate }) {
                   <div style={{ width: "100%", overflowX: "auto" }}>
                     <table style={{ width: "100%", minWidth: 280, borderCollapse: "collapse" }}>
                       <tbody>
-                        {Object.entries(product.specifications || {}).map(([k, v], i) => (
+                        {Object.entries(displaySpecifications || {}).map(([k, v], i) => (
                           <tr key={i} style={{ borderBottom: "1px solid #f0ece4" }}>
                             <td style={{ padding: "9px 12px 9px 0", fontSize: 11, fontWeight: 900, letterSpacing: "0.1em", color: "#999", fontFamily: ff, width: "44%", whiteSpace: "nowrap" }}>{k.toUpperCase()}</td>
                             <td style={{ padding: "9px 0", fontSize: 12, color: BLACK, fontFamily: mono }}>{v}</td>
