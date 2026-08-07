@@ -5739,6 +5739,7 @@ export const PRODUCTS_DATA = [
   {
     id: "alexa",
     name: "Alexa",
+    
     category: "Optical",
     subcategory: "",
     gender: "women",
