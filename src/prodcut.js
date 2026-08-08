@@ -4890,6 +4890,18 @@ export const PRODUCTS_DATA = [
         image: "/assets/JENNY 1.jpg",
         gallery: ["/assets/JENNY 1.jpg", "/assets/JENNY 2.jpg", "/assets/JENNY 3.jpg", "/10.jpg"],
       },
+      {
+        name: "Dark Green",
+        swatch: "#1e3d2b",
+        image: "/assets/Jenny 4.jpg",
+        gallery: ["/assets/Jenny 4.jpg", "/assets/Jenny 5.jpg", "/assets/Jenny 6.jpg", "/10.jpg"],
+      },
+      {
+        name: "Tortoise Shell Brown",
+        swatch: "#4b1816",
+        image: "/assets/Jenny 7.jpg",
+        gallery: ["/assets/Jenny 7.jpg", "/assets/Jenny 8.jpg", "/assets/Jenny 9.jpg", "/10.jpg"],
+      },
     ],
     price: 8500,
     tag: "",
@@ -4979,8 +4991,8 @@ export const PRODUCTS_DATA = [
     gender: "women",
     colors: [
       {
-        name: "Bright Yellow",
-        swatch: "#927f73",
+        name: "Nevada",
+        swatch: "#6f7679",
         image: "/assets/LILY 1.jpg",
         gallery: ["/assets/LILY 1.jpg", "/assets/LILY 2.jpg", "/assets/LILY 3.jpg", "/10.jpg"],
       },
@@ -4989,7 +5001,7 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["48 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Lily embeds a new sleek design, made from high quality acetate, with Bright Yellow frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Lily embeds a new sleek design, made from high quality acetate, with Nevada frame & Clear lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Hand crafted acetate",
       "Pakistan Landmarks Engraving",
@@ -5467,8 +5479,8 @@ export const PRODUCTS_DATA = [
     gender: "Men/Women",
     colors: [
       {
-        name: "Olive Green",
-        swatch: "#97979a",
+        name: "Light Yellow",
+        swatch: "#f5e6a3",
         image: "/assets/OLIVER 1.jpg",
         gallery: ["/assets/OLIVER 1.jpg", "/assets/OLIVER 2.jpg", "/assets/OLIVER 3.jpg", "/10.jpg"],
       },
@@ -5477,7 +5489,7 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["44 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Oliver embeds a new sleek design, made from high quality acetate, with Oilve Green color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Oliver embeds a new sleek design, made from high quality acetate, with Light Yellow color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Hand crafted acetate",
       "Pakistan Landmarks Engraving",
@@ -5515,6 +5527,18 @@ export const PRODUCTS_DATA = [
         swatch: "#bfbcd3",
         image: "/assets/HENREY 1.jpg",
         gallery: ["/assets/HENREY 1.jpg", "/assets/HENREY 2.jpg", "/assets/HENREY 3.jpg", "/10.jpg"],
+      },
+      {
+        name: "Jet Black",
+        swatch: "#1a1a1a",
+        image: "/assets/Henry 4.jpg",
+        gallery: ["/assets/Henry 4.jpg", "/assets/Henry 5.jpg", "/assets/Henry 6.jpg", "/10.jpg"],
+      },
+      {
+        name: "Tortoise Shell Brown",
+        swatch: "#4b1816",
+        image: "/assets/Henry 7.jpg",
+        gallery: ["/assets/Henry 7.jpg", "/assets/Henry 8.jpg", "/assets/Henry 9.jpg", "/10.jpg"],
       },
     ],
     price: 8500,
@@ -6331,8 +6355,8 @@ export const PRODUCTS_DATA = [
     gender: "Mens",
     colors: [
       {
-        name: "Light Brown",
-        swatch: "#b5651d",
+        name: "Tortoise Shell Brown",
+        swatch: "#4b1816",
         image: "/assets/Sunglass/Andrew 1.jpg",
         gallery: ["/assets/Sunglass/Andrew 1.jpg", "/assets/Sunglass/Andrew 2.jpg", "/assets/Sunglass/Andrew 3.jpg", "/10.jpg"],
       },
@@ -6341,7 +6365,7 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["55 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Andrew embeds a new sleek design, made from high quality acetate, with Light brown frame & Olive green lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Andrew embeds a new sleek design, made from high quality acetate, with Tortoise Shell Brown frame & Amber lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Hand crafted acetate",
       "Pakistan Landmarks Engraving",
@@ -6354,7 +6378,7 @@ export const PRODUCTS_DATA = [
       "Lens Width": "55mm",
       "Bridge Width": "19mm",
       "Temple Length": "145mm",
-      "Lens Color": "Olive green",
+      "Lens Color": "Amber",
       "UV Protection": "Yes",
     },
     measurements: {
@@ -6848,8 +6872,8 @@ export const PRODUCTS_DATA = [
     gender: "Men",
     colors: [
       {
-        name: "Olive",
-        swatch: "#708238",
+        name: "Light Yellow",
+        swatch: "#f5e6a3",
         image: "/assets/Sunglass/LUMIA 1.jpg",
         gallery: ["/assets/Sunglass/LUMIA 1.jpg", "/assets/Sunglass/LUMIA 2.jpg", "/assets/Sunglass/LUMIA 3.jpg", "/10.jpg"],
       },
@@ -6858,7 +6882,7 @@ export const PRODUCTS_DATA = [
     tag: "",
     sizes: ["50 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Lumia embeds a new sleek design, made from high quality acetate, with Olive frame & Smoke lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Lumia embeds a new sleek design, made from high quality acetate, with Light Yellow frame & Light Blue lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Hand crafted acetate",
       "Pakistan Landmarks Engraving",
@@ -6871,7 +6895,7 @@ export const PRODUCTS_DATA = [
       "Lens Width": "50mm",
       "Bridge Width": "19mm",
       "Temple Length": "145mm",
-      "Lens Color": "Smoke",
+      "Lens Color": "Light Blue",
       "UV Protection": "Yes",
     },
     measurements: {
