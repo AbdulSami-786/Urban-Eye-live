@@ -737,7 +737,7 @@
 // // // //               URBAN EYE
 // // // //             </div>
 // // // //             <div style={{ fontSize: 9, letterSpacing: "0.28em", color: "#3a6a8a", marginBottom: 16 }}>
-// // // //               EST. 2015 · KARACHI
+// // // //               EST. 1999 · KARACHI
 // // // //             </div>
 // // // //             <div style={{ width: 36, height: 3, background: NAVY, marginBottom: 16 }} />
 // // // //             <div style={{ borderLeft: `2px solid #1a3a52`, paddingLeft: 14, marginBottom: 20 }}>
@@ -755,7 +755,7 @@
 // // // //               fontSize: 13, color: "#5a8aaa", lineHeight: 1.8, maxWidth: 260,
 // // // //               marginBottom: 20, fontFamily: "'Courier New',Courier,monospace"
 // // // //             }}>
-// // // //               Premium eyewear for those who see the world differently. Karachi's destination for iconic frames since 2015.
+// // // //               Premium eyewear for those who see the world differently. Karachi's destination for iconic frames since 1999.
 // // // //             </p>
 // // // //             <div style={{ display: "flex", gap: 8 }}>
 // // // //               {["IG", "FB", "TT", "YT"].map((s) => (
@@ -1600,7 +1600,7 @@
 // // //               URBAN EYE
 // // //             </div>
 // // //             <div style={{ fontSize: 9, letterSpacing: "0.28em", color: "#3a6a8a", marginBottom: 16 }}>
-// // //               EST. 2015 · KARACHI
+// // //               EST. 1999 · KARACHI
 // // //             </div>
 // // //             <div style={{ width: 36, height: 3, background: NAVY, marginBottom: 16 }} />
 // // //             <div style={{ borderLeft: `2px solid #1a3a52`, paddingLeft: 14, marginBottom: 20 }}>
@@ -1618,7 +1618,7 @@
 // // //               fontSize: 13, color: "#5a8aaa", lineHeight: 1.8, maxWidth: 260,
 // // //               marginBottom: 20, fontFamily: "'Courier New',Courier,monospace"
 // // //             }}>
-// // //               Premium eyewear for those who see the world differently. Karachi's destination for iconic frames since 2015.
+// // //               Premium eyewear for those who see the world differently. Karachi's destination for iconic frames since 1999.
 // // //             </p>
 // // //             <div style={{ display: "flex", gap: 8 }}>
 // // //               {["IG", "FB", "TT", "YT"].map((s) => (
@@ -2679,7 +2679,7 @@
 // //               URBAN EYE
 // //             </div>
 // //             <div style={{ fontSize: 9, letterSpacing: "0.28em", color: "#3a6a8a", marginBottom: 16 }}>
-// //               EST. 2015 · KARACHI
+// //               EST. 1999 · KARACHI
 // //             </div>
 // //             <div style={{ width: 36, height: 3, background: NAVY, marginBottom: 16 }} />
 // //             <div style={{ borderLeft: `2px solid #1a3a52`, paddingLeft: 14, marginBottom: 20 }}>
@@ -2697,7 +2697,7 @@
 // //               fontSize: isMobile ? 12 : 13, color: "#5a8aaa", lineHeight: 1.8, maxWidth: 260,
 // //               marginBottom: 20, fontFamily: "'Courier New',Courier,monospace"
 // //             }}>
-// //               Premium eyewear for those who see the world differently. Karachi's destination for iconic frames since 2015.
+// //               Premium eyewear for those who see the world differently. Karachi's destination for iconic frames since 1999.
 // //             </p>
 // //             <div style={{ display: "flex", gap: 8 }}>
 // //               {["IG", "FB", "TT", "YT"].map((s) => (
@@ -3816,7 +3816,7 @@
 //               URBAN EYE
 //             </div>
 //             <div style={{ fontSize: 9, letterSpacing: "0.28em", color: "#3a6a8a", marginBottom: 16 }}>
-//               EST. 2015 · KARACHI
+//               EST. 1999 · KARACHI
 //             </div>
 //             <div style={{ width: 36, height: 3, background: NAVY, marginBottom: 16 }} />
 //             <div style={{ borderLeft: `2px solid #1a3a52`, paddingLeft: 14, marginBottom: 20 }}>
@@ -3834,7 +3834,7 @@
 //               fontSize: isMobile ? 12 : 13, color: "#5a8aaa", lineHeight: 1.8, maxWidth: 260,
 //               marginBottom: 20, fontFamily: "'Courier New',Courier,monospace"
 //             }}>
-//               Premium eyewear for those who see the world differently. Karachi's destination for iconic frames since 2015.
+//               Premium eyewear for those who see the world differently. Karachi's destination for iconic frames since 1999.
 //             </p>
 //             <div style={{ display: "flex", gap: 8 }}>
 //               {["IG", "FB", "TT", "YT"].map((s) => (
@@ -4960,16 +4960,16 @@ function AppInner() {
               URBAN EYE
             </div>
             <div style={{ fontSize: 9, letterSpacing: "0.28em", color: "#3a6a8a", marginBottom: 16 }}>
-              EST. 2015 · KARACHI
+              EST. 1999 · KARACHI
             </div>
             <div style={{ width: 36, height: 3, background: NAVY, marginBottom: 16 }} />
             <div style={{ borderLeft: `2px solid #1a3a52`, paddingLeft: 14, marginBottom: 20 }}>
-              <p style={{
+              {/* <p style={{
                 fontSize: isMobile ? 12 : 13, color: "#6aadcc", lineHeight: 1.8, margin: 0,
                 fontStyle: "italic", fontFamily: "'Courier New',Courier,monospace"
               }}>
-                "Your vision is our concern."
-              </p>
+                
+              </p> */}
               <div style={{ fontSize: 10, letterSpacing: "0.12em", color: "#3a6a8a", marginTop: 8, fontFamily: ff }}>
                                </div>
             </div>
@@ -4977,7 +4977,7 @@ function AppInner() {
               fontSize: isMobile ? 12 : 13, color: "#5a8aaa", lineHeight: 1.8, maxWidth: 260,
               marginBottom: 20, fontFamily: "'Courier New',Courier,monospace"
             }}>
-              Premium eyewear for those who see the world differently. Karachi's destination for iconic frames since 2015.
+              Premium eyewear for those who see the world differently. Karachi's destination for iconic frames since 1999.
             </p>
             <div style={{ display: "flex", gap: 8 }}>
               {["IG", "FB", "TT", "YT"].map((s) => (

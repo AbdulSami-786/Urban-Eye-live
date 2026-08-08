@@ -3,7 +3,7 @@ import { useEffect } from "react";
 const SITE_NAME = "Urban Eye";
 const SITE_ORIGIN = "https://www.urbaneye.com.pk";
 const DEFAULT_DESCRIPTION =
-  "Urban Eye is Karachi's destination for iconic eyewear since 2015. Browse curated eyeglasses, sunglasses & custom-made tints, with expert fitting and free shipping across Pakistan.";
+  "Urban Eye is Karachi's destination for iconic eyewear since 1999. Browse curated eyeglasses, sunglasses & custom-made tints, with expert fitting and free shipping across Pakistan.";
 
 function setMeta(name, content, attr = "name") {
   if (!content) return;

@@ -784,7 +784,7 @@
 // // // //         <FadeIn>
 // // // //           <div style={{ maxWidth: 680, margin: "0 auto" }}>
 // // // //             <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 28px" }}/>
-// // // //             <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 18 }}>EYE-CONIC EYEWEAR, SINCE 2015</div>
+// // // //             <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 18 }}>EYE-CONIC EYEWEAR, SINCE 1999</div>
 // // // //             <blockquote style={{ fontFamily: mono, fontSize: isMobile ? "clamp(16px, 5vw, 22px)" : "clamp(18px, 2.8vw, 28px)", lineHeight: 1.5, color: BLACK, margin: "0 0 20px", fontStyle: "italic" }}>"For over a decade, our name has been on the front door. That means something."</blockquote>
 // // // //             <div style={{ fontSize: 11, letterSpacing: "0.16em", color: "#666", fontFamily: ff }}>TARIQ HASSAN · FOUNDER, URBAN EYE</div>
 // // // //             <div style={{ display: "flex", gap: 16, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
@@ -3569,7 +3569,7 @@
 // // //         <FadeIn>
 // // //           <div style={{ maxWidth: 680, margin: "0 auto" }}>
 // // //             <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 28px" }}/>
-// // //             <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 18 }}>EYE-CONIC EYEWEAR, SINCE 2015</div>
+// // //             <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 18 }}>EYE-CONIC EYEWEAR, SINCE 1999</div>
 // // //             <blockquote style={{ fontFamily: mono, fontSize: isMobile ? "clamp(16px, 5vw, 22px)" : "clamp(18px, 2.8vw, 28px)", lineHeight: 1.5, color: BLACK, margin: "0 0 20px", fontStyle: "italic" }}>"For over a decade, our name has been on the front door. That means something."</blockquote>
 // // //             <div style={{ fontSize: 11, letterSpacing: "0.16em", color: "#666", fontFamily: ff }}>TARIQ HASSAN · FOUNDER, URBAN EYE</div>
 // // //             <div style={{ display: "flex", gap: 16, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
@@ -6345,7 +6345,7 @@
 // //         <FadeIn>
 // //           <div style={{ maxWidth: 680, margin: "0 auto" }}>
 // //             <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 28px" }}/>
-// //             <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 18 }}>EYE-CONIC EYEWEAR, SINCE 2015</div>
+// //             <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 18 }}>EYE-CONIC EYEWEAR, SINCE 1999</div>
 // //             <blockquote style={{ fontFamily: mono, fontSize: isMobile ? "clamp(16px, 5vw, 22px)" : "clamp(18px, 2.8vw, 28px)", lineHeight: 1.5, color: BLACK, margin: "0 0 20px", fontStyle: "italic" }}>"For over a decade, our name has been on the front door. That means something."</blockquote>
 // //             <div style={{ fontSize: 11, letterSpacing: "0.16em", color: "#666", fontFamily: ff }}>TARIQ HASSAN · FOUNDER, URBAN EYE</div>
 // //             <div style={{ display: "flex", gap: 16, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
@@ -9280,7 +9280,7 @@
 //         <FadeIn>
 //           <div style={{ maxWidth: 680, margin: "0 auto" }}>
 //             <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 28px" }}/>
-//             <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 18 }}>EYE-CONIC EYEWEAR, SINCE 2015</div>
+//             <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 18 }}>EYE-CONIC EYEWEAR, SINCE 1999</div>
 //             <blockquote style={{ fontFamily: mono, fontSize: isMobile ? "clamp(16px, 5vw, 22px)" : "clamp(18px, 2.8vw, 28px)", lineHeight: 1.5, color: BLACK, margin: "0 0 20px", fontStyle: "italic" }}>"For over a decade, our name has been on the front door. That means something."</blockquote>
 //             <div style={{ fontSize: 11, letterSpacing: "0.16em", color: "#666", fontFamily: ff }}>TARIQ HASSAN · FOUNDER, URBAN EYE</div>
 //             <div style={{ display: "flex", gap: 16, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
@@ -12095,7 +12095,7 @@ export function HomePage({ navigate }) {
   const { addToCart } = useCart();
   useDocumentHead({
     title: "Premium Eyeglasses & Sunglasses in Karachi, Pakistan",
-    description: "Urban Eye is Karachi's destination for iconic eyewear since 2015. Browse 150+ curated eyeglasses, sunglasses & custom-made tints, with expert fitting and free shipping across Pakistan.",
+    description: "Urban Eye is Karachi's destination for iconic eyewear since 1999. Browse 150+ curated eyeglasses, sunglasses & custom-made tints, with expert fitting and free shipping across Pakistan.",
   });
   // Use all products for filtering, then slice to 8 for display
   const allProducts = PRODUCTS_DATA;
@@ -12300,7 +12300,7 @@ export function HomePage({ navigate }) {
         <FadeIn>
           <div style={{ maxWidth: 680, margin: "0 auto" }}>
             <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 28px" }}/>
-            <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 18 }}>EYE-CONIC EYEWEAR, SINCE 2015</div>
+            <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 18 }}>EYE-CONIC EYEWEAR, SINCE 1999</div>
             <blockquote style={{ fontFamily: mono, fontSize: isMobile ? "clamp(16px, 5vw, 22px)" : "clamp(18px, 2.8vw, 28px)", lineHeight: 1.5, color: BLACK, margin: "0 0 20px", fontStyle: "italic" }}>"Elevating everyday style with thoughtfully crafted eyewear.<br />Inspired by our family legacy, designed for today's trendsetters."</blockquote>
             <div style={{ fontSize: 11, letterSpacing: "0.16em", color: "#666", fontFamily: ff }}>  URBAN EYE</div>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
