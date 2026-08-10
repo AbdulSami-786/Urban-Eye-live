@@ -4891,14 +4891,14 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/JENNY 1.jpg", "/assets/JENNY 2.jpg", "/assets/JENNY 3.jpg", "/10.jpg"],
       },
       {
-        name: "Dark Green",
-        swatch: "#1e3d2b",
+        name: "Tortoise Shell Brown",
+        swatch: "#4b1816",
         image: "/assets/Jenny 4.jpg",
         gallery: ["/assets/Jenny 4.jpg", "/assets/Jenny 5.jpg", "/assets/Jenny 6.jpg", "/10.jpg"],
       },
       {
-        name: "Tortoise Shell Brown",
-        swatch: "#4b1816",
+        name: "Dark Green",
+        swatch: "#1e3d2b",
         image: "/assets/Jenny 7.jpg",
         gallery: ["/assets/Jenny 7.jpg", "/assets/Jenny 8.jpg", "/assets/Jenny 9.jpg", "/10.jpg"],
       },
@@ -4991,10 +4991,16 @@ export const PRODUCTS_DATA = [
     gender: "women",
     colors: [
       {
-        name: "Nevada",
-        swatch: "#6f7679",
+        name: "Bright Yellow",
+        swatch: "#d8cfcc",
         image: "/assets/LILY 1.jpg",
         gallery: ["/assets/LILY 1.jpg", "/assets/LILY 2.jpg", "/assets/LILY 3.jpg", "/10.jpg"],
+      },
+      {
+        name: "Nevada",
+        swatch: "#50454a",
+        image: "/assets/LILY 1.jpg",
+        gallery: ["/assets/Lilly 1.jpg", "/assets/Lilly 2.jpg", "/assets/Lilly 3.jpg", "/10.jpg"],
       },
     ],
     price: 8500,
@@ -5479,10 +5485,16 @@ export const PRODUCTS_DATA = [
     gender: "Men/Women",
     colors: [
       {
-        name: "Light Yellow",
-        swatch: "#f5e6a3",
+        name: "Olive Green",
+        swatch: "#979799",
         image: "/assets/OLIVER 1.jpg",
         gallery: ["/assets/OLIVER 1.jpg", "/assets/OLIVER 2.jpg", "/assets/OLIVER 3.jpg", "/10.jpg"],
+      },
+      {
+        name: "Light Yellow",
+        swatch: "#f5e6a3",
+        image: "/assets/Oliver 4.jpg",
+        gallery: ["/assets/Oliver 4.jpg", "/assets/Oliver 5.jpg", "/assets/Oliver 6.jpg", "/10.jpg"],
       },
     ],
     price: 8500,
@@ -5951,8 +5963,8 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Clair 1.jpg", "/assets/Clair 2.jpg", "/assets/Clair 3.jpg", "/10.jpg"],
       },
       {
-        name: "Havana Brown",
-        swatch: "#000200",
+        name: "Drak Brown",
+        swatch: "#5C4033",
         image: "/assets/CLAIR 4.jpg",
         gallery: ["/assets/CLAIR 4.jpg", "/assets/CLAIR 5.jpg", "/assets/CLAIR 6.jpg", "/10.jpg"],
       },
@@ -6685,7 +6697,7 @@ export const PRODUCTS_DATA = [
     colors: [
       {
         name: "Gold",
-        swatch: "#484841",
+        swatch: "gold",
         image: "/assets/Sunglass/Xrp 1.jpg",
         gallery: ["/assets/Sunglass/Xrp 1.jpg", "/assets/Sunglass/Xrp 2.jpg", "/assets/Sunglass/Xrp 3.jpg", "/10.jpg"],
         lensColor: "Gradient Green",
@@ -6872,17 +6884,25 @@ export const PRODUCTS_DATA = [
     gender: "Men",
     colors: [
       {
-        name: "Light Yellow",
-        swatch: "#f5e6a3",
+        name: "Olive",
+        swatch: "#9b9682",
         image: "/assets/Sunglass/LUMIA 1.jpg",
+        lensColor: "Smoke",
         gallery: ["/assets/Sunglass/LUMIA 1.jpg", "/assets/Sunglass/LUMIA 2.jpg", "/assets/Sunglass/LUMIA 3.jpg", "/10.jpg"],
+      },
+      {
+        name: "Light Yellow",
+        swatch: "#c7b39b",
+        image: "/assets/Sunglass/Lumia 4.jpg",
+        lensColor: "Light blue",
+        gallery: ["/assets/Sunglass/Lumia 4.png", "/assets/Sunglass/Lumia 5.png", "/assets/Sunglass/Lumia 6.png", "/10.jpg"],
       },
     ],
     price: 10000,
     tag: "",
     sizes: ["50 (Medium)"],
     description:
-      "Redefine your success with Urban Eyes latest design. Lumia embeds a new sleek design, made from high quality acetate, with Light Yellow frame & Light Blue lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
+      "Redefine your success with Urban Eyes latest design. Lumia embeds a new sleek design, made from high quality acetate, with Olive frame & light blue lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.",
     features: [
       "Made from Hand crafted acetate",
       "Pakistan Landmarks Engraving",
@@ -7053,14 +7073,14 @@ export const PRODUCTS_DATA = [
     gender: "women",
     colors: [
       {
-        name: "Sand",
-        swatch: "#c2b280",
+        name: "Tortoise Shell Brown",
+        swatch: "#4b1816",
         image: "/assets/Amber 1.jpg",
         gallery: ["/assets/Amber 1.jpg", "/assets/Amber 2.jpg", "/assets/Amber 3.jpg", "/10.jpg"],
       },
       {
-        name: "Tortoise Shell Brown",
-        swatch: "#4b1816",
+        name: "Sand",
+        swatch: "#836e62",
         image: "/assets/Amber 4.jpg",
         gallery: ["/assets/Amber 4.jpg", "/assets/Amber 5.jpg", "/assets/Amber 6.jpg", "/10.jpg"],
       },
@@ -7246,5 +7266,10 @@ export const PRODUCTS_DATA = [
   },
 
 ];
+
+// Pakistan Independence Day Sale — flat 14% off every product (14th August).
+PRODUCTS_DATA.forEach((p) => {
+  p.discountPrice = Math.round(p.price * 0.86);
+});
 
 export default PRODUCTS_DATA;
