@@ -4999,7 +4999,7 @@ export const PRODUCTS_DATA = [
       {
         name: "Nevada",
         swatch: "#50454a",
-        image: "/assets/LILY 1.jpg",
+        image: "/assets/Lilly 1.jpg",
         gallery: ["/assets/Lilly 1.jpg", "/assets/Lilly 2.jpg", "/assets/Lilly 3.jpg", "/10.jpg"],
       },
     ],
@@ -6367,10 +6367,18 @@ export const PRODUCTS_DATA = [
     gender: "Mens",
     colors: [
       {
-        name: "Tortoise Shell Brown",
-        swatch: "#4b1816",
+        name: "Light Brown",
+        swatch: "#a67c52",
         image: "/assets/Sunglass/Andrew 1.jpg",
         gallery: ["/assets/Sunglass/Andrew 1.jpg", "/assets/Sunglass/Andrew 2.jpg", "/assets/Sunglass/Andrew 3.jpg", "/10.jpg"],
+        lensColor: "Light Blue",
+      },
+      {
+        name: "Tortoise Shell Brown",
+        swatch: "#4b1816",
+        image: "/assets/Sunglass/Andrew 4.jpg",
+        gallery: ["/assets/Sunglass/Andrew 4.jpg", "/assets/Sunglass/Andrew 5.jpg", "/assets/Sunglass/Andrew 6.jpg", "/10.jpg"],
+        lensColor: "Amber",
       },
     ],
     price: 12500,
@@ -6697,7 +6705,7 @@ export const PRODUCTS_DATA = [
     colors: [
       {
         name: "Gold",
-        swatch: "gold",
+        swatch: "#D4AF37",
         image: "/assets/Sunglass/Xrp 1.jpg",
         gallery: ["/assets/Sunglass/Xrp 1.jpg", "/assets/Sunglass/Xrp 2.jpg", "/assets/Sunglass/Xrp 3.jpg", "/10.jpg"],
         lensColor: "Gradient Green",
@@ -6893,9 +6901,9 @@ export const PRODUCTS_DATA = [
       {
         name: "Light Yellow",
         swatch: "#c7b39b",
-        image: "/assets/Sunglass/Lumia 4.jpg",
+        image: "./assets/Sunglass/Lumia 4.png",
         lensColor: "Light blue",
-        gallery: ["/assets/Sunglass/Lumia 4.png", "/assets/Sunglass/Lumia 5.png", "/assets/Sunglass/Lumia 6.png", "/10.jpg"],
+        gallery: ["/assets/Sunglass/Lumia 4.png", "/assets/Sunglass/Lumia 5.png", "/assets/Sunglass/Lumia 6.jpg", "/10.jpg"],
       },
     ],
     price: 10000,
