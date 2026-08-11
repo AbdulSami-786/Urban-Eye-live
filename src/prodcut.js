@@ -5396,6 +5396,12 @@ export const PRODUCTS_DATA = [
         image: "/assets/GERARD 1.jpg",
         gallery: ["/assets/GERARD 1.jpg", "/assets/GERARD 2.jpg", "/assets/GERARD 6.jpg", "/10.jpg"],
       },
+      {
+        name: "Light Green",
+        swatch: "#6c7c55",
+        image: "/assets/Gerard 7.jpg",
+        gallery: ["/assets/Gerard 7.jpg", "/assets/Gerard 8.jpg", "/assets/Gerard 9.jpg", "/10.jpg"],
+      },
     ],
     price: 12500,
     tag: "",
