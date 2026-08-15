@@ -11427,7 +11427,7 @@ import {
   getWishlist, removeFromWishlist, getReviews, getAddresses,
   submitReview, updateReview, getProductReviewStats, getUserReviews,
 } from "../services/service.js";
-import { useDocumentHead } from "../hook/useDocumentHead.js";
+import { useDocumentHead, SITE_ORIGIN } from "../hook/useDocumentHead.js";
 
 const BRAND      = "#0c2c41";
 const BRAND_TEXT = "#ffffff";
@@ -12646,6 +12646,20 @@ export function CollectionDetailPage({ slug, navigate }) {
   useDocumentHead({
     title: col.title ? `${col.title} Collection` : "Collection",
     description: `Shop the ${col.title || "featured"} collection at Urban Eye — premium eyeglasses and sunglasses in Karachi, Pakistan.`,
+    jsonLd: baseProducts.length ? {
+      id: "collection",
+      data: {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: col.title ? `${col.title} Collection` : "Collection",
+        itemListElement: baseProducts.slice(0, 30).map((p, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          url: `${SITE_ORIGIN}/products/${p.id}`,
+          name: p.name,
+        })),
+      },
+    } : null,
   });
   const [activeFilters, setActiveFilters] = useState({});
   const [sort, setSort] = useState("relevant");
@@ -12737,12 +12751,39 @@ export function CollectionDetailPage({ slug, navigate }) {
 // ============ PRODUCT DETAIL PAGE ============
 export function ProductDetailPage({ productId, navigate }) {
   const product = PRODUCTS_DATA.find(p => p.id === productId);
+  const variants = getProductVariants(product);
+  const { price, discountPrice } = getProductDisplayPrice(product);
+  const discount = getProductDiscountPercent(product);
+  const heroImage = variants[0]?.image || product?.image || "";
+  const productJsonLd = product ? {
+    id: "product",
+    data: {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: product.name,
+      description: product.description || undefined,
+      sku: product.id,
+      category: product.category || undefined,
+      image: heroImage ? [`${SITE_ORIGIN}${heroImage}`] : undefined,
+      brand: { "@type": "Brand", name: "Urban Eye" },
+      offers: {
+        "@type": "Offer",
+        url: `${SITE_ORIGIN}/products/${product.id}`,
+        priceCurrency: "PKR",
+        price: discountPrice || price,
+        availability: "https://schema.org/InStock",
+        itemCondition: "https://schema.org/NewCondition",
+      },
+    },
+  } : null;
   useDocumentHead({
     title: product ? product.name : "Product Not Found",
     description: product
       ? `${product.name} — ${(product.description || "").slice(0, 140) || `${product.category || "premium eyewear"} from Urban Eye, Karachi.`}`
       : undefined,
     noindex: !product,
+    image: heroImage || undefined,
+    jsonLd: productJsonLd,
   });
   const [activeImg, setActiveImg] = useState(0);
   const [qty, setQty] = useState(1);
@@ -12782,8 +12823,6 @@ export function ProductDetailPage({ productId, navigate }) {
   );
 
   const related = getRelatedProducts(PRODUCTS_DATA, product);
-  const { price, discountPrice } = getProductDisplayPrice(product);
-  const discount = getProductDiscountPercent(product);
   const tc = product.tag ? tagColors[product.tag] : null;
   // Same collection slugs the navbar's Eyeglasses/Sunglasses + gender links use,
   // so tapping the category or gender tag here lands on the matching collection.
@@ -12791,7 +12830,6 @@ export function ProductDetailPage({ productId, navigate }) {
   const genderNorm = normalizeGender(product.gender);
   const genderCollectionSlug = genderNorm === "Men" ? `mens-${categorySlug}` : genderNorm === "Women" ? `womens-${categorySlug}` : categorySlug;
   const sizes = product.sizes?.length ? product.sizes : ["44 (Narrow)", "46 (Average)", "49 (Wide)", "52 (Extra Wide)"];
-  const variants = getProductVariants(product);
   const selectedVariant = variants.find(v => normalizeVariantName(v.name) === normalizeVariantName(selectedVariantName)) || variants[0] || null;
   const galleryImages = selectedVariant?.gallery?.length
     ? selectedVariant.gallery
