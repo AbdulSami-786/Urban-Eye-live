@@ -7281,9 +7281,4 @@ export const PRODUCTS_DATA = [
 
 ];
 
-// Pakistan Independence Day Sale — flat 14% off every product (14th August).
-PRODUCTS_DATA.forEach((p) => {
-  p.discountPrice = Math.round(p.price * 0.86);
-});
-
 export default PRODUCTS_DATA;

@@ -12908,11 +12908,8 @@ export function ProductDetailPage({ productId, navigate }) {
                   {product.name}
                 </h1>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0, marginTop: 4 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                    <div style={{ fontFamily: ff, fontSize: isMobile ? 13 : 15, fontWeight: 600, color: BLACK, whiteSpace: "nowrap" }}>
-                      PKR {formatPriceValue(discountPrice)}
-                    </div>
-                    <span style={{ fontFamily: ff, fontSize: 10, fontWeight: 900, background: BRAND, color: BRAND_TEXT, padding: "3px 8px", letterSpacing: "0.08em", whiteSpace: "nowrap" }}>14% OFF</span>
+                  <div style={{ fontFamily: ff, fontSize: isMobile ? 13 : 15, fontWeight: 600, color: BLACK, whiteSpace: "nowrap" }}>
+                    PKR {formatPriceValue(discountPrice)}
                   </div>
                   <WishlistHeart productId={product.id} size="lg" placement="detail" />
                 </div>
