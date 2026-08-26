@@ -4980,8 +4980,8 @@ function AppInner() {
               Premium eyewear for those who see the world differently. Karachi's destination for iconic frames since 1999.
             </p>
             <div style={{ display: "flex", gap: 8 }}>
-              {["IG", "FB", "TT", "YT"].map((s) => (
-                <a key={s} href="#"
+              {["IG"].map((s) => (
+                <a key={s} href="https://www.instagram.com/urbaneye.1998/?hl=en" target="_blank" rel="noopener noreferrer"
                   style={{
                     width: 32, height: 32, border: `1px solid #1a3a52`, display: "flex",
                     alignItems: "center", justifyContent: "center", color: "#5a8aaa",
