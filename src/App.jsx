@@ -4995,9 +4995,9 @@ function AppInner() {
               ))}
             </div>
           </div>
-          <FooterCol title="SHOP" links={["Eyeglasses", "Sunglasses", "Reading Glasses", "New Arrivals", "Best Sellers", "Virtual Try-On", "Custom Tints™"]} />
+          <FooterCol title="SHOP" links={["Eyeglasses", "Sunglasses", "New Arrivals", "Best Sellers"]} />
           <FooterCol title="HELP" links={["Shipping & Returns", "Frame Sizing Guide", "Prescription Info", "Contact Us", "Store Locator", "FAQ", "Repairs"]} />
-          <FooterCol title="COMPANY" links={["Our Story", "Craftsmanship", "Careers", "Press", "Sustainability", "Affiliates", "Gift Cards"]} />
+          <FooterCol title="COMPANY" links={["Our Story", "Careers"]} />
         </div>
 
         {/* Bottom bar */}
