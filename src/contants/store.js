@@ -626,17 +626,15 @@ export const TINTS = [
 
 export const TESTIMONIALS = [
   { name: "Aisha R.", city: "Karachi", text: "The LEMTOSH is everything. Perfect fit, incredible quality.", rating: 5 },
-  { name: "Omar K.", city: "Lahore", text: "Skeptical about buying glasses online but the virtual try-on made it simple.", rating: 5 },
   { name: "Sara M.", city: "Islamabad", text: "The custom tints are unreal — I got amber on a round frame.", rating: 5 },
   { name: "Bilal H.", city: "Karachi", text: "Exceptional service. These glasses are art.", rating: 5 },
 ];
 
 export const PROCESS_STEPS = [
    { num: "01", title: "SHOP THE COLLECTION", desc: "Browse 150+ curated frames." },
-   { num: "02", title: "VIRTUAL TRY-ON", desc: "See how each frame looks on your face." },
-   { num: "03", title: "ENTER PRESCRIPTION", desc: "Securely upload your Rx." },
-   { num: "04", title: "LENS CUSTOMISATION", desc: "Single vision, progressive, blue-light." },
-   { num: "05", title: "RECEIVE & ENJOY", desc: "Ships within 5–7 days." },
+   { num: "02", title: "ENTER PRESCRIPTION", desc: "Securely upload your Rx." },
+   { num: "03", title: "LENS CUSTOMISATION", desc: "Single vision, progressive, blue-light." },
+   { num: "04", title: "RECEIVE & ENJOY", desc: "Ships within 5–7 days." },
  ];
 
 export const CATEGORIES_HOME = [

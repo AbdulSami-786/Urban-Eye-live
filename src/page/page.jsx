@@ -12465,10 +12465,6 @@ export function HomePage({ navigate }) {
           <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 10vw, 48px)" : "clamp(48px,9vw,100px)", color: "#fff", lineHeight: 0.92, margin: "0 0 8px" }}>FIND YOUR</h2>
           <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 10vw, 48px)" : "clamp(48px,9vw,100px)", color: "#89c4e1", lineHeight: 0.92, margin: "0 0 28px" }}>FRAME.</h2>
           <p style={{ fontSize: isMobile ? 13 : 14, color: "rgba(255,255,255,0.35)", maxWidth: 420, margin: "0 auto 44px", lineHeight: 1.85, fontFamily: mono }}>150+ premium frames. Expert fitting. Free shipping across Pakistan.</p>
-          <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-            <YBtn onClick={() => navigate("#/collections/eyeglasses")} style={{ padding: "15px 32px", fontSize: isMobile ? 11 : 13 }}>SHOP ALL FRAMES</YBtn>
-            <OutlineBtn dark style={{ padding: "15px 32px", fontSize: isMobile ? 11 : 13 }}>VIRTUAL TRY-ON →</OutlineBtn>
-          </div>
         </FadeIn>
       </section>
 
