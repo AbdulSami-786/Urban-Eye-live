@@ -12749,6 +12749,7 @@ export function ProductDetailPage({ productId, navigate }) {
   const product = PRODUCTS_DATA.find(p => p.id === productId);
   const variants = getProductVariants(product);
   const { price, discountPrice } = getProductDisplayPrice(product);
+  const [showSizeChart, setShowSizeChart] = useState(false);
   const discount = getProductDiscountPercent(product);
   const heroImage = variants[0]?.image || product?.image || "";
   const productJsonLd = product ? {
@@ -13035,7 +13036,12 @@ export function ProductDetailPage({ productId, navigate }) {
               <div style={{ marginBottom: 26 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
                   <span style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", color: BLACK, fontFamily: ff }}>SIZE</span>
-                  <span style={{ fontSize: 11, color: "#888", fontFamily: mono, textDecoration: "underline", cursor: "pointer", letterSpacing: "0.04em" }}>Size Chart</span>
+                 <span
+  onClick={() => setShowSizeChart(true)}
+  style={{ fontSize: 11, color: "#888", fontFamily: mono, textDecoration: "underline", cursor: "pointer", letterSpacing: "0.04em" }}
+>
+  Size Chart
+</span>
                 </div>
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                   {sizes.map(size => (
@@ -13137,8 +13143,42 @@ export function ProductDetailPage({ productId, navigate }) {
       )}
 
       <AuthModal isOpen={showAuthPrompt} onClose={() => setShowAuthPrompt(false)} defaultTab="signup" />
-
-      <style>{`@keyframes fadeImgIn { from { opacity: 0; transform: scale(1.02); } to { opacity: 1; transform: scale(1); } }`}</style>
+{showSizeChart && (
+  <div
+    onClick={() => setShowSizeChart(false)}
+    style={{
+      position: "fixed", inset: 0, background: "rgba(0,0,0,0.7)", zIndex: 999,
+      display: "flex", alignItems: "center", justifyContent: "center", padding: 20,
+    }}
+  >
+    <div
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        background: "#fff", position: "relative", maxWidth: 1200, width: "100%",
+        maxHeight: "90vh", overflow: "auto", padding: 16, boxSizing: "border-box",
+      }}
+    >
+      <button
+        onClick={() => setShowSizeChart(false)}
+        style={{
+          position: "absolute", top: 8, right: 8, background: BLACK, color: "#fff",
+          border: "none", width: 32, height: 32, borderRadius: "50%", cursor: "pointer",
+          fontSize: 16, fontFamily: ff,
+        }}
+      >
+        ✕
+      </button>
+      <img
+        src="/content/size-chart.jpeg"
+        alt="Size Chart"
+        style={{ width: "100%", height: "auto", display: "block" }}
+      />
+    </div>
+  </div>
+)}
+      <style>{`@keyframes fadeImgIn { from { opacity: 0; transform: scale(1.02); } to { opacity: 1; transform: scale(1); } }`}
+        
+      </style>
     </div>
   );
 }
