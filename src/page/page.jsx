@@ -12392,7 +12392,7 @@ export function HomePage({ navigate }) {
               <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(22px, 6vw, 32px)" : "clamp(28px,4vw,48px)", color: "#fff", margin: 0 }}>FROM BROWSE TO DELIVERED</h2>
             </div>
           </FadeIn>
-          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : isTablet ? "repeat(3,1fr)" : "repeat(5,1fr)", gap: 28, position: "relative" }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : isTablet ? "repeat(3,1fr)" : "repeat(4,1fr)", gap: 28, position: "relative" }}>
             {!isMobile && <div style={{ position: "absolute", top: 26, left: "10%", right: "10%", height: 1, background: "#1e1e1e" }}/>}
             {PROCESS_STEPS.map((step, i) => (
               <FadeIn key={step.num} delay={i * 90}>
