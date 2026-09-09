@@ -4196,7 +4196,7 @@ const iconBtn = {
 };
 
 // ─── FOOTER COLUMN ────────────────────────────────────────────────────────────
-function FooterCol({ title, links }) {
+function FooterCol({ title, links, hrefs = {} }) {
   return (
     <div>
       <div style={{
@@ -4207,18 +4207,26 @@ function FooterCol({ title, links }) {
         {title}
       </div>
       <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
-        {links.map((link) => (
-          <li key={link}>
-            <a href="#" style={{
-              fontSize: 13, color: "#7fa8bc", textDecoration: "none",
-              letterSpacing: "0.02em", fontFamily: "'Courier New',Courier,monospace", transition: "color 0.2s"
-            }}
-              onMouseEnter={(e) => (e.target.style.color = ACCENT)}
-              onMouseLeave={(e) => (e.target.style.color = "#7fa8bc")}>
-              {link}
-            </a>
-          </li>
-        ))}
+        {links.map((link) => {
+          const href = hrefs[link] || "#";
+          const isExternal = href !== "#";
+          return (
+            <li key={link}>
+              <a
+                href={href}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noopener noreferrer" : undefined}
+                style={{
+                  fontSize: 13, color: "#7fa8bc", textDecoration: "none",
+                  letterSpacing: "0.02em", fontFamily: "'Courier New',Courier,monospace", transition: "color 0.2s"
+                }}
+                onMouseEnter={(e) => (e.target.style.color = ACCENT)}
+                onMouseLeave={(e) => (e.target.style.color = "#7fa8bc")}>
+                {link}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
@@ -4905,18 +4913,7 @@ function AppInner() {
 
       {/* Footer */}
       <footer style={{ background: BLACK, color: "#fff", fontFamily: ff }}>
-        <div>
-    <div style={{
-      fontFamily: ff, fontSize: isMobile ? 13 : 14, fontWeight: 900,
-      letterSpacing: "0.08em", marginBottom: 16, color: "#fff"
-    }}>
-    </div>
-    <img
-      src="/content/size-chart.jpeg"
-      alt="Size Chart"
-      style={{ width: "100%", maxWidth: 1520, border: "1px solid #1a3a52", display: "block" }}
-    />
-  </div>
+        
         {/* Newsletter */}
         <div style={{
           borderBottom: "1px solid #112236", maxWidth: 1400, margin: "0 auto",
@@ -5007,7 +5004,11 @@ function AppInner() {
             </div>
           </div>
           <FooterCol title="SHOP" links={["Eyeglasses", "Sunglasses", "New Arrivals", "Best Sellers"]} />
-          <FooterCol title="HELP" links={["Shipping & Returns", "Frame Sizing Guide", "Prescription Info", "Contact Us", "Store Locator", "FAQ", "Repairs"]} />
+    <FooterCol 
+  title="HELP" 
+  links={["Shipping & Returns", "Frame Sizing Guide", "Prescription Info", "Contact Us", "Store Locator", "FAQ", "Repairs"]} 
+  hrefs={{ "Frame Sizing Guide": "/content/size-chart.jpeg" }}
+/>
           <FooterCol title="COMPANY" links={["Our Story", "Careers"]} />
         </div>
 
