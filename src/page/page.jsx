@@ -12383,7 +12383,7 @@ export function HomePage({ navigate }) {
       </section>
 
       {/* HOW IT WORKS */}
-      <section style={{ padding: isMobile ? "48px 20px" : "72px 40px", background: BLACK }}>
+      {/* <section style={{ padding: isMobile ? "48px 20px" : "72px 40px", background: BLACK }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <FadeIn>
             <div style={{ textAlign: "center", marginBottom: 56 }}>
@@ -12405,7 +12405,7 @@ export function HomePage({ navigate }) {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* TESTIMONIALS */}
       <section style={{ padding: isMobile ? "20px 0px" : "40px 0px", background: CREAM }}>
