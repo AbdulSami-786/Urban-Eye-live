@@ -4196,7 +4196,8 @@ const iconBtn = {
 };
 
 // ─── FOOTER COLUMN ────────────────────────────────────────────────────────────
-function FooterCol({ title, links, hrefs = {} }) {
+// ─── FOOTER COLUMN ────────────────────────────────────────────────────────────
+function FooterCol({ title, links, hrefs = {}, onLinkClick = {} }) {
   return (
     <div>
       <div style={{
@@ -4208,14 +4209,21 @@ function FooterCol({ title, links, hrefs = {} }) {
       </div>
       <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
         {links.map((link) => {
+          const hasCustomClick = !!onLinkClick[link];
           const href = hrefs[link] || "#";
-          const isExternal = href !== "#";
+          const isExternal = href !== "#" && !hasCustomClick;
           return (
             <li key={link}>
               <a
-                href={href}
+                href={hasCustomClick ? "#" : href}
                 target={isExternal ? "_blank" : undefined}
                 rel={isExternal ? "noopener noreferrer" : undefined}
+                onClick={(e) => {
+                  if (hasCustomClick) {
+                    e.preventDefault();
+                    onLinkClick[link]();
+                  }
+                }}
                 style={{
                   fontSize: 13, color: "#7fa8bc", textDecoration: "none",
                   letterSpacing: "0.02em", fontFamily: "'Courier New',Courier,monospace", transition: "color 0.2s"
@@ -4231,6 +4239,7 @@ function FooterCol({ title, links, hrefs = {} }) {
     </div>
   );
 }
+
 
 // ─── ACCOUNT BUTTON WITH AVATAR ──────────────────────────────────────────────
 function AccountBtn({ onOpenModal, navigate }) {
@@ -4402,6 +4411,7 @@ function AppInner() {
   const [cartCount, setCartCount] = useState(0);
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [sizeChartOpen, setSizeChartOpen] = useState(false);
   const megaTimer = useRef(null);
 
   const { route, navigate } = useHashRouter();
@@ -5004,10 +5014,10 @@ function AppInner() {
             </div>
           </div>
           <FooterCol title="SHOP" links={["Eyeglasses", "Sunglasses", "New Arrivals", "Best Sellers"]} />
-    <FooterCol 
+<FooterCol 
   title="HELP" 
   links={["Shipping & Returns", "Frame Sizing Guide", "Prescription Info", "Contact Us", "Store Locator", "FAQ", "Repairs"]} 
-  hrefs={{ "Frame Sizing Guide": "/content/size-chart.jpeg" }}
+  onLinkClick={{ "Frame Sizing Guide": () => setSizeChartOpen(true) }}
 />
           <FooterCol title="COMPANY" links={["Our Story", "Careers"]} />
         </div>
@@ -5078,6 +5088,56 @@ function AppInner() {
         </svg>
       </a>
 
+{sizeChartOpen && (
+  <div
+    onClick={() => setSizeChartOpen(false)}
+    style={{
+      position: "fixed",
+      top: 0, left: 0, right: 0, bottom: 0,
+      background: "rgba(0,0,0,0.9)",
+      zIndex: 2000,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      cursor: "pointer",
+      animation: "slideDown 0.2s ease both",
+    }}
+  >
+    <button
+      onClick={(e) => { e.stopPropagation(); setSizeChartOpen(false); }}
+      aria-label="Close"
+      style={{
+        position: "fixed",
+        top: 20, right: 20,
+        width: 40, height: 40,
+        borderRadius: "50%",
+        background: "#fff",
+        border: "none",
+        cursor: "pointer",
+        fontSize: 22,
+        fontWeight: 900,
+        color: NAVY,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        zIndex: 2001,
+      }}
+    >
+      ×
+    </button>
+    <img
+      src={isMobile ? "/content/size-chart-mob.jpeg" : "/content/size-chart.jpeg"}
+      alt="Frame Sizing Guide"
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        maxWidth: "90vw",
+        maxHeight: "90vh",
+        objectFit: "contain",
+        cursor: "default",
+      }}
+    />
+  </div>
+)}
       <style>{`
         * {
           box-sizing: border-box;
