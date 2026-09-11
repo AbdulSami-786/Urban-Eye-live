@@ -4997,21 +4997,24 @@ function AppInner() {
             }}>
               Premium eyewear for those who see the world differently. Karachi's destination for iconic frames since 1999.
             </p>
-            <div style={{ display: "flex", gap: 8 }}>
-              {["IG"].map((s) => (
-                <a key={s} href="https://www.instagram.com/urbaneye.1998/?hl=en" target="_blank" rel="noopener noreferrer"
-                  style={{
-                    width: 32, height: 32, border: `1px solid #1a3a52`, display: "flex",
-                    alignItems: "center", justifyContent: "center", color: "#5a8aaa",
-                    fontSize: 10, textDecoration: "none", fontFamily: ff, fontWeight: 900,
-                    letterSpacing: "0.05em", transition: "border-color 0.2s, color 0.2s"
-                  }}
-                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = ACCENT; e.currentTarget.style.color = ACCENT; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#1a3a52"; e.currentTarget.style.color = "#5a8aaa"; }}>
-                  {s}
-                </a>
-              ))}
-            </div>
+           <div style={{ display: "flex", gap: 8 }}>
+  {[
+    { label: "IG", href: "https://www.instagram.com/urbaneye.1998/?hl=en" },
+    { label: "FB", href: "https://www.facebook.com/UrbanEyeKarachi/" },
+  ].map((s) => (
+    <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
+      style={{
+        width: 32, height: 32, border: `1px solid #1a3a52`, display: "flex",
+        alignItems: "center", justifyContent: "center", color: "#5a8aaa",
+        fontSize: 10, textDecoration: "none", fontFamily: ff, fontWeight: 900,
+        letterSpacing: "0.05em", transition: "border-color 0.2s, color 0.2s"
+      }}
+      onMouseEnter={(e) => { e.currentTarget.style.borderColor = ACCENT; e.currentTarget.style.color = ACCENT; }}
+      onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#1a3a52"; e.currentTarget.style.color = "#5a8aaa"; }}>
+      {s.label}
+    </a>
+  ))}
+</div>
           </div>
           <FooterCol title="SHOP" links={["Eyeglasses", "Sunglasses", "New Arrivals", "Best Sellers"]} />
 <FooterCol 
