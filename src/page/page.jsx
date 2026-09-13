@@ -1574,9 +1574,10 @@ export function ProductDetailPage({ productId, navigate }) {
 {/* Show color label for all products */}
 {variants.length >= 1 && (
   <div style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", color: BLACK, fontFamily: ff, marginBottom: 10 }}>
-    {variants.length > 1 ? `${variants.length} COLOURS` : "COLOUR"}
+    {variants.length > 1 ? `${variants.length} FRAME COLOR` : "FRAME COLOR"}
   </div>
 )}
+
 
 {/* Show color swatches for all products (single or multiple) */}
 {variants.length >= 1 && (
