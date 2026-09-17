@@ -625,9 +625,36 @@ export const TINTS = [
 ];
 
 export const TESTIMONIALS = [
-  { name: "Aisha R.", city: "Karachi", text: "The LEMTOSH is everything. Perfect fit, incredible quality.", rating: 5 },
-  { name: "Sara M.", city: "Islamabad", text: "The custom tints are unreal — I got amber on a round frame.", rating: 5 },
-  { name: "Bilal H.", city: "Karachi", text: "Exceptional service. These glasses are art.", rating: 5 },
+  {
+    name: "Aisha R.",
+    city: "Karachi",
+    text: "I'd been putting off new glasses for two years because nothing ever sat right on my face. The team at Zamzama actually took the time to measure and adjust the frame properly instead of just handing me a box. Three weeks in and I genuinely forget I'm wearing them.",
+    rating: 5,
+  },
+  {
+    name: "Sara M.",
+    city: "Islamabad",
+    text: "Ordered online from Islamabad and was honestly nervous about the fit. They followed up to confirm my measurements before making the lenses, and the package arrived in four days. The acetate feels solid — not the flimsy plastic I've gotten from other places.",
+    rating: 5,
+  },
+  {
+    name: "Bilal H.",
+    city: "Karachi",
+    text: "Second pair from Urban Eye. The first survived two years of daily wear and a few drops, so I came straight back. What keeps me here is that they'll adjust them for free whenever I walk in — no fuss, no charge.",
+    rating: 5,
+  },
+  {
+    name: "Hamza A.",
+    city: "Lahore",
+    text: "The anti-glare on my lenses made a real difference for long hours in front of a screen. My eyes aren't as tired by the evening. Delivery to Lahore took under a week and everything was packed properly.",
+    rating: 5,
+  },
+  {
+    name: "Fatima K.",
+    city: "Karachi",
+    text: "My prescription is fairly strong and I was worried the lenses would look thick in a thinner frame. They talked me through the options honestly rather than pushing the most expensive one, and the result is far lighter than my old pair.",
+    rating: 5,
+  },
 ];
 
 export const PROCESS_STEPS = [

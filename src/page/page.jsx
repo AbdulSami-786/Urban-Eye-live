@@ -696,7 +696,8 @@ export function HomePage({ navigate }) {
     return () => clearInterval(t);
   }, []);
   useEffect(() => {
-    const t = setInterval(() => setTIdx(i => (i + 1) % TESTIMONIALS.length), 5000);
+    // 9s — the reviews run a few sentences each, so 5s cut readers off mid-quote.
+    const t = setInterval(() => setTIdx(i => (i + 1) % TESTIMONIALS.length), 9000);
     return () => clearInterval(t);
   }, []);
 
@@ -1001,11 +1002,11 @@ export function HomePage({ navigate }) {
             <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 20px" }}/>
             <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 8 }}>REVIEWS</div>
             <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(22px, 6vw, 32px)" : "clamp(28px,4vw,46px)", marginBottom: 52, letterSpacing: "0.02em" }}>WHAT OUR CUSTOMERS SAY</h2>
-            <div style={{ position: "relative", minHeight: isMobile ? 280 : 200 }}>
+            <div style={{ position: "relative", minHeight: isMobile ? 400 : 300, padding: isMobile ? "0 20px" : 0, boxSizing: "border-box" }}>
               {TESTIMONIALS.map((t, i) => (
                 <div key={t.name} style={{ position: "absolute", inset: 0, opacity: i === testimonialIdx ? 1 : 0, transform: i === testimonialIdx ? "translateY(0)" : "translateY(10px)", transition: "all 0.7s ease", pointerEvents: i === testimonialIdx ? "auto" : "none" }}>
                   <div style={{ fontSize: 20, color: BRAND, marginBottom: 18, letterSpacing: 4 }}>{"★".repeat(t.rating)}</div>
-                  <blockquote style={{ fontFamily: mono, fontStyle: "italic", lineHeight: 1.65, fontSize: isMobile ? "clamp(14px, 4vw, 18px)" : "clamp(15px,2.2vw,20px)", color: BLACK, margin: "0 0 24px" }}>"{t.text}"</blockquote>
+                  <blockquote style={{ fontFamily: mono, fontStyle: "italic", lineHeight: 1.8, fontSize: isMobile ? "clamp(13px, 3.4vw, 15px)" : "clamp(14px,1.5vw,17px)", color: BLACK, margin: "0 0 24px" }}>"{t.text}"</blockquote>
                   <div style={{ fontFamily: ff, fontSize: 12, fontWeight: 900, letterSpacing: "0.14em" }}>{t.name}</div>
                   <div style={{ fontSize: 11, color: "#888", letterSpacing: "0.1em", marginTop: 4 }}>{t.city}</div>
                 </div>
@@ -1074,6 +1075,8 @@ export function ProductsPage({ navigate, queryParams }) {
     if (qp.gender)    result.gender   = [qp.gender];
     if (qp.tag)       result.tag      = [qp.tag];
     if (qp.price)     result.price    = [qp.price];
+    // `?size=Small|Medium|Large` comes from the Size & Fit page cards.
+    if (qp.size)      result.size     = [qp.size];
     return result;
   };
 
@@ -1332,11 +1335,30 @@ export function CollectionDetailPage({ slug, navigate }) {
 }
 
 // ============ PRODUCT DETAIL PAGE ============
+// Swatch colours for the lens colours used across prodcut.js. Keys are
+// lowercased so lookups are case-insensitive; unknown values fall back to grey.
+const LENS_SWATCHES = {
+  // Clear lenses aren't white — a faint blue-grey glass tint so the swatch
+  // reads as glass instead of vanishing against the white pill behind it.
+  "clear": "linear-gradient(160deg, #ffffff, #dce6ed)",
+  "black": "#1a1a1a",
+  "brown": "#6b4423",
+  "honey brown": "#a9743a",
+  "amber": "#c8811f",
+  "green": "#2f5d3a",
+  "dark green": "#1e3d28",
+  "red": "#9e2a2b",
+  "light blue": "#a8cfe4",
+  "gradient blue": "linear-gradient(160deg, #4a7fa5, #cfe2ee)",
+  "gradient grey": "linear-gradient(160deg, #4a4a4a, #d6d6d6)",
+  "gradient green": "linear-gradient(160deg, #2f5d3a, #cfe0cf)",
+  "gradient red": "linear-gradient(160deg, #9e2a2b, #f0cfcf)",
+};
+
 export function ProductDetailPage({ productId, navigate }) {
   const product = PRODUCTS_DATA.find(p => p.id === productId);
   const variants = getProductVariants(product);
   const { price, discountPrice } = getProductDisplayPrice(product);
-  const [showSizeChart, setShowSizeChart] = useState(false);
   const discount = getProductDiscountPercent(product);
   const heroImage = variants[0]?.image || product?.image || "";
   const productJsonLd = product ? {
@@ -1421,6 +1443,11 @@ export function ProductDetailPage({ productId, navigate }) {
   const displayImage = galleryImages[activeImg] || selectedVariant?.image || product.image || "";
   const displayLabel = selectedVariant?.name || product.color || "Default";
   const displaySpecifications = getProductDisplaySpecifications(product, selectedVariantName);
+  // Lens colour comes from the selected variant's specs, so it updates with the
+  // frame colour. Most frames carry a single lens colour ("Clear"), so this
+  // renders as one non-interactive swatch rather than a picker.
+  const lensColorName = displaySpecifications?.["Lens Color"] || displaySpecifications?.["Lens Colour"] || "";
+  const lensSwatch = LENS_SWATCHES[lensColorName.toLowerCase()] || "#d9d9d9";
 
   const handleSelectVariant = (variant) => {
     setSelectedVariantName(variant.name);
@@ -1574,7 +1601,7 @@ export function ProductDetailPage({ productId, navigate }) {
 {/* Show color label for all products */}
 {variants.length >= 1 && (
   <div style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", color: BLACK, fontFamily: ff, marginBottom: 10 }}>
-    {variants.length > 1 ? `${variants.length} FRAME COLOR` : "FRAME COLOR"}
+    FRAME COLOR
   </div>
 )}
 
@@ -1612,6 +1639,47 @@ export function ProductDetailPage({ productId, navigate }) {
 
 
               )}
+
+{/* Lens colour — single option per frame, so it's shown, not selectable */}
+{lensColorName && (
+  <>
+    <div style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", color: BLACK, fontFamily: ff, marginBottom: 10 }}>
+      LENS COLOR
+    </div>
+    <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 18, flexWrap: "wrap" }}>
+      <span
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 8,
+          border: `1.5px solid ${BLACK}`,
+          background: "#fff",
+          padding: "8px 12px",
+          fontFamily: ff,
+          fontSize: 11,
+          letterSpacing: "0.08em",
+          color: BLACK,
+        }}
+      >
+        <span
+          style={{
+            width: 14,
+            height: 14,
+            borderRadius: "50%",
+            background: lensSwatch,
+            // A tinted lens is translucent glass, not paint — the inner highlight
+            // and ring give it depth so pale tints (esp. "Clear") stay visible.
+            border: "1px solid rgba(0,0,0,0.22)",
+            boxShadow: "inset 0 1px 2px rgba(255,255,255,0.75), inset 0 -1px 2px rgba(0,0,0,0.12)",
+            flexShrink: 0,
+          }}
+        />
+        {lensColorName}
+      </span>
+    </div>
+  </>
+)}
+
               <div style={{ width: 36, height: 3, background: BRAND, marginBottom: 18 }} />
 
               {discountPrice < price && (
@@ -1624,12 +1692,6 @@ export function ProductDetailPage({ productId, navigate }) {
               <div style={{ marginBottom: 26 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
                   <span style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", color: BLACK, fontFamily: ff }}>SIZE</span>
-                 <span
-  onClick={() => setShowSizeChart(true)}
-  style={{ fontSize: 11, color: "#888", fontFamily: mono, textDecoration: "underline", cursor: "pointer", letterSpacing: "0.04em" }}
->
-  Size Chart
-</span>
                 </div>
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                   {sizes.map(size => (
@@ -1686,17 +1748,13 @@ export function ProductDetailPage({ productId, navigate }) {
                   </div>
                 </AccordionItem>
                 <AccordionItem id="measurements" label="MEASUREMENTS">
-                  <div style={{ width: "100%", overflowX: "auto" }}>
-                    <table style={{ width: "100%", minWidth: 280, borderCollapse: "collapse" }}>
-                      <tbody>
-                        {Object.entries(product.measurements || {}).map(([k, v], i) => (
-                          <tr key={i} style={{ borderBottom: "1px solid #f0ece4" }}>
-                            <td style={{ padding: "9px 12px 9px 0", fontSize: 11, fontWeight: 900, letterSpacing: "0.1em", color: "#999", fontFamily: ff, width: "44%", whiteSpace: "nowrap" }}>{k.toUpperCase()}</td>
-                            <td style={{ padding: "9px 0", fontSize: 12, color: BLACK, fontFamily: mono }}>{v}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1px", background: "#f0ece4", border: "1px solid #f0ece4" }}>
+                    {Object.entries(product.measurements || {}).map(([k, v], i) => (
+                      <div key={i} style={{ background: "#fff", padding: "10px 12px" }}>
+                        <div style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.1em", color: "#999", fontFamily: ff, marginBottom: 5 }}>{k.toUpperCase()}</div>
+                        <div style={{ fontSize: 12, color: BLACK, fontFamily: mono }}>{v}</div>
+                      </div>
+                    ))}
                   </div>
                 </AccordionItem>
               </div>
@@ -1731,39 +1789,6 @@ export function ProductDetailPage({ productId, navigate }) {
       )}
 
       <AuthModal isOpen={showAuthPrompt} onClose={() => setShowAuthPrompt(false)} defaultTab="signup" />
-{showSizeChart && (
-  <div
-    onClick={() => setShowSizeChart(false)}
-    style={{
-      position: "fixed", inset: 0, background: "rgba(0,0,0,0.7)", zIndex: 999,
-      display: "flex", alignItems: "center", justifyContent: "center", padding: 20,
-    }}
-  >
-    <div
-      onClick={(e) => e.stopPropagation()}
-      style={{
-        background: "#fff", position: "relative", maxWidth: 1200, width: "100%",
-        maxHeight: "90vh", overflow: "auto", padding: 16, boxSizing: "border-box",
-      }}
-    >
-      <button
-        onClick={() => setShowSizeChart(false)}
-        style={{
-          position: "absolute", top: 8, right: 8, background: BLACK, color: "#fff",
-          border: "none", width: 32, height: 32, borderRadius: "50%", cursor: "pointer",
-          fontSize: 16, fontFamily: ff,
-        }}
-      >
-        ✕
-      </button>
-      <img
-        src="/content/size-chart.jpeg"
-        alt="Size Chart"
-        style={{ width: "100%", height: "auto", display: "block" }}
-      />
-    </div>
-  </div>
-)}
       <style>{`@keyframes fadeImgIn { from { opacity: 0; transform: scale(1.02); } to { opacity: 1; transform: scale(1); } }`}
         
       </style>
@@ -1941,9 +1966,9 @@ export function CartPage({ navigate }) {
 
 // ============ SIZE & FIT PAGE ============
 const SIZE_CATEGORIES = [
-  { key: "Small",  title: "NARROW",  desc: "If your face is on the slimmer side or best suited for a smaller frame." },
-  { key: "Medium", title: "AVERAGE", desc: "Most Urban Eye customers are comfortable in this range. If you're unsure, choose this size." },
-  { key: "Large",  title: "WIDE",    desc: "If your head is on the wider side or hats tend to be a bit snug, this is for you." },
+  { key: "Small",  title: "SMALL",  desc: "If your face is on the slimmer side or best suited for a smaller frame." },
+  { key: "Medium", title: "MEDIUM", desc: "Most Urban Eye customers are comfortable in this range. If you're unsure, choose this size." },
+  { key: "Large",  title: "LARGE",  desc: "If your head is on the wider side or hats tend to be a bit snug, this is for you." },
 ];
 
 export function SizeFitPage({ navigate }) {
@@ -2015,16 +2040,6 @@ export function SizeFitPage({ navigate }) {
                 If you already wear glasses, we recommend looking at your current pair as a size reference.
                 The numbers indicating size are typically printed inside the temple of the frame.
               </p>
-              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                {["LENS WIDTH", "BRIDGE WIDTH", "TEMPLE LENGTH"].map((label) => (
-                  <span key={label} style={{
-                    fontSize: 10, fontWeight: 900, letterSpacing: "0.12em", color: BRAND,
-                    border: `1.5px solid ${BRAND}`, padding: "8px 14px", fontFamily: ff,
-                  }}>
-                    {label}
-                  </span>
-                ))}
-              </div>
             </div>
           </FadeIn>
         </div>

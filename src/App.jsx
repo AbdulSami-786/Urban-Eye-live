@@ -1000,7 +1000,8 @@ function AppInner() {
           <FooterCol title="SHOP" links={["Eyeglasses", "Sunglasses", "New Arrivals", "Best Sellers"]} />
 <FooterCol 
   title="HELP" 
-  links={["Shipping & Returns", "Frame Sizing Guide", "Contact Us", "Store Locator", "FAQ"]} 
+  links={["Shipping & Returns", "Frame Sizing Guide", "Contact Us", "Store Locator", "FAQ"]}
+  hrefs={{ "Store Locator": "https://www.google.com/maps/place/URBAN+EYE/data=!4m2!3m1!1s0x0:0xf8dd09c3117768a5?sa=X&ved=1t:2428&ictx=111" }}
   onLinkClick={{ "Frame Sizing Guide": () => goTo("/size-fit") }}
 />
           <FooterCol title="COMPANY" links={["Our Story", "Careers"]} />
