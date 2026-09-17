@@ -17,7 +17,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Alex 1.jpg", "/assets/Alex 2.jpg", "/assets/Alex 3.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["48 (Medium)"],
     description:
@@ -67,7 +67,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/FELIX 4.jpg", "/assets/FELIX 5.jpg", "/assets/FELIX 6.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["49 (Medium)"],
     description:
@@ -111,7 +111,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/DANIAL 1.jpg", "/assets/DANIAL 2.jpg", "/assets/DANIAL 3.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["50 (Medium)"],
     description:
@@ -155,7 +155,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/JAMES 1.jpg", "/assets/JAMES 2.jpg", "/assets/JAMES 3.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["54 (Medium)"],
     description:
@@ -211,7 +211,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Jenny 7.jpg", "/assets/Jenny 8.jpg", "/assets/Jenny 9.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["49 (Medium)"],
     description:
@@ -261,7 +261,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/DREW 4.jpg", "/assets/DREW5.jpg", "/assets/DREW 6.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["54 (Medium)"],
     description:
@@ -311,7 +311,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Lilly 1.jpg", "/assets/Lilly 2.jpg", "/assets/Lilly 3.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["48 (Medium)"],
     description:
@@ -355,7 +355,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/TIM 1.jpg", "/assets/TIM 2.jpg", "/assets/TIM 3.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["53 (Medium)"],
     description:
@@ -399,7 +399,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/BOND 1.jpg", "/assets/BOND 2.jpg", "/assets/BOND 3.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["42 (Small)"],
     description:
@@ -467,7 +467,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/CHARLOTTE 13.jpg", "/assets/CHARLOTTE 14.jpg", "/assets/CHARLOTTE 15.jpg" ,"/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["55 (Large)"],
     description:
@@ -511,7 +511,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/AMELIA 1.jpg", "/assets/AMELIA 2.jpg", "/assets/AMELIA 3.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["49 (Large)"],
     description:
@@ -555,7 +555,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/ISLA 1.jpg", "/assets/ISLA 2.jpg", "/assets/ISLA 3.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["51 (Large)"],
     description:
@@ -611,7 +611,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/MILES 7.jpg", "/assets/MILES 8.jpg", "/assets/MILES 9.jpg" , "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["49 (Medium)"],
     description:
@@ -655,7 +655,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/MOUNT 1.jpg", "/assets/MOUNT 2.jpg", "/assets/MOUNT 3.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["53 (Medium)"],
     description:
@@ -711,7 +711,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Gerard 7.jpg", "/assets/Gerard 8.jpg", "/assets/Gerard 9.jpg", "/10.jpg"],
       },
     ],
-    price: 12500,
+    price: 13000,
     tag: "",
     sizes: ["46 (Small)"],
     description:
@@ -761,7 +761,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/DARTON 1.jpg", "/assets/DARTON 2.jpg", "/assets/DARTON 3.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["55 (Large)"],
     description:
@@ -811,7 +811,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Oliver 4.jpg", "/assets/Oliver 5.jpg", "/assets/Oliver 6.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["44 (Medium)"],
     description:
@@ -867,7 +867,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Henry 7.jpg", "/assets/Henry 8.jpg", "/assets/Henry 9.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["49 (Medium)"],
     description:
@@ -911,7 +911,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/AVA 1.jpg", "/assets/AVA 2.jpg", "/assets/AVA 3.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["55 (Medium)"],
     description:
@@ -967,7 +967,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/LINDA 7.jpg", "/assets/LINDA 8.jpg", "/assets/LINDA 9.jpg" , "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["51 (Medium)"],
     description:
@@ -1011,7 +1011,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/ZEGNA 1.jpg", "/assets/ZEGNA 2.jpg", "/assets/ZEGNA 3.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["51 (Medium)"],
     description:
@@ -1101,7 +1101,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/ALEXA 1.jpg", "/assets/ALEXA 2.jpg", "/assets/ALEXA 3.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["46 (Medium)"],
     description:
@@ -1145,7 +1145,7 @@ export const PRODUCTS_DATA = [
           gallery: ["/assets/BELLA (1).jpg", "/assets/BELLA (2).jpg", "/assets/BELLA (3).jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["51 (Medium)"],
     description:
@@ -1189,7 +1189,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Bradley 1.jpg", "/assets/Bradley 2.jpg", "/assets/Bradley 3.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["50 (Medium)"],
     description:
@@ -1233,7 +1233,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Celine 1.jpg", "/assets/Celine 2.jpg", "/assets/Celine 3.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["50 (Medium)"],
     description:
@@ -1283,7 +1283,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/CLAIR 4.jpg", "/assets/CLAIR 5.jpg", "/assets/CLAIR 6.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["55 (Medium)"],
     description:
@@ -1327,7 +1327,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/EMERALD 1.jpg", "/assets/EMERALD 2.jpg", "/assets/EMERALD 3.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["47 (Medium)"],
     description:
@@ -1377,7 +1377,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/LEGEND 4.jpg", "/assets/LEGEND 5.jpg", "/assets/LEGEND 6.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["52 (Medium)"],
     description:
@@ -1421,7 +1421,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/MELISA 4.jpg", "/assets/MELISA 5.jpg", "/assets/MELISA 6.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["49 (Small)"],
     description:
@@ -1465,7 +1465,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/ORANGE 1.jpg", "/assets/ORANGE 2.jpg", "/assets/ORANGE 3.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["50 (Small)"],
     description:
@@ -1509,7 +1509,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/PERSOL 1.jpg", "/assets/PERSOL 2.jpg", "/assets/PERSOL 3.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["56 (Large)"],
     description:
@@ -1553,7 +1553,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/RUBY 1.jpg", "/assets/RUBY 2.jpg", "/assets/RUBY 3.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["50 (Medium)"],
     description:
@@ -1597,7 +1597,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/SARAH 4.jpg", "/assets/SARAH 5.jpg", "/assets/SARAH 6.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["49 (Small)"],
     description:
@@ -1641,7 +1641,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Sydney 1.jpg","/assets/Sydney 2.jpg","/assets/Sydney 3.jpg" ,"/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["49 (Medium)"],
     description:
@@ -1695,7 +1695,7 @@ export const PRODUCTS_DATA = [
         lensColor: "Amber",
       },
     ],
-    price: 12500,
+    price: 13000,
     tag: "",
     sizes: ["55 (Medium)"],
     description:
@@ -1746,7 +1746,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Sunglass/Garfield 4.jpg", "/assets/Sunglass/Garfield 5.jpg", "/assets/Sunglass/Garfield 6.jpg", "/10.jpg"],
       },
     ],
-    price: 12500,
+    price: 13000,
     tag: "",
     sizes: ["39 (Small)"],
     description:
@@ -1791,7 +1791,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Sunglass/Karl 1.jpg", "/assets/Sunglass/Karl 2.jpg", "/assets/Sunglass/Karl 3.jpg", "/10.jpg"],
       },
     ],
-    price: 12500,
+    price: 13000,
     tag: "",
     sizes: ["49 (Medium)"],
     description:
@@ -1836,7 +1836,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Sunglass/BEVIS 1.jpg", "/assets/Sunglass/BEVIS 2.jpg", "/assets/Sunglass/BEVIS 3.jpg", "/10.jpg"],
       },
     ],
-    price: 12500,
+    price: 13000,
     tag: "",
     sizes: ["57 (Small)"],
     description:
@@ -1889,7 +1889,7 @@ export const PRODUCTS_DATA = [
         lensColor: "Smoke",
       },
     ],
-    price: 12500,
+    price: 13000,
     tag: "",
     sizes: ["54 (Medium)"],
     description:
@@ -1934,7 +1934,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Sunglass/Monaco 1.jpg", "/assets/Sunglass/Monaco 2.jpg", "/assets/Sunglass/Monaco 3.jpg", "/10.jpg"],
       },
     ],
-    price: 12500,
+    price: 13000,
     tag: "",
     sizes: ["58 (Medium)"],
     description:
@@ -1979,7 +1979,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Sunglass/Sarah 1.jpg", "/assets/Sunglass/Sarah 2.jpg", "/assets/Sunglass/Sarah 3.jpg", "/10.jpg"],
       },
     ],
-    price: 12500,
+    price: 13000,
     tag: "",
     sizes: ["44 (Medium)"],
     description:
@@ -2032,7 +2032,7 @@ export const PRODUCTS_DATA = [
         lensColor: "Gradient Purple",
       },
     ],
-    price: 12500,
+    price: 13000,
     tag: "",
     sizes: ["53 (Medium)"],
     description:
@@ -2077,7 +2077,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Sunglass/Tom 1.jpg", "/assets/Sunglass/Tom 2.jpg", "/assets/Sunglass/Tom 3.jpg", "/10.jpg"],
       },
     ],
-    price: 10000,
+    price: 10500,
     tag: "",
     sizes: ["56 (Medium)"],
     description:
@@ -2122,7 +2122,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Sunglass/FOX 1.jpg", "/assets/Sunglass/FOX 2.jpg", "/assets/Sunglass/FOX 3.jpg", "/10.jpg"],
       },
     ],
-    price: 10000,
+    price: 10500,
     tag: "",
     sizes: ["59 (Medium)"],
     description:
@@ -2167,7 +2167,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Sunglass/JET 1.jpg", "/assets/Sunglass/JET 2.jpg", "/assets/Sunglass/JET 3.jpg", "/10.jpg"],
       },
     ],
-    price: 12500,
+    price: 13000,
     tag: "",
     sizes: ["56 (Large)"],
     description:
@@ -2220,7 +2220,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Sunglass/Lumia 4.png", "/assets/Sunglass/Lumia 5.png", "/assets/Sunglass/Lumia 6.jpg", "/10.jpg"],
       },
     ],
-    price: 10000,
+    price: 10500,
     tag: "",
     sizes: ["50 (Medium)"],
     description:
@@ -2265,7 +2265,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Sunglass/MAX (1).jpg", "/assets/Sunglass/MAX (2).jpg", "/assets/Sunglass/MAX (3).jpg", "/10.jpg"],
       },
     ],
-    price: 10000,
+    price: 10500,
     tag: "",
     sizes: ["47 (Small)"],
     description:
@@ -2310,7 +2310,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Sunglass/Melisa 1.jpg", "/assets/Sunglass/Melisa 2.jpg", "/assets/Sunglass/Melisa 3.jpg", "/10.jpg"],
       },
     ],
-    price: 10000,
+    price: 10500,
     tag: "",
     sizes: ["49 (Medium)"],
     description:
@@ -2357,7 +2357,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Sofia 1.jpg", "/assets/Sofia 2.jpg", "/assets/Sofia 3.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["52 (Medium)"],
     description:
@@ -2407,7 +2407,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Amber 4.jpg", "/assets/Amber 5.jpg", "/assets/Amber 6.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["51 (Medium)"],
     description:
@@ -2451,7 +2451,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Thomas 1.jpg", "/assets/Thomas 2.jpg", "/assets/Thomas 3.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["57 (Large)"],
     description:
@@ -2495,7 +2495,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Charlotteog 1.jpg", "/assets/Charlotteog 2.jpg", "/assets/Charlotteog 3.jpg", "/10.jpg"],
       },
     ],
-    price: 8500,
+    price: 9000,
     tag: "",
     sizes: ["53 (Medium)"],
     description:
@@ -2557,7 +2557,7 @@ export const PRODUCTS_DATA = [
         gallery: ["/assets/Parrot 10.png", "/assets/parrot 11.jpg", "/assets/Parrot 12.jpg", "/10.jpg"],
       },
     ],
-    price: 12500,
+    price: 13000,
     tag: "",
     sizes: ["52 (Medium)"],
     description:
