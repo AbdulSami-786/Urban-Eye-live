@@ -5,6 +5,7 @@ import { useHashRouter } from "./hook/usehashrooter.js";
 import {
   HomePage, ProductsPage, CollectionDetailPage, CollectionsLandingPage, ProductDetailPage, CartPage,
   CheckoutPage, OrderSuccessPage, WishlistPage, ReviewSubmissionPage, AboutUsPage, SizeFitPage,
+  ReturnsPage, StoreLocatorPage,
 } from "./page/page.jsx";
 import DashboardPage from "./userdashboard/dashboardpage.jsx";
 
@@ -25,6 +26,8 @@ export default function OpticsStudio() {
       {route === "wishlist"      && <WishlistPage navigate={navigate} />}
       {route === "story"    && <AboutUsPage navigate={navigate} />}
       {route === "size-fit" && <SizeFitPage navigate={navigate} />}
+      {route === "returns"  && <ReturnsPage navigate={navigate} />}
+      {route === "stores"   && <StoreLocatorPage navigate={navigate} />}
       {route === "review"        && (
         <ReviewSubmissionPage
           productId={reviewProductId}

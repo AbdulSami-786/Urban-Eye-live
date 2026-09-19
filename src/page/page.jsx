@@ -1085,7 +1085,11 @@ export function ProductsPage({ navigate, queryParams }) {
   const isDesktop = useMediaQuery("(min-width: 1024px)");
 
   const [activeFilters, setActiveFilters] = useState(() => buildFiltersFromQuery(queryParams));
-  const [sort, setSort] = useState("relevant");
+  // `?sort=` comes from the footer's New Arrivals / Best Sellers links. Ignore an
+  // unrecognized value so a stale URL can't wedge the sort dropdown.
+  const sortFromQuery = (qp) =>
+    SORT_OPTS.some((o) => o.key === qp?.sort) ? qp.sort : "relevant";
+  const [sort, setSort] = useState(() => sortFromQuery(queryParams));
   const [filtersOpen, setFiltersOpen] = useState(() => !window.matchMedia("(max-width: 767px)").matches);
   // `?q=` comes from the navbar search — seed the on-page search box with it.
   const [searchTerm, setSearchTerm] = useState(() => queryParams?.q || "");
@@ -1097,6 +1101,7 @@ export function ProductsPage({ navigate, queryParams }) {
   useEffect(() => {
     setActiveFilters(buildFiltersFromQuery(queryParams));
     setSearchTerm(queryParams?.q || "");
+    setSort(sortFromQuery(queryParams));
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [JSON.stringify(queryParams)]);
 
@@ -2085,6 +2090,412 @@ export function SizeFitPage({ navigate }) {
           </h2>
           <p style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", maxWidth: 460, margin: "0 auto 32px", lineHeight: 1.8, fontFamily: mono }}>
             Message us on WhatsApp or visit our Zamzama store for a free fitting consultation.
+          </p>
+          <button
+            onClick={() => navigate("/products")}
+            style={{
+              background: BRAND, color: "#fff", border: "none", padding: "14px 30px",
+              fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", cursor: "pointer", fontFamily: ff,
+            }}
+          >
+            SHOP ALL FRAMES
+          </button>
+        </FadeIn>
+      </div>
+    </div>
+  );
+}
+
+// ============ RETURNS PAGE ============
+// Content mirrors the official "How do I return my order?" policy document.
+const RETURN_CONDITIONS = [
+  "Item(s) must be unused and free of any damage, as well as purchased directly from Urbaneye.com.pk.",
+  "All original packaging (case, chamois, and tote bag) must be included.",
+  "Please include the original packing slip inside the return package, and/or include the order # for reference to avoid processing delays.",
+  "Please be sure the return package is marked as 'returned goods' to prevent any issues.",
+];
+
+const RETURN_STEPS = [
+  {
+    num: "01",
+    title: "GET AUTHORIZED",
+    desc: "Contact our customer support to have your return authorized. Keep your order # handy so we can pull up your purchase.",
+  },
+  {
+    num: "02",
+    title: "SHIP WITHIN 28 DAYS",
+    desc: "Once authorized, your return must be shipped within 28 days, with all items in their original packaging (case, chamois, and tote bag) in the box.",
+  },
+  {
+    num: "03",
+    title: "PROCESSING",
+    desc: "Once we receive it, please allow 7–10 business days for processing. Refunds are credited via bank transfer.",
+  },
+];
+
+const RETURN_POLICY_SECTIONS = [
+  {
+    title: "ORDER DELIVERY",
+    points: [
+      "All orders placed online through our website shall be processed after the confirmation is received from the customer via our customer service representative.",
+      "All orders are expected to be shipped within 3–5 working days after confirmation of order.",
+    ],
+  },
+  {
+    title: "ORDER CANCELLATION",
+    points: [
+      "Orders placed and not confirmed by our customer support representative will be automatically cancelled.",
+      "If you change your mind, please let us know as soon as possible by contacting our customer support within 24 hours. After confirmation of order by the customer, orders cannot be cancelled once they have been shipped.",
+    ],
+  },
+  {
+    title: "PAYMENTS",
+    points: [
+      "All online payments are processed with third party channels.",
+      "We do not have any delivery charges — we provide free delivery all over Pakistan on every order.",
+    ],
+  },
+];
+
+export function ReturnsPage({ navigate }) {
+  useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, []);
+  const isMobile = useMediaQuery("(max-width: 767px)");
+
+  useDocumentHead({
+    title: "Returns & Refunds",
+    description: "Urban Eye's money back guarantee — how to return your online order, what condition items must be in, refund timelines, order cancellation, and in-store returns.",
+  });
+
+  return (
+    <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
+      <h1 style={srOnly}>How Do I Return My Order? | Urban Eye</h1>
+      <PageBanner image="/assets/banners/banner3.png" alt="Urban Eye — Returns & Refunds" overlayText="RETURNS" />
+
+      <Breadcrumb crumbs={[{ label: "HOME", path: "/" }, { label: "RETURNS", path: null }]} />
+
+      {/* Money back guarantee intro */}
+      <div style={{ background: CREAM, padding: isMobile ? "36px 20px" : "56px 40px", textAlign: "center", borderBottom: "1px solid #e8e0d0" }}>
+        <FadeIn>
+          <div style={{ maxWidth: 700, margin: "0 auto" }}>
+            <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 14, fontWeight: 900 }}>
+              HOW DO I RETURN MY ORDER?
+            </div>
+            <blockquote style={{
+              fontFamily: mono, fontStyle: "italic", fontSize: isMobile ? "clamp(14px, 4vw, 17px)" : "clamp(15px, 1.8vw, 19px)",
+              lineHeight: 1.8, color: BLACK, margin: "0 0 16px"
+            }}>
+              "For all our online orders we have a transparent money back guarantee. For Urbaneye.com.pk
+              orders, we accept returns for any order."
+            </blockquote>
+            <div style={{ fontSize: 11, letterSpacing: "0.14em", color: "#888", fontFamily: ff, fontWeight: 900 }}>
+              — URBAN EYE, OPTICAL SPECIALISTS
+            </div>
+          </div>
+        </FadeIn>
+      </div>
+
+      {/* Conditions */}
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: isMobile ? "48px 20px" : "80px 40px" }}>
+        <FadeIn>
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 10 }}>BEFORE YOU SEND IT BACK</div>
+            <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(24px, 7vw, 32px)" : "clamp(30px, 4vw, 46px)", margin: 0 }}>
+              RETURN CONDITIONS
+            </h2>
+          </div>
+        </FadeIn>
+
+        <div style={{ maxWidth: 820, margin: "0 auto", display: "flex", flexDirection: "column", gap: 2 }}>
+          {RETURN_CONDITIONS.map((cond, i) => (
+            <FadeIn key={i} delay={i * 70}>
+              <div style={{
+                background: "#fff", border: "1px solid #e8e0d0", padding: isMobile ? "20px 18px" : "24px 28px",
+                display: "flex", gap: isMobile ? 14 : 20, alignItems: "flex-start",
+              }}>
+                <div style={{
+                  flexShrink: 0, width: 8, height: 8, background: BRAND, marginTop: 7,
+                }} />
+                <p style={{ fontFamily: mono, fontSize: isMobile ? 13 : 14, lineHeight: 1.85, color: "#444", margin: 0 }}>
+                  {cond}
+                </p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+
+      {/* The three steps */}
+      <div style={{ background: CREAM, padding: isMobile ? "40px 20px" : "64px 40px", borderTop: "2px solid #e8ddd0", borderBottom: "2px solid #e8ddd0" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <FadeIn>
+            <div style={{ textAlign: "center", marginBottom: isMobile ? 28 : 44 }}>
+              <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 10 }}>THE PROCESS</div>
+              <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(22px, 7vw, 30px)" : "clamp(28px, 3.6vw, 42px)", margin: 0 }}>
+                HOW IT WORKS
+              </h2>
+            </div>
+          </FadeIn>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)", gap: isMobile ? 16 : 3 }}>
+            {RETURN_STEPS.map((step, i) => (
+              <FadeIn key={step.num} delay={i * 80}>
+                <div style={{ background: "#fff", border: "1px solid #e8e0d0", padding: isMobile ? "24px 20px" : "32px 26px", height: "100%", boxSizing: "border-box" }}>
+                  <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 28, color: "#e0d8c8", lineHeight: 1, marginBottom: 14 }}>
+                    {step.num}
+                  </div>
+                  <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 15, letterSpacing: "0.1em", color: BLACK, marginBottom: 12 }}>
+                    {step.title}
+                  </div>
+                  <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.8, color: "#666", margin: 0 }}>
+                    {step.desc}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Refund value + exclusions */}
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: isMobile ? "48px 20px" : "80px 40px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 20 : 3 }}>
+          <FadeIn>
+            <div style={{ background: "#fff", border: "1px solid #e8e0d0", padding: isMobile ? "26px 22px" : "36px 32px", height: "100%", boxSizing: "border-box" }}>
+              <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 15, letterSpacing: "0.1em", color: BLACK, marginBottom: 14 }}>
+                REFUND VALUE
+              </div>
+              <p style={{ fontFamily: mono, fontSize: isMobile ? 13 : 14, lineHeight: 1.9, color: "#444", margin: 0 }}>
+                The return value is determined by the item(s)' retail price at time of purchase, from which
+                5% will be deducted. Refunds are credited to the bank transfer once processing is complete.
+              </p>
+            </div>
+          </FadeIn>
+          <FadeIn delay={80}>
+            <div style={{ background: "#fff", border: "1px solid #e8e0d0", padding: isMobile ? "26px 22px" : "36px 32px", height: "100%", boxSizing: "border-box" }}>
+              <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 15, letterSpacing: "0.1em", color: BLACK, marginBottom: 14 }}>
+                HEADS UP!
+              </div>
+              <p style={{ fontFamily: mono, fontSize: isMobile ? 13 : 14, lineHeight: 1.9, color: "#444", margin: "0 0 14px" }}>
+                Our return policy is superseded by any promotional terms and conditions, including but not
+                limited to final sale (no returns/exchanges) items.
+              </p>
+              <p style={{ fontFamily: mono, fontSize: isMobile ? 13 : 14, lineHeight: 1.9, color: "#444", margin: 0 }}>
+                Any tweaks, adjustments, or repairs made outside of an URBAN EYE store void the warranty and
+                make the frame ineligible for return.
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+
+      {/* Delivery / cancellation / payments */}
+      <div style={{ background: CREAM, padding: isMobile ? "40px 20px" : "64px 40px", borderTop: "2px solid #e8ddd0", borderBottom: "2px solid #e8ddd0" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)", gap: isMobile ? 16 : 3 }}>
+            {RETURN_POLICY_SECTIONS.map((sec, i) => (
+              <FadeIn key={sec.title} delay={i * 80}>
+                <div style={{ background: "#fff", border: "1px solid #e8e0d0", padding: isMobile ? "24px 20px" : "32px 26px", height: "100%", boxSizing: "border-box" }}>
+                  <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 15, letterSpacing: "0.1em", color: BLACK, marginBottom: 16, borderBottom: `2px solid ${BRAND}`, paddingBottom: 10, display: "inline-block" }}>
+                    {sec.title}
+                  </div>
+                  <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
+                    {sec.points.map((pt, j) => (
+                      <li key={j} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                        <span style={{ flexShrink: 0, width: 6, height: 6, background: BRAND, marginTop: 7 }} />
+                        <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.8, color: "#666", margin: 0 }}>{pt}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* In-store returns CTA */}
+      <div style={{ background: BLACK, padding: isMobile ? "48px 20px" : "80px 40px", textAlign: "center" }}>
+        <FadeIn>
+          <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 20px" }} />
+          <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#555", marginBottom: 14 }}>
+            CAN I RETURN MY ONLINE ORDER AT AN URBAN EYE STORE?
+          </div>
+          <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(22px, 7vw, 30px)" : "clamp(28px, 3.6vw, 42px)", color: "#fff", margin: "0 0 18px" }}>
+            YES — AT ANY LOCATION
+          </h2>
+          <p style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", maxWidth: 460, margin: "0 auto 32px", lineHeight: 1.8, fontFamily: mono }}>
+            We accept returns for any Urban Eye order at any of our locations. Find a shop near you.
+          </p>
+          <button
+            onClick={() => navigate("/stores")}
+            style={{
+              background: BRAND, color: "#fff", border: "none", padding: "14px 30px",
+              fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", cursor: "pointer", fontFamily: ff,
+            }}
+          >
+            FIND A SHOP
+          </button>
+        </FadeIn>
+      </div>
+    </div>
+  );
+}
+
+// ============ STORE LOCATOR PAGE ============
+// The map uses Google's keyless embed endpoint (`?q=...&output=embed`), so it
+// needs no Maps API key. MAPS_PLACE_URL is the same place link used in the footer.
+const MAPS_PLACE_URL = "https://www.google.com/maps/place/URBAN+EYE/data=!4m2!3m1!1s0x0:0xf8dd09c3117768a5?sa=X&ved=1t:2428&ictx=111";
+const MAPS_QUERY = "URBAN EYE Zamzama Karachi";
+// Keyless embed form — needs no Maps API key. Spaces must be `+`, not %20.
+const MAPS_EMBED_URL = `https://maps.google.com/maps?q=${MAPS_QUERY.replace(/ /g, "+")}&t=&z=16&ie=UTF8&iwloc=&output=embed`;
+const MAPS_DIRECTIONS_URL = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(MAPS_QUERY)}`;
+
+const STORE_DETAILS = [
+  { label: "ADDRESS", value: "Zamzama, Karachi, Pakistan" },
+  { label: "PHONE / WHATSAPP", value: "+92 314 2246016", href: "https://wa.me/923142246016" },
+  { label: "SINCE", value: "1999" },
+];
+
+export function StoreLocatorPage({ navigate }) {
+  useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, []);
+  const isMobile = useMediaQuery("(max-width: 767px)");
+
+  useDocumentHead({
+    title: "Store Locator",
+    description: "Find the Urban Eye store in Zamzama, Karachi. Get directions, opening contact details, and visit us for a free fitting consultation.",
+  });
+
+  return (
+    <div style={{ minHeight: "100vh", background: "#FAFAF8", fontFamily: ff }}>
+      <h1 style={srOnly}>Store Locator | Urban Eye</h1>
+      <PageBanner image="/assets/banners/banner1.png" alt="Urban Eye — Store Locator" overlayText="FIND US" />
+
+      <Breadcrumb crumbs={[{ label: "HOME", path: "/" }, { label: "STORE LOCATOR", path: null }]} />
+
+      {/* Intro */}
+      <div style={{ background: CREAM, padding: isMobile ? "36px 20px" : "56px 40px", textAlign: "center", borderBottom: "1px solid #e8e0d0" }}>
+        <FadeIn>
+          <div style={{ maxWidth: 700, margin: "0 auto" }}>
+            <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 14, fontWeight: 900 }}>
+              COME SEE US
+            </div>
+            <blockquote style={{
+              fontFamily: mono, fontStyle: "italic", fontSize: isMobile ? "clamp(14px, 4vw, 17px)" : "clamp(15px, 1.8vw, 19px)",
+              lineHeight: 1.8, color: BLACK, margin: "0 0 16px"
+            }}>
+              "Frames are best chosen in person. Visit our Zamzama store and let our optical
+              specialists measure, adjust, and fit your frame properly."
+            </blockquote>
+            <div style={{ fontSize: 11, letterSpacing: "0.14em", color: "#888", fontFamily: ff, fontWeight: 900 }}>
+              — URBAN EYE, KARACHI SINCE 1999
+            </div>
+          </div>
+        </FadeIn>
+      </div>
+
+      {/* Map + store details */}
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: isMobile ? "48px 20px" : "80px 40px" }}>
+        <FadeIn>
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 10 }}>OUR LOCATION</div>
+            <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(24px, 7vw, 32px)" : "clamp(30px, 4vw, 46px)", margin: 0 }}>
+              URBAN EYE ZAMZAMA
+            </h2>
+          </div>
+        </FadeIn>
+
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1.4fr 1fr", gap: isMobile ? 20 : 3, alignItems: "stretch" }}>
+          {/* Google Map embed */}
+          <FadeIn>
+            <div style={{ background: CREAM, border: "1px solid #e8e0d0", padding: isMobile ? 10 : 14, height: "100%", boxSizing: "border-box" }}>
+              <iframe
+                title="Urban Eye store location on Google Maps"
+                src={MAPS_EMBED_URL}
+                width="100%"
+                height={isMobile ? 300 : 460}
+                style={{ border: 0, display: "block" }}
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </FadeIn>
+
+          {/* Details panel */}
+          <FadeIn delay={80}>
+            <div style={{
+              background: "#fff", border: "1px solid #e8e0d0", padding: isMobile ? "26px 22px" : "36px 32px",
+              height: "100%", boxSizing: "border-box", display: "flex", flexDirection: "column",
+            }}>
+              <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 15, letterSpacing: "0.1em", color: BLACK, marginBottom: 20, borderBottom: `2px solid ${BRAND}`, paddingBottom: 10, display: "inline-block", alignSelf: "flex-start" }}>
+                STORE DETAILS
+              </div>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: 20, marginBottom: 28 }}>
+                {STORE_DETAILS.map((d) => (
+                  <div key={d.label}>
+                    <div style={{ fontSize: 10, letterSpacing: "0.18em", color: "#999", fontWeight: 900, marginBottom: 6 }}>
+                      {d.label}
+                    </div>
+                    {d.href ? (
+                      <a
+                        href={d.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ fontFamily: mono, fontSize: isMobile ? 13 : 14, lineHeight: 1.8, color: BRAND, textDecoration: "none", borderBottom: `1px solid ${BRAND}` }}
+                      >
+                        {d.value}
+                      </a>
+                    ) : (
+                      <div style={{ fontFamily: mono, fontSize: isMobile ? 13 : 14, lineHeight: 1.8, color: "#444" }}>
+                        {d.value}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ marginTop: "auto", display: "flex", flexDirection: "column", gap: 10 }}>
+                <a
+                  href={MAPS_DIRECTIONS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    background: BRAND, color: "#fff", textDecoration: "none", padding: "14px 22px",
+                    fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", fontFamily: ff, textAlign: "center",
+                  }}
+                >
+                  GET DIRECTIONS →
+                </a>
+                <a
+                  href={MAPS_PLACE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    background: "none", border: `1.5px solid ${BRAND}`, color: BRAND, textDecoration: "none",
+                    padding: "12px 22px", fontSize: 10, fontWeight: 900, letterSpacing: "0.14em",
+                    fontFamily: ff, textAlign: "center", transition: "background 0.18s, color 0.18s",
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = BRAND; e.currentTarget.style.color = "#fff"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = "none"; e.currentTarget.style.color = BRAND; }}
+                >
+                  VIEW ON GOOGLE MAPS
+                </a>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+
+      {/* Visit CTA */}
+      <div style={{ background: BLACK, padding: isMobile ? "48px 20px" : "80px 40px", textAlign: "center" }}>
+        <FadeIn>
+          <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 20px" }} />
+          <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#555", marginBottom: 14 }}>CAN'T MAKE IT IN?</div>
+          <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(22px, 7vw, 30px)" : "clamp(28px, 3.6vw, 42px)", color: "#fff", margin: "0 0 18px" }}>
+            SHOP THE FULL RANGE ONLINE
+          </h2>
+          <p style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", maxWidth: 460, margin: "0 auto 32px", lineHeight: 1.8, fontFamily: mono }}>
+            Free delivery all over Pakistan, with a transparent money back guarantee on every order.
           </p>
           <button
             onClick={() => navigate("/products")}

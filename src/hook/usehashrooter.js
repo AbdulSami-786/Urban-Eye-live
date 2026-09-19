@@ -100,6 +100,7 @@ export function useHashRouter() {
   else if (rawPath === "/collections") route = "collections-landing";
   else if (rawPath === "/story") route = "story";
   else if (rawPath === "/size-fit") route = "size-fit";   // ← add this
+  else if (rawPath === "/returns") route = "returns";
   else if (rawPath === "/stores") route = "stores";
   else if (rawPath === "/wishlist") route = "wishlist";
   else if (rawPath.startsWith("/dashboard")) route = "dashboard";

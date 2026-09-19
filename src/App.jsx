@@ -997,14 +997,34 @@ function AppInner() {
   ))}
 </div>
           </div>
-          <FooterCol title="SHOP" links={["Eyeglasses", "Sunglasses", "New Arrivals", "Best Sellers"]} />
+          <FooterCol
+            title="SHOP"
+            links={["Eyeglasses", "Sunglasses", "New Arrivals", "Best Sellers"]}
+            onLinkClick={{
+              // Category values are the normalized ones the filter compares against
+              // ("Eyeglasses"/"Sunglasses"), not the raw "Optical"/"Sunglass" in the data.
+              "Eyeglasses":   () => goTo("/products?category=Eyeglasses"),
+              "Sunglasses":   () => goTo("/products?category=Sunglasses"),
+              // Sort rather than filter: every product's `tag` is currently "", so
+              // ?tag=NEW / ?tag=BEST SELLER would match nothing.
+              "New Arrivals": () => goTo("/products?sort=dateNew"),
+              "Best Sellers": () => goTo("/products?sort=bestSelling"),
+            }}
+          />
 <FooterCol 
   title="HELP" 
   links={["Shipping & Returns", "Frame Sizing Guide", "Contact Us", "Store Locator", "FAQ"]}
-  hrefs={{ "Store Locator": "https://www.google.com/maps/place/URBAN+EYE/data=!4m2!3m1!1s0x0:0xf8dd09c3117768a5?sa=X&ved=1t:2428&ictx=111" }}
-  onLinkClick={{ "Frame Sizing Guide": () => goTo("/size-fit") }}
+  onLinkClick={{
+    "Frame Sizing Guide": () => goTo("/size-fit"),
+    "Shipping & Returns": () => goTo("/returns"),
+    "Store Locator": () => goTo("/stores"),
+  }}
 />
-          <FooterCol title="COMPANY" links={["Our Story", "Careers"]} />
+          <FooterCol
+            title="COMPANY"
+            links={["Our Story", "Careers"]}
+            onLinkClick={{ "Our Story": () => goTo("/story") }}
+          />
         </div>
 
 
