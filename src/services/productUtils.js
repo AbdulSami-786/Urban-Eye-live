@@ -107,24 +107,45 @@ export function formatPriceValue(value) {
   return numericValue.toLocaleString();
 }
 
-// Some color variants of a product have a different lens color than the
-// product's default (e.g. Violet's Honey frame ships with smoke lenses while
-// its Jet Black frame ships with black lenses). `colors[].lensColor` carries
-// that override; products where every variant shares one lens color don't
-// need to set it, and this falls back to the product-level spec.
-export function getProductDisplaySpecifications(product, selectedVariantName) {
+// Lens colour depends on both the frame colour and, where the frame is sold
+// in several tints, the lens the shopper picked (e.g. Violet's Honey frame
+// ships with smoke lenses while its Jet Black frame ships with black). It
+// resolves from `colors[].lenses` first, then the `colors[].lensColor`
+// override, then the product-level spec.
+export function getProductDisplaySpecifications(product, selectedVariantName, selectedLensName) {
   const variants = getProductVariants(product);
   const selectedVariant = variants.find((variant) => normalizeText(variant.name) === normalizeText(selectedVariantName)) || variants[0] || null;
-  if (!selectedVariant?.lensColor) return product?.specifications || {};
-  return { ...product.specifications, "Lens Color": selectedVariant.lensColor };
+  const lensColor = getSelectedLens(selectedVariant, selectedLensName, product)?.name || selectedVariant?.lensColor;
+  if (!lensColor) return product?.specifications || {};
+  return { ...product.specifications, "Lens Color": lensColor };
 }
 
-export function getProductDisplayImage(product, selectedVariantName) {
+// A frame colour can be offered with several lens tints, each shot on that
+// same frame (e.g. Garfield's Jet Black comes with honey brown, turquoise or
+// pink lenses). `colors[].lenses` carries those options, the first being the
+// default. Frames with a single lens omit it and fall back to `lensColor`.
+export function getVariantLenses(variant, product) {
+  if (Array.isArray(variant?.lenses) && variant.lenses.length) return variant.lenses;
+  const lensColor = variant?.lensColor || product?.specifications?.["Lens Color"];
+  if (lensColor) return [{ name: lensColor, gallery: variant?.gallery }];
+  return [];
+}
+
+export function getSelectedLens(variant, selectedLensName, product) {
+  const lenses = getVariantLenses(variant, product);
+  if (!lenses.length) return null;
+  return lenses.find((lens) => normalizeText(lens.name) === normalizeText(selectedLensName)) || lenses[0];
+}
+
+export function getProductDisplayImage(product, selectedVariantName, selectedLensName) {
   const variants = getProductVariants(product);
   const selectedVariant = variants.find((variant) => normalizeText(variant.name) === normalizeText(selectedVariantName)) || variants[0] || null;
-  const galleryImages = selectedVariant?.gallery?.length
-    ? selectedVariant.gallery
-    : (product?.gallery?.length ? product.gallery : (selectedVariant?.image ? [selectedVariant.image] : []));
+  const lensGallery = getSelectedLens(selectedVariant, selectedLensName, product)?.gallery;
+  const galleryImages = lensGallery?.length
+    ? lensGallery
+    : (selectedVariant?.gallery?.length
+      ? selectedVariant.gallery
+      : (product?.gallery?.length ? product.gallery : (selectedVariant?.image ? [selectedVariant.image] : [])));
   return {
     selectedVariant,
     galleryImages,
@@ -150,7 +171,7 @@ export function getProductDisplayImage(product, selectedVariantName) {
 const DESCRIPTION_FULL_RE = /^Redefine your success with Urban Eyes latest design\.\s*(.+?)\s+embeds a new sleek design, made from ([^,]+), with (.+?) frame & (.+?) lense color; effortless style & unmatched functionality to elevate your everyday lifestyle\.$/i;
 const DESCRIPTION_SHORT_RE = /^Redefine your success with Urban Eyes latest design\.\s*(.+?)\s+embeds a new sleek design, made from ([^,]+), with (.+?) color; effortless style & unmatched functionality to elevate your everyday lifestyle\.$/i;
 
-export function getProductDescription(product, selectedVariantName) {
+export function getProductDescription(product, selectedVariantName, selectedLensName) {
   const raw = product?.description || "";
   const variants = getProductVariants(product);
   const selectedVariant =
@@ -160,7 +181,7 @@ export function getProductDescription(product, selectedVariantName) {
   if (fullMatch) {
     const [, productName, material, staticFrameColor, fallbackLensColor] = fullMatch;
     const frameColor = selectedVariant?.name || staticFrameColor;
-    const lensColor = selectedVariant?.lensColor || product?.specifications?.["Lens Color"] || fallbackLensColor;
+    const lensColor = getSelectedLens(selectedVariant, selectedLensName, product)?.name || selectedVariant?.lensColor || product?.specifications?.["Lens Color"] || fallbackLensColor;
     return `Redefine your success with Urban Eyes latest design. ${productName} embeds a new sleek design, made from ${material}, with ${frameColor} frame & ${lensColor} lense color; effortless style & unmatched functionality to elevate your everyday lifestyle.`;
   }
 
@@ -411,4 +432,49 @@ export function searchProducts(products, term, limit = 0) {
   if (!t) return [];
   const results = (products || []).filter((product) => matchesSearchTerm(product, t));
   return limit > 0 ? results.slice(0, limit) : results;
+}
+
+// Swatch fill for a lens tint, shared by the product page and the cards so a
+// colour never renders two different ways. Gradients mirror how the tint
+// actually falls across the lens (dark at the top, pale at the bottom).
+export const LENS_SWATCHES = {
+  // Clear lenses aren't white — a faint blue-grey glass tint so the swatch
+  // reads as glass instead of vanishing against the white pill behind it.
+  "clear": "linear-gradient(160deg, #ffffff, #dce6ed)",
+  "black": "#1a1a1a",
+  "brown": "#6b4423",
+  "honey brown": "#a9743a",
+  "amber": "#c8811f",
+  "green": "#2f5d3a",
+  "dark green": "#1e3d28",
+  "red": "#9e2a2b",
+  "light blue": "#a8cfe4",
+  "smoke": "#6e6e6e",
+  "blue": "#3d7fb8",
+  "turquoise": "#3fb9b0",
+  "pink": "#e88aa8",
+  "orange": "#e07b25",
+  "gradient blue": "linear-gradient(160deg, #4a7fa5, #cfe2ee)",
+  "gradient grey": "linear-gradient(160deg, #4a4a4a, #d6d6d6)",
+  "gradient green": "linear-gradient(160deg, #2f5d3a, #cfe0cf)",
+  "gradient red": "linear-gradient(160deg, #9e2a2b, #f0cfcf)",
+  "gradient purple": "linear-gradient(160deg, #9b6bb0, #f2d9c4)",
+  "gradient orange": "linear-gradient(160deg, #e4784f, #f7d9c8)",
+  "gradient brown": "linear-gradient(160deg, #6b4423, #e2c6a8)",
+};
+
+export function getLensSwatch(lensName) {
+  return LENS_SWATCHES[String(lensName || "").toLowerCase()] || "#d9d9d9";
+}
+
+// The front-view shot of each lens tint a frame colour is sold in, used by the
+// cards to flip through the tints on hover. Galleries are ordered
+// front → angled → side, so the first image is the front view.
+export function getVariantLensPreviews(variant, product) {
+  return getVariantLenses(variant, product)
+    .map((lens) => ({
+      name: lens.name,
+      image: lens.gallery?.[0] || variant?.image || product?.image || "",
+    }))
+    .filter((preview) => preview.image);
 }

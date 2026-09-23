@@ -6,8 +6,9 @@ import { PRODUCTS_DATA } from "../prodcut.js";
 import { BLACK, CREAM, ff, mono, COLLECTIONS,
          HERO_SLIDES, HOME_PRODUCTS, TESTIMONIALS, PROCESS_STEPS, CATEGORIES_HOME,
          tagColors } from "../contants/store.js";
-import { applyProductFilters, getProductColorOptions, getProductBrandOptions, getProductSizeOptions, getProductDisplayPrice, getProductDiscountPercent, getProductDisplayImage, getProductDisplaySpecifications, getProductDescription, getRelatedProducts, getProductVariants, productMatchesShape, getUniqueShapesFromProducts, normalizeCategory, normalizeGender, formatPriceValue, matchesSearchTerm } from "../services/productUtils.js";
+import { applyProductFilters, getProductColorOptions, getProductBrandOptions, getProductSizeOptions, getProductDisplayPrice, getProductDiscountPercent, getProductDisplayImage, getProductDisplaySpecifications, getProductDescription, getRelatedProducts, getProductVariants, getVariantLenses, getSelectedLens, getVariantLensPreviews, getLensSwatch, productMatchesShape, getUniqueShapesFromProducts, normalizeCategory, normalizeGender, formatPriceValue, matchesSearchTerm } from "../services/productUtils.js";
 import { YBtn, OutlineBtn, FadeIn, Counter, Frame, ProductCard, ProductSlider, WishlistHeart, WishlistSkeleton } from "../components/shared";
+import { useLensCycle } from "../hook/useLensCycle.js";
 import { useCart } from "../contexts/CardContext";
 import { useAuth, AuthModal } from "../Auth/auth.jsx";
 import {
@@ -710,6 +711,9 @@ export function HomePage({ navigate }) {
 
   const HomeProductCard = ({ product }) => {
     const [hov, setHov] = useState(false);
+    // Latches on the first hover so the alternate tint images stay unmounted
+    // until they're needed.
+    const [hasHovered, setHasHovered] = useState(false);
     const [addedMsg, setAddedMsg] = useState(false);
     const { price, discountPrice } = getProductDisplayPrice(product);
     const discount = getProductDiscountPercent(product);
@@ -729,7 +733,11 @@ export function HomePage({ navigate }) {
     }, [product?.id, variants.length]);
 
     const selectedVariant = variants.find(v => normalizeVariantName(v.name) === normalizeVariantName(selectedVariantName)) || variants[0] || null;
-    const displayImage = selectedVariant?.image || product.image || "";
+    // Flip through this frame colour's lens tints while the card is hovered.
+    const lensPreviews = getVariantLensPreviews(selectedVariant, product);
+    const lensIndex = useLensCycle(lensPreviews.length, hov, selectedVariant?.name);
+    const activeLens = lensPreviews[lensIndex] || null;
+    const displayImage = activeLens?.image || selectedVariant?.image || product.image || "";
 
     const handleSelectColor = (variant, e) => {
       e.stopPropagation();
@@ -739,7 +747,7 @@ export function HomePage({ navigate }) {
 
     return (
       <div
-        onMouseEnter={() => setHov(true)}
+        onMouseEnter={() => { setHasHovered(true); setHov(true); }}
         onMouseLeave={() => setHov(false)}
         onClick={() => navigate(`#/products/${product.id}`)}
         onKeyDown={(event) => {
@@ -769,11 +777,53 @@ export function HomePage({ navigate }) {
 
         <WishlistHeart productId={product.id} size="md" placement="card" />
 
-        <div style={{ height: isMobile ? 140 : 190, display: "flex", alignItems: "center", justifyContent: "center", background: hov ? CREAM : "#FAFAF5", transition: "background 0.3s", position: "relative" }}>
+        {/* overflowAnchor: none stops the browser treating the hover image swap
+            as a content shift and nudging the page to compensate. */}
+        <div style={{ height: isMobile ? 140 : 190, display: "flex", alignItems: "center", justifyContent: "center", background: hov ? CREAM : "#FAFAF5", transition: "background 0.3s", position: "relative", overflowAnchor: "none" }}>
           {displayImage ? (
-            <img src={displayImage} alt={product.name} loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "contain", padding: 18, transform: hov ? "scale(1.04)" : "scale(1)", transition: "transform 0.3s" }} />
+            lensPreviews.length > 1 ? (
+              // Crossfade between the tints so the swap reads as one clip. The
+              // alternates only mount after the first hover, so an unhovered
+              // grid still loads one image per card.
+              (hasHovered ? lensPreviews : lensPreviews.slice(0, 1)).map((lens, i) => (
+                <img
+                  key={lens.name}
+                  src={lens.image}
+                  alt={i === lensIndex ? `${product.name} - ${lens.name} lens` : ""}
+                  aria-hidden={i === lensIndex ? undefined : true}
+                  loading={i === 0 ? "lazy" : "eager"}
+                  decoding="async"
+                  style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain", padding: 18, boxSizing: "border-box", opacity: i === lensIndex ? 1 : 0, transform: hov ? "scale(1.04)" : "scale(1)", transition: "opacity 0.45s ease, transform 0.3s" }}
+                />
+              ))
+            ) : (
+              <img src={displayImage} alt={product.name} loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "contain", padding: 18, transform: hov ? "scale(1.04)" : "scale(1)", transition: "transform 0.3s" }} />
+            )
           ) : (
             <Frame shape="round" size={130} color={hov ? BRAND : "#4a4a4a"} />
+          )}
+
+          {/* Lens rail — tints this frame comes in, marking the one on screen */}
+          {lensPreviews.length > 1 && (
+            <div aria-hidden="true" style={{ position: "absolute", top: "50%", right: 10, transform: "translateY(-50%)", display: "flex", flexDirection: "column", gap: 6, zIndex: 3, opacity: hov ? 1 : 0, transition: "opacity 0.3s ease", pointerEvents: "none" }}>
+              {lensPreviews.map((lens, i) => (
+                <span
+                  key={lens.name}
+                  title={lens.name}
+                  style={{
+                    width: 11,
+                    height: 11,
+                    borderRadius: "50%",
+                    background: getLensSwatch(lens.name),
+                    border: "1px solid rgba(0,0,0,0.22)",
+                    boxShadow: i === lensIndex ? `0 0 0 2px #fff, 0 0 0 3.5px ${BRAND}` : "inset 0 1px 2px rgba(255,255,255,0.7)",
+                    transform: i === lensIndex ? "scale(1.12)" : "scale(1)",
+                    transition: "box-shadow 0.25s ease, transform 0.25s ease",
+                    flexShrink: 0,
+                  }}
+                />
+              ))}
+            </div>
           )}
 
           {variants.length > 1 && (
@@ -806,6 +856,15 @@ export function HomePage({ navigate }) {
           <div style={{ fontFamily: ff, fontSize: isMobile ? 14 : 16, fontWeight: 900, letterSpacing: "0.05em", color: BLACK, marginBottom: 10 }}>
             {product.name}
           </div>
+          {/* Names the tint on screen while hovered; fixed height so nothing shifts */}
+          {lensPreviews.length > 1 && (
+            <div style={{ display: "flex", alignItems: "center", gap: 6, minHeight: 16, marginBottom: 4, opacity: hov ? 1 : 0, transition: "opacity 0.3s ease" }}>
+              <span style={{ width: 10, height: 10, borderRadius: "50%", background: getLensSwatch(activeLens?.name), border: "1px solid rgba(0,0,0,0.22)", flexShrink: 0 }} />
+              <span style={{ fontFamily: mono, fontSize: 10, letterSpacing: "0.08em", color: "#777", whiteSpace: "nowrap" }}>
+                {activeLens?.name} lens · {lensPreviews.length} tints
+              </span>
+            </div>
+          )}
           <div style={{ fontSize: 12, color: "#666", fontFamily: mono, marginBottom: 10, minHeight: 36 }}>{product.shortDescription || product.description?.slice(0, 80)}</div>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <div style={{ fontSize: 13, fontWeight: 700, color: "#333" }}>PKR {discountPrice.toLocaleString()}</div>
@@ -1358,7 +1417,29 @@ const LENS_SWATCHES = {
   "gradient grey": "linear-gradient(160deg, #4a4a4a, #d6d6d6)",
   "gradient green": "linear-gradient(160deg, #2f5d3a, #cfe0cf)",
   "gradient red": "linear-gradient(160deg, #9e2a2b, #f0cfcf)",
+  "smoke": "#6e6e6e",
+  "blue": "#3d7fb8",
+  "turquoise": "#3fb9b0",
+  "pink": "#e88aa8",
+  "orange": "#e07b25",
+  "gradient purple": "linear-gradient(160deg, #9b6bb0, #f2d9c4)",
+  "gradient orange": "linear-gradient(160deg, #e4784f, #f7d9c8)",
+  "gradient brown": "linear-gradient(160deg, #6b4423, #e2c6a8)",
 };
+
+// A tinted lens is translucent glass, not paint — the inner highlight and ring
+// give it depth so pale tints (esp. "Clear") stay visible against the swatch.
+function lensSwatchStyle(lensName) {
+  return {
+    width: 14,
+    height: 14,
+    borderRadius: "50%",
+    background: LENS_SWATCHES[String(lensName || "").toLowerCase()] || "#d9d9d9",
+    border: "1px solid rgba(0,0,0,0.22)",
+    boxShadow: "inset 0 1px 2px rgba(255,255,255,0.75), inset 0 -1px 2px rgba(0,0,0,0.12)",
+    flexShrink: 0,
+  };
+}
 
 export function ProductDetailPage({ productId, navigate }) {
   const product = PRODUCTS_DATA.find(p => p.id === productId);
@@ -1402,6 +1483,7 @@ export function ProductDetailPage({ productId, navigate }) {
   const [openTab, setOpenTab] = useState("details");
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedVariantName, setSelectedVariantName] = useState("");
+  const [selectedLensName, setSelectedLensName] = useState("");
   const [showAuthPrompt, setShowAuthPrompt] = useState(false);
   const { addToCart } = useCart();
   const { user } = useAuth();
@@ -1420,8 +1502,9 @@ export function ProductDetailPage({ productId, navigate }) {
     const variants = getProductVariants(product);
     const stored = getStoredVariantName(product.id);
     const match = variants.find(v => normalizeVariantName(v.name) === normalizeVariantName(stored));
-    const nextName = match ? match.name : variants[0]?.name || "";
-    setSelectedVariantName(nextName);
+    const nextVariant = match || variants[0] || null;
+    setSelectedVariantName(nextVariant?.name || "");
+    setSelectedLensName(getVariantLenses(nextVariant, product)[0]?.name || "");
     setActiveImg(0);
   }, [product?.id]);
 
@@ -1442,21 +1525,36 @@ export function ProductDetailPage({ productId, navigate }) {
   const genderCollectionSlug = genderNorm === "Men" ? `mens-${categorySlug}` : genderNorm === "Women" ? `womens-${categorySlug}` : categorySlug;
   const sizes = product.sizes?.length ? product.sizes : ["44 (Narrow)", "46 (Average)", "49 (Wide)", "52 (Extra Wide)"];
   const selectedVariant = variants.find(v => normalizeVariantName(v.name) === normalizeVariantName(selectedVariantName)) || variants[0] || null;
-  const galleryImages = selectedVariant?.gallery?.length
-    ? selectedVariant.gallery
-    : (product.gallery?.length ? product.gallery : (selectedVariant?.image ? [selectedVariant.image] : []));
+  // A frame colour may be offered with several lens tints, each with its own
+  // photos of that same frame, so the gallery follows the lens as well as the
+  // frame colour.
+  const lensOptions = getVariantLenses(selectedVariant, product);
+  const selectedLens = getSelectedLens(selectedVariant, selectedLensName, product);
+  const galleryImages = selectedLens?.gallery?.length
+    ? selectedLens.gallery
+    : (selectedVariant?.gallery?.length
+      ? selectedVariant.gallery
+      : (product.gallery?.length ? product.gallery : (selectedVariant?.image ? [selectedVariant.image] : [])));
   const displayImage = galleryImages[activeImg] || selectedVariant?.image || product.image || "";
   const displayLabel = selectedVariant?.name || product.color || "Default";
-  const displaySpecifications = getProductDisplaySpecifications(product, selectedVariantName);
+  const displaySpecifications = getProductDisplaySpecifications(product, selectedVariantName, selectedLensName);
   // Lens colour comes from the selected variant's specs, so it updates with the
-  // frame colour. Most frames carry a single lens colour ("Clear"), so this
-  // renders as one non-interactive swatch rather than a picker.
+  // frame colour. Frames offering a single lens render one non-interactive
+  // swatch; frames with several render a picker.
   const lensColorName = displaySpecifications?.["Lens Color"] || displaySpecifications?.["Lens Colour"] || "";
   const lensSwatch = LENS_SWATCHES[lensColorName.toLowerCase()] || "#d9d9d9";
 
   const handleSelectVariant = (variant) => {
     setSelectedVariantName(variant.name);
     setStoredVariantName(product.id, variant.name);
+    // Lens options are per frame colour, so fall back to the new frame's
+    // default lens rather than carrying over a tint it isn't offered in.
+    setSelectedLensName(getVariantLenses(variant, product)[0]?.name || "");
+    setActiveImg(0);
+  };
+
+  const handleSelectLens = (lens) => {
+    setSelectedLensName(lens.name);
     setActiveImg(0);
   };
 
@@ -1645,42 +1743,59 @@ export function ProductDetailPage({ productId, navigate }) {
 
               )}
 
-{/* Lens colour — single option per frame, so it's shown, not selectable */}
+{/* Lens colour — a picker when the frame is offered in several tints,
+    otherwise a single non-interactive swatch showing the one it ships with */}
 {lensColorName && (
   <>
     <div style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", color: BLACK, fontFamily: ff, marginBottom: 10 }}>
       LENS COLOR
     </div>
     <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 18, flexWrap: "wrap" }}>
-      <span
-        style={{
-          display: "inline-flex",
-          alignItems: "center",
-          gap: 8,
-          border: `1.5px solid ${BLACK}`,
-          background: "#fff",
-          padding: "8px 12px",
-          fontFamily: ff,
-          fontSize: 11,
-          letterSpacing: "0.08em",
-          color: BLACK,
-        }}
-      >
+      {lensOptions.length > 1 ? (
+        lensOptions.map((lens) => {
+          const active = normalizeVariantName(lens.name) === normalizeVariantName(selectedLens?.name);
+          return (
+            <button
+              key={lens.name}
+              onClick={() => handleSelectLens(lens)}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                border: active ? `1.5px solid ${BLACK}` : "1px solid #d8d0c8",
+                background: active ? "#fff" : "#faf7f2",
+                padding: "8px 12px",
+                cursor: "pointer",
+                fontFamily: ff,
+                fontSize: 11,
+                letterSpacing: "0.08em",
+                color: BLACK,
+              }}
+            >
+              <span style={{ ...lensSwatchStyle(lens.name) }} />
+              {lens.name}
+            </button>
+          );
+        })
+      ) : (
         <span
           style={{
-            width: 14,
-            height: 14,
-            borderRadius: "50%",
-            background: lensSwatch,
-            // A tinted lens is translucent glass, not paint — the inner highlight
-            // and ring give it depth so pale tints (esp. "Clear") stay visible.
-            border: "1px solid rgba(0,0,0,0.22)",
-            boxShadow: "inset 0 1px 2px rgba(255,255,255,0.75), inset 0 -1px 2px rgba(0,0,0,0.12)",
-            flexShrink: 0,
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            border: `1.5px solid ${BLACK}`,
+            background: "#fff",
+            padding: "8px 12px",
+            fontFamily: ff,
+            fontSize: 11,
+            letterSpacing: "0.08em",
+            color: BLACK,
           }}
-        />
-        {lensColorName}
-      </span>
+        >
+          <span style={{ ...lensSwatchStyle(lensColorName) }} />
+          {lensColorName}
+        </span>
+      )}
     </div>
   </>
 )}
@@ -1735,7 +1850,7 @@ export function ProductDetailPage({ productId, navigate }) {
               <div style={{ borderTop: "1px solid #e8e0d0" }}>
                 {product.description && (
                   <AccordionItem id="description" label="DESCRIPTION">
-                    <p style={{ margin: 0, fontSize: 12, color: BLACK, fontFamily: mono, lineHeight: 1.9 }}>{getProductDescription(product, selectedVariantName)}</p>
+                    <p style={{ margin: 0, fontSize: 12, color: BLACK, fontFamily: mono, lineHeight: 1.9 }}>{getProductDescription(product, selectedVariantName, selectedLensName)}</p>
                   </AccordionItem>
                 )}
                 <AccordionItem id="details" label="DETAILS">

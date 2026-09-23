@@ -607,10 +607,12 @@ import { BLACK, CREAM, ff, mono, tagColors } from "../contants/store.js";
 import { useCart } from "../contexts/CardContext.jsx";
 import { useAuth } from "../Auth/auth.jsx";
 import { addToWishlist, removeFromWishlist, getWishlist } from "../services/service.js";
-import { getProductDiscountPercent, getProductDisplayPrice } from "../services/productUtils.js";
+import { getProductDiscountPercent, getProductDisplayPrice, getVariantLensPreviews, getLensSwatch } from "../services/productUtils.js";
+import { useLensCycle } from "../hook/useLensCycle.js";
 
 const BRAND = "#0c2c41";
 const BRAND_TEXT = "#ffffff";
+
 
 // ─── Button Components ────────────────────────────────────────────────────────
 export function YBtn({ children, onClick, style = {}, disabled = false }) {
@@ -1168,6 +1170,10 @@ function setStoredVariantName(productId, name) {
 // ─── Product Card with Reusable WishlistHeart ─────────────────────────────────
 export function ProductCard({ product, navigate, type = "default" }) {
   const [addedMsg, setAddedMsg] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  // Latches on the first hover: the alternate tint images stay unmounted until
+  // then, so a full grid of cards doesn't fetch every tint up front.
+  const [hasHovered, setHasHovered] = useState(false);
   const { addToCart } = useCart();
   const variants = getProductVariants(product);
   const [selectedVariantName, setSelectedVariantName] = useState(() => {
@@ -1194,8 +1200,13 @@ export function ProductCard({ product, navigate, type = "default" }) {
     variants.find(
       (v) => normalizeVariantName(v.name) === normalizeVariantName(selectedVariantName)
     ) || variants[0] || null;
+  // The lens tints this frame colour comes in. On hover the card flips through
+  // them like a short clip; at rest it shows the default tint.
+  const lensPreviews = getVariantLensPreviews(selectedVariant, product);
+  const lensIndex = useLensCycle(lensPreviews.length, hovered, selectedVariant?.name);
+  const activeLens = lensPreviews[lensIndex] || null;
   const displayImage =
-    selectedVariant?.image || product?.image || product?.gallery?.[0] || "";
+    activeLens?.image || selectedVariant?.image || product?.image || product?.gallery?.[0] || "";
   const displayLabel = selectedVariant?.name || product?.color || "Default";
 
   const handleAdd = (e) => {
@@ -1229,6 +1240,25 @@ export function ProductCard({ product, navigate, type = "default" }) {
           event.preventDefault();
           navigate(`#/products/${product.id}`);
         }
+      }}
+      onMouseEnter={() => { setHasHovered(true); setHovered(true); }}
+      onMouseLeave={() => setHovered(false)}
+      // Keyboard users get the same preview when the card itself is tabbed to.
+      // React's onFocus is focusin, so it also fires for the swatch / wishlist /
+      // add-to-cart buttons inside the card; `event.target !== currentTarget`
+      // ignores those. Without it, clicking a swatch focused a child, and the
+      // browser scrolled the page to bring that child into view.
+      // :focus-visible keeps it to keyboard focus, so a mouse click on the card
+      // doesn't leave the preview running after the pointer has gone.
+      onFocus={(event) => {
+        if (event.target !== event.currentTarget) return;
+        if (!event.target.matches?.(":focus-visible")) return;
+        setHasHovered(true);
+        setHovered(true);
+      }}
+      onBlur={(event) => {
+        if (event.target !== event.currentTarget) return;
+        setHovered(false);
       }}
       style={{
         cursor: "pointer",
@@ -1290,7 +1320,10 @@ export function ProductCard({ product, navigate, type = "default" }) {
       {/* Wishlist Heart — unified component, uses shared cache */}
       <WishlistHeart productId={product.id} size="md" placement="card" />
 
-      {/* Image — full-bleed, no padding/space, fills the whole area */}
+      {/* Image — full-bleed, no padding/space, fills the whole area.
+          overflowAnchor: none keeps the browser's scroll anchoring from
+          treating the hover image swap as a content shift and nudging the
+          page to compensate. */}
       <div
         style={{
           position: "relative",
@@ -1299,26 +1332,97 @@ export function ProductCard({ product, navigate, type = "default" }) {
           overflow: "hidden",
           background: "#fafaf8",
           flexShrink: 0,
+          overflowAnchor: "none",
         }}
       >
         {displayImage ? (
-          <img
-            src={displayImage}
-            alt={`${product.name} - ${displayLabel}`}
-            loading="lazy"
-            decoding="async"
-            style={{
-              position: "absolute",
-              inset: 0,
-              width: "100%",
-              height: "100%",
-              objectFit: "contain",
-              display: "block",
-            }}
-          />
+          <>
+            {/* The alternate tints only mount once the card has been hovered,
+                so a grid of cards still loads just one image each. They keep
+                `loading="lazy"` off at that point: fetching them on the hover
+                that reveals them is what made the cycle flash on first pass. */}
+            {(hasHovered ? lensPreviews : lensPreviews.slice(0, 1)).map((lens, i) => (
+              <img
+                key={lens.name}
+                src={lens.image}
+                alt={i === lensIndex ? `${product.name} - ${displayLabel}, ${lens.name} lens` : ""}
+                aria-hidden={i === lensIndex ? undefined : true}
+                loading={i === 0 ? "lazy" : "eager"}
+                decoding="async"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                  display: "block",
+                  opacity: i === lensIndex ? 1 : 0,
+                  transition: "opacity 0.45s ease",
+                }}
+              />
+            ))}
+            {!lensPreviews.length && (
+              <img
+                src={displayImage}
+                alt={`${product.name} - ${displayLabel}`}
+                loading="lazy"
+                decoding="async"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                  display: "block",
+                }}
+              />
+            )}
+          </>
         ) : (
           <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
             <Frame shape="round" size={110} color="#4a4a4a" />
+          </div>
+        )}
+
+        {/* Lens rail — the tints this frame comes in, stacked down the right.
+            It fades in on hover and marks whichever tint is showing. */}
+        {lensPreviews.length > 1 && (
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              top: "50%",
+              right: "clamp(8px, 1.2vw, 12px)",
+              transform: "translateY(-50%)",
+              display: "flex",
+              flexDirection: "column",
+              gap: "clamp(6px, 0.8vw, 9px)",
+              zIndex: 3,
+              opacity: hovered ? 1 : 0,
+              transition: "opacity 0.3s ease",
+              pointerEvents: "none",
+            }}
+          >
+            {lensPreviews.map((lens, i) => (
+              <span
+                key={lens.name}
+                title={lens.name}
+                style={{
+                  width: "clamp(10px, 1.3vw, 13px)",
+                  height: "clamp(10px, 1.3vw, 13px)",
+                  borderRadius: "50%",
+                  background: getLensSwatch(lens.name),
+                  border: "1px solid rgba(0,0,0,0.22)",
+                  boxShadow:
+                    i === lensIndex
+                      ? `0 0 0 2px #fff, 0 0 0 3.5px ${BRAND}`
+                      : "inset 0 1px 2px rgba(255,255,255,0.7)",
+                  transform: i === lensIndex ? "scale(1.12)" : "scale(1)",
+                  transition: "box-shadow 0.25s ease, transform 0.25s ease",
+                  flexShrink: 0,
+                }}
+              />
+            ))}
           </div>
         )}
       </div>
@@ -1385,6 +1489,46 @@ export function ProductCard({ product, navigate, type = "default" }) {
             </span>
           )}
         </div>
+
+        {/* Lens caption — names the tint currently on screen while the card is
+            hovered, and how many the frame comes in. Reserves its own height so
+            the swatches below never shift as the name changes length. */}
+        {lensPreviews.length > 1 && (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "clamp(5px, 0.8vw, 7px)",
+              minHeight: "clamp(14px, 1.8vw, 18px)",
+              opacity: hovered ? 1 : 0,
+              transition: "opacity 0.3s ease",
+            }}
+          >
+            <span
+              style={{
+                width: "clamp(9px, 1.1vw, 11px)",
+                height: "clamp(9px, 1.1vw, 11px)",
+                borderRadius: "50%",
+                background: getLensSwatch(activeLens?.name),
+                border: "1px solid rgba(0,0,0,0.22)",
+                boxShadow: "inset 0 1px 2px rgba(255,255,255,0.7)",
+                flexShrink: 0,
+              }}
+            />
+            <span
+              style={{
+                fontFamily: mono,
+                fontSize: "clamp(9px, 1.1vw, 11px)",
+                letterSpacing: "0.08em",
+                color: "#777",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {activeLens?.name} lens · {lensPreviews.length} tints
+            </span>
+          </div>
+        )}
 
         {/* Color swatches — centered under the price */}
         {variants.length >= 1 && (

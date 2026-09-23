@@ -1686,6 +1686,16 @@ export const PRODUCTS_DATA = [
         image: "/assets/Sunglass/Andrew 1.jpg",
         gallery: ["/assets/Sunglass/Andrew 1.jpg", "/assets/Sunglass/Andrew 2.jpg", "/assets/Sunglass/Andrew 6.jpg", "/10.jpg"],
         lensColor: "Light Blue",
+        lenses: [
+          {
+            name: "Light Blue",
+            gallery: ["/assets/Sunglass/Andrew 9.png", "/assets/Sunglass/Andrew 8.png", "/assets/Sunglass/Andrew 7.png", "/10.jpg"],
+          },
+          {
+            name: "Green",
+            gallery: ["/assets/Sunglass/Andrew 11.png", "/assets/Sunglass/Andrew 12.png", "/assets/Sunglass/Andrew 10.png", "/10.jpg"],
+          },
+        ],
       },
       {
         name: "Tortoise Shell Brown",
@@ -1693,6 +1703,16 @@ export const PRODUCTS_DATA = [
         image: "/assets/Sunglass/Andrew 4.jpg",
         gallery: ["/assets/Sunglass/Andrew 4.jpg", "/assets/Sunglass/Andrew 5.jpg", "/assets/Sunglass/Andrew 3.jpg", "/10.jpg"],
         lensColor: "Amber",
+        lenses: [
+          {
+            name: "Amber",
+            gallery: ["/assets/Sunglass/Andrew 4.jpg", "/assets/Sunglass/Andrew 5.jpg", "/assets/Sunglass/Andrew 3.jpg", "/10.jpg"],
+          },
+          {
+            name: "Light Blue",
+            gallery: ["/assets/Sunglass/Andrew 15.png", "/assets/Sunglass/Andrew 14.png", "/assets/Sunglass/Andrew 13.png", "/10.jpg"],
+          },
+        ],
       },
     ],
     price: 13000,
@@ -1738,12 +1758,42 @@ export const PRODUCTS_DATA = [
         swatch: "#1a1a1a",
         image: "/assets/Sunglass/Garfield 1.jpg",
         gallery: ["/assets/Sunglass/Garfield 1.jpg", "/assets/Sunglass/Garfield 2.jpg", "/assets/Sunglass/Garfield 3.jpg", "/10.jpg"],
+        lensColor: "Honey Brown",
+        lenses: [
+          {
+            name: "Honey Brown",
+            gallery: ["/assets/Sunglass/Garfield 1.jpg", "/assets/Sunglass/Garfield 2.jpg", "/assets/Sunglass/Garfield 3.jpg", "/10.jpg"],
+          },
+          {
+            name: "Turquoise",
+            gallery: ["/assets/Sunglass/Garfield 13.png", "/assets/Sunglass/Garfield 14.png", "/assets/Sunglass/Garfield 15.png", "/10.jpg"],
+          },
+          {
+            name: "Pink",
+            gallery: ["/assets/Sunglass/Garfield 16.png", "/assets/Sunglass/Garfield 17.png", "/assets/Sunglass/Garfield 18.png", "/10.jpg"],
+          },
+        ],
       },
       {
         name: "Chocolate",
         swatch: "#4a2c17",
         image: "/assets/Sunglass/Garfield 4.jpg",
         gallery: ["/assets/Sunglass/Garfield 4.jpg", "/assets/Sunglass/Garfield 5.jpg", "/assets/Sunglass/Garfield 6.jpg", "/10.jpg"],
+        lensColor: "Brown",
+        lenses: [
+          {
+            name: "Brown",
+            gallery: ["/assets/Sunglass/Garfield 4.jpg", "/assets/Sunglass/Garfield 5.jpg", "/assets/Sunglass/Garfield 6.jpg", "/10.jpg"],
+          },
+          {
+            name: "Light Blue",
+            gallery: ["/assets/Sunglass/Garfield 7.png", "/assets/Sunglass/Garfield 9.png", "/assets/Sunglass/Garfield 8.png", "/10.jpg"],
+          },
+          {
+            name: "Dark Green",
+            gallery: ["/assets/Sunglass/Garfield 10.png", "/assets/Sunglass/Garfield 11.png", "/assets/Sunglass/Garfield 12.png", "/10.jpg"],
+          },
+        ],
       },
     ],
     price: 13000,
@@ -1789,6 +1839,17 @@ export const PRODUCTS_DATA = [
         swatch: "#5b6c95",
         image: "/assets/Sunglass/Karl 1.jpg",
         gallery: ["/assets/Sunglass/Karl 1.jpg", "/assets/Sunglass/Karl 2.jpg", "/assets/Sunglass/Karl 3.jpg", "/10.jpg"],
+        lensColor: "Brown",
+        lenses: [
+          {
+            name: "Brown",
+            gallery: ["/assets/Sunglass/Karl 1.jpg", "/assets/Sunglass/Karl 2.jpg", "/assets/Sunglass/Karl 3.jpg", "/10.jpg"],
+          },
+          {
+            name: "Orange",
+            gallery: ["/assets/Sunglass/karl 6.png", "/assets/Sunglass/karl 5.png", "/assets/Sunglass/karl 4.png", "/10.jpg"],
+          },
+        ],
       },
     ],
     price: 13000,
@@ -1834,6 +1895,17 @@ export const PRODUCTS_DATA = [
         swatch: "#2b2b2b",
         image: "/assets/Sunglass/BEVIS 1.jpg",
         gallery: ["/assets/Sunglass/BEVIS 1.jpg", "/assets/Sunglass/BEVIS 2.jpg", "/assets/Sunglass/BEVIS 3.jpg", "/10.jpg"],
+        lensColor: "Gradient Red",
+        lenses: [
+          {
+            name: "Gradient Red",
+            gallery: ["/assets/Sunglass/BEVIS 4.png", "/assets/Sunglass/BEVIS 5.png", "/assets/Sunglass/BEVIS 6.png", "/10.jpg"],
+          },
+          {
+            name: "Gradient Blue",
+            gallery: ["/assets/Sunglass/BEVIS 9.png", "/assets/Sunglass/BEVIS 8.png", "/assets/Sunglass/BEVIS 7.png", "/10.jpg"],
+          },
+        ],
       },
     ],
     price: 13000,
@@ -1880,6 +1952,20 @@ export const PRODUCTS_DATA = [
         image: "/assets/Sunglass/VIOLET 1.jpg",
         gallery: ["/assets/Sunglass/VIOLET 1.jpg", "/assets/Sunglass/VIOLET 2.jpg", "/assets/Sunglass/VIOLET 3.jpg", "/10.jpg"],
         lensColor: "Black",
+        lenses: [
+          {
+            name: "Black",
+            gallery: ["/assets/Sunglass/VIOLET 1.jpg", "/assets/Sunglass/VIOLET 2.jpg", "/assets/Sunglass/VIOLET 3.jpg", "/10.jpg"],
+          },
+          {
+            name: "Pink",
+            gallery: ["/assets/Sunglass/VIOLET 8.png", "/assets/Sunglass/VIOLET 7.png", "/assets/Sunglass/VIOLET 9.png", "/10.jpg"],
+          },
+          {
+            name: "Light Blue",
+            gallery: ["/assets/Sunglass/VIOLET 11.png", "/assets/Sunglass/VIOLET 10.png", "/assets/Sunglass/VIOLET 12.png", "/10.jpg"],
+          },
+        ],
       },
       {
         name: "Honey",
@@ -1887,6 +1973,16 @@ export const PRODUCTS_DATA = [
         image: "/assets/Sunglass/VIOLET 4.jpg",
         gallery: ["/assets/Sunglass/VIOLET 4.jpg", "/assets/Sunglass/VIOLET 5.jpg", "/assets/Sunglass/VIOLET 6.jpg", "/10.jpg"],
         lensColor: "Smoke",
+        lenses: [
+          {
+            name: "Smoke",
+            gallery: ["/assets/Sunglass/VIOLET 4.jpg", "/assets/Sunglass/VIOLET 5.jpg", "/assets/Sunglass/VIOLET 6.jpg", "/10.jpg"],
+          },
+          {
+            name: "Gradient Grey",
+            gallery: ["/assets/Sunglass/VIOLET 13.png", "/assets/Sunglass/VIOLET 14.png", "/assets/Sunglass/VIOLET 15.png", "/10.jpg"],
+          },
+        ],
       },
     ],
     price: 13000,
@@ -1932,6 +2028,21 @@ export const PRODUCTS_DATA = [
         swatch: "#c0c0c0",
         image: "/assets/Sunglass/Monaco 1.jpg",
         gallery: ["/assets/Sunglass/Monaco 1.jpg", "/assets/Sunglass/Monaco 2.jpg", "/assets/Sunglass/Monaco 3.jpg", "/10.jpg"],
+        lensColor: "Gradient Blue",
+        lenses: [
+          {
+            name: "Gradient Blue",
+            gallery: ["/assets/Sunglass/Monaco 1.jpg", "/assets/Sunglass/Monaco 2.jpg", "/assets/Sunglass/Monaco 3.jpg", "/10.jpg"],
+          },
+          {
+            name: "Gradient Orange",
+            gallery: ["/assets/Sunglass/Monaco 6.png", "/assets/Sunglass/Monaco 5.png", "/assets/Sunglass/Monaco 4.png", "/10.jpg"],
+          },
+          {
+            name: "Gradient Grey",
+            gallery: ["/assets/Sunglass/Monaco 7.png", "/assets/Sunglass/Monaco 9.png", "/assets/Sunglass/Monaco 8.png", "/10.jpg"],
+          },
+        ],
       },
     ],
     price: 13000,
@@ -1977,6 +2088,21 @@ export const PRODUCTS_DATA = [
         swatch: "#15150d",
         image: "/assets/Sunglass/Sarah 1.jpg",
         gallery: ["/assets/Sunglass/Sarah 1.jpg", "/assets/Sunglass/Sarah 2.jpg", "/assets/Sunglass/Sarah 3.jpg", "/10.jpg"],
+        lensColor: "Amber",
+        lenses: [
+          {
+            name: "Amber",
+            gallery: ["/assets/Sunglass/Sarah 1.jpg", "/assets/Sunglass/Sarah 2.jpg", "/assets/Sunglass/Sarah 3.jpg", "/10.jpg"],
+          },
+          {
+            name: "Green",
+            gallery: ["/assets/Sunglass/Sarah 5.png", "/assets/Sunglass/Sarah 4.png", "/assets/Sunglass/Sarah 6.png", "/10.jpg"],
+          },
+          {
+            name: "Gradient Brown",
+            gallery: ["/assets/Sunglass/Sarah 8.png", "/assets/Sunglass/Sarah 9.png", "/assets/Sunglass/Sarah 7.png", "/10.jpg"],
+          },
+        ],
       },
     ],
     price: 13000,
@@ -2023,6 +2149,16 @@ export const PRODUCTS_DATA = [
         image: "/assets/Sunglass/Xrp 1.jpg",
         gallery: ["/assets/Sunglass/Xrp 1.jpg", "/assets/Sunglass/Xrp 2.jpg", "/assets/Sunglass/Xrp 3.jpg", "/10.jpg"],
         lensColor: "Gradient Green",
+        lenses: [
+          {
+            name: "Gradient Green",
+            gallery: ["/assets/Sunglass/Xrp 1.jpg", "/assets/Sunglass/Xrp 2.jpg", "/assets/Sunglass/Xrp 3.jpg", "/10.jpg"],
+          },
+          {
+            name: "Gradient Blue",
+            gallery: ["/assets/Sunglass/Xrp 8.png", "/assets/Sunglass/Xrp 7.png", "/assets/Sunglass/Xrp 9.png", "/10.jpg"],
+          },
+        ],
       },
       {
         name: "Silver",
@@ -2030,6 +2166,16 @@ export const PRODUCTS_DATA = [
         image: "/assets/Sunglass/Xrp 4.jpg",
         gallery: ["/assets/Sunglass/Xrp 4.jpg", "/assets/Sunglass/Xrp 5.jpg", "/assets/Sunglass/Xrp 6.jpg", "/10.jpg"],
         lensColor: "Gradient Purple",
+        lenses: [
+          {
+            name: "Gradient Purple",
+            gallery: ["/assets/Sunglass/Xrp 11.png", "/assets/Sunglass/Xrp 12.png", "/assets/Sunglass/Xrp 10.png", "/10.jpg"],
+          },
+          {
+            name: "Red",
+            gallery: ["/assets/Sunglass/Xrp 13.png", "/assets/Sunglass/Xrp 15.png", "/assets/Sunglass/Xrp 14.png", "/10.jpg"],
+          },
+        ],
       },
     ],
     price: 13000,
@@ -2120,6 +2266,21 @@ export const PRODUCTS_DATA = [
         swatch: "#2b2b2b",
         image: "/assets/Sunglass/FOX 1.jpg",
         gallery: ["/assets/Sunglass/FOX 1.jpg", "/assets/Sunglass/FOX 2.jpg", "/assets/Sunglass/FOX 3.jpg", "/10.jpg"],
+        lensColor: "Red",
+        lenses: [
+          {
+            name: "Red",
+            gallery: ["/assets/Sunglass/FOX 1.jpg", "/assets/Sunglass/FOX 2.jpg", "/assets/Sunglass/FOX 3.jpg", "/10.jpg"],
+          },
+          {
+            name: "Pink",
+            gallery: ["/assets/Sunglass/FOX 4.png", "/assets/Sunglass/FOX 5.png", "/assets/Sunglass/FOX 6.png", "/10.jpg"],
+          },
+          {
+            name: "Blue",
+            gallery: ["/assets/Sunglass/FOX 7.png", "/assets/Sunglass/FOX 8.png", "/assets/Sunglass/FOX 9.png", "/10.jpg"],
+          },
+        ],
       },
     ],
     price: 10500,
@@ -2165,6 +2326,17 @@ export const PRODUCTS_DATA = [
         swatch: "#6e6e6e",
         image: "/assets/Sunglass/JET 1.jpg",
         gallery: ["/assets/Sunglass/JET 1.jpg", "/assets/Sunglass/JET 2.jpg", "/assets/Sunglass/JET 3.jpg", "/10.jpg"],
+        lensColor: "Gradient Grey",
+        lenses: [
+          {
+            name: "Gradient Grey",
+            gallery: ["/assets/Sunglass/JET 1.jpg", "/assets/Sunglass/JET 2.jpg", "/assets/Sunglass/JET 3.jpg", "/10.jpg"],
+          },
+          {
+            name: "Gradient Blue",
+            gallery: ["/assets/Sunglass/JET 6.png", "/assets/Sunglass/JET 5.png", "/assets/Sunglass/JET 4.png", "/10.jpg"],
+          },
+        ],
       },
     ],
     price: 13000,
@@ -2211,13 +2383,37 @@ export const PRODUCTS_DATA = [
         image: "/assets/Sunglass/LUMIA 1.jpg",
         lensColor: "Smoke",
         gallery: ["/assets/Sunglass/LUMIA 1.jpg", "/assets/Sunglass/LUMIA 2.jpg", "/assets/Sunglass/LUMIA 3.jpg", "/10.jpg"],
+        lenses: [
+          {
+            name: "Smoke",
+            gallery: ["/assets/Sunglass/LUMIA 1.jpg", "/assets/Sunglass/LUMIA 2.jpg", "/assets/Sunglass/LUMIA 3.jpg", "/10.jpg"],
+          },
+          {
+            name: "Light Blue",
+            gallery: ["/assets/Sunglass/LUMIA 9.png", "/assets/Sunglass/LUMIA 8.png", "/assets/Sunglass/LUMIA 7.png", "/10.jpg"],
+          },
+        ],
       },
       {
         name: "Light Yellow",
         swatch: "#c7b39b",
-        image: "./assets/Sunglass/Lumia 4.png",
+        image: "/assets/Sunglass/Lumia 4.png",
         lensColor: "Light blue",
         gallery: ["/assets/Sunglass/Lumia 4.png", "/assets/Sunglass/Lumia 5.png", "/assets/Sunglass/Lumia 6.jpg", "/10.jpg"],
+        lenses: [
+          {
+            name: "Light Blue",
+            gallery: ["/assets/Sunglass/Lumia 4.png", "/assets/Sunglass/Lumia 5.png", "/assets/Sunglass/Lumia 6.jpg", "/10.jpg"],
+          },
+          {
+            name: "Gradient Grey",
+            gallery: ["/assets/Sunglass/LUMIA 11.png", "/assets/Sunglass/LUMIA 12.png", "/assets/Sunglass/LUMIA 10.png", "/10.jpg"],
+          },
+          {
+            name: "Gradient Brown",
+            gallery: ["/assets/Sunglass/LUMIA 14.png", "/assets/Sunglass/LUMIA 15.png", "/assets/Sunglass/LUMIA 13.png", "/10.jpg"],
+          },
+        ],
       },
     ],
     price: 10500,
@@ -2263,6 +2459,17 @@ export const PRODUCTS_DATA = [
         swatch: "#c9702e",
         image: "/assets/Sunglass/MAX (1).jpg",
         gallery: ["/assets/Sunglass/MAX (1).jpg", "/assets/Sunglass/MAX (2).jpg", "/assets/Sunglass/MAX (3).jpg", "/10.jpg"],
+        lensColor: "Green",
+        lenses: [
+          {
+            name: "Green",
+            gallery: ["/assets/Sunglass/MAX (1).jpg", "/assets/Sunglass/MAX (2).jpg", "/assets/Sunglass/MAX (3).jpg", "/10.jpg"],
+          },
+          {
+            name: "Gradient Blue",
+            gallery: ["/assets/Sunglass/MAX 6.png", "/assets/Sunglass/MAX 5.png", "/assets/Sunglass/MAX 4.png", "/10.jpg"],
+          },
+        ],
       },
     ],
     price: 10500,
@@ -2308,6 +2515,17 @@ export const PRODUCTS_DATA = [
         swatch: "#bca496",
         image: "/assets/Sunglass/Melisa 1.jpg",
         gallery: ["/assets/Sunglass/Melisa 1.jpg", "/assets/Sunglass/Melisa 2.jpg", "/assets/Sunglass/Melisa 3.jpg", "/10.jpg"],
+        lensColor: "Brown",
+        lenses: [
+          {
+            name: "Brown",
+            gallery: ["/assets/Sunglass/Melisa 1.jpg", "/assets/Sunglass/Melisa 2.jpg", "/assets/Sunglass/Melisa 3.jpg", "/10.jpg"],
+          },
+          {
+            name: "Gradient Green",
+            gallery: ["/assets/Sunglass/Melisa 5.png", "/assets/Sunglass/Melisa 6.png", "/assets/Sunglass/Melisa 4.png", "/10.jpg"],
+          },
+        ],
       },
     ],
     price: 10500,
