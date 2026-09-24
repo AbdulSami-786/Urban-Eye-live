@@ -1491,7 +1491,7 @@ export function ProductCard({ product, navigate, type = "default" }) {
         </div>
 
         {/* Lens caption — names the tint currently on screen while the card is
-            hovered, and how many the frame comes in. Reserves its own height so
+            hovered. Reserves its own height so
             the swatches below never shift as the name changes length. */}
         {lensPreviews.length > 1 && (
           <div
@@ -1525,7 +1525,7 @@ export function ProductCard({ product, navigate, type = "default" }) {
                 whiteSpace: "nowrap",
               }}
             >
-              {activeLens?.name} lens · {lensPreviews.length} tints
+              {activeLens?.name} lens
             </span>
           </div>
         )}
