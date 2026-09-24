@@ -1685,15 +1685,19 @@ export const PRODUCTS_DATA = [
         swatch: "#a67c52",
         image: "/assets/Sunglass/Andrew 1.jpg",
         gallery: ["/assets/Sunglass/Andrew 1.jpg", "/assets/Sunglass/Andrew 2.jpg", "/assets/Sunglass/Andrew 6.jpg", "/10.jpg"],
-        lensColor: "Light Blue",
+        lensColor: "Light Grey",
         lenses: [
+          {
+            name: "Light Grey",
+            gallery: ["/assets/Sunglass/Andrew 1.jpg", "/assets/Sunglass/Andrew 2.jpg", "/assets/Sunglass/Andrew 6.jpg", "/10.jpg"],
+          },
           {
             name: "Light Blue",
             gallery: ["/assets/Sunglass/Andrew 9.png", "/assets/Sunglass/Andrew 8.png", "/assets/Sunglass/Andrew 7.png", "/10.jpg"],
           },
           {
-            name: "Green",
-            gallery: ["/assets/Sunglass/Andrew 11.png", "/assets/Sunglass/Andrew 12.png", "/assets/Sunglass/Andrew 10.png", "/10.jpg"],
+            name: "Pastel",
+            gallery: ["/assets/Sunglass/Andrew 19.png", "/assets/Sunglass/Andrew 20.png", "/assets/Sunglass/Andrew 21.png", "/10.jpg"],
           },
         ],
       },
@@ -1711,6 +1715,10 @@ export const PRODUCTS_DATA = [
           {
             name: "Light Blue",
             gallery: ["/assets/Sunglass/Andrew 15.png", "/assets/Sunglass/Andrew 14.png", "/assets/Sunglass/Andrew 13.png", "/10.jpg"],
+          },
+           {
+            name: "Green",
+            gallery: ["/assets/Sunglass/Andrew 11.png", "/assets/Sunglass/Andrew 12.png", "/assets/Sunglass/Andrew 10.png", "/10.jpg"],
           },
         ],
       },
@@ -1895,8 +1903,12 @@ export const PRODUCTS_DATA = [
         swatch: "#2b2b2b",
         image: "/assets/Sunglass/BEVIS 1.jpg",
         gallery: ["/assets/Sunglass/BEVIS 1.jpg", "/assets/Sunglass/BEVIS 2.jpg", "/assets/Sunglass/BEVIS 3.jpg", "/10.jpg"],
-        lensColor: "Gradient Red",
+        lensColor: "Gradient Wine",
         lenses: [
+          {
+            name: "Gradient Wine",
+            gallery: ["/assets/Sunglass/BEVIS 1.jpg", "/assets/Sunglass/BEVIS 2.jpg", "/assets/Sunglass/BEVIS 3.jpg", "/10.jpg"],
+          },
           {
             name: "Gradient Red",
             gallery: ["/assets/Sunglass/BEVIS 4.png", "/assets/Sunglass/BEVIS 5.png", "/assets/Sunglass/BEVIS 6.png", "/10.jpg"],
@@ -2040,7 +2052,7 @@ export const PRODUCTS_DATA = [
           },
           {
             name: "Gradient Grey",
-            gallery: ["/assets/Sunglass/Monaco 7.png", "/assets/Sunglass/Monaco 9.png", "/assets/Sunglass/Monaco 8.png", "/10.jpg"],
+            gallery: ["/assets/Sunglass/Monaco 9.png", "/assets/Sunglass/Monaco 9.png", "/assets/Sunglass/Monaco 7.png", "/10.jpg"],
           },
         ],
       },
@@ -2158,6 +2170,10 @@ export const PRODUCTS_DATA = [
             name: "Gradient Blue",
             gallery: ["/assets/Sunglass/Xrp 8.png", "/assets/Sunglass/Xrp 7.png", "/assets/Sunglass/Xrp 9.png", "/10.jpg"],
           },
+           {
+            name: "Gradient Purple",
+            gallery: ["/assets/Sunglass/Xrp 11.png", "/assets/Sunglass/Xrp 12.png", "/assets/Sunglass/Xrp 10.png", "/10.jpg"],
+          },
         ],
       },
       {
@@ -2165,11 +2181,11 @@ export const PRODUCTS_DATA = [
         swatch: "#c0c0c0",
         image: "/assets/Sunglass/Xrp 4.jpg",
         gallery: ["/assets/Sunglass/Xrp 4.jpg", "/assets/Sunglass/Xrp 5.jpg", "/assets/Sunglass/Xrp 6.jpg", "/10.jpg"],
-        lensColor: "Gradient Purple",
+        lensColor: "Navy Blue",
         lenses: [
           {
-            name: "Gradient Purple",
-            gallery: ["/assets/Sunglass/Xrp 11.png", "/assets/Sunglass/Xrp 12.png", "/assets/Sunglass/Xrp 10.png", "/10.jpg"],
+            name: "Navy Blue",
+            gallery: ["/assets/Sunglass/Xrp 4.jpg", "/assets/Sunglass/Xrp 5.jpg", "/assets/Sunglass/Xrp 6.jpg", "/10.jpg"],
           },
           {
             name: "Red",

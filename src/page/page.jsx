@@ -1422,6 +1422,7 @@ const LENS_SWATCHES = {
   "turquoise": "#3fb9b0",
   "pink": "#e88aa8",
   "orange": "#e07b25",
+  "pastel": "#768063",
   "gradient purple": "linear-gradient(160deg, #9b6bb0, #f2d9c4)",
   "gradient orange": "linear-gradient(160deg, #e4784f, #f7d9c8)",
   "gradient brown": "linear-gradient(160deg, #6b4423, #e2c6a8)",

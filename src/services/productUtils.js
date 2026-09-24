@@ -449,11 +449,14 @@ export const LENS_SWATCHES = {
   "dark green": "#1e3d28",
   "red": "#9e2a2b",
   "light blue": "#a8cfe4",
+  "light grey": "#c9cfd1",
+  "navy blue": "#2e3550",
   "smoke": "#6e6e6e",
   "blue": "#3d7fb8",
   "turquoise": "#3fb9b0",
   "pink": "#e88aa8",
   "orange": "#e07b25",
+  "pastel": "#768063",
   "gradient blue": "linear-gradient(160deg, #4a7fa5, #cfe2ee)",
   "gradient grey": "linear-gradient(160deg, #4a4a4a, #d6d6d6)",
   "gradient green": "linear-gradient(160deg, #2f5d3a, #cfe0cf)",
@@ -461,6 +464,8 @@ export const LENS_SWATCHES = {
   "gradient purple": "linear-gradient(160deg, #9b6bb0, #f2d9c4)",
   "gradient orange": "linear-gradient(160deg, #e4784f, #f7d9c8)",
   "gradient brown": "linear-gradient(160deg, #6b4423, #e2c6a8)",
+  "gradient wine": "linear-gradient(160deg, #6e2a45, #e6cfd8)",
+  "gradient turquoise": "linear-gradient(160deg, #1f8fa0, #d4eef0)",
 };
 
 export function getLensSwatch(lensName) {
