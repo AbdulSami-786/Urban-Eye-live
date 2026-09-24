@@ -9,11 +9,12 @@ import { BLACK, CREAM, ff, mono, COLLECTIONS,
 import { applyProductFilters, getProductColorOptions, getProductBrandOptions, getProductSizeOptions, getProductDisplayPrice, getProductDiscountPercent, getProductDisplayImage, getProductDisplaySpecifications, getProductDescription, getRelatedProducts, getProductVariants, getVariantLenses, getSelectedLens, getVariantLensPreviews, getLensSwatch, productMatchesShape, getUniqueShapesFromProducts, normalizeCategory, normalizeGender, formatPriceValue, matchesSearchTerm } from "../services/productUtils.js";
 import { YBtn, OutlineBtn, FadeIn, Counter, Frame, ProductCard, ProductSlider, WishlistHeart, WishlistSkeleton } from "../components/shared";
 import { useLensCycle } from "../hook/useLensCycle.js";
-import { useCart } from "../contexts/CardContext";
+import { useCart, getCartLineKey } from "../contexts/CardContext";
 import { useAuth, AuthModal } from "../Auth/auth.jsx";
 import {
   getWishlist, removeFromWishlist, getReviews, getAddresses,
   submitReview, updateReview, getProductReviewStats, getUserReviews,
+  SESSION_EXPIRED_MESSAGE,
 } from "../services/service.js";
 import { useDocumentHead, SITE_ORIGIN } from "../hook/useDocumentHead.js";
 
@@ -28,6 +29,11 @@ const srOnly = {
   position: "absolute", width: 1, height: 1, padding: 0, margin: -1,
   overflow: "hidden", clip: "rect(0,0,0,0)", whiteSpace: "nowrap", border: 0,
 };
+
+// "Light Brown · Pastel lens" under a cart / checkout row.
+function cartLineOptions(item) {
+  return [item.color, item.lens && `${item.lens} lens`].filter(Boolean).join(" · ");
+}
 
 // ============================================
 // RESPONSIVE HOOK
@@ -1442,6 +1448,11 @@ function lensSwatchStyle(lensName) {
   };
 }
 
+// Product detail typography: a geometric sans for headings and buttons, a
+// monospace for prices, labels and body copy. Loaded in index.html.
+const pdSans = "'Montserrat', 'Helvetica Neue', Arial, sans-serif";
+const pdMono = "'Roboto Mono', 'Courier New', monospace";
+
 export function ProductDetailPage({ productId, navigate }) {
   const product = PRODUCTS_DATA.find(p => p.id === productId);
   const variants = getProductVariants(product);
@@ -1486,6 +1497,9 @@ export function ProductDetailPage({ productId, navigate }) {
   const [selectedVariantName, setSelectedVariantName] = useState("");
   const [selectedLensName, setSelectedLensName] = useState("");
   const [showAuthPrompt, setShowAuthPrompt] = useState(false);
+  // Filled in by ProductReviewsSection once it loads, so the rating line
+  // under the name doesn't fetch the reviews a second time.
+  const [reviewStats, setReviewStats] = useState(null);
   const { addToCart } = useCart();
   const { user } = useAuth();
 
@@ -1545,6 +1559,9 @@ export function ProductDetailPage({ productId, navigate }) {
   const lensColorName = displaySpecifications?.["Lens Color"] || displaySpecifications?.["Lens Colour"] || "";
   const lensSwatch = LENS_SWATCHES[lensColorName.toLowerCase()] || "#d9d9d9";
 
+  // Saved with the cart line so the order records the colour and lens picked.
+  const selection = { color: selectedVariant?.name, lens: selectedLens?.name };
+
   const handleSelectVariant = (variant) => {
     setSelectedVariantName(variant.name);
     setStoredVariantName(product.id, variant.name);
@@ -1563,83 +1580,87 @@ export function ProductDetailPage({ productId, navigate }) {
     const isOpen = openTab === id;
     return (
       <div style={{ borderBottom: "1px solid #e8e0d0" }}>
-        <button onClick={() => setOpenTab(isOpen ? null : id)} style={{ width: "100%", background: "none", border: "none", padding: "16px 0", display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer", fontFamily: ff, fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: BLACK, textAlign: "left" }}>
+        <button onClick={() => setOpenTab(isOpen ? null : id)} aria-expanded={isOpen} style={{ width: "100%", background: "none", border: "none", padding: "18px 0", display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer", fontFamily: pdSans, fontSize: isMobile ? 15 : 16, fontWeight: 700, letterSpacing: "0.06em", color: "#555", textAlign: "left" }}>
           {label}
-          <span style={{ fontSize: 22, fontWeight: 300, lineHeight: 1, color: BLACK }}>{isOpen ? "−" : "+"}</span>
+          <span style={{ fontSize: 20, fontWeight: 400, lineHeight: 1, color: BLACK }}>{isOpen ? "−" : "+"}</span>
         </button>
         {isOpen && <div style={{ paddingBottom: 20 }}>{children}</div>}
       </div>
     );
   };
 
+  const reviewTotal = reviewStats?.total || 0;
+  const reviewAvg = Math.round(reviewStats?.avg || 0);
+  const scrollToReviews = () => {
+    document.getElementById("product-reviews")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  const sectionLabel = { fontFamily: pdMono, fontSize: 13, fontWeight: 700, color: BLACK, marginBottom: 12 };
+
   return (
-    <div style={{ minHeight: "100vh", background: "#f5f0e8", fontFamily: ff }}>
-      <div style={{ borderBottom: "1px solid #e8e0d0", padding: "13px 20px" }}>
-        <div style={{ maxWidth: 1400, margin: "0 auto", display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
-          {[{ label: "HOME", path: "/" }, { label: "COLLECTION", path: `/collections/${categorySlug}` }, { label: product.name.toUpperCase(), path: null }].map((crumb, i) => (
-            <span key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              {i > 0 && <span style={{ color: "#ccc", fontSize: 10 }}>›</span>}
-              {crumb.path ? <a href={crumb.path} style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: "#888", textDecoration: "none", fontFamily: ff }}>{crumb.label}</a>
-                : <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: BLACK, fontFamily: ff }}>{crumb.label}</span>}
+    <div style={{ minHeight: "100vh", background: "#f5f0e8", fontFamily: pdMono }}>
+      <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "14px 16px" : "18px 40px" }}>
+        <nav aria-label="Breadcrumb" style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
+          {[{ label: "HOME", path: "/" }, { label: (product.category || "Collection").toUpperCase(), path: `/collections/${categorySlug}` }, { label: product.name.toUpperCase(), path: null }].map((crumb, i) => (
+            <span key={i} style={{ display: "flex", alignItems: "center", gap: 10, fontFamily: pdMono, fontSize: 12, letterSpacing: "0.02em" }}>
+              {i > 0 && <span style={{ color: BLACK }}>&gt;</span>}
+              {crumb.path ? <a href={crumb.path} style={{ color: BLACK, textDecoration: "none" }}>{crumb.label}</a>
+                : <span style={{ color: BLACK }}>{crumb.label}</span>}
             </span>
           ))}
-        </div>
+        </nav>
       </div>
 
       <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 16px 60px" : "0 40px 80px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: (isMobile || isTablet) ? "1fr" : "76% 24%", gap: 0, alignItems: "flex-start" }}>
+        <div style={{ display: "grid", gridTemplateColumns: (isMobile || isTablet) ? "1fr" : "minmax(0, 1fr) 380px", gap: (isMobile || isTablet) ? 0 : 28, alignItems: "flex-start" }}>
           <FadeIn>
-            <div style={{ paddingRight: (isMobile || isTablet) ? 0 : 48 }}>
-              <div style={{ position: "relative", overflow: "hidden", background: CREAM, marginBottom: 10, height: isMobile ? "78vh" : "calc(100vh - 10px)", minHeight: isMobile ? 460 : 780, maxHeight: isMobile ? 620 : 1080, boxSizing: "border-box", padding: isMobile ? "2px" : "4px 6px" }}>
+            <div>
+              <div style={{ position: "relative", overflow: "hidden", background: "#fff", borderRadius: 8, marginBottom: 12, aspectRatio: isMobile ? "1 / 1" : "16 / 9" }}>
                 {product.tag && tc && (
-                  <div style={{ position: "absolute", top: 20, left: 20, zIndex: 3, background: tc.bg, color: tc.color, fontSize: 10, fontWeight: 900, letterSpacing: "0.16em", padding: "6px 14px", fontFamily: ff }}>{product.tag}</div>
+                  <div style={{ position: "absolute", top: isMobile ? 14 : 20, left: isMobile ? 14 : 20, zIndex: 3, background: tc.bg, color: tc.color, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", padding: "5px 10px", borderRadius: 2, fontFamily: pdSans }}>{product.tag}</div>
                 )}
                 {discount > 0 && (
-                  <div style={{ position: "absolute", top: 20, right: 20, zIndex: 3, background: BRAND, color: BRAND_TEXT, fontSize: 10, fontWeight: 900, letterSpacing: "0.1em", padding: "5px 12px", fontFamily: ff }}>−{discount}% OFF</div>
+                  <div style={{ position: "absolute", top: isMobile ? 14 : 20, right: isMobile ? 14 : 20, zIndex: 3, background: BRAND, color: BRAND_TEXT, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", padding: "5px 10px", borderRadius: 2, fontFamily: pdSans }}>−{discount}% OFF</div>
                 )}
-                <div style={{ width: "100%", height: "100%", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "center", background: "#fff" }}>
-                  {displayImage ? (
-                    <img key={`${product.id}-${activeImg}-${displayLabel}`} src={displayImage} alt={`${product.name} - ${displayLabel}`} loading="eager" decoding="async" style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", padding: 0, animation: "fadeImgIn 0.35s ease", boxSizing: "border-box" }} />
-                  ) : (
+                {displayImage ? (
+                  <img key={`${product.id}-${activeImg}-${displayLabel}`} src={displayImage} alt={`${product.name} - ${displayLabel}`} loading="eager" decoding="async" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", animation: "fadeImgIn 0.35s ease" }} />
+                ) : (
+                  <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <Frame shape="round" size={280} color="#4a4a4a" />
-                  )}
-                </div>
+                  </div>
+                )}
                 {galleryImages.length > 1 && (
                   <>
                     <button
                       onClick={() => setActiveImg(i => (i - 1 + galleryImages.length) % galleryImages.length)}
                       aria-label="Previous image"
                       style={{
-                        position: "absolute", top: "50%", left: isMobile ? 10 : 18, transform: "translateY(-50%)", zIndex: 4,
-                        width: isMobile ? 38 : 44, height: isMobile ? 38 : 44, borderRadius: "50%",
-                        background: "rgba(255,255,255,0.92)", border: "1px solid #e5e0d8", boxShadow: "0 4px 16px rgba(0,0,0,0.14)",
+                        position: "absolute", top: "50%", left: isMobile ? 10 : 16, transform: "translateY(-50%)", zIndex: 4,
+                        width: 36, height: 36, borderRadius: "50%",
+                        background: "rgba(255,255,255,0.92)", border: "1px solid #e5e0d8",
                         display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer",
-                        color: BLACK, fontSize: 20, lineHeight: 1, fontFamily: ff, backdropFilter: "blur(4px)",
+                        color: BLACK, fontSize: 18, lineHeight: 1, fontFamily: pdSans,
                       }}
                     >‹</button>
                     <button
                       onClick={() => setActiveImg(i => (i + 1) % galleryImages.length)}
                       aria-label="Next image"
                       style={{
-                        position: "absolute", top: "50%", right: isMobile ? 10 : 18, transform: "translateY(-50%)", zIndex: 4,
-                        width: isMobile ? 38 : 44, height: isMobile ? 38 : 44, borderRadius: "50%",
-                        background: "rgba(255,255,255,0.92)", border: "1px solid #e5e0d8", boxShadow: "0 4px 16px rgba(0,0,0,0.14)",
+                        position: "absolute", top: "50%", right: isMobile ? 10 : 16, transform: "translateY(-50%)", zIndex: 4,
+                        width: 36, height: 36, borderRadius: "50%",
+                        background: "rgba(255,255,255,0.92)", border: "1px solid #e5e0d8",
                         display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer",
-                        color: BLACK, fontSize: 20, lineHeight: 1, fontFamily: ff, backdropFilter: "blur(4px)",
+                        color: BLACK, fontSize: 18, lineHeight: 1, fontFamily: pdSans,
                       }}
                     >›</button>
-                    <div style={{ position: "absolute", bottom: 14, left: "50%", transform: "translateX(-50%)", zIndex: 4, fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", color: BLACK, background: "rgba(255,255,255,0.9)", padding: "4px 10px", borderRadius: 999, fontFamily: mono }}>
-                      {activeImg + 1} / {galleryImages.length}
-                    </div>
                   </>
                 )}
               </div>
               {galleryImages.length > 1 && (
-                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                <div style={{ display: "flex", gap: 10, overflowX: "auto", paddingBottom: 4 }}>
                   {galleryImages.map((img, i) => (
-                    <div key={`${product.id}-${i}`} onClick={() => setActiveImg(i)} style={{ width: isMobile ? 64 : isTablet ? 80 : 100, height: isMobile ? 54 : isTablet ? 64 : 76, overflow: "hidden", cursor: "pointer", background: CREAM, flexShrink: 0, border: i === activeImg ? `2px solid ${BLACK}` : "1px solid #e8e0d0", opacity: i === activeImg ? 1 : 0.45, transition: "border-color 0.15s, opacity 0.15s", boxSizing: "border-box" }}>
-                      <img src={img} alt="" loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "contain", padding: isMobile ? 4 : 8, boxSizing: "border-box" }} />
-                    </div>
+                    <button key={`${product.id}-${i}`} onClick={() => setActiveImg(i)} aria-label={`Show image ${i + 1}`} style={{ width: isMobile ? 72 : 100, aspectRatio: "4 / 3", overflow: "hidden", cursor: "pointer", background: "#fff", flexShrink: 0, padding: 0, borderRadius: 6, border: i === activeImg ? "1px solid #d8d0c8" : "1px solid transparent", opacity: i === activeImg ? 1 : 0.5, transition: "opacity 0.15s" }}>
+                      <img src={img} alt="" loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "contain", padding: isMobile ? 4 : 6, boxSizing: "border-box", display: "block" }} />
+                    </button>
                   ))}
                 </div>
               )}
@@ -1647,102 +1668,81 @@ export function ProductDetailPage({ productId, navigate }) {
           </FadeIn>
 
           <FadeIn delay={120}>
-            <div style={{ paddingTop: isMobile ? 24 : 4 }}>
-              <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 14, flexWrap: "wrap" }}>
-                <a href={`/collections/${categorySlug}`} style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.18em", color: "#aaa", fontFamily: ff, textDecoration: "none" }}>{product.category?.toUpperCase()}</a>
-                <span style={{ color: "#ddd" }}>·</span>
-                <span style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.18em", color: "#aaa", fontFamily: ff }}>{product.subcategory?.toUpperCase()}</span>
-                <span style={{ color: "#ddd" }}>·</span>
-                <a href={`/collections/${genderCollectionSlug}`} style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.18em", color: "#aaa", fontFamily: ff, textDecoration: "none" }}>{product.gender?.toUpperCase()}</a>
-              </div>
-
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 7, flexWrap: "wrap" }}>
-                <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(24px, 6vw, 32px)" : "clamp(28px, 3.2vw, 42px)", lineHeight: 1, color: BLACK, margin: 0, letterSpacing: "0.04em", flex: 1, paddingRight: 16 }}>
+            <div style={{ paddingTop: isMobile || isTablet ? 24 : 0 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 16, marginBottom: 10 }}>
+                <h1 style={{ fontFamily: pdSans, fontWeight: 700, fontSize: isMobile ? 22 : 26, lineHeight: 1.15, color: BLACK, margin: 0, letterSpacing: "0.02em", textTransform: "uppercase" }}>
                   {product.name}
                 </h1>
-                <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0, marginTop: 4 }}>
-                  <div style={{ fontFamily: ff, fontSize: isMobile ? 13 : 15, fontWeight: 600, color: BLACK, whiteSpace: "nowrap" }}>
-                    PKR {formatPriceValue(discountPrice)}
+                <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
+                  <div style={{ fontFamily: pdMono, fontSize: isMobile ? 14 : 16, color: BLACK, whiteSpace: "nowrap", paddingTop: 4 }}>
+                    Rs.{formatPriceValue(discountPrice)} PKR
                   </div>
                   <WishlistHeart productId={product.id} size="lg" placement="detail" />
                 </div>
               </div>
 
-              <div style={{ fontSize: 13, color: "#888", fontFamily: mono, marginBottom: 16, letterSpacing: "0.04em" }}>{displayLabel}</div>
-              {/* {variants.length > 1 && (
-                <div style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", color: BLACK, fontFamily: ff, marginBottom: 10 }}>{variants.length} COLOURS</div>
+              {discountPrice < price && (
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 10, marginBottom: 10, flexWrap: "wrap" }}>
+                  <span style={{ fontFamily: pdMono, fontSize: 13, color: "#aaa", textDecoration: "line-through" }}>Rs.{formatPriceValue(price)} PKR</span>
+                  {discount > 0 && <span style={{ fontFamily: pdSans, fontSize: 10, fontWeight: 700, background: BRAND, color: BRAND_TEXT, padding: "3px 8px", letterSpacing: "0.08em" }}>SAVE {discount}%</span>}
+                </div>
               )}
-              {variants.length > 1 && (
-                <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 18, flexWrap: "wrap" }}>
-                  {variants.map((variant) => {
-                    const active = normalizeVariantName(variant.name) === normalizeVariantName(selectedVariantName);
-                    return (
-                      <button
-                        key={variant.name}
-                        onClick={() => handleSelectVariant(variant)}
-                        style={{
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: 8,
-                          border: active ? `1.5px solid ${BLACK}` : "1px solid #d8d0c8",
-                          background: active ? "#fff" : "#faf7f2",
-                          padding: "8px 12px",
-                          cursor: "pointer",
-                          fontFamily: ff,
-                          fontSize: 11,
-                          letterSpacing: "0.08em",
-                          color: BLACK,
-                        }}
-                      >
-                        <span style={{ width: 14, height: 14, borderRadius: "50%", background: variant.swatch || "#d9d9d9", border: "1px solid rgba(0,0,0,0.12)" }} />
-                        {variant.name}
-                      </button>
-                    );
-                  })}
-                </div> */}
 
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 22, flexWrap: "wrap" }}>
+                <span aria-label={`Rated ${reviewAvg} out of 5`} style={{ fontSize: 14, letterSpacing: 2, color: BLACK, lineHeight: 1 }}>
+                  {"★".repeat(reviewAvg)}{"☆".repeat(5 - reviewAvg)}
+                </span>
+                <button onClick={scrollToReviews} style={{ background: "none", border: "none", padding: 0, cursor: "pointer", fontFamily: pdMono, fontSize: 11, color: BLACK }}>
+                  {reviewTotal} review{reviewTotal !== 1 ? "s" : ""}
+                </button>
+                <span style={{ width: 1, height: 16, background: BLACK }} />
+                <button onClick={scrollToReviews} style={{ background: "none", border: "none", padding: 0, cursor: "pointer", fontFamily: pdMono, fontSize: 11, fontWeight: 700, color: BLACK }}>
+                  Write a review
+                </button>
+              </div>
 
-{/* Show color label for all products */}
+{/* Frame colours — a photo of each colourway, as on the design */}
 {variants.length >= 1 && (
-  <div style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", color: BLACK, fontFamily: ff, marginBottom: 10 }}>
-    FRAME COLOR
-  </div>
+  <>
+    <div style={sectionLabel}>{variants.length} Color{variants.length !== 1 ? "s" : ""}</div>
+    <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 14, flexWrap: "wrap" }}>
+      {variants.map((variant) => {
+        const active = normalizeVariantName(variant.name) === normalizeVariantName(selectedVariantName);
+        return (
+          <button
+            key={variant.name}
+            onClick={() => handleSelectVariant(variant)}
+            title={variant.name}
+            aria-label={variant.name}
+            aria-pressed={active}
+            style={{
+              width: 72,
+              height: 56,
+              padding: 0,
+              border: active ? `2px solid ${BRAND}` : "2px solid transparent",
+              background: "#fff",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              overflow: "hidden",
+              boxSizing: "border-box",
+            }}
+          >
+            {variant.image ? (
+              <img src={variant.image} alt="" loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "contain", padding: 3, boxSizing: "border-box", display: "block" }} />
+            ) : (
+              <span style={{ width: 22, height: 22, borderRadius: "50%", background: variant.swatch || "#d9d9d9", border: "1px solid rgba(0,0,0,0.12)" }} />
+            )}
+          </button>
+        );
+      })}
+    </div>
+    <div style={{ fontFamily: pdMono, fontSize: 13, color: BLACK, marginBottom: 24 }}>
+      <span style={{ fontWeight: 700 }}>Color</span> : {displayLabel}
+    </div>
+  </>
 )}
-
-
-{/* Show color swatches for all products (single or multiple) */}
-{variants.length >= 1 && (
-  <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 18, flexWrap: "wrap" }}>
-    {variants.map((variant) => {
-      const active = normalizeVariantName(variant.name) === normalizeVariantName(selectedVariantName);
-      return (
-        <button
-          key={variant.name}
-          onClick={() => handleSelectVariant(variant)}
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 8,
-            border: active ? `1.5px solid ${BLACK}` : "1px solid #d8d0c8",
-            background: active ? "#fff" : "#faf7f2",
-            padding: "8px 12px",
-            cursor: "pointer",
-            fontFamily: ff,
-            fontSize: 11,
-            letterSpacing: "0.08em",
-            color: BLACK,
-          }}
-        >
-          <span style={{ width: 14, height: 14, borderRadius: "50%", background: variant.swatch || "#d9d9d9", border: "1px solid rgba(0,0,0,0.12)" }} />
-          {variant.name}
-        </button>
-      );
-    })}
-  </div>
-
-
-
-              )}
 
 {/* Lens colour — a picker when the frame is offered in several tints,
     otherwise a single non-interactive swatch showing the one it ships with */}
@@ -1801,57 +1801,49 @@ export function ProductDetailPage({ productId, navigate }) {
   </>
 )}
 
-              <div style={{ width: 36, height: 3, background: BRAND, marginBottom: 18 }} />
-
-              {discountPrice < price && (
-                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20, flexWrap: "wrap" }}>
-                  <span style={{ fontFamily: mono, fontSize: isMobile ? 13 : 15, color: "#aaa", textDecoration: "line-through" }}>PKR {formatPriceValue(price)}</span>
-                  {discount > 0 && <span style={{ fontFamily: ff, fontSize: 11, fontWeight: 900, background: BRAND, color: BRAND_TEXT, padding: "4px 10px", letterSpacing: "0.1em" }}>SAVE {discount}%</span>}
-                </div>
-              )}
-
-              <div style={{ marginBottom: 26 }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
-                  <span style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", color: BLACK, fontFamily: ff }}>SIZE</span>
+              <div style={{ marginBottom: 22 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+                  <span style={{ ...sectionLabel, marginBottom: 0 }}>Size</span>
+                  <a href="/size-fit" onClick={(e) => { e.preventDefault(); navigate("#/size-fit"); }} style={{ fontFamily: pdMono, fontSize: 13, color: BLACK, textDecoration: "underline", textUnderlineOffset: 3 }}>Size Chart</a>
                 </div>
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                   {sizes.map(size => (
-                    <button key={size} onClick={() => setSelectedSize(size)} style={{ padding: "10px 14px", fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", fontFamily: ff, cursor: "pointer", border: "1.5px solid", borderColor: selectedSize === size ? BLACK : "#d8d0c8", background: selectedSize === size ? BLACK : "#fff", color: selectedSize === size ? "#fff" : BLACK, transition: "all 0.15s" }}>
+                    <button key={size} onClick={() => setSelectedSize(size)} aria-pressed={selectedSize === size} style={{ padding: "10px 14px", fontSize: 13, fontFamily: pdMono, cursor: "pointer", borderRadius: 4, border: "1px solid", borderColor: selectedSize === size ? BLACK : "#d8d0c8", background: selectedSize === size ? BLACK : "#fff", color: selectedSize === size ? "#fff" : BLACK, transition: "all 0.15s" }}>
                       {size}
                     </button>
                   ))}
                 </div>
               </div>
 
-              <div style={{ marginBottom: 14 }}>
-                <span style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", color: BLACK, fontFamily: ff, display: "block", marginBottom: 10 }}>QUANTITY</span>
-                <div style={{ display: "inline-flex", border: "1.5px solid #e8e0d0", alignItems: "center" }}>
-                  <button onClick={() => setQty(q => Math.max(1, q - 1))} style={{ background: "none", border: "none", width: 42, height: 46, fontSize: 18, cursor: "pointer", color: BLACK, fontFamily: ff, fontWeight: 900 }}>−</button>
-                  <span style={{ width: 46, textAlign: "center", fontFamily: ff, fontWeight: 900, fontSize: 14, color: BLACK }}>{qty}</span>
-                  <button onClick={() => setQty(q => q + 1)} style={{ background: "none", border: "none", width: 42, height: 46, fontSize: 18, cursor: "pointer", color: BLACK, fontFamily: ff, fontWeight: 900 }}>+</button>
+              <div style={{ marginBottom: 22 }}>
+                <span style={{ ...sectionLabel, display: "block" }}>Quantity</span>
+                <div style={{ display: "inline-flex", border: "1px solid #d8d0c8", borderRadius: 4, alignItems: "center", background: "#fff" }}>
+                  <button onClick={() => setQty(q => Math.max(1, q - 1))} aria-label="Decrease quantity" style={{ background: "none", border: "none", width: 40, height: 42, fontSize: 16, cursor: "pointer", color: BLACK, fontFamily: pdMono }}>−</button>
+                  <span style={{ width: 40, textAlign: "center", fontFamily: pdMono, fontSize: 14, color: BLACK }}>{qty}</span>
+                  <button onClick={() => setQty(q => q + 1)} aria-label="Increase quantity" style={{ background: "none", border: "none", width: 40, height: 42, fontSize: 16, cursor: "pointer", color: BLACK, fontFamily: pdMono }}>+</button>
                 </div>
               </div>
 
-              <button onClick={() => { addToCart(product, qty); setAdded(true); setTimeout(() => setAdded(false), 2500); }} style={{ width: "100%", background: added ? "#16a34a" : "#0c2c41", color: "#fff", border: "none", padding: "16px 24px", fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", cursor: "pointer", fontFamily: ff, transition: "background 0.3s", marginBottom: 12 }}>
+              <button onClick={() => { addToCart(product, qty, selection); setAdded(true); setTimeout(() => setAdded(false), 2500); }} style={{ width: "100%", minHeight: 48, background: added ? "#16a34a" : BRAND, color: BRAND_TEXT, border: "none", padding: "14px 24px", fontSize: 14, fontWeight: 600, letterSpacing: "0.04em", cursor: "pointer", fontFamily: pdSans, transition: "background 0.3s", marginBottom: 12 }}>
                 {added ? "✓ ADDED TO BAG" : "ADD TO BAG"}
               </button>
 
-              <button onClick={() => { if (!user) { setShowAuthPrompt(true); return; } addToCart(product, qty); navigate("#/checkout"); }} style={{ width: "100%", background: "#fff", color: "#0c2c41", border: "1.5px solid #0c2c41", padding: "15px 24px", fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", cursor: "pointer", fontFamily: ff, transition: "background 0.2s, color 0.2s", marginBottom: 12 }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = "#0c2c41"; e.currentTarget.style.color = "#fff"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = "#fff"; e.currentTarget.style.color = "#0c2c41"; }}>
+              <button onClick={() => { if (!user) { setShowAuthPrompt(true); return; } addToCart(product, qty, selection); navigate("#/checkout"); }} style={{ width: "100%", minHeight: 48, background: "#fff", color: BRAND, border: `1px solid ${BRAND}`, padding: "14px 24px", fontSize: 14, fontWeight: 600, letterSpacing: "0.04em", cursor: "pointer", fontFamily: pdSans, transition: "background 0.2s, color 0.2s", marginBottom: 12 }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = BRAND; e.currentTarget.style.color = BRAND_TEXT; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = "#fff"; e.currentTarget.style.color = BRAND; }}>
                 BUY NOW
               </button>
 
               {added && (
-                <button onClick={() => navigate("#/cart")} style={{ width: "100%", background: BRAND, color: BRAND_TEXT, border: "none", padding: "13px", fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", cursor: "pointer", fontFamily: ff, marginBottom: 14 }}>
+                <button onClick={() => navigate("#/cart")} style={{ width: "100%", minHeight: 48, background: BRAND, color: BRAND_TEXT, border: "none", padding: "14px", fontSize: 14, fontWeight: 600, letterSpacing: "0.04em", cursor: "pointer", fontFamily: pdSans, marginBottom: 12 }}>
                   VIEW BAG & CHECKOUT →
                 </button>
               )}
 
-              <div style={{ borderTop: "1px solid #e8e0d0" }}>
+              <div style={{ borderTop: "1px solid #e8e0d0", marginTop: 20 }}>
                 {product.description && (
                   <AccordionItem id="description" label="DESCRIPTION">
-                    <p style={{ margin: 0, fontSize: 12, color: BLACK, fontFamily: mono, lineHeight: 1.9 }}>{getProductDescription(product, selectedVariantName, selectedLensName)}</p>
+                    <p style={{ margin: 0, fontSize: 13, color: BLACK, fontFamily: pdMono, lineHeight: 1.8 }}>{getProductDescription(product, selectedVariantName, selectedLensName)}</p>
                   </AccordionItem>
                 )}
                 <AccordionItem id="details" label="DETAILS">
@@ -1860,8 +1852,8 @@ export function ProductDetailPage({ productId, navigate }) {
                       <tbody>
                         {Object.entries(displaySpecifications || {}).map(([k, v], i) => (
                           <tr key={i} style={{ borderBottom: "1px solid #f0ece4" }}>
-                            <td style={{ padding: "9px 12px 9px 0", fontSize: 11, fontWeight: 900, letterSpacing: "0.1em", color: "#999", fontFamily: ff, width: "44%", whiteSpace: "nowrap" }}>{k.toUpperCase()}</td>
-                            <td style={{ padding: "9px 0", fontSize: 12, color: BLACK, fontFamily: mono }}>{v}</td>
+                            <td style={{ padding: "9px 12px 9px 0", fontSize: 12, fontWeight: 700, color: BLACK, fontFamily: pdMono, width: "44%", whiteSpace: "nowrap" }}>{k}</td>
+                            <td style={{ padding: "9px 0", fontSize: 12, color: BLACK, fontFamily: pdMono }}>{v}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -1872,8 +1864,8 @@ export function ProductDetailPage({ productId, navigate }) {
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1px", background: "#f0ece4", border: "1px solid #f0ece4" }}>
                     {Object.entries(product.measurements || {}).map(([k, v], i) => (
                       <div key={i} style={{ background: "#fff", padding: "10px 12px" }}>
-                        <div style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.1em", color: "#999", fontFamily: ff, marginBottom: 5 }}>{k.toUpperCase()}</div>
-                        <div style={{ fontSize: 12, color: BLACK, fontFamily: mono }}>{v}</div>
+                        <div style={{ fontSize: 12, fontWeight: 700, color: BLACK, fontFamily: pdMono, marginBottom: 5 }}>{k}</div>
+                        <div style={{ fontSize: 12, color: BLACK, fontFamily: pdMono }}>{v}</div>
                       </div>
                     ))}
                   </div>
@@ -1884,18 +1876,15 @@ export function ProductDetailPage({ productId, navigate }) {
         </div>
       </div>
 
-      <ProductReviewsSection productId={productId} navigate={navigate} />
+      <ProductReviewsSection productId={productId} navigate={navigate} onStats={setReviewStats} />
 
       {related.length > 0 && (
-        <div style={{ background: CREAM, padding: isMobile ? "48px 20px" : "72px 40px", borderTop: "2px solid #e8ddd0" }}>
+        <div style={{ background: CREAM, padding: isMobile ? "48px 16px" : "72px 40px", borderTop: "1px solid #e8ddd0" }}>
           <div style={{ maxWidth: 1400, margin: "0 auto" }}>
             <FadeIn>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 44, flexWrap: "wrap", gap: 12 }}>
-                <div>
-                  <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#aaa", marginBottom: 6, fontFamily: ff }}>YOU MAY ALSO LIKE</div>
-                  <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(22px, 6vw, 32px)" : "clamp(26px, 4vw, 42px)", margin: 0, letterSpacing: "0.02em", color: BLACK }}>RELATED FRAMES</h2>
-                </div>
-                <button onClick={() => navigate("#/products")} style={{ background: "none", border: `1.5px solid ${BLACK}`, padding: "10px 20px", fontSize: isMobile ? 10 : 11, fontWeight: 900, letterSpacing: "0.12em", cursor: "pointer", color: BLACK, fontFamily: ff }}>VIEW ALL →</button>
+              <div style={{ textAlign: "center", marginBottom: isMobile ? 28 : 40 }}>
+                <h2 style={{ fontFamily: pdSans, fontWeight: 700, fontSize: isMobile ? 20 : 24, margin: "0 0 8px", letterSpacing: "0.02em", color: BLACK }}>YOU MAY ALSO LIKE</h2>
+                <button onClick={() => navigate("#/products")} style={{ background: "none", border: "none", padding: 0, fontSize: 13, cursor: "pointer", color: BLACK, fontFamily: pdMono, textDecoration: "underline", textUnderlineOffset: 3 }}>View all frames</button>
               </div>
             </FadeIn>
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "repeat(2,1fr)" : "repeat(3,1fr)", gap: isMobile ? 12 : 20 }}>
@@ -1987,7 +1976,7 @@ export function CartPage({ navigate }) {
           {localCart.map(item => {
             const itemDiscount = item.price && item.discountPrice && item.price > item.discountPrice ? Math.round(((item.price - item.discountPrice) / item.price) * 100) : 0;
             return (
-              <div key={item.id} style={{ display: isMobile ? "flex" : "grid", gridTemplateColumns: "1fr 130px 150px 40px", gap: isMobile ? 12 : 16, alignItems: "center", padding: isMobile ? "12px 0" : "20px 0", borderBottom: "1px solid #e0ddd6", flexDirection: isMobile ? "column" : "row" }}>
+              <div key={getCartLineKey(item)} style={{ display: isMobile ? "flex" : "grid", gridTemplateColumns: "1fr 130px 150px 40px", gap: isMobile ? 12 : 16, alignItems: "center", padding: isMobile ? "12px 0" : "20px 0", borderBottom: "1px solid #e0ddd6", flexDirection: isMobile ? "column" : "row" }}>
                 <div style={{ display: "flex", gap: 14, alignItems: "center", width: isMobile ? "100%" : "auto" }}>
                   <div style={{ width: isMobile ? 60 : 88, height: isMobile ? 50 : 70, flexShrink: 0, overflow: "hidden", background: CREAM, cursor: "pointer", border: "1px solid #e8e8e8" }} onClick={() => navigate(`#/products/${item.id}`)}>
                     <img src={item.image} alt={item.name} loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
@@ -1995,7 +1984,7 @@ export function CartPage({ navigate }) {
                   <div>
                     <div style={{ fontSize: 10, color: "#bbb", letterSpacing: "0.16em", fontFamily: ff, marginBottom: 3 }}>{item.category?.toUpperCase()}{item.gender ? ` · ${item.gender.toUpperCase()}` : ""}</div>
                     <div style={{ fontFamily: ff, fontSize: isMobile ? 13 : 15, fontWeight: 900, color: BLACK, letterSpacing: "0.04em", marginBottom: 3, cursor: "pointer" }} onClick={() => navigate(`#/products/${item.id}`)}>{item.name}</div>
-                    <div style={{ fontSize: 11, color: "#999", fontFamily: mono }}>{item.color}</div>
+                    <div style={{ fontSize: 11, color: "#999", fontFamily: mono }}>{cartLineOptions(item)}</div>
                     {itemDiscount > 0 && <div style={{ fontSize: 9, fontWeight: 900, background: NAVY, color: "#fff", display: "inline-block", padding: "2px 7px", letterSpacing: "0.1em", marginTop: 5 }}>−{itemDiscount}% OFF</div>}
                   </div>
                 </div>
@@ -2004,15 +1993,15 @@ export function CartPage({ navigate }) {
                   {item.discountPrice && item.price && item.discountPrice < item.price && <div style={{ fontSize: 11, color: "#bbb", textDecoration: "line-through", fontFamily: mono }}>PKR {item.price.toLocaleString()}</div>}
                 </div>
                 <div style={{ display: "flex", border: "1.5px solid #ccc", alignItems: "center", width: "fit-content" }}>
-                  <button onClick={() => updateQty(item.id, (item.qty || 1) - 1)} disabled={syncing} style={{ background: "none", border: "none", width: 34, height: 34, fontSize: 16, cursor: syncing ? "not-allowed" : "pointer", color: BLACK, fontFamily: ff, fontWeight: 900, display: "flex", alignItems: "center", justifyContent: "center" }}
+                  <button onClick={() => updateQty(getCartLineKey(item), (item.qty || 1) - 1)} disabled={syncing} style={{ background: "none", border: "none", width: 34, height: 34, fontSize: 16, cursor: syncing ? "not-allowed" : "pointer", color: BLACK, fontFamily: ff, fontWeight: 900, display: "flex", alignItems: "center", justifyContent: "center" }}
                     onMouseEnter={e => { if (!syncing) e.currentTarget.style.background = "#f0f0f0" }}
                     onMouseLeave={e => e.currentTarget.style.background = "none"}>−</button>
                   <span style={{ width: 30, textAlign: "center", fontFamily: ff, fontWeight: 900, fontSize: 14, color: BLACK }}>{item.qty || 1}</span>
-                  <button onClick={() => updateQty(item.id, (item.qty || 1) + 1)} disabled={syncing} style={{ background: "none", border: "none", width: 34, height: 34, fontSize: 16, cursor: syncing ? "not-allowed" : "pointer", color: BLACK, fontFamily: ff, fontWeight: 900, display: "flex", alignItems: "center", justifyContent: "center" }}
+                  <button onClick={() => updateQty(getCartLineKey(item), (item.qty || 1) + 1)} disabled={syncing} style={{ background: "none", border: "none", width: 34, height: 34, fontSize: 16, cursor: syncing ? "not-allowed" : "pointer", color: BLACK, fontFamily: ff, fontWeight: 900, display: "flex", alignItems: "center", justifyContent: "center" }}
                     onMouseEnter={e => { if (!syncing) e.currentTarget.style.background = "#f0f0f0" }}
                     onMouseLeave={e => e.currentTarget.style.background = "none"}>+</button>
                 </div>
-                <button onClick={() => removeFromCart(item.id)} disabled={syncing} style={{ background: "none", border: "none", cursor: syncing ? "not-allowed" : "pointer", color: "#ccc", fontSize: 20, display: "flex", alignItems: "center", justifyContent: "center" }}
+                <button onClick={() => removeFromCart(getCartLineKey(item))} disabled={syncing} style={{ background: "none", border: "none", cursor: syncing ? "not-allowed" : "pointer", color: "#ccc", fontSize: 20, display: "flex", alignItems: "center", justifyContent: "center" }}
                   onMouseEnter={e => { if (!syncing) e.currentTarget.style.color = "#dc2626" }}
                   onMouseLeave={e => e.currentTarget.style.color = "#ccc"}>×</button>
               </div>
@@ -2036,7 +2025,7 @@ export function CartPage({ navigate }) {
           </div>
           <div style={{ padding: "22px 24px" }}>
             {localCart.map(item => (
-              <div key={item.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 11 }}>
+              <div key={getCartLineKey(item)} style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 11 }}>
                 <span style={{ fontSize: 12, color: "#666", fontFamily: mono, flex: 1, paddingRight: 12, lineHeight: 1.4 }}>{item.name} × {item.qty || 1}</span>
                 <span style={{ fontSize: 12, fontWeight: 900, fontFamily: ff, color: BLACK, flexShrink: 0 }}>PKR {((item.discountPrice || item.price || 0) * (item.qty || 1)).toLocaleString()}</span>
               </div>
@@ -2117,7 +2106,7 @@ export function SizeFitPage({ navigate }) {
               fontFamily: mono, fontStyle: "italic", fontSize: isMobile ? "clamp(14px, 4vw, 17px)" : "clamp(15px, 1.8vw, 19px)",
               lineHeight: 1.8, color: BLACK, margin: "0 0 16px"
             }}>
-              "With over 25 years of optical experience, I understand the importance of a proper fitting frame.
+              "With over 25 years of optical experience, We understand the importance of a proper fitting frame.
               Not every frame fits every face, which is why Urban Eye offers a wide selection so you can find
               the right style for you."
             </blockquote>
@@ -3111,7 +3100,7 @@ export function CheckoutPage({ navigate }) {
       }
     } catch (err) {
       console.error("Checkout error:", err);
-      alert("Failed to place order. Please try again.");
+      alert(err.message === SESSION_EXPIRED_MESSAGE ? err.message : "Failed to place order. Please try again.");
     } finally {
       setSubmitting(false);
     }
@@ -3299,13 +3288,13 @@ export function CheckoutPage({ navigate }) {
                 </div>
 
                 {cartItems.map(item => (
-                  <div key={item.id} style={{ display: "flex", gap: 16, alignItems: "center", padding: "14px 0", borderBottom: "1px solid #f0ece4" }}>
+                  <div key={getCartLineKey(item)} style={{ display: "flex", gap: 16, alignItems: "center", padding: "14px 0", borderBottom: "1px solid #f0ece4" }}>
                     <div style={{ width: 72, height: 56, flexShrink: 0, overflow: "hidden", background: CREAM }}>
                       <img src={`${item.image}`} alt={item.name} loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     </div>
                     <div style={{ flex: 1 }}>
                       <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 13, color: BLACK }}>{item.name}</div>
-                      <div style={{ fontSize: 11, color: "#888", fontFamily: mono }}>{item.color} · Qty: {item.qty}</div>
+                      <div style={{ fontSize: 11, color: "#888", fontFamily: mono }}>{[cartLineOptions(item), `Qty: ${item.qty}`].filter(Boolean).join(" · ")}</div>
                     </div>
                     <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 13, color: BLACK }}>
                       PKR {((item.discountPrice || item.price || 0) * (item.qty || 1)).toLocaleString()}
@@ -3338,13 +3327,13 @@ export function CheckoutPage({ navigate }) {
           </div>
           <div style={{ padding: 20 }}>
             {cartItems.map(item => (
-              <div key={item.id} style={{ display: "flex", gap: 12, marginBottom: 14, alignItems: "center" }}>
+              <div key={getCartLineKey(item)} style={{ display: "flex", gap: 12, marginBottom: 14, alignItems: "center" }}>
                 <div style={{ width: 52, height: 40, flexShrink: 0, overflow: "hidden", background: CREAM }}>
                   <img src={`${item.image}`} alt={item.name} loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 </div>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 11, color: BLACK }}>{item.name}</div>
-                  <div style={{ fontSize: 10, color: "#aaa", fontFamily: mono }}>× {item.qty}</div>
+                  <div style={{ fontSize: 10, color: "#aaa", fontFamily: mono }}>{[cartLineOptions(item), `× ${item.qty}`].filter(Boolean).join(" · ")}</div>
                 </div>
                 <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 11, color: BLACK }}>
                   PKR {((item.discountPrice || item.price || 0) * (item.qty || 1)).toLocaleString()}
@@ -3622,7 +3611,7 @@ export function ReviewSubmissionPage({ productId, reviewId, navigate }) {
 }
 
 // ============ PRODUCT REVIEWS SECTION ============
-function ProductReviewsSection({ productId, navigate }) {
+function ProductReviewsSection({ productId, navigate, onStats }) {
   const { user } = useAuth();
   const [reviews, setReviews] = useState([]);
   const [stats, setStats] = useState(null);
@@ -3657,27 +3646,26 @@ function ProductReviewsSection({ productId, navigate }) {
   }, [productId]);
 
   useEffect(() => { load(); }, [load]);
+  useEffect(() => { if (stats) onStats?.(stats); }, [stats, onStats]);
 
   const displayed = showAll ? reviews : reviews.slice(0, 3);
 
   return (
-    <div style={{ background: CREAM, borderTop: "2px solid #e8ddd0", padding: isMobile ? "40px 20px" : "64px 40px" }}>
+    <div id="product-reviews" style={{ background: CREAM, borderTop: "1px solid #e8ddd0", padding: isMobile ? "40px 16px" : "64px 40px", scrollMarginTop: 80 }}>
       <div style={{ maxWidth: 1400, margin: "0 auto" }}>
 
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 40, flexWrap: "wrap", gap: 16 }}>
-          <div>
-            <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#aaa", marginBottom: 6, fontFamily: ff }}>VERIFIED BUYERS</div>
-            <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(20px, 6vw, 28px)" : "clamp(24px, 3.5vw, 36px)", margin: 0, letterSpacing: "0.02em", color: BLACK }}>
-              CUSTOMER REVIEWS
-            </h2>
-          </div>
+        <div style={{ position: "relative", display: "flex", flexDirection: isMobile ? "column" : "row", justifyContent: "center", alignItems: "center", marginBottom: 40, gap: 16, minHeight: 52 }}>
+          <h2 style={{ fontFamily: pdSans, fontWeight: 700, fontSize: isMobile ? 20 : 24, margin: 0, letterSpacing: "0.02em", color: BLACK }}>
+            CUSTOMER REVIEWS
+          </h2>
           {user && (
             <button
               onClick={() => navigate(`#/review/${productId}`)}
               style={{
+                position: isMobile ? "static" : "absolute", right: 0, top: "50%", transform: isMobile ? "none" : "translateY(-50%)",
                 background: BRAND, color: "#fff", border: "none",
-                padding: "12px 24px", fontSize: isMobile ? 10 : 11, fontWeight: 900,
-                letterSpacing: "0.14em", fontFamily: ff, cursor: "pointer",
+                padding: "16px 32px", fontSize: 14, fontWeight: 500,
+                letterSpacing: "0.04em", fontFamily: pdSans, cursor: "pointer",
               }}
             >
               WRITE A REVIEW
@@ -3686,7 +3674,7 @@ function ProductReviewsSection({ productId, navigate }) {
         </div>
 
         {loading ? (
-          <div style={{ textAlign: "center", padding: "40px 0", color: "#aaa", fontFamily: ff, fontSize: 11, letterSpacing: "0.14em" }}>LOADING REVIEWS…</div>
+          <div style={{ textAlign: "center", padding: "40px 0", color: "#aaa", fontFamily: pdSans, fontSize: 11, letterSpacing: "0.14em" }}>LOADING REVIEWS…</div>
         ) : (
           <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "260px 1fr", gap: isMobile ? 32 : 48, alignItems: "flex-start" }}>
 
@@ -3694,37 +3682,37 @@ function ProductReviewsSection({ productId, navigate }) {
               {stats && stats.total > 0 ? (
                 <div style={{ background: "#fff", border: "1.5px solid #e8ddd0", padding: 24 }}>
                   <div style={{ textAlign: "center", marginBottom: 20, paddingBottom: 20, borderBottom: "1px solid #f0ece4" }}>
-                    <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 52, color: BLACK, lineHeight: 1 }}>
+                    <div style={{ fontFamily: pdSans, fontWeight: 900, fontSize: 52, color: BLACK, lineHeight: 1 }}>
                       {stats.avg.toFixed(1)}
                     </div>
                     <div style={{ color: "#f5a623", fontSize: 20, letterSpacing: 3, margin: "6px 0" }}>
                       {"★".repeat(Math.round(stats.avg))}{"☆".repeat(5 - Math.round(stats.avg))}
                     </div>
-                    <div style={{ fontSize: 11, color: "#888", fontFamily: mono }}>
+                    <div style={{ fontSize: 11, color: "#888", fontFamily: pdMono }}>
                       Based on {stats.total} review{stats.total !== 1 ? "s" : ""}
                     </div>
                   </div>
                   {stats.breakdown.map(({ star, count }) => (
                     <div key={star} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
-                      <span style={{ fontSize: 10, fontFamily: ff, fontWeight: 900, color: "#888", minWidth: 28, textAlign: "right" }}>{star}★</span>
+                      <span style={{ fontSize: 10, fontFamily: pdSans, fontWeight: 900, color: "#888", minWidth: 28, textAlign: "right" }}>{star}★</span>
                       <div style={{ flex: 1, height: 6, background: "#f0ece4", overflow: "hidden" }}>
                         <div style={{ height: "100%", background: "#f5a623", width: stats.total > 0 ? `${(count / stats.total) * 100}%` : "0%", transition: "width 0.4s ease" }} />
                       </div>
-                      <span style={{ fontSize: 10, fontFamily: mono, color: "#aaa", minWidth: 14 }}>{count}</span>
+                      <span style={{ fontSize: 10, fontFamily: pdMono, color: "#aaa", minWidth: 14 }}>{count}</span>
                     </div>
                   ))}
                 </div>
               ) : (
                 <div style={{ background: "#fff", border: "1.5px solid #e8ddd0", padding: 24, textAlign: "center" }}>
                   <div style={{ fontSize: 32, marginBottom: 8 }}>☆</div>
-                  <div style={{ fontSize: 12, color: "#aaa", fontFamily: mono, lineHeight: 1.7 }}>No reviews yet. Be the first!</div>
+                  <div style={{ fontSize: 12, color: "#aaa", fontFamily: pdMono, lineHeight: 1.7 }}>No reviews yet. Be the first!</div>
                   {user && (
                     <button
                       onClick={() => navigate(`#/review/${productId}`)}
                       style={{
                         marginTop: 14, background: BRAND, color: "#fff", border: "none",
                         padding: "10px 20px", fontSize: 10, fontWeight: 900,
-                        letterSpacing: "0.12em", fontFamily: ff, cursor: "pointer",
+                        letterSpacing: "0.12em", fontFamily: pdSans, cursor: "pointer",
                       }}
                     >
                       WRITE A REVIEW
@@ -3736,7 +3724,7 @@ function ProductReviewsSection({ productId, navigate }) {
 
             <div>
               {reviews.length === 0 ? (
-                <div style={{ padding: "32px 0", color: "#aaa", fontFamily: mono, fontSize: 13 }}>
+                <div style={{ padding: "32px 0", color: "#aaa", fontFamily: pdMono, fontSize: 13 }}>
                   No reviews yet for this product.
                 </div>
               ) : (
@@ -3748,23 +3736,23 @@ function ProductReviewsSection({ productId, navigate }) {
                           <div style={{ color: "#f5a623", fontSize: 16, letterSpacing: 2, marginBottom: 4 }}>
                             {"★".repeat(Number(r.rating) || 0)}{"☆".repeat(5 - (Number(r.rating) || 0))}
                           </div>
-                          <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 12, color: BLACK, letterSpacing: "0.04em" }}>
+                          <div style={{ fontFamily: pdSans, fontWeight: 900, fontSize: 12, color: BLACK, letterSpacing: "0.04em" }}>
                             {r.authorName || r.fullName || "Verified Buyer"}
                           </div>
                         </div>
                         <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 6 }}>
                           {(r.verifiedPurchase === true || r.verifiedPurchase === "TRUE" || r.verifiedPurchase === "true") && (
-                            <span style={{ fontSize: 9, fontWeight: 900, letterSpacing: "0.1em", padding: "3px 8px", background: "#eaf5ef", color: "#2a8a50", fontFamily: ff }}>
+                            <span style={{ fontSize: 9, fontWeight: 900, letterSpacing: "0.1em", padding: "3px 8px", background: "#eaf5ef", color: "#2a8a50", fontFamily: pdSans }}>
                               ✓ VERIFIED PURCHASE
                             </span>
                           )}
-                          <span style={{ fontSize: 10, color: "#bbb", fontFamily: mono }}>
+                          <span style={{ fontSize: 10, color: "#bbb", fontFamily: pdMono }}>
                             {r.createdAt ? new Date(r.createdAt).toLocaleDateString("en-PK", { year: "numeric", month: "short", day: "numeric" }) : ""}
                           </span>
                         </div>
                       </div>
                       {r.review && (
-                        <p style={{ fontSize: 13, color: "#555", fontFamily: mono, margin: 0, lineHeight: 1.8 }}>
+                        <p style={{ fontSize: 13, color: "#555", fontFamily: pdMono, margin: 0, lineHeight: 1.8 }}>
                           {r.review}
                         </p>
                       )}
@@ -3777,7 +3765,7 @@ function ProductReviewsSection({ productId, navigate }) {
                       style={{
                         background: "none", border: `1.5px solid ${BLACK}`, color: BLACK,
                         padding: "11px 24px", fontSize: 11, fontWeight: 900,
-                        letterSpacing: "0.12em", fontFamily: ff, cursor: "pointer", marginTop: 8,
+                        letterSpacing: "0.12em", fontFamily: pdSans, cursor: "pointer", marginTop: 8,
                       }}
                     >
                       {showAll ? `SHOW FEWER ↑` : `VIEW ALL ${reviews.length} REVIEWS ↓`}

@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Apps Script backend — contains SECRET_KEY / ADMIN_SECRET, never commit
+appscript/

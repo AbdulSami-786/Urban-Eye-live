@@ -69,6 +69,14 @@ export function AuthProvider({ children }) {
     restoreSession();
   }, []);
 
+  // The API rejected the saved token (service.js already cleared it), so the
+  // session is gone — drop the stale user so the site asks for a new login.
+  useEffect(() => {
+    const onExpired = () => setUser(null);
+    window.addEventListener("auth:expired", onExpired);
+    return () => window.removeEventListener("auth:expired", onExpired);
+  }, []);
+
   // SIGN UP — returns Promise<{ ok, error? }>
   const signup = useCallback(async ({ name, phone, email, address, password }) => {
     try {

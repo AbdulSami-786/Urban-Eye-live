@@ -1212,7 +1212,8 @@ export function ProductCard({ product, navigate, type = "default" }) {
   const handleAdd = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    addToCart(product, 1);
+    // The card has no lens picker, so the colour's default lens is used.
+    addToCart(product, 1, { color: selectedVariant?.name });
     setAddedMsg(true);
     setTimeout(() => setAddedMsg(false), 1800);
   };

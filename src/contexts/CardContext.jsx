@@ -55,8 +55,34 @@
 import { createContext, useContext, useState, useCallback, useEffect } from "react";
 import { addToCart as apiAddToCart, updateCart as apiUpdateCart, removeFromCart as apiRemoveFromCart } from "../services/service.js";
 import { useAuth } from "../Auth/auth.jsx";
+import { getProductVariants, getVariantLenses, getProductDisplayImage } from "../services/productUtils.js";
 
 export const CartContext = createContext(null);
+
+// One frame can be in the bag in several colour / lens combinations, so a cart
+// line is keyed by all three. Carts saved before lenses were tracked only have
+// `id`, which still works as their key.
+export function getCartLineKey(item) {
+  return item.cartKey || item.id;
+}
+
+// The frame colour and lens the shopper picked, defaulting to the product's
+// first colour and that colour's first lens (what the card / page shows first).
+function resolveSelection(product, { color, lens } = {}) {
+  const variants = getProductVariants(product);
+  const variant = variants.find(v => v.name === color) || variants[0] || null;
+  return {
+    color: color || variant?.name || "",
+    lens: lens || getVariantLenses(variant, product)[0]?.name || "",
+  };
+}
+
+// "Andrew — Light Brown frame, Pastel lens": the name the order is saved under,
+// so the admin panel, order emails and "My Orders" all show what was picked.
+export function describeCartLine(item) {
+  const parts = [item.color && `${item.color} frame`, item.lens && `${item.lens} lens`].filter(Boolean);
+  return parts.length ? `${item.name} — ${parts.join(", ")}` : item.name;
+}
 
 // Read the saved cart synchronously so the very first render already has the
 // items. Loading it in an effect instead created a race: the "save" effect
@@ -105,18 +131,24 @@ export function CartProvider({ children }) {
   }, [cartItems, syncing]);
 
   // Add to Cart - ONLY localStorage, NO database call yet
-  const addToCart = useCallback((product, qty = 1) => {
+  // `options` = { color, lens } picked on the product page / card.
+  const addToCart = useCallback((product, qty = 1, options = {}) => {
+    const { color, lens } = resolveSelection(product, options);
+    const cartKey = [product.id, color, lens].join("|");
     setCartItems(prev => {
-      const ex = prev.find(i => i.id === product.id);
+      const ex = prev.find(i => getCartLineKey(i) === cartKey);
       if (ex) {
-        return prev.map(i => i.id === product.id ? { ...i, qty: i.qty + qty } : i);
+        return prev.map(i => getCartLineKey(i) === cartKey ? { ...i, qty: i.qty + qty } : i);
       }
       return [...prev, {
         ...product,
         qty,
         id: product.id,
-        // Resolve a displayable image so cart/drawer thumbnails render.
-        image: resolveCartImage(product),
+        cartKey,
+        color,
+        lens,
+        // Show the chosen colour + lens in the bag, falling back to any image.
+        image: getProductDisplayImage(product, color, lens).displayImage || resolveCartImage(product),
         // Mark as not synced to database yet
         _needsSync: true
       }];
@@ -124,17 +156,17 @@ export function CartProvider({ children }) {
   }, []);
 
   // Remove from Cart - ONLY localStorage, NO database call yet
-  const removeFromCart = useCallback((id) => {
-    setCartItems(prev => prev.filter(i => i.id !== id));
+  const removeFromCart = useCallback((key) => {
+    setCartItems(prev => prev.filter(i => getCartLineKey(i) !== key));
   }, []);
 
   // Update quantity - ONLY localStorage, NO database call yet
-  const updateQty = useCallback((id, qty) => {
+  const updateQty = useCallback((key, qty) => {
     if (qty < 1) {
-      removeFromCart(id);
+      removeFromCart(key);
       return;
     }
-    setCartItems(prev => prev.map(i => i.id === id ? { ...i, qty, _needsSync: true } : i));
+    setCartItems(prev => prev.map(i => getCartLineKey(i) === key ? { ...i, qty, _needsSync: true } : i));
   }, [removeFromCart]);
 
   // Clear cart - ONLY localStorage
@@ -190,11 +222,12 @@ export function CartProvider({ children }) {
   const getCheckoutItems = useCallback(() => {
     return cartItems.map(item => ({
       productId: item.id,
-      name: item.name,
+      name: describeCartLine(item),
       price: item.discountPrice || item.price,
       quantity: item.qty,
       image: item.image,
       color: item.color,
+      lens: item.lens,
       category: item.category,
       gender: item.gender,
       subcategory: item.subcategory

@@ -583,6 +583,18 @@ function clearToken() {
   try { localStorage.removeItem("os_token"); localStorage.removeItem("os_user"); } catch {}
 }
 
+// The backend answers "Unauthorised." when the saved token is missing or no
+// longer valid (e.g. the session expired). The browser still holds the old
+// user, so drop it and tell AuthProvider to log out and ask for a fresh login.
+export const SESSION_EXPIRED_MESSAGE = "Your session has expired. Please log in again.";
+function checkAuthError(json) {
+  if (!json.success && /unauthori[sz]ed/i.test(json.error || "")) {
+    clearToken();
+    try { window.dispatchEvent(new CustomEvent("auth:expired")); } catch {}
+    throw new Error(SESSION_EXPIRED_MESSAGE);
+  }
+}
+
 // ─── CORE REQUEST HELPERS ───────────────────────────────────
 async function apiGet(action, params = {}) {
   const token = getToken();
@@ -593,6 +605,7 @@ async function apiGet(action, params = {}) {
   });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const json = await res.json();
+  checkAuthError(json);
   if (!json.success) throw new Error(json.error || "Request failed");
   return json;
 }
@@ -607,6 +620,7 @@ async function apiPost(action, body = {}) {
   });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const json = await res.json();
+  checkAuthError(json);
   if (!json.success) throw new Error(json.error || "Request failed");
   return json;
 }
@@ -695,6 +709,8 @@ export async function checkout({ cartItems, subtotal, shipping, total, address, 
     productId: item.productId || item.id,
     name: item.name || item.productName || "Product",
     sku: item.sku || item.id || item.productId || "",
+    frameColor: item.color || "",
+    lensColor: item.lens || "",
     unitPrice: Number(item.discountPrice || item.price || 0),
     quantity: Number(item.qty || item.quantity || 1),
     subtotal: Number((item.discountPrice || item.price || 0) * (item.qty || item.quantity || 1))
