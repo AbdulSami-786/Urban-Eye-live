@@ -6,6 +6,7 @@ import { CartProvider, useCart } from "./contexts/CardContext.jsx";
 import { useHashRouter } from "./hook/usehashrooter.js";
 import { AuthProvider, useAuth, AuthModal } from "./Auth/auth.jsx";
 import { PRODUCTS_DATA } from "./prodcut.js";
+import { ff, mono } from "./contants/store.js";
 import { searchProducts, getProductDisplayPrice, getProductVariants, formatPriceValue, getUniqueShapesFromProducts } from "./services/productUtils.js";
 
 // ─── RESPONSIVE HOOK ────────────────────────────────────────────────────────
@@ -160,7 +161,6 @@ const ANNOUNCEMENTS = [
   "NEW SPRING 2026 COLLECTION — SHOP NOW",
 ];
 
-const ff = "'Franklin Gothic Medium','Arial Narrow', Arial, sans-serif";
 
 const iconBtn = {
   background: "none",
@@ -182,7 +182,7 @@ function FooterCol({ title, links, hrefs = {}, onLinkClick = {} }) {
   return (
     <div>
       <div style={{
-        fontSize: 11, fontWeight: 900, letterSpacing: "0.18em", color: "#6aadcc",
+        fontSize: 16, fontWeight: 700, letterSpacing: "0.5px", color: "#6aadcc",
         marginBottom: 16, fontFamily: ff, borderBottom: `2px solid ${NAVY}`,
         paddingBottom: 8, display: "inline-block"
       }}>
@@ -206,8 +206,8 @@ function FooterCol({ title, links, hrefs = {}, onLinkClick = {} }) {
                   }
                 }}
                 style={{
-                  fontSize: 13, color: "#7fa8bc", textDecoration: "none",
-                  letterSpacing: "0.02em", fontFamily: "'Courier New',Courier,monospace", transition: "color 0.2s"
+                  fontSize: 12, lineHeight: "24px", color: "#7fa8bc", textDecoration: "none",
+                  fontFamily: mono, transition: "color 0.2s"
                 }}
                 onMouseEnter={(e) => (e.target.style.color = ACCENT)}
                 onMouseLeave={(e) => (e.target.style.color = "#7fa8bc")}>
@@ -467,9 +467,9 @@ function AppInner() {
         <div style={{
           background: NAVY, color: ACCENT, textAlign: "center",
           marginTop: isMobile ? 56 : 60,
-          fontSize: isMobile ? 10 : 11,
-          letterSpacing: "0.14em", padding: isMobile ? "6px 16px" : "9px 48px",
-          position: "relative", fontFamily: ff
+          fontSize: isMobile ? 11 : 12,
+          letterSpacing: "0.5px", padding: isMobile ? "8px 36px" : "11px 48px",
+          position: "relative", fontFamily: mono
         }}>
           {ANNOUNCEMENTS[annIdx]}
           <button onClick={() => setAnnVisible(false)}
@@ -510,8 +510,8 @@ function AppInner() {
             <nav style={{ display: "flex", alignItems: "center", flex: 1, justifyContent: "center" }}>
               <a href="/products"
                 style={{
-                  background: "none", border: "none", fontSize: 12, fontWeight: 900,
-                  letterSpacing: "0.1em", padding: "0 18px", height: 62, cursor: "pointer",
+                  background: "none", border: "none", fontSize: 13, fontWeight: 500,
+                  letterSpacing: "0.5px", padding: "0 18px", height: 62, cursor: "pointer",
                   color: BLACK, fontFamily: ff,
                   borderBottom: window.location.pathname === "/products" ? `3px solid ${NAVY}` : "3px solid transparent",
                   transition: "border-color 0.2s", display: "flex", alignItems: "center", textDecoration: "none"
@@ -528,8 +528,8 @@ function AppInner() {
                       if (link.label === "STORY") goTo("#/story");
                     }}
                     style={{
-                      background: "none", border: "none", fontSize: 12, fontWeight: 900,
-                      letterSpacing: "0.1em", padding: "0 18px", height: 62, cursor: "pointer",
+                      background: "none", border: "none", fontSize: 13, fontWeight: 500,
+                      letterSpacing: "0.5px", padding: "0 18px", height: 62, cursor: "pointer",
                       color: BLACK, fontFamily: ff,
                       borderBottom: megaOpen === link.label ? `3px solid ${NAVY}` : "3px solid transparent",
                       transition: "border-color 0.2s", display: "flex", alignItems: "center", gap: 4
@@ -607,7 +607,7 @@ function AppInner() {
               <button onClick={() => goTo("#/products")}
                 style={{
                   background: NAVY, color: "#fff", border: "none", borderRadius: 0,
-                  padding: "10px 20px", fontSize: 11, fontWeight: 600, letterSpacing: "0.12em",
+                  padding: "11px 18px", fontSize: 12, fontWeight: 600, letterSpacing: "1px", lineHeight: "14px",
                   cursor: "pointer", fontFamily: ff, marginLeft: 4, transition: "opacity 0.18s"
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
@@ -639,7 +639,7 @@ function AppInner() {
                 style={{
                   width: "100%", padding: "11px 36px 11px 38px", border: `1.5px solid ${NAVY}`,
                   fontSize: isMobile ? 12 : 13, letterSpacing: "0.02em", outline: "none", background: "#fff",
-                  color: BLACK, fontFamily: "'Courier New',Courier,monospace", boxSizing: "border-box"
+                  color: BLACK, fontFamily: mono, boxSizing: "border-box"
                 }} />
               {searchVal && (
                 <button onClick={() => setSearchVal("")}
@@ -678,15 +678,15 @@ function AppInner() {
                             </div>
                             <div style={{ flex: 1, minWidth: 0 }}>
                               <div style={{
-                                fontSize: 13, fontWeight: 900, color: BLACK, fontFamily: ff,
+                                fontSize: 13, fontWeight: 700, color: BLACK, fontFamily: ff,
                                 letterSpacing: "0.04em", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"
                               }}>{p.name}</div>
-                              <div style={{ fontSize: 11, color: "#7a8a95", fontFamily: "'Courier New',Courier,monospace" }}>
+                              <div style={{ fontSize: 11, color: "#7a8a95", fontFamily: mono }}>
                                 {p.category}{p.subcategory ? ` · ${p.subcategory}` : ""}
                               </div>
                             </div>
                             <div style={{ flexShrink: 0, textAlign: "right", fontFamily: ff }}>
-                              <span style={{ fontSize: 13, fontWeight: 900, color: NAVY }}>PKR {formatPriceValue(discountPrice)}</span>
+                              <span style={{ fontSize: 13, fontWeight: 700, color: NAVY }}>PKR {formatPriceValue(discountPrice)}</span>
                               {onSale && (
                                 <div style={{ fontSize: 10, color: "#aaa", textDecoration: "line-through" }}>PKR {formatPriceValue(price)}</div>
                               )}
@@ -697,17 +697,17 @@ function AppInner() {
                       <button onClick={submitSearch}
                         style={{
                           display: "block", width: "100%", padding: "11px 12px", background: "#f0f8fc",
-                          border: "none", cursor: "pointer", fontSize: 11, fontWeight: 900,
+                          border: "none", cursor: "pointer", fontSize: 11, fontWeight: 700,
                           letterSpacing: "0.12em", color: NAVY, fontFamily: ff
                         }}>
                         SEE ALL RESULTS FOR “{searchVal.trim().toUpperCase()}” →
                       </button>
                     </>
                   ) : (
-                    <div style={{ padding: "16px 14px", fontSize: 12, color: "#7a8a95", fontFamily: "'Courier New',Courier,monospace" }}>
+                    <div style={{ padding: "16px 14px", fontSize: 12, color: "#7a8a95", fontFamily: mono }}>
                       No frames found for “{searchVal.trim()}”.
                       <button onClick={submitSearch}
-                        style={{ marginLeft: 6, background: "none", border: "none", color: NAVY, fontWeight: 900, cursor: "pointer", fontFamily: ff }}>
+                        style={{ marginLeft: 6, background: "none", border: "none", color: NAVY, fontWeight: 700, cursor: "pointer", fontFamily: ff }}>
                         Browse all →
                       </button>
                     </div>
@@ -738,7 +738,7 @@ function AppInner() {
             <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
               <a href="/products" onClick={() => goTo("/products")}
                 style={{
-                  padding: "12px 0", fontSize: 14, fontWeight: 900, color: BLACK,
+                  padding: "12px 0", fontSize: 14, fontWeight: 700, color: BLACK,
                   borderBottom: "1px solid #eee", fontFamily: ff, textDecoration: "none",
                   letterSpacing: "0.1em"
                 }}>
@@ -751,7 +751,7 @@ function AppInner() {
                       <div
                         onClick={() => setMegaOpen(megaOpen === link.label ? null : link.label)}
                         style={{
-                          padding: "12px 0", fontSize: 14, fontWeight: 900, color: BLACK,
+                          padding: "12px 0", fontSize: 14, fontWeight: 700, color: BLACK,
                           borderBottom: "1px solid #eee", fontFamily: ff,
                           display: "flex", justifyContent: "space-between", alignItems: "center",
                           cursor: "pointer", letterSpacing: "0.1em"
@@ -766,7 +766,7 @@ function AppInner() {
                         <div style={{ padding: "8px 0 12px 16px" }}>
                           {link.mega.cols.map((col) => (
                             <div key={col.title} style={{ marginBottom: 12 }}>
-                              <div style={{ fontSize: 11, fontWeight: 900, color: NAVY, marginBottom: 6, letterSpacing: "0.1em" }}>
+                              <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 6, letterSpacing: "0.1em" }}>
                                 {col.title}
                               </div>
                               <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
@@ -792,7 +792,7 @@ function AppInner() {
                               onClick={() => goTo(buildProductsLink(panel.to))}
                               style={{
                                 display: "block", background: panel.bg, padding: "10px 12px",
-                                marginTop: 8, fontSize: 13, fontWeight: 900, color: panel.dark ? "#fff" : NAVY,
+                                marginTop: 8, fontSize: 13, fontWeight: 700, color: panel.dark ? "#fff" : NAVY,
                                 textDecoration: "none", textAlign: "center", border: `1px solid ${NAVY}`,
                                 letterSpacing: "0.1em"
                               }}
@@ -806,7 +806,7 @@ function AppInner() {
                   ) : (
                     <button onClick={() => { if (link.label === "STORY") goTo("#/story"); }}
                       style={{
-                        padding: "12px 0", fontSize: 14, fontWeight: 900, color: BLACK,
+                        padding: "12px 0", fontSize: 14, fontWeight: 700, color: BLACK,
                         borderBottom: "1px solid #eee", fontFamily: ff,
                         display: "flex", justifyContent: "space-between", alignItems: "center",
                         cursor: "pointer", width: "100%", textAlign: "left", background: "none",
@@ -839,7 +839,7 @@ function AppInner() {
               {activeNav.mega.cols.map((col) => (
                 <div key={col.title} style={{ paddingRight: 24 }}>
                   <div style={{
-                    fontSize: 11, fontWeight: 900, letterSpacing: "0.16em", color: NAVY,
+                    fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: NAVY,
                     marginBottom: 16, fontFamily: ff, borderBottom: `2px solid ${NAVY}`,
                     paddingBottom: 8, display: "inline-block"
                   }}>
@@ -886,7 +886,7 @@ function AppInner() {
                       </svg>
                     </div>
                     <div style={{
-                      fontSize: 10, fontWeight: 900, letterSpacing: "0.12em",
+                      fontSize: 10, fontWeight: 700, letterSpacing: "0.12em",
                       color: panel.dark ? "#fff" : NAVY, fontFamily: ff, position: "relative", zIndex: 1
                     }}>
                       {panel.label}
@@ -914,14 +914,14 @@ function AppInner() {
         }}>
           <div>
             <div style={{
-              fontFamily: ff, fontSize: isMobile ? 18 : 22, fontWeight: 900,
-              letterSpacing: "0.04em", marginBottom: 6, color: "#fff"
+              fontFamily: ff, fontSize: isMobile ? 18 : 24, fontWeight: 700,
+              letterSpacing: "1px", marginBottom: 6, color: "#fff"
             }}>
               JOIN THE FAMILY
             </div>
             <div style={{
               fontSize: isMobile ? 12 : 13, color: "#6aadcc",
-              letterSpacing: "0.03em", fontFamily: "'Courier New',Courier,monospace"
+              fontFamily: mono
             }}>
               Get 10% off your first order — exclusive drops &amp; style guides.
             </div>
@@ -931,12 +931,12 @@ function AppInner() {
               style={{
                 flex: 1, minWidth: 0, background: "#0e1f2e", border: `1px solid #1a3a52`, borderRight: "none",
                 color: "#fff", padding: isMobile ? "12px 10px" : "12px 16px", fontSize: isMobile ? 12 : 13, outline: "none",
-                letterSpacing: "0.02em", fontFamily: "'Courier New',Courier,monospace"
+                letterSpacing: "0.02em", fontFamily: mono
               }} />
             <button style={{
               background: NAVY, color: ACCENT, border: `1px solid ${NAVY}`,
-              padding: isMobile ? "12px 12px" : "12px 18px", fontSize: isMobile ? 10 : 11, fontWeight: 900,
-              letterSpacing: "0.14em", cursor: "pointer", whiteSpace: "nowrap", fontFamily: ff
+              padding: isMobile ? "12px 14px" : "12px 22px", fontSize: 13, fontWeight: 600,
+              letterSpacing: "1.6px", cursor: "pointer", whiteSpace: "nowrap", fontFamily: ff
             }}>
               SUBSCRIBE
             </button>
@@ -953,19 +953,19 @@ function AppInner() {
         }}>
           <div>
             <div style={{
-              fontFamily: ff, fontSize: isMobile ? 18 : 22, fontWeight: 900,
+              fontFamily: ff, fontSize: isMobile ? 18 : 22, fontWeight: 700,
               letterSpacing: "0.06em", marginBottom: 2, color: "#fff"
             }}>
               URBAN EYE
             </div>
-            <div style={{ fontSize: 9, letterSpacing: "0.28em", color: "#3a6a8a", marginBottom: 16 }}>
+            <div style={{ fontSize: 9, letterSpacing: "0.1em", color: "#3a6a8a", marginBottom: 16 }}>
               EST. 1999 · KARACHI
             </div>
             <div style={{ width: 36, height: 3, background: NAVY, marginBottom: 16 }} />
             <div style={{ borderLeft: `2px solid #1a3a52`, paddingLeft: 14, marginBottom: 20 }}>
               {/* <p style={{
                 fontSize: isMobile ? 12 : 13, color: "#6aadcc", lineHeight: 1.8, margin: 0,
-                fontStyle: "italic", fontFamily: "'Courier New',Courier,monospace"
+                fontStyle: "italic", fontFamily: mono
               }}>
                 
               </p> */}
@@ -974,7 +974,7 @@ function AppInner() {
             </div>
             <p style={{
               fontSize: isMobile ? 12 : 13, color: "#5a8aaa", lineHeight: 1.8, maxWidth: 260,
-              marginBottom: 20, fontFamily: "'Courier New',Courier,monospace"
+              marginBottom: 20, fontFamily: mono
             }}>
               Premium eyewear for those who see the world differently. Karachi's destination for iconic frames since 1999.
             </p>
@@ -987,7 +987,7 @@ function AppInner() {
       style={{
         width: 32, height: 32, border: `1px solid #1a3a52`, display: "flex",
         alignItems: "center", justifyContent: "center", color: "#5a8aaa",
-        fontSize: 10, textDecoration: "none", fontFamily: ff, fontWeight: 900,
+        fontSize: 10, textDecoration: "none", fontFamily: ff, fontWeight: 700,
         letterSpacing: "0.05em", transition: "border-color 0.2s, color 0.2s"
       }}
       onMouseEnter={(e) => { e.currentTarget.style.borderColor = ACCENT; e.currentTarget.style.color = ACCENT; }}
@@ -1038,15 +1038,15 @@ function AppInner() {
           display: "flex", flexWrap: "wrap",
           justifyContent: "space-between", alignItems: "center", gap: 10
         }}>
-          <div style={{ fontSize: isMobile ? 10 : 11, color: "#3a6a8a", letterSpacing: "0.05em", fontFamily: ff }}>
+          <div style={{ fontSize: 11, color: "#3a6a8a", fontFamily: mono }}>
             © 2026 Urban Eye. All rights reserved.
           </div>
           <div style={{ display: "flex", gap: isMobile ? 12 : 18, flexWrap: "wrap" }}>
             {["Privacy Policy", "Terms of Service", "Accessibility"].map((link) => (
               <a key={link} href="#"
                 style={{
-                  fontSize: isMobile ? 10 : 11, color: "#3a6a8a", textDecoration: "none",
-                  letterSpacing: "0.05em", fontFamily: ff, transition: "color 0.2s"
+                  fontSize: 11, color: "#3a6a8a", textDecoration: "none",
+                  fontFamily: mono, transition: "color 0.2s"
                 }}
                 onMouseEnter={(e) => (e.target.style.color = ACCENT)}
                 onMouseLeave={(e) => (e.target.style.color = "#3a6a8a")}>
@@ -1058,7 +1058,7 @@ function AppInner() {
             {["VISA", "MC", "AMEX", "COD"].map((card) => (
               <span key={card}
                 style={{
-                  fontSize: 9, fontWeight: 900, letterSpacing: "0.1em",
+                  fontSize: 9, fontWeight: 700, letterSpacing: "0.1em",
                   border: `1px solid #1a3a52`, padding: "3px 7px", color: "#3a6a8a", fontFamily: ff
                 }}>
                 {card}
@@ -1120,7 +1120,7 @@ function AppInner() {
         border: "none",
         cursor: "pointer",
         fontSize: 22,
-        fontWeight: 900,
+        fontWeight: 700,
         color: NAVY,
         display: "flex",
         alignItems: "center",

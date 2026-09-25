@@ -6,6 +6,18 @@ html, body {
   max-width: 100%;
 }
 
+/* Moscot-style base type: Roboto Mono body copy (14px, 12.6px on phones);
+   headings and buttons set Montserrat inline via `ff`. */
+body {
+  font-family: 'Roboto Mono', 'Courier New', monospace;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@media (max-width: 767px) {
+  body { font-size: 12.6px; }
+}
+
 #root {
   overflow-x: hidden;
   max-width: 100%;

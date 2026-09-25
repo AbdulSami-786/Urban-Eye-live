@@ -513,8 +513,10 @@
 export const YELLOW = "#F5C800";
 export const BLACK  = "#0A0A0A";
 export const CREAM  = "#F5F0E8";
-export const ff     = "'Franklin Gothic Medium','Arial Narrow', Arial, sans-serif";
-export const mono   = "'Courier New', Courier, monospace";
+// Moscot's type system: Montserrat for headings / buttons / menus, Roboto
+// Mono for body copy, prices and labels. Both are loaded in index.html.
+export const ff     = "'Montserrat', 'Helvetica Neue', Arial, sans-serif";
+export const mono   = "'Roboto Mono', 'Courier New', monospace";
 
 // COLLECTIONS
 // Product data stores categories as "Optical"/"Sunglass" and genders in mixed

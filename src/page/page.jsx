@@ -7,7 +7,7 @@ import { BLACK, CREAM, ff, mono, COLLECTIONS,
          HERO_SLIDES, HOME_PRODUCTS, TESTIMONIALS, PROCESS_STEPS, CATEGORIES_HOME,
          tagColors } from "../contants/store.js";
 import { applyProductFilters, getProductColorOptions, getProductBrandOptions, getProductSizeOptions, getProductDisplayPrice, getProductDiscountPercent, getProductDisplayImage, getProductDisplaySpecifications, getProductDescription, getRelatedProducts, getProductVariants, getVariantLenses, getSelectedLens, getVariantLensPreviews, getLensSwatch, productMatchesShape, getUniqueShapesFromProducts, normalizeCategory, normalizeGender, formatPriceValue, matchesSearchTerm } from "../services/productUtils.js";
-import { YBtn, OutlineBtn, FadeIn, Counter, Frame, ProductCard, ProductSlider, WishlistHeart, WishlistSkeleton } from "../components/shared";
+import { YBtn, OutlineBtn, FadeIn, Counter, Frame, ProductCard, ProductSlider, WishlistHeart, WishlistSkeleton, MOSCOT_BUTTON } from "../components/shared";
 import { useLensCycle } from "../hook/useLensCycle.js";
 import { useCart, getCartLineKey } from "../contexts/CardContext";
 import { useAuth, AuthModal } from "../Auth/auth.jsx";
@@ -134,8 +134,8 @@ function Breadcrumb({ crumbs }) {
           <span key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
             {i > 0 && <span style={{ color: "#bbb", fontSize: 10 }}>›</span>}
             {crumb.path
-              ? <a href={crumb.path.startsWith("#") ? crumb.path.slice(1) : crumb.path} style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.14em", color: "#888", textDecoration: "none", fontFamily: ff }}>{crumb.label}</a>
-              : <span aria-current="page" style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.14em", color: BLACK, fontFamily: ff }}>{crumb.label}</span>}
+              ? <a href={crumb.path.startsWith("#") ? crumb.path.slice(1) : crumb.path} style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", color: "#888", textDecoration: "none", fontFamily: ff }}>{crumb.label}</a>
+              : <span aria-current="page" style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", color: BLACK, fontFamily: ff }}>{crumb.label}</span>}
           </span>
         ))}
       </div>
@@ -317,7 +317,7 @@ function FilterSidebar({ allProducts, activeFilters, setActiveFilters, filtersOp
       <button onClick={() => toggleSec(id)} style={{
         width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center",
         padding: "14px 0", background: "none", border: "none", cursor: "pointer",
-        fontFamily: ff, fontWeight: 900, fontSize: 12, letterSpacing: "0.14em", color: BLACK,
+        fontFamily: ff, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", color: BLACK,
       }}>
         {title}
         <span style={{ fontSize: 10, color: "#999", display: "block", transition: "transform 0.2s", transform: open[id] ? "rotate(180deg)" : "none" }}>▲</span>
@@ -371,7 +371,7 @@ function FilterSidebar({ allProducts, activeFilters, setActiveFilters, filtersOp
     <div style={wrapStyle}>
       {isMobile && (
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
-          <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 14, letterSpacing: "0.12em" }}>FILTER</div>
+          <div style={{ fontFamily: ff, fontWeight: 700, fontSize: 14, letterSpacing: "0.12em" }}>FILTER</div>
           <button onClick={onClose} style={{ background: "none", border: "none", fontSize: 24, cursor: "pointer", color: BLACK, lineHeight: 1 }}>×</button>
         </div>
       )}
@@ -395,7 +395,7 @@ function FilterSidebar({ allProducts, activeFilters, setActiveFilters, filtersOp
                 ) : (
                   <ShapeIcon shape={shapeValue} active={on} />
                 )}
-                <span style={{ fontSize: 9, fontWeight: 900, letterSpacing: "0.1em", fontFamily: ff, color: on ? BRAND_TEXT : "#555" }}>
+                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", fontFamily: ff, color: on ? BRAND_TEXT : "#555" }}>
                   {shapeValue.toUpperCase()}
                 </span>
                 <span style={{ fontSize: 9, color: on ? "rgba(255,255,255,0.6)" : "#aaa", fontFamily: mono }}>({matches.length})</span>
@@ -476,7 +476,7 @@ function FilterSortBar({ filtersOpen, toggleFilters, isMobile, sort, setSort, co
           <button onClick={toggleFilters} style={{
             background: "none", border: "none", cursor: "pointer",
             display: "flex", alignItems: "center", gap: 8,
-            fontSize: 12, fontWeight: 900, letterSpacing: "0.12em",
+            fontSize: 12, fontWeight: 700, letterSpacing: "0.12em",
             color: BLACK, fontFamily: ff, padding: 0, whiteSpace: "nowrap", flexShrink: 0,
           }}>
             <svg width="17" height="13" viewBox="0 0 18 14" fill="none">
@@ -498,7 +498,7 @@ function FilterSortBar({ filtersOpen, toggleFilters, isMobile, sort, setSort, co
                   style={{
                     display: "flex", alignItems: "center", gap: 4,
                     background: BRAND, color: BRAND_TEXT, border: "none",
-                    padding: "3px 8px 3px 9px", fontSize: 9, fontWeight: 900,
+                    padding: "3px 8px 3px 9px", fontSize: 9, fontWeight: 700,
                     letterSpacing: "0.08em", cursor: "pointer", whiteSpace: "nowrap",
                   }}>
                   {labelFor(grp, v)} <span style={{ fontSize: 12, lineHeight: 1 }}>×</span>
@@ -547,7 +547,7 @@ export function CollectionsLandingPage({ navigate }) {
 
       <div style={{ maxWidth: 1400, margin: "0 auto", padding: "60px 20px 80px" }}>
         <div style={{ marginBottom: 60 }}>
-          <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 8 }}>FEATURED</div>
+          <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#888", marginBottom: 8 }}>FEATURED</div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 3 }}>
             {COLLECTIONS_PAGE_DATA.slice(0, 2).map((col, i) => (
               <FadeIn key={col.slug} delay={i * 80}>
@@ -557,11 +557,11 @@ export function CollectionsLandingPage({ navigate }) {
                   <div style={{ position: "absolute", top: "35%", left: "50%", transform: "translate(-50%,-50%)", opacity: 0.08 }}>
                     <Frame shape={col.shape} size={220} color={col.dark ? "#fff" : "#000"} />
                   </div>
-                  {col.tag && <div style={{ position: "absolute", top: 20, left: 20, background: BRAND, color: BRAND_TEXT, fontSize: 9, fontWeight: 900, letterSpacing: "0.18em", padding: "5px 12px", fontFamily: ff }}>{col.tag}</div>}
-                  <div style={{ fontSize: 10, letterSpacing: "0.16em", color: col.dark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)", marginBottom: 6 }}>{PRODUCTS_DATA.filter(COLLECTIONS[col.slug]?.filter || (() => false)).length} STYLES</div>
-                  <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: 32, color: col.dark ? "#fff" : BLACK, margin: "0 0 8px", letterSpacing: "0.02em" }}>{col.name.toUpperCase()}</h2>
+                  {col.tag && <div style={{ position: "absolute", top: 20, left: 20, background: BRAND, color: BRAND_TEXT, fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", padding: "5px 12px", fontFamily: ff }}>{col.tag}</div>}
+                  <div style={{ fontSize: 10, letterSpacing: "0.1em", color: col.dark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)", marginBottom: 6 }}>{PRODUCTS_DATA.filter(COLLECTIONS[col.slug]?.filter || (() => false)).length} STYLES</div>
+                  <h2 style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? 18 : 24, color: col.dark ? "#fff" : BLACK, margin: "0 0 8px", letterSpacing: "1px" }}>{col.name.toUpperCase()}</h2>
                   <p style={{ fontSize: 13, color: col.dark ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.5)", fontFamily: mono, margin: "0 0 16px" }}>{col.desc}</p>
-                  <div style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: "#89c4e1", fontFamily: ff }}>SHOP COLLECTION →</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "#89c4e1", fontFamily: ff }}>SHOP COLLECTION →</div>
                 </div>
               </FadeIn>
             ))}
@@ -569,7 +569,7 @@ export function CollectionsLandingPage({ navigate }) {
         </div>
 
         <div>
-          <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 8 }}>ALL COLLECTIONS</div>
+          <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#888", marginBottom: 8 }}>ALL COLLECTIONS</div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 3 }}>
             {COLLECTIONS_PAGE_DATA.slice(2).map((col, i) => (
               <FadeIn key={col.slug} delay={i * 60}>
@@ -579,10 +579,10 @@ export function CollectionsLandingPage({ navigate }) {
                   <div style={{ position: "absolute", top: "40%", left: "50%", transform: "translate(-50%,-50%)", opacity: 0.07 }}>
                     <Frame shape={col.shape} size={160} color={col.dark ? "#fff" : "#000"} />
                   </div>
-                  {col.tag && <div style={{ position: "absolute", top: 14, left: 14, background: BRAND, color: BRAND_TEXT, fontSize: 8, fontWeight: 900, letterSpacing: "0.16em", padding: "4px 10px", fontFamily: ff }}>{col.tag}</div>}
-                  <div style={{ fontSize: 9, letterSpacing: "0.16em", color: col.dark ? "rgba(255,255,255,0.35)" : "rgba(0,0,0,0.35)", marginBottom: 4 }}>{PRODUCTS_DATA.filter(COLLECTIONS[col.slug]?.filter || (() => false)).length} STYLES</div>
-                  <h3 style={{ fontFamily: ff, fontWeight: 900, fontSize: 20, color: col.dark ? "#fff" : BLACK, margin: "0 0 6px" }}>{col.name.toUpperCase()}</h3>
-                  <div style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.14em", color: "#89c4e1" }}>EXPLORE →</div>
+                  {col.tag && <div style={{ position: "absolute", top: 14, left: 14, background: BRAND, color: BRAND_TEXT, fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", padding: "4px 10px", fontFamily: ff }}>{col.tag}</div>}
+                  <div style={{ fontSize: 9, letterSpacing: "0.1em", color: col.dark ? "rgba(255,255,255,0.35)" : "rgba(0,0,0,0.35)", marginBottom: 4 }}>{PRODUCTS_DATA.filter(COLLECTIONS[col.slug]?.filter || (() => false)).length} STYLES</div>
+                  <h3 style={{ fontFamily: ff, fontWeight: 700, fontSize: 20, color: col.dark ? "#fff" : BLACK, margin: "0 0 6px" }}>{col.name.toUpperCase()}</h3>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", color: "#89c4e1" }}>EXPLORE →</div>
                 </div>
               </FadeIn>
             ))}
@@ -625,7 +625,7 @@ export function AboutUsPage({ navigate }) {
 
       <div style={{ maxWidth: 1000, margin: "0 auto", padding: isMobile ? "48px 20px" : "72px 40px" }}>
         <FadeIn>
-          <div style={{ textAlign: "center", fontSize: 11, fontWeight: 900, letterSpacing: "0.16em", color: "#666", marginBottom: 24 }}>URBAN EYE</div>
+          <div style={{ textAlign: "center", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "#666", marginBottom: 24 }}>URBAN EYE</div>
           <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
             <p style={{ fontFamily: mono, fontSize: isMobile ? 13 : 14, lineHeight: 1.9, color: "#444", margin: "0 0 20px" }}>
               With a legacy spanning three generations, Urban Eye has become one of Karachi's most trusted destinations for premium eyewear. From our flagship store in Zamzama, we bring together iconic global brands, timeless elegance, and personalized service to deliver an eyewear experience defined by style, quality, and customer satisfaction.
@@ -637,8 +637,8 @@ export function AboutUsPage({ navigate }) {
         </FadeIn>
 
         <FadeIn delay={80}>
-          <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 8, textAlign: "center" }}>VISIT US</div>
-          <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(22px, 6vw, 30px)" : "clamp(28px, 3.6vw, 40px)", textAlign: "center", margin: "0 0 40px" }}>OUR STORE</h2>
+          <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#888", marginBottom: 8, textAlign: "center" }}>VISIT US</div>
+          <h2 style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? 18 : 24, letterSpacing: "1px", textAlign: "center", margin: "0 0 40px" }}>OUR STORE</h2>
           <div style={{ maxWidth: 560, margin: "0 auto" }}>
             {SHOP_IMAGES.map((src, i) => (
               <div key={i} style={{ background: CREAM, display: "flex" }}>
@@ -649,8 +649,8 @@ export function AboutUsPage({ navigate }) {
         </FadeIn>
 
         <FadeIn delay={140}>
-          <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 8, textAlign: "center", marginTop: 64 }}>THE CRAFT</div>
-          <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(22px, 6vw, 30px)" : "clamp(28px, 3.6vw, 40px)", textAlign: "center", margin: "0 0 40px" }}>EVERY FRAME, UP CLOSE</h2>
+          <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#888", marginBottom: 8, textAlign: "center", marginTop: 64 }}>THE CRAFT</div>
+          <h2 style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? 18 : 24, letterSpacing: "1px", textAlign: "center", margin: "0 0 40px" }}>EVERY FRAME, UP CLOSE</h2>
           <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(2,1fr)" : "repeat(3,1fr)", gap: 10, marginBottom: 32 }}>
             {CRAFT_IMAGES.map((src) => (
               <div key={src} style={{ background: CREAM, display: "flex" }}>
@@ -775,10 +775,10 @@ export function HomePage({ navigate }) {
         }}
       >
         {discount > 0 && !product.tag && (
-          <div style={{ position: "absolute", top: 12, left: 12, zIndex: 2, background: BRAND, color: BRAND_TEXT, fontSize: 9, fontWeight: 900, letterSpacing: "0.1em", padding: "4px 8px" }}>−{discount}%</div>
+          <div style={{ position: "absolute", top: 12, left: 12, zIndex: 2, background: BRAND, color: BRAND_TEXT, fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", padding: "4px 8px" }}>−{discount}%</div>
         )}
         {product.tag && (
-          <div style={{ position: "absolute", top: 12, left: 12, zIndex: 2, background: BLACK, color: "#fff", fontSize: 9, fontWeight: 900, letterSpacing: "0.18em", padding: "4px 10px" }}>{product.tag}</div>
+          <div style={{ position: "absolute", top: 12, left: 12, zIndex: 2, background: BLACK, color: "#fff", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", padding: "4px 10px" }}>{product.tag}</div>
         )}
 
         <WishlistHeart productId={product.id} size="md" placement="card" />
@@ -858,8 +858,8 @@ export function HomePage({ navigate }) {
           )}
         </div>
         <div style={{ padding: "6px 14px 14px" }}>
-          <div style={{ fontSize: 9, color: "#aaa", letterSpacing: "0.14em", marginBottom: 2 }}>{(product.category || "Eyeglasses").toUpperCase()}</div>
-          <div style={{ fontFamily: ff, fontSize: isMobile ? 14 : 16, fontWeight: 900, letterSpacing: "0.05em", color: BLACK, marginBottom: 10 }}>
+          <div style={{ fontSize: 9, color: "#aaa", letterSpacing: "0.1em", marginBottom: 2 }}>{(product.category || "Eyeglasses").toUpperCase()}</div>
+          <div style={{ fontFamily: ff, fontSize: isMobile ? 14 : 16, fontWeight: 700, letterSpacing: "0.05em", color: BLACK, marginBottom: 10 }}>
             {product.name}
           </div>
           {/* Names the tint on screen while hovered; fixed height so nothing shifts */}
@@ -880,7 +880,7 @@ export function HomePage({ navigate }) {
                 border: `1.5px solid ${BRAND}`,
                 padding: "7px 16px",
                 fontSize: 10,
-                fontWeight: 900,
+                fontWeight: 700,
                 letterSpacing: "0.12em",
                 cursor: "pointer",
                 background: addedMsg ? "#16a34a" : hov ? BRAND : "transparent",
@@ -941,8 +941,8 @@ export function HomePage({ navigate }) {
         <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "repeat(2,1fr)" : "repeat(4,1fr)", gap: isMobile ? 16 : 0 }}>
           {[{ v: 150, s: "+", l: "Frame Styles" }, { v: 10, s: "+", l: "Years in Karachi" }, { v: 8500, s: "+", l: "Happy Customers" }, { v: 99, s: "%", l: "Satisfaction Rate" }].map((st, i) => (
             <FadeIn key={st.l} delay={i * 100} style={{ textAlign: "center", padding: "16px 0", borderRight: (i < 3 && !isMobile) ? "1px solid #1e1e1e" : "none" }}>
-              <div style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 8vw, 40px)" : "clamp(40px,5vw,64px)", color: BRAND, lineHeight: 1 }}><Counter target={st.v} suffix={st.s}/></div>
-              <div style={{ fontSize: 10, letterSpacing: "0.18em", color: "#555", marginTop: 8 }}>{st.l.toUpperCase()}</div>
+              <div style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? "clamp(28px, 8vw, 40px)" : "clamp(40px,5vw,64px)", color: BRAND, lineHeight: 1 }}><Counter target={st.v} suffix={st.s}/></div>
+              <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#555", marginTop: 8 }}>{st.l.toUpperCase()}</div>
             </FadeIn>
           ))}
         </div>
@@ -953,12 +953,12 @@ export function HomePage({ navigate }) {
         <FadeIn>
           <div style={{ maxWidth: 680, margin: "0 auto" }}>
             <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 28px" }}/>
-            <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 18 }}>EYE-CONIC EYEWEAR, SINCE 1999</div>
+            <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#888", marginBottom: 18 }}>EYE-CONIC EYEWEAR, SINCE 1999</div>
             <blockquote style={{ fontFamily: mono, fontSize: isMobile ? "clamp(16px, 5vw, 22px)" : "clamp(18px, 2.8vw, 28px)", lineHeight: 1.5, color: BLACK, margin: "0 0 20px", fontStyle: "italic" }}>"Elevating everyday style with thoughtfully crafted eyewear.<br />Inspired by our family legacy, designed for today's trendsetters."</blockquote>
-            <div style={{ fontSize: 11, letterSpacing: "0.16em", color: "#666", fontFamily: ff }}>  URBAN EYE</div>
+            <div style={{ fontSize: 11, letterSpacing: "0.1em", color: "#666", fontFamily: ff }}>  URBAN EYE</div>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
-              <a href="/story" style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: BLACK, textDecoration: "none", borderBottom: `2px solid ${BRAND}`, paddingBottom: 2 }}>OUR STORY</a>
-              <a href="/collections/eyeglasses" style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: "#888", textDecoration: "none", borderBottom: "2px solid #ddd", paddingBottom: 2 }}>SHOP EYEGLASSES</a>
+              <a href="/story" style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: BLACK, textDecoration: "none", borderBottom: `2px solid ${BRAND}`, paddingBottom: 2 }}>OUR STORY</a>
+              <a href="/collections/eyeglasses" style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "#888", textDecoration: "none", borderBottom: "2px solid #ddd", paddingBottom: 2 }}>SHOP EYEGLASSES</a>
             </div>
           </div>
         </FadeIn>
@@ -968,12 +968,12 @@ export function HomePage({ navigate }) {
       <section style={{ padding: isMobile ? "48px 20px" : "72px 40px", background: "#fff" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <FadeIn>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 36, flexWrap: "wrap", gap: 12 }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", marginBottom: 36, gap: 16 }}>
               <div>
-                <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 6 }}>BROWSE</div>
-                <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(22px, 6vw, 32px)" : "clamp(28px,4vw,46px)", margin: 0, letterSpacing: "0.02em" }}>SHOP BY CATEGORY</h2>
+                <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#888", marginBottom: 6 }}>BROWSE</div>
+                <h2 style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? 18 : 24, margin: 0, letterSpacing: "1px" }}>SHOP BY CATEGORY</h2>
               </div>
-              <a href="/collections/eyeglasses" style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", color: "#888", textDecoration: "none", borderBottom: `2px solid ${BRAND}`, paddingBottom: 2 }}>VIEW ALL →</a>
+              <a href="/collections/eyeglasses" style={{ fontSize: 13, fontFamily: mono, color: BLACK, textDecoration: "underline", textUnderlineOffset: 3 }}>View all</a>
             </div>
           </FadeIn>
           <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "repeat(2,1fr)" : "repeat(4,1fr)", gap: 2 }}>
@@ -984,9 +984,9 @@ export function HomePage({ navigate }) {
                   <div style={{ position: "absolute", top: "38%", left: "50%", transform: "translate(-50%,-50%)", opacity: 0.07 }}>
                     <Frame shape={cat.shape} size={isMobile ? 120 : 190} color={cat.dark ? "#fff" : "#000"}/>
                   </div>
-                  <div style={{ fontSize: 10, letterSpacing: "0.16em", marginBottom: 6, opacity: 0.5 }}>{cat.count.toUpperCase()}</div>
-                  <div style={{ fontFamily: ff, fontSize: isMobile ? 16 : 20, fontWeight: 900, letterSpacing: "0.04em" }}>{cat.label.toUpperCase()}</div>
-                  <div style={{ fontSize: 10, letterSpacing: "0.14em", marginTop: 12, color: cat.dark ? "#89c4e1" : BRAND, fontWeight: 900 }}>SHOP NOW →</div>
+                  <div style={{ fontSize: 10, letterSpacing: "0.1em", marginBottom: 6, opacity: 0.5 }}>{cat.count.toUpperCase()}</div>
+                  <div style={{ fontFamily: ff, fontSize: isMobile ? 16 : 20, fontWeight: 700, letterSpacing: "0.04em" }}>{cat.label.toUpperCase()}</div>
+                  <div style={{ fontSize: 10, letterSpacing: "0.1em", marginTop: 12, color: cat.dark ? "#89c4e1" : BRAND, fontWeight: 700 }}>SHOP NOW →</div>
                 </div>
               </FadeIn>
             ))}
@@ -998,14 +998,14 @@ export function HomePage({ navigate }) {
       <section style={{ padding: isMobile ? "48px 20px" : "72px 40px", background: "#FAFAF5" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <FadeIn>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 32, flexWrap: "wrap", gap: 12 }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", marginBottom: 32, gap: 16 }}>
               <div>
-                <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 6 }}>HANDPICKED</div>
-                <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(22px, 6vw, 32px)" : "clamp(28px,4vw,46px)", margin: 0, letterSpacing: "0.02em" }}>BEST SELLERS</h2>
+                <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#888", marginBottom: 6 }}>HANDPICKED</div>
+                <h2 style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? 18 : 24, margin: 0, letterSpacing: "1px" }}>BEST SELLERS</h2>
               </div>
               <div style={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
                 {FILTERS.map(f => (
-                  <button key={f} onClick={() => setFilter(f)} style={{ padding: "9px 16px", fontSize: isMobile ? 8 : 10, fontWeight: 900, letterSpacing: "0.14em", cursor: "pointer", border: `1.5px solid ${filter === f ? BRAND : "#ddd"}`, background: filter === f ? BRAND : "transparent", color: filter === f ? BRAND_TEXT : "#888", fontFamily: ff, transition: "all 0.2s" }}>{f.toUpperCase()}</button>
+                  <button key={f} onClick={() => setFilter(f)} style={{ padding: "10px 16px", fontSize: isMobile ? 11 : 12, fontWeight: 600, letterSpacing: "1px", cursor: "pointer", border: `1.5px solid ${filter === f ? BRAND : "#ddd"}`, background: filter === f ? BRAND : "transparent", color: filter === f ? BRAND_TEXT : "#888", fontFamily: ff, transition: "all 0.2s" }}>{f.toUpperCase()}</button>
                 ))}
               </div>
             </div>
@@ -1041,8 +1041,8 @@ export function HomePage({ navigate }) {
           <FadeIn>
             <div style={{ textAlign: "center", marginBottom: 56 }}>
               <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 20px" }}/>
-              <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#444", marginBottom: 10 }}>HOW IT WORKS</div>
-              <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(22px, 6vw, 32px)" : "clamp(28px,4vw,48px)", color: "#fff", margin: 0 }}>FROM BROWSE TO DELIVERED</h2>
+              <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#444", marginBottom: 10 }}>HOW IT WORKS</div>
+              <h2 style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? 18 : 24, letterSpacing: "1px", color: "#fff", margin: 0 }}>FROM BROWSE TO DELIVERED</h2>
             </div>
           </FadeIn>
           <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : isTablet ? "repeat(3,1fr)" : "repeat(4,1fr)", gap: 28, position: "relative" }}>
@@ -1050,8 +1050,8 @@ export function HomePage({ navigate }) {
             {PROCESS_STEPS.map((step, i) => (
               <FadeIn key={step.num} delay={i * 90}>
                 <div style={{ textAlign: "center", position: "relative", zIndex: 1 }}>
-                  <div style={{ width: 52, height: 52, borderRadius: "50%", border: `2px solid ${BRAND}`, background: BLACK, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px", fontFamily: ff, fontSize: 15, fontWeight: 900, color: "#89c4e1" }}>{step.num}</div>
-                  <div style={{ fontSize: 11, fontWeight: 900, color: "#fff", letterSpacing: "0.08em", marginBottom: 8 }}>{step.title}</div>
+                  <div style={{ width: 52, height: 52, borderRadius: "50%", border: `2px solid ${BRAND}`, background: BLACK, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px", fontFamily: ff, fontSize: 15, fontWeight: 700, color: "#89c4e1" }}>{step.num}</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: "#fff", letterSpacing: "0.08em", marginBottom: 8 }}>{step.title}</div>
                   <div style={{ fontSize: 12, color: "#555", lineHeight: 1.7, fontFamily: mono }}>{step.desc}</div>
                 </div>
               </FadeIn>
@@ -1065,14 +1065,14 @@ export function HomePage({ navigate }) {
         <div style={{ maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
           <FadeIn>
             <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 20px" }}/>
-            <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 8 }}>REVIEWS</div>
-            <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(22px, 6vw, 32px)" : "clamp(28px,4vw,46px)", marginBottom: 52, letterSpacing: "0.02em" }}>WHAT OUR CUSTOMERS SAY</h2>
+            <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#888", marginBottom: 8 }}>REVIEWS</div>
+            <h2 style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? 18 : 24, marginBottom: 52, letterSpacing: "1px" }}>WHAT OUR CUSTOMERS SAY</h2>
             <div style={{ position: "relative", minHeight: isMobile ? 400 : 300, padding: isMobile ? "0 20px" : 0, boxSizing: "border-box" }}>
               {TESTIMONIALS.map((t, i) => (
                 <div key={t.name} style={{ position: "absolute", inset: 0, opacity: i === testimonialIdx ? 1 : 0, transform: i === testimonialIdx ? "translateY(0)" : "translateY(10px)", transition: "all 0.7s ease", pointerEvents: i === testimonialIdx ? "auto" : "none" }}>
                   <div style={{ fontSize: 20, color: BRAND, marginBottom: 18, letterSpacing: 4 }}>{"★".repeat(t.rating)}</div>
                   <blockquote style={{ fontFamily: mono, fontStyle: "italic", lineHeight: 1.8, fontSize: isMobile ? "clamp(13px, 3.4vw, 15px)" : "clamp(14px,1.5vw,17px)", color: BLACK, margin: "0 0 24px" }}>"{t.text}"</blockquote>
-                  <div style={{ fontFamily: ff, fontSize: 12, fontWeight: 900, letterSpacing: "0.14em" }}>{t.name}</div>
+                  <div style={{ fontFamily: ff, fontSize: 12, fontWeight: 700, letterSpacing: "0.1em" }}>{t.name}</div>
                   <div style={{ fontSize: 11, color: "#888", letterSpacing: "0.1em", marginTop: 4 }}>{t.city}</div>
                 </div>
               ))}
@@ -1091,8 +1091,8 @@ export function HomePage({ navigate }) {
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <FadeIn>
             <div style={{ textAlign: "center", marginBottom: 36 }}>
-              <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 6 }}>CRAFTSMANSHIP</div>
-              <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(22px, 6vw, 32px)" : "clamp(28px,4vw,46px)", margin: 0, letterSpacing: "0.02em" }}>UP CLOSE</h2>
+              <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#888", marginBottom: 6 }}>CRAFTSMANSHIP</div>
+              <h2 style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? 18 : 24, margin: 0, letterSpacing: "1px" }}>UP CLOSE</h2>
             </div>
           </FadeIn>
           <div style={{ display: "grid", gridTemplateColumns: isMobile ? "repeat(2,1fr)" : "repeat(4,1fr)", gap: 3, marginBottom: 3 }}>
@@ -1114,9 +1114,9 @@ export function HomePage({ navigate }) {
         </div>
         <FadeIn>
           <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 24px" }}/>
-          <div style={{ fontSize: 10, letterSpacing: "0.26em", color: "#444", marginBottom: 14 }}>START YOUR JOURNEY</div>
-          <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 10vw, 48px)" : "clamp(48px,9vw,100px)", color: "#fff", lineHeight: 0.92, margin: "0 0 8px" }}>FIND YOUR</h2>
-          <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(28px, 10vw, 48px)" : "clamp(48px,9vw,100px)", color: "#89c4e1", lineHeight: 0.92, margin: "0 0 28px" }}>FRAME.</h2>
+          <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#444", marginBottom: 14 }}>START YOUR JOURNEY</div>
+          <h2 style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? "clamp(28px, 10vw, 48px)" : "clamp(48px,9vw,100px)", color: "#fff", lineHeight: 0.92, margin: "0 0 8px" }}>FIND YOUR</h2>
+          <h2 style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? "clamp(28px, 10vw, 48px)" : "clamp(48px,9vw,100px)", color: "#89c4e1", lineHeight: 0.92, margin: "0 0 28px" }}>FRAME.</h2>
           <p style={{ fontSize: isMobile ? 13 : 14, color: "rgba(255,255,255,0.35)", maxWidth: 420, margin: "0 auto 44px", lineHeight: 1.85, fontFamily: mono }}>150+ premium frames. Expert fitting. Free shipping across Pakistan.</p>
         </FadeIn>
       </section>
@@ -1237,7 +1237,7 @@ export function ProductsPage({ navigate, queryParams }) {
             <div style={{ display: "flex", width: "min(520px, 100%)", background: "#FAFAF8", border: "1px solid #e5e0d8", overflow: "hidden" }}>
               <input value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder="Search by name, price, or keyword — e.g. “Alex” or “under 8000”" style={{ flex: 1, minWidth: 0, border: "none", background: "transparent", padding: "12px 16px", fontSize: 13, fontFamily: mono, outline: "none" }} />
               {searchActive && (
-                <button onClick={() => setSearchTerm("")} aria-label="Clear search" style={{ border: "none", background: BRAND, color: BRAND_TEXT, padding: "0 16px", fontFamily: ff, fontWeight: 900, fontSize: 14, cursor: "pointer" }}>✕</button>
+                <button onClick={() => setSearchTerm("")} aria-label="Clear search" style={{ border: "none", background: BRAND, color: BRAND_TEXT, padding: "0 16px", fontFamily: ff, fontWeight: 700, fontSize: 14, cursor: "pointer" }}>✕</button>
               )}
             </div>
           </div>
@@ -1275,10 +1275,10 @@ export function ProductsPage({ navigate, queryParams }) {
       {searchActive && relatedProducts.length > 0 && (
         <div style={{ maxWidth: 1400, margin: "0 auto", padding: isMobile ? "0 12px 60px" : "0 24px 80px" }}>
           <div style={{ borderTop: "1px solid #e8e0d0", paddingTop: isMobile ? 28 : 40 }}>
-            <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#aaa", marginBottom: 6, fontFamily: ff }}>
+            <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#aaa", marginBottom: 6, fontFamily: ff }}>
               {filtered.length ? "YOU MAY ALSO LIKE" : "POPULAR PICKS"}
             </div>
-            <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(20px, 6vw, 28px)" : "clamp(22px, 3vw, 34px)", margin: "0 0 24px", letterSpacing: "0.02em", color: BLACK }}>
+            <h2 style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? 18 : 24, margin: "0 0 24px", letterSpacing: "1px", color: BLACK }}>
               RELATED FRAMES
             </h2>
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "repeat(3, 1fr)" : "repeat(4, 1fr)", gap: isMobile ? 12 : 20 }}>
@@ -1385,9 +1385,9 @@ export function CollectionDetailPage({ slug, navigate }) {
           {filtered.length === 0 ? (
             <div style={{ textAlign: "center", padding: "80px 0" }}>
               <div style={{ fontSize: 48, marginBottom: 16 }}>🔍</div>
-              <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 22, color: BLACK, marginBottom: 10, letterSpacing: "0.04em" }}>NO FRAMES FOUND</div>
+              <div style={{ fontFamily: ff, fontWeight: 700, fontSize: 22, color: BLACK, marginBottom: 10, letterSpacing: "0.04em" }}>NO FRAMES FOUND</div>
               <div style={{ fontSize: 13, color: "#888", fontFamily: mono, marginBottom: 28 }}>Try adjusting your filters.</div>
-              <button onClick={() => setActiveFilters({})} style={{ background: BLACK, color: "#fff", border: "none", padding: "12px 32px", fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", cursor: "pointer", fontFamily: ff }}>CLEAR FILTERS</button>
+              <button onClick={() => setActiveFilters({})} style={{ background: BLACK, color: "#fff", border: "none", padding: "12px 32px", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", cursor: "pointer", fontFamily: ff }}>CLEAR FILTERS</button>
             </div>
           ) : (
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "75%" : `repeat(${cols}, 1fr)`, justifyContent: isMobile ? "center" : "stretch", gap: isMobile ? 12 : 16, transition: "grid-template-columns 0.35s ease" }}>
@@ -1448,10 +1448,9 @@ function lensSwatchStyle(lensName) {
   };
 }
 
-// Product detail typography: a geometric sans for headings and buttons, a
-// monospace for prices, labels and body copy. Loaded in index.html.
-const pdSans = "'Montserrat', 'Helvetica Neue', Arial, sans-serif";
-const pdMono = "'Roboto Mono', 'Courier New', monospace";
+// Product detail typography — now the site-wide fonts.
+const pdSans = ff;
+const pdMono = mono;
 
 export function ProductDetailPage({ productId, navigate }) {
   const product = PRODUCTS_DATA.find(p => p.id === productId);
@@ -1525,7 +1524,7 @@ export function ProductDetailPage({ productId, navigate }) {
 
   if (!product) return (
     <div style={{ minHeight: "60vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: ff }}>
-      <div style={{ fontSize: 48, fontWeight: 900, color: BLACK, marginBottom: 16 }}>404</div>
+      <div style={{ fontSize: 48, fontWeight: 700, color: BLACK, marginBottom: 16 }}>404</div>
       <div style={{ fontSize: 14, color: "#888", fontFamily: mono, marginBottom: 28 }}>Frame not found.</div>
       <YBtn onClick={() => navigate("#/products")}>← BACK TO COLLECTION</YBtn>
     </div>
@@ -1580,7 +1579,7 @@ export function ProductDetailPage({ productId, navigate }) {
     const isOpen = openTab === id;
     return (
       <div style={{ borderBottom: "1px solid #e8e0d0" }}>
-        <button onClick={() => setOpenTab(isOpen ? null : id)} aria-expanded={isOpen} style={{ width: "100%", background: "none", border: "none", padding: "18px 0", display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer", fontFamily: pdSans, fontSize: isMobile ? 15 : 16, fontWeight: 700, letterSpacing: "0.06em", color: "#555", textAlign: "left" }}>
+        <button onClick={() => setOpenTab(isOpen ? null : id)} aria-expanded={isOpen} style={{ width: "100%", background: "none", border: "none", padding: "18px 0", display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer", fontFamily: pdSans, fontSize: isMobile ? 14 : 16, fontWeight: 700, letterSpacing: "1px", lineHeight: "22px", color: BLACK, opacity: isOpen ? 1 : 0.6, textAlign: "left" }}>
           {label}
           <span style={{ fontSize: 20, fontWeight: 400, lineHeight: 1, color: BLACK }}>{isOpen ? "−" : "+"}</span>
         </button>
@@ -1670,7 +1669,7 @@ export function ProductDetailPage({ productId, navigate }) {
           <FadeIn delay={120}>
             <div style={{ paddingTop: isMobile || isTablet ? 24 : 0 }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 16, marginBottom: 10 }}>
-                <h1 style={{ fontFamily: pdSans, fontWeight: 700, fontSize: isMobile ? 22 : 26, lineHeight: 1.15, color: BLACK, margin: 0, letterSpacing: "0.02em", textTransform: "uppercase" }}>
+                <h1 style={{ fontFamily: pdSans, fontWeight: 700, fontSize: isMobile ? 18 : 24, lineHeight: 1.2, color: BLACK, margin: 0, letterSpacing: "1px", textTransform: "uppercase" }}>
                   {product.name}
                 </h1>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
@@ -1748,7 +1747,7 @@ export function ProductDetailPage({ productId, navigate }) {
     otherwise a single non-interactive swatch showing the one it ships with */}
 {lensColorName && (
   <>
-    <div style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", color: BLACK, fontFamily: ff, marginBottom: 10 }}>
+    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", color: BLACK, fontFamily: ff, marginBottom: 10 }}>
       LENS COLOR
     </div>
     <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 18, flexWrap: "wrap" }}>
@@ -1824,18 +1823,18 @@ export function ProductDetailPage({ productId, navigate }) {
                 </div>
               </div>
 
-              <button onClick={() => { addToCart(product, qty, selection); setAdded(true); setTimeout(() => setAdded(false), 2500); }} style={{ width: "100%", minHeight: 48, background: added ? "#16a34a" : BRAND, color: BRAND_TEXT, border: "none", padding: "14px 24px", fontSize: 14, fontWeight: 600, letterSpacing: "0.04em", cursor: "pointer", fontFamily: pdSans, transition: "background 0.3s", marginBottom: 12 }}>
+              <button onClick={() => { addToCart(product, qty, selection); setAdded(true); setTimeout(() => setAdded(false), 2500); }} style={{ width: "100%", minHeight: 48, background: added ? "#16a34a" : BRAND, color: BRAND_TEXT, border: "none", ...MOSCOT_BUTTON, cursor: "pointer", fontFamily: pdSans, transition: "background 0.3s", marginBottom: 12 }}>
                 {added ? "✓ ADDED TO BAG" : "ADD TO BAG"}
               </button>
 
-              <button onClick={() => { if (!user) { setShowAuthPrompt(true); return; } addToCart(product, qty, selection); navigate("#/checkout"); }} style={{ width: "100%", minHeight: 48, background: "#fff", color: BRAND, border: `1px solid ${BRAND}`, padding: "14px 24px", fontSize: 14, fontWeight: 600, letterSpacing: "0.04em", cursor: "pointer", fontFamily: pdSans, transition: "background 0.2s, color 0.2s", marginBottom: 12 }}
+              <button onClick={() => { if (!user) { setShowAuthPrompt(true); return; } addToCart(product, qty, selection); navigate("#/checkout"); }} style={{ width: "100%", minHeight: 48, background: "#fff", color: BRAND, border: `1px solid ${BRAND}`, ...MOSCOT_BUTTON, cursor: "pointer", fontFamily: pdSans, transition: "background 0.2s, color 0.2s", marginBottom: 12 }}
                 onMouseEnter={(e) => { e.currentTarget.style.background = BRAND; e.currentTarget.style.color = BRAND_TEXT; }}
                 onMouseLeave={(e) => { e.currentTarget.style.background = "#fff"; e.currentTarget.style.color = BRAND; }}>
                 BUY NOW
               </button>
 
               {added && (
-                <button onClick={() => navigate("#/cart")} style={{ width: "100%", minHeight: 48, background: BRAND, color: BRAND_TEXT, border: "none", padding: "14px", fontSize: 14, fontWeight: 600, letterSpacing: "0.04em", cursor: "pointer", fontFamily: pdSans, marginBottom: 12 }}>
+                <button onClick={() => navigate("#/cart")} style={{ width: "100%", minHeight: 48, background: BRAND, color: BRAND_TEXT, border: "none", ...MOSCOT_BUTTON, cursor: "pointer", fontFamily: pdSans, marginBottom: 12 }}>
                   VIEW BAG & CHECKOUT →
                 </button>
               )}
@@ -1883,7 +1882,7 @@ export function ProductDetailPage({ productId, navigate }) {
           <div style={{ maxWidth: 1400, margin: "0 auto" }}>
             <FadeIn>
               <div style={{ textAlign: "center", marginBottom: isMobile ? 28 : 40 }}>
-                <h2 style={{ fontFamily: pdSans, fontWeight: 700, fontSize: isMobile ? 20 : 24, margin: "0 0 8px", letterSpacing: "0.02em", color: BLACK }}>YOU MAY ALSO LIKE</h2>
+                <h2 style={{ fontFamily: pdSans, fontWeight: 700, fontSize: isMobile ? 18 : 24, margin: "0 0 8px", letterSpacing: "1px", color: BLACK }}>YOU MAY ALSO LIKE</h2>
                 <button onClick={() => navigate("#/products")} style={{ background: "none", border: "none", padding: 0, fontSize: 13, cursor: "pointer", color: BLACK, fontFamily: pdMono, textDecoration: "underline", textUnderlineOffset: 3 }}>View all frames</button>
               </div>
             </FadeIn>
@@ -1927,7 +1926,7 @@ export function CartPage({ navigate }) {
     return (
       <div style={{ minHeight: "70vh", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: ff, background: "#f5f4f0" }}>
         <div style={{ textAlign: "center" }}>
-          <div style={{ fontSize: 12, letterSpacing: "0.2em", color: NAVY }}>LOADING YOUR CART...</div>
+          <div style={{ fontSize: 12, letterSpacing: "0.1em", color: NAVY }}>LOADING YOUR CART...</div>
         </div>
       </div>
     );
@@ -1936,10 +1935,10 @@ export function CartPage({ navigate }) {
   if (localCart.length === 0) return (
     <div style={{ minHeight: "70vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: ff, background: "#f5f4f0", padding: "20px" }}>
       <div style={{ width: 72, height: 72, border: "2px solid #ccc", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 24, fontSize: 28 }}>🛍️</div>
-      <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.2em", color: "#bbb", marginBottom: 12 }}>YOUR CART</div>
-      <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? 24 : 32, letterSpacing: "0.06em", color: BLACK, marginBottom: 10, textAlign: "center" }}>YOUR CART IS EMPTY</h2>
+      <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", color: "#bbb", marginBottom: 12 }}>YOUR CART</div>
+      <h2 style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? 18 : 24, letterSpacing: "1px", color: BLACK, marginBottom: 10, textAlign: "center" }}>YOUR CART IS EMPTY</h2>
       <p style={{ fontSize: 13, color: "#999", fontFamily: mono, marginBottom: 32, letterSpacing: "0.04em", textAlign: "center" }}>Add some frames to get started.</p>
-      <button onClick={() => navigate("#/products")} style={{ background: NAVY, border: "none", color: "#fff", fontFamily: ff, fontWeight: 900, fontSize: 12, letterSpacing: "0.18em", padding: "15px 32px", cursor: "pointer" }}
+      <button onClick={() => navigate("#/products")} style={{ background: NAVY, border: "none", color: "#fff", fontFamily: ff, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", padding: "15px 32px", cursor: "pointer" }}
         onMouseEnter={e => e.currentTarget.style.background = "#0a2236"}
         onMouseLeave={e => e.currentTarget.style.background = NAVY}>SHOP THE COLLECTION</button>
     </div>
@@ -1950,12 +1949,12 @@ export function CartPage({ navigate }) {
       {pendingSync && (
         <div style={{ background: "#fff3cd", borderBottom: `2px solid #ffc107`, padding: "11px 20px", display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
           <span style={{ fontSize: 15, color: "#856404" }}>⚠️</span>
-          <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.14em", color: "#856404" }}>YOUR CART NEEDS TO BE SYNCED. PLEASE PROCEED TO CHECKOUT TO SAVE YOUR ITEMS.</span>
+          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "#856404" }}>YOUR CART NEEDS TO BE SYNCED. PLEASE PROCEED TO CHECKOUT TO SAVE YOUR ITEMS.</span>
         </div>
       )}
       <div style={{ background: "#eef4f8", borderBottom: `2px solid ${NAVY}`, padding: "11px 20px", display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
         <span style={{ fontSize: 15, color: NAVY }}>✓</span>
-        <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.14em", color: NAVY }}>
+        <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: NAVY }}>
           {shipping === 0 ? "YOU'VE UNLOCKED FREE WORLDWIDE EXPRESS SHIPPING!" : `ADD PKR ${(5000 - cartTotal).toLocaleString()} MORE FOR FREE SHIPPING`}
         </span>
       </div>
@@ -1968,7 +1967,7 @@ export function CartPage({ navigate }) {
           {!isMobile && (
             <div style={{ display: "grid", gridTemplateColumns: "1fr 130px 150px 40px", gap: 16, padding: "0 0 12px", borderBottom: `2px solid ${BLACK}`, marginBottom: 0 }}>
               {["PRODUCT", "PRICE", "QUANTITY", ""].map((h, i) => (
-                <div key={i} style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.2em", color: "#aaa" }}>{h}</div>
+                <div key={i} style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", color: "#aaa" }}>{h}</div>
               ))}
             </div>
           )}
@@ -1982,22 +1981,22 @@ export function CartPage({ navigate }) {
                     <img src={item.image} alt={item.name} loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   </div>
                   <div>
-                    <div style={{ fontSize: 10, color: "#bbb", letterSpacing: "0.16em", fontFamily: ff, marginBottom: 3 }}>{item.category?.toUpperCase()}{item.gender ? ` · ${item.gender.toUpperCase()}` : ""}</div>
-                    <div style={{ fontFamily: ff, fontSize: isMobile ? 13 : 15, fontWeight: 900, color: BLACK, letterSpacing: "0.04em", marginBottom: 3, cursor: "pointer" }} onClick={() => navigate(`#/products/${item.id}`)}>{item.name}</div>
+                    <div style={{ fontSize: 10, color: "#bbb", letterSpacing: "0.1em", fontFamily: ff, marginBottom: 3 }}>{item.category?.toUpperCase()}{item.gender ? ` · ${item.gender.toUpperCase()}` : ""}</div>
+                    <div style={{ fontFamily: ff, fontSize: isMobile ? 13 : 15, fontWeight: 700, color: BLACK, letterSpacing: "0.04em", marginBottom: 3, cursor: "pointer" }} onClick={() => navigate(`#/products/${item.id}`)}>{item.name}</div>
                     <div style={{ fontSize: 11, color: "#999", fontFamily: mono }}>{cartLineOptions(item)}</div>
-                    {itemDiscount > 0 && <div style={{ fontSize: 9, fontWeight: 900, background: NAVY, color: "#fff", display: "inline-block", padding: "2px 7px", letterSpacing: "0.1em", marginTop: 5 }}>−{itemDiscount}% OFF</div>}
+                    {itemDiscount > 0 && <div style={{ fontSize: 9, fontWeight: 700, background: NAVY, color: "#fff", display: "inline-block", padding: "2px 7px", letterSpacing: "0.1em", marginTop: 5 }}>−{itemDiscount}% OFF</div>}
                   </div>
                 </div>
                 <div style={{ display: "flex", justifyContent: isMobile ? "space-between" : "flex-start", alignItems: "center", width: isMobile ? "100%" : "auto", gap: 8 }}>
-                  <div style={{ fontFamily: ff, fontSize: isMobile ? 13 : 14, fontWeight: 900, color: BLACK }}>PKR {(item.discountPrice || item.price || 0).toLocaleString()}</div>
+                  <div style={{ fontFamily: ff, fontSize: isMobile ? 13 : 14, fontWeight: 700, color: BLACK }}>PKR {(item.discountPrice || item.price || 0).toLocaleString()}</div>
                   {item.discountPrice && item.price && item.discountPrice < item.price && <div style={{ fontSize: 11, color: "#bbb", textDecoration: "line-through", fontFamily: mono }}>PKR {item.price.toLocaleString()}</div>}
                 </div>
                 <div style={{ display: "flex", border: "1.5px solid #ccc", alignItems: "center", width: "fit-content" }}>
-                  <button onClick={() => updateQty(getCartLineKey(item), (item.qty || 1) - 1)} disabled={syncing} style={{ background: "none", border: "none", width: 34, height: 34, fontSize: 16, cursor: syncing ? "not-allowed" : "pointer", color: BLACK, fontFamily: ff, fontWeight: 900, display: "flex", alignItems: "center", justifyContent: "center" }}
+                  <button onClick={() => updateQty(getCartLineKey(item), (item.qty || 1) - 1)} disabled={syncing} style={{ background: "none", border: "none", width: 34, height: 34, fontSize: 16, cursor: syncing ? "not-allowed" : "pointer", color: BLACK, fontFamily: ff, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center" }}
                     onMouseEnter={e => { if (!syncing) e.currentTarget.style.background = "#f0f0f0" }}
                     onMouseLeave={e => e.currentTarget.style.background = "none"}>−</button>
-                  <span style={{ width: 30, textAlign: "center", fontFamily: ff, fontWeight: 900, fontSize: 14, color: BLACK }}>{item.qty || 1}</span>
-                  <button onClick={() => updateQty(getCartLineKey(item), (item.qty || 1) + 1)} disabled={syncing} style={{ background: "none", border: "none", width: 34, height: 34, fontSize: 16, cursor: syncing ? "not-allowed" : "pointer", color: BLACK, fontFamily: ff, fontWeight: 900, display: "flex", alignItems: "center", justifyContent: "center" }}
+                  <span style={{ width: 30, textAlign: "center", fontFamily: ff, fontWeight: 700, fontSize: 14, color: BLACK }}>{item.qty || 1}</span>
+                  <button onClick={() => updateQty(getCartLineKey(item), (item.qty || 1) + 1)} disabled={syncing} style={{ background: "none", border: "none", width: 34, height: 34, fontSize: 16, cursor: syncing ? "not-allowed" : "pointer", color: BLACK, fontFamily: ff, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center" }}
                     onMouseEnter={e => { if (!syncing) e.currentTarget.style.background = "#f0f0f0" }}
                     onMouseLeave={e => e.currentTarget.style.background = "none"}>+</button>
                 </div>
@@ -2009,10 +2008,10 @@ export function CartPage({ navigate }) {
           })}
 
           <div style={{ display: "flex", gap: 10, marginTop: 22, flexWrap: "wrap" }}>
-            <button onClick={() => navigate("#/products")} style={{ background: "none", border: `1.5px solid #ccc`, padding: "10px 18px", fontSize: 11, fontWeight: 800, letterSpacing: "0.14em", cursor: "pointer", color: "#888", fontFamily: ff }}
+            <button onClick={() => navigate("#/products")} style={{ background: "none", border: `1.5px solid #ccc`, padding: "10px 18px", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", cursor: "pointer", color: "#888", fontFamily: ff }}
               onMouseEnter={e => { e.currentTarget.style.borderColor = BLACK; e.currentTarget.style.color = BLACK; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = "#ccc"; e.currentTarget.style.color = "#888"; }}>← CONTINUE SHOPPING</button>
-            <button onClick={clearCart} disabled={syncing} style={{ background: "none", border: "1.5px solid #fecaca", padding: "10px 18px", fontSize: 11, fontWeight: 800, letterSpacing: "0.14em", cursor: syncing ? "not-allowed" : "pointer", color: "#dc2626", fontFamily: ff }}
+            <button onClick={clearCart} disabled={syncing} style={{ background: "none", border: "1.5px solid #fecaca", padding: "10px 18px", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", cursor: syncing ? "not-allowed" : "pointer", color: "#dc2626", fontFamily: ff }}
               onMouseEnter={e => { if (!syncing) e.currentTarget.style.background = "#fef2f2" }}
               onMouseLeave={e => e.currentTarget.style.background = "none"}>CLEAR CART</button>
           </div>
@@ -2021,48 +2020,48 @@ export function CartPage({ navigate }) {
         <div style={{ background: "#fff", border: "1px solid #e0ddd6", position: "sticky", top: 80 }}>
           <div style={{ background: BLACK, padding: "18px 24px" }}>
             <div style={{ width: 26, height: 3, background: NAVY, marginBottom: 10 }} />
-            <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 14, color: "#fff", letterSpacing: "0.16em" }}>ORDER SUMMARY</div>
+            <div style={{ fontFamily: ff, fontWeight: 700, fontSize: 14, color: "#fff", letterSpacing: "0.1em" }}>ORDER SUMMARY</div>
           </div>
           <div style={{ padding: "22px 24px" }}>
             {localCart.map(item => (
               <div key={getCartLineKey(item)} style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 11 }}>
                 <span style={{ fontSize: 12, color: "#666", fontFamily: mono, flex: 1, paddingRight: 12, lineHeight: 1.4 }}>{item.name} × {item.qty || 1}</span>
-                <span style={{ fontSize: 12, fontWeight: 900, fontFamily: ff, color: BLACK, flexShrink: 0 }}>PKR {((item.discountPrice || item.price || 0) * (item.qty || 1)).toLocaleString()}</span>
+                <span style={{ fontSize: 12, fontWeight: 700, fontFamily: ff, color: BLACK, flexShrink: 0 }}>PKR {((item.discountPrice || item.price || 0) * (item.qty || 1)).toLocaleString()}</span>
               </div>
             ))}
             <div style={{ display: "flex", marginTop: 4, marginBottom: 16, flexWrap: "wrap" }}>
               <input placeholder="DISCOUNT CODE" style={{ flex: 1, border: "1.5px solid #ccc", borderRight: "none", padding: "9px 12px", fontSize: 11, fontFamily: ff, letterSpacing: "0.08em", outline: "none", color: BLACK, minWidth: "100px" }}
                 onFocus={e => e.currentTarget.style.borderColor = NAVY}
                 onBlur={e => e.currentTarget.style.borderColor = "#ccc"} />
-              <button style={{ background: BLACK, color: "#fff", border: "none", padding: "9px 14px", fontSize: 11, fontWeight: 800, letterSpacing: "0.12em", cursor: "pointer", fontFamily: ff }}>APPLY</button>
+              <button style={{ background: BLACK, color: "#fff", border: "none", padding: "9px 14px", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", cursor: "pointer", fontFamily: ff }}>APPLY</button>
             </div>
             <div style={{ borderTop: "1px solid #eee", paddingTop: 16, display: "flex", flexDirection: "column", gap: 9 }}>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <span style={{ fontSize: 11, color: "#999", fontFamily: ff, fontWeight: 700, letterSpacing: "0.1em" }}>SUBTOTAL</span>
-                <span style={{ fontSize: 13, fontWeight: 900, fontFamily: ff, color: BLACK }}>PKR {cartTotal.toLocaleString()}</span>
+                <span style={{ fontSize: 13, fontWeight: 700, fontFamily: ff, color: BLACK }}>PKR {cartTotal.toLocaleString()}</span>
               </div>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <span style={{ fontSize: 11, color: "#999", fontFamily: ff, fontWeight: 700, letterSpacing: "0.1em" }}>SHIPPING</span>
-                <span style={{ fontSize: 13, fontWeight: 900, fontFamily: ff, color: shipping === 0 ? "#16a34a" : BLACK }}>{shipping === 0 ? "FREE" : `PKR ${shipping.toLocaleString()}`}</span>
+                <span style={{ fontSize: 13, fontWeight: 700, fontFamily: ff, color: shipping === 0 ? "#16a34a" : BLACK }}>{shipping === 0 ? "FREE" : `PKR ${shipping.toLocaleString()}`}</span>
               </div>
-              {shipping === 0 && <div style={{ fontSize: 10, color: "#16a34a", fontFamily: ff, letterSpacing: "0.1em", fontWeight: 800 }}>✓ FREE WORLDWIDE SHIPPING APPLIED</div>}
+              {shipping === 0 && <div style={{ fontSize: 10, color: "#16a34a", fontFamily: ff, letterSpacing: "0.1em", fontWeight: 700 }}>✓ FREE WORLDWIDE SHIPPING APPLIED</div>}
             </div>
             <div style={{ borderTop: `2px solid ${BLACK}`, marginTop: 16, paddingTop: 16, display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-              <span style={{ fontFamily: ff, fontWeight: 900, fontSize: 14, letterSpacing: "0.12em", color: BLACK }}>TOTAL</span>
-              <span style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? 18 : 20, color: BLACK }}>PKR {grandTotal.toLocaleString()}</span>
+              <span style={{ fontFamily: ff, fontWeight: 700, fontSize: 14, letterSpacing: "0.12em", color: BLACK }}>TOTAL</span>
+              <span style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? 18 : 20, color: BLACK }}>PKR {grandTotal.toLocaleString()}</span>
             </div>
             <div style={{ fontSize: 10, color: "#bbb", fontFamily: ff, letterSpacing: "0.08em", marginBottom: 20 }}>TAXES AND SHIPPING CALCULATED AT CHECKOUT</div>
-            <button onClick={() => navigate("#/checkout")} disabled={syncing || localCart.length === 0} style={{ width: "100%", background: NAVY, border: "none", color: "#fff", fontFamily: ff, fontWeight: 900, fontSize: 12, letterSpacing: "0.18em", padding: "15px", cursor: (syncing || localCart.length === 0) ? "not-allowed" : "pointer", display: "block", textAlign: "center", marginBottom: 8, opacity: (syncing || localCart.length === 0) ? 0.5 : 1 }}
+            <button onClick={() => navigate("#/checkout")} disabled={syncing || localCart.length === 0} style={{ width: "100%", background: NAVY, border: "none", color: "#fff", fontFamily: ff, fontWeight: 700, fontSize: 12, letterSpacing: "0.1em", padding: "15px", cursor: (syncing || localCart.length === 0) ? "not-allowed" : "pointer", display: "block", textAlign: "center", marginBottom: 8, opacity: (syncing || localCart.length === 0) ? 0.5 : 1 }}
               onMouseEnter={e => { if (!syncing && localCart.length > 0) e.currentTarget.style.background = "#0a2236" }}
               onMouseLeave={e => { if (!syncing && localCart.length > 0) e.currentTarget.style.background = NAVY }}>
               {syncing ? "UPDATING..." : "PROCEED TO CHECKOUT →"}
             </button>
-            <button onClick={() => navigate("#/products")} style={{ width: "100%", background: "#fff", border: `1.5px solid ${BLACK}`, color: BLACK, fontFamily: ff, fontWeight: 900, fontSize: 11, letterSpacing: "0.16em", padding: "11px", cursor: "pointer", display: "block", textAlign: "center" }}
+            <button onClick={() => navigate("#/products")} style={{ width: "100%", background: "#fff", border: `1.5px solid ${BLACK}`, color: BLACK, fontFamily: ff, fontWeight: 700, fontSize: 11, letterSpacing: "0.1em", padding: "11px", cursor: "pointer", display: "block", textAlign: "center" }}
               onMouseEnter={e => e.currentTarget.style.background = "#f5f5f5"}
               onMouseLeave={e => e.currentTarget.style.background = "#fff"}>CONTINUE SHOPPING</button>
             <div style={{ marginTop: 16, display: "flex", gap: 5, justifyContent: "center", flexWrap: "wrap" }}>
               {["VISA", "MC", "AMEX", "APPLE PAY", "COD"].map(c => (
-                <span key={c} style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.08em", border: "1px solid #e0e0e0", padding: "3px 6px", color: "#aaa", fontFamily: ff }}>{c}</span>
+                <span key={c} style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.08em", border: "1px solid #e0e0e0", padding: "3px 6px", color: "#aaa", fontFamily: ff }}>{c}</span>
               ))}
             </div>
           </div>
@@ -2110,7 +2109,7 @@ export function SizeFitPage({ navigate }) {
               Not every frame fits every face, which is why Urban Eye offers a wide selection so you can find
               the right style for you."
             </blockquote>
-            <div style={{ fontSize: 11, letterSpacing: "0.14em", color: "#888", fontFamily: ff, fontWeight: 900 }}>
+            <div style={{ fontSize: 11, letterSpacing: "0.1em", color: "#888", fontFamily: ff, fontWeight: 700 }}>
               — URBAN EYE, OPTICAL SPECIALISTS
             </div>
           </div>
@@ -2120,8 +2119,8 @@ export function SizeFitPage({ navigate }) {
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: isMobile ? "48px 20px" : "80px 40px" }}>
         <FadeIn>
           <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 10 }}>THE BASICS</div>
-            <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(24px, 7vw, 32px)" : "clamp(30px, 4vw, 46px)", margin: 0, letterspacing: "0.02em" }}>
+            <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#888", marginBottom: 10 }}>THE BASICS</div>
+            <h2 style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? 18 : 24, margin: 0, letterSpacing: "1px" }}>
               HOW WE SEE FIT
             </h2>
           </div>
@@ -2161,7 +2160,7 @@ export function SizeFitPage({ navigate }) {
             {SIZE_CATEGORIES.map((cat, i) => (
               <FadeIn key={cat.key} delay={i * 80}>
                 <div style={{ background: "#fff", border: "1px solid #e8e0d0", padding: isMobile ? "24px 20px" : "32px 26px", height: "100%", boxSizing: "border-box" }}>
-                  <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 16, letterSpacing: "0.1em", color: BLACK, marginBottom: 12 }}>
+                  <div style={{ fontFamily: ff, fontWeight: 700, fontSize: 16, letterSpacing: "0.1em", color: BLACK, marginBottom: 12 }}>
                     {cat.title}
                   </div>
                   <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.8, color: "#666", margin: "0 0 20px", minHeight: isMobile ? "auto" : 66 }}>
@@ -2171,7 +2170,7 @@ export function SizeFitPage({ navigate }) {
                     onClick={() => navigate(`/products?size=${encodeURIComponent(cat.key)}`)}
                     style={{
                       background: "none", border: `1.5px solid ${BRAND}`, color: BRAND,
-                      padding: "10px 18px", fontSize: 10, fontWeight: 900, letterSpacing: "0.14em",
+                      padding: "10px 18px", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em",
                       cursor: "pointer", fontFamily: ff, transition: "background 0.18s, color 0.18s",
                     }}
                     onMouseEnter={(e) => { e.currentTarget.style.background = BRAND; e.currentTarget.style.color = "#fff"; }}
@@ -2189,8 +2188,8 @@ export function SizeFitPage({ navigate }) {
       <div style={{ background: BLACK, padding: isMobile ? "48px 20px" : "80px 40px", textAlign: "center" }}>
         <FadeIn>
           <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 20px" }} />
-          <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#555", marginBottom: 14 }}>STILL UNSURE?</div>
-          <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(22px, 7vw, 30px)" : "clamp(28px, 3.6vw, 42px)", color: "#fff", margin: "0 0 18px" }}>
+          <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#555", marginBottom: 14 }}>STILL UNSURE?</div>
+          <h2 style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? 18 : 24, letterSpacing: "1px", color: "#fff", margin: "0 0 18px" }}>
             WE'LL HELP YOU GET FRAMED
           </h2>
           <p style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", maxWidth: 460, margin: "0 auto 32px", lineHeight: 1.8, fontFamily: mono }}>
@@ -2200,7 +2199,7 @@ export function SizeFitPage({ navigate }) {
             onClick={() => navigate("/products")}
             style={{
               background: BRAND, color: "#fff", border: "none", padding: "14px 30px",
-              fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", cursor: "pointer", fontFamily: ff,
+              fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", cursor: "pointer", fontFamily: ff,
             }}
           >
             SHOP ALL FRAMES
@@ -2282,7 +2281,7 @@ export function ReturnsPage({ navigate }) {
       <div style={{ background: CREAM, padding: isMobile ? "36px 20px" : "56px 40px", textAlign: "center", borderBottom: "1px solid #e8e0d0" }}>
         <FadeIn>
           <div style={{ maxWidth: 700, margin: "0 auto" }}>
-            <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 14, fontWeight: 900 }}>
+            <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#888", marginBottom: 14, fontWeight: 700 }}>
               HOW DO I RETURN MY ORDER?
             </div>
             <blockquote style={{
@@ -2292,7 +2291,7 @@ export function ReturnsPage({ navigate }) {
               "For all our online orders we have a transparent money back guarantee. For Urbaneye.com.pk
               orders, we accept returns for any order."
             </blockquote>
-            <div style={{ fontSize: 11, letterSpacing: "0.14em", color: "#888", fontFamily: ff, fontWeight: 900 }}>
+            <div style={{ fontSize: 11, letterSpacing: "0.1em", color: "#888", fontFamily: ff, fontWeight: 700 }}>
               — URBAN EYE, OPTICAL SPECIALISTS
             </div>
           </div>
@@ -2303,8 +2302,8 @@ export function ReturnsPage({ navigate }) {
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: isMobile ? "48px 20px" : "80px 40px" }}>
         <FadeIn>
           <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 10 }}>BEFORE YOU SEND IT BACK</div>
-            <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(24px, 7vw, 32px)" : "clamp(30px, 4vw, 46px)", margin: 0 }}>
+            <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#888", marginBottom: 10 }}>BEFORE YOU SEND IT BACK</div>
+            <h2 style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? 18 : 24, letterSpacing: "1px", margin: 0 }}>
               RETURN CONDITIONS
             </h2>
           </div>
@@ -2334,8 +2333,8 @@ export function ReturnsPage({ navigate }) {
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <FadeIn>
             <div style={{ textAlign: "center", marginBottom: isMobile ? 28 : 44 }}>
-              <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 10 }}>THE PROCESS</div>
-              <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(22px, 7vw, 30px)" : "clamp(28px, 3.6vw, 42px)", margin: 0 }}>
+              <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#888", marginBottom: 10 }}>THE PROCESS</div>
+              <h2 style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? 18 : 24, letterSpacing: "1px", margin: 0 }}>
                 HOW IT WORKS
               </h2>
             </div>
@@ -2344,10 +2343,10 @@ export function ReturnsPage({ navigate }) {
             {RETURN_STEPS.map((step, i) => (
               <FadeIn key={step.num} delay={i * 80}>
                 <div style={{ background: "#fff", border: "1px solid #e8e0d0", padding: isMobile ? "24px 20px" : "32px 26px", height: "100%", boxSizing: "border-box" }}>
-                  <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 28, color: "#e0d8c8", lineHeight: 1, marginBottom: 14 }}>
+                  <div style={{ fontFamily: ff, fontWeight: 700, fontSize: 28, color: "#e0d8c8", lineHeight: 1, marginBottom: 14 }}>
                     {step.num}
                   </div>
-                  <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 15, letterSpacing: "0.1em", color: BLACK, marginBottom: 12 }}>
+                  <div style={{ fontFamily: ff, fontWeight: 700, fontSize: 15, letterSpacing: "0.1em", color: BLACK, marginBottom: 12 }}>
                     {step.title}
                   </div>
                   <p style={{ fontFamily: mono, fontSize: 13, lineHeight: 1.8, color: "#666", margin: 0 }}>
@@ -2365,7 +2364,7 @@ export function ReturnsPage({ navigate }) {
         <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 20 : 3 }}>
           <FadeIn>
             <div style={{ background: "#fff", border: "1px solid #e8e0d0", padding: isMobile ? "26px 22px" : "36px 32px", height: "100%", boxSizing: "border-box" }}>
-              <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 15, letterSpacing: "0.1em", color: BLACK, marginBottom: 14 }}>
+              <div style={{ fontFamily: ff, fontWeight: 700, fontSize: 15, letterSpacing: "0.1em", color: BLACK, marginBottom: 14 }}>
                 REFUND VALUE
               </div>
               <p style={{ fontFamily: mono, fontSize: isMobile ? 13 : 14, lineHeight: 1.9, color: "#444", margin: 0 }}>
@@ -2376,7 +2375,7 @@ export function ReturnsPage({ navigate }) {
           </FadeIn>
           <FadeIn delay={80}>
             <div style={{ background: "#fff", border: "1px solid #e8e0d0", padding: isMobile ? "26px 22px" : "36px 32px", height: "100%", boxSizing: "border-box" }}>
-              <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 15, letterSpacing: "0.1em", color: BLACK, marginBottom: 14 }}>
+              <div style={{ fontFamily: ff, fontWeight: 700, fontSize: 15, letterSpacing: "0.1em", color: BLACK, marginBottom: 14 }}>
                 HEADS UP!
               </div>
               <p style={{ fontFamily: mono, fontSize: isMobile ? 13 : 14, lineHeight: 1.9, color: "#444", margin: "0 0 14px" }}>
@@ -2399,7 +2398,7 @@ export function ReturnsPage({ navigate }) {
             {RETURN_POLICY_SECTIONS.map((sec, i) => (
               <FadeIn key={sec.title} delay={i * 80}>
                 <div style={{ background: "#fff", border: "1px solid #e8e0d0", padding: isMobile ? "24px 20px" : "32px 26px", height: "100%", boxSizing: "border-box" }}>
-                  <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 15, letterSpacing: "0.1em", color: BLACK, marginBottom: 16, borderBottom: `2px solid ${BRAND}`, paddingBottom: 10, display: "inline-block" }}>
+                  <div style={{ fontFamily: ff, fontWeight: 700, fontSize: 15, letterSpacing: "0.1em", color: BLACK, marginBottom: 16, borderBottom: `2px solid ${BRAND}`, paddingBottom: 10, display: "inline-block" }}>
                     {sec.title}
                   </div>
                   <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
@@ -2421,10 +2420,10 @@ export function ReturnsPage({ navigate }) {
       <div style={{ background: BLACK, padding: isMobile ? "48px 20px" : "80px 40px", textAlign: "center" }}>
         <FadeIn>
           <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 20px" }} />
-          <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#555", marginBottom: 14 }}>
+          <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#555", marginBottom: 14 }}>
             CAN I RETURN MY ONLINE ORDER AT AN URBAN EYE STORE?
           </div>
-          <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(22px, 7vw, 30px)" : "clamp(28px, 3.6vw, 42px)", color: "#fff", margin: "0 0 18px" }}>
+          <h2 style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? 18 : 24, letterSpacing: "1px", color: "#fff", margin: "0 0 18px" }}>
             YES — AT ANY LOCATION
           </h2>
           <p style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", maxWidth: 460, margin: "0 auto 32px", lineHeight: 1.8, fontFamily: mono }}>
@@ -2434,7 +2433,7 @@ export function ReturnsPage({ navigate }) {
             onClick={() => navigate("/stores")}
             style={{
               background: BRAND, color: "#fff", border: "none", padding: "14px 30px",
-              fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", cursor: "pointer", fontFamily: ff,
+              fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", cursor: "pointer", fontFamily: ff,
             }}
           >
             FIND A SHOP
@@ -2480,7 +2479,7 @@ export function StoreLocatorPage({ navigate }) {
       <div style={{ background: CREAM, padding: isMobile ? "36px 20px" : "56px 40px", textAlign: "center", borderBottom: "1px solid #e8e0d0" }}>
         <FadeIn>
           <div style={{ maxWidth: 700, margin: "0 auto" }}>
-            <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 14, fontWeight: 900 }}>
+            <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#888", marginBottom: 14, fontWeight: 700 }}>
               COME SEE US
             </div>
             <blockquote style={{
@@ -2490,7 +2489,7 @@ export function StoreLocatorPage({ navigate }) {
               "Frames are best chosen in person. Visit our Zamzama store and let our optical
               specialists measure, adjust, and fit your frame properly."
             </blockquote>
-            <div style={{ fontSize: 11, letterSpacing: "0.14em", color: "#888", fontFamily: ff, fontWeight: 900 }}>
+            <div style={{ fontSize: 11, letterSpacing: "0.1em", color: "#888", fontFamily: ff, fontWeight: 700 }}>
               — URBAN EYE, KARACHI SINCE 1999
             </div>
           </div>
@@ -2501,8 +2500,8 @@ export function StoreLocatorPage({ navigate }) {
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: isMobile ? "48px 20px" : "80px 40px" }}>
         <FadeIn>
           <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 10 }}>OUR LOCATION</div>
-            <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(24px, 7vw, 32px)" : "clamp(30px, 4vw, 46px)", margin: 0 }}>
+            <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#888", marginBottom: 10 }}>OUR LOCATION</div>
+            <h2 style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? 18 : 24, letterSpacing: "1px", margin: 0 }}>
               URBAN EYE ZAMZAMA
             </h2>
           </div>
@@ -2531,14 +2530,14 @@ export function StoreLocatorPage({ navigate }) {
               background: "#fff", border: "1px solid #e8e0d0", padding: isMobile ? "26px 22px" : "36px 32px",
               height: "100%", boxSizing: "border-box", display: "flex", flexDirection: "column",
             }}>
-              <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 15, letterSpacing: "0.1em", color: BLACK, marginBottom: 20, borderBottom: `2px solid ${BRAND}`, paddingBottom: 10, display: "inline-block", alignSelf: "flex-start" }}>
+              <div style={{ fontFamily: ff, fontWeight: 700, fontSize: 15, letterSpacing: "0.1em", color: BLACK, marginBottom: 20, borderBottom: `2px solid ${BRAND}`, paddingBottom: 10, display: "inline-block", alignSelf: "flex-start" }}>
                 STORE DETAILS
               </div>
 
               <div style={{ display: "flex", flexDirection: "column", gap: 20, marginBottom: 28 }}>
                 {STORE_DETAILS.map((d) => (
                   <div key={d.label}>
-                    <div style={{ fontSize: 10, letterSpacing: "0.18em", color: "#999", fontWeight: 900, marginBottom: 6 }}>
+                    <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#999", fontWeight: 700, marginBottom: 6 }}>
                       {d.label}
                     </div>
                     {d.href ? (
@@ -2566,7 +2565,7 @@ export function StoreLocatorPage({ navigate }) {
                   rel="noopener noreferrer"
                   style={{
                     background: BRAND, color: "#fff", textDecoration: "none", padding: "14px 22px",
-                    fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", fontFamily: ff, textAlign: "center",
+                    fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", fontFamily: ff, textAlign: "center",
                   }}
                 >
                   GET DIRECTIONS →
@@ -2577,7 +2576,7 @@ export function StoreLocatorPage({ navigate }) {
                   rel="noopener noreferrer"
                   style={{
                     background: "none", border: `1.5px solid ${BRAND}`, color: BRAND, textDecoration: "none",
-                    padding: "12px 22px", fontSize: 10, fontWeight: 900, letterSpacing: "0.14em",
+                    padding: "12px 22px", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em",
                     fontFamily: ff, textAlign: "center", transition: "background 0.18s, color 0.18s",
                   }}
                   onMouseEnter={(e) => { e.currentTarget.style.background = BRAND; e.currentTarget.style.color = "#fff"; }}
@@ -2595,8 +2594,8 @@ export function StoreLocatorPage({ navigate }) {
       <div style={{ background: BLACK, padding: isMobile ? "48px 20px" : "80px 40px", textAlign: "center" }}>
         <FadeIn>
           <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 20px" }} />
-          <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#555", marginBottom: 14 }}>CAN'T MAKE IT IN?</div>
-          <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(22px, 7vw, 30px)" : "clamp(28px, 3.6vw, 42px)", color: "#fff", margin: "0 0 18px" }}>
+          <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#555", marginBottom: 14 }}>CAN'T MAKE IT IN?</div>
+          <h2 style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? 18 : 24, letterSpacing: "1px", color: "#fff", margin: "0 0 18px" }}>
             SHOP THE FULL RANGE ONLINE
           </h2>
           <p style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", maxWidth: 460, margin: "0 auto 32px", lineHeight: 1.8, fontFamily: mono }}>
@@ -2606,7 +2605,7 @@ export function StoreLocatorPage({ navigate }) {
             onClick={() => navigate("/products")}
             style={{
               background: BRAND, color: "#fff", border: "none", padding: "14px 30px",
-              fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", cursor: "pointer", fontFamily: ff,
+              fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", cursor: "pointer", fontFamily: ff,
             }}
           >
             SHOP ALL FRAMES
@@ -2692,7 +2691,7 @@ export function WishlistPage({ navigate }) {
                 </svg>
               </div>
               <div style={{ width: 36, height: 3, background: BRAND, margin: "0 auto 20px" }}/>
-              <h2 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(20px, 6vw, 28px)" : "clamp(24px, 4vw, 36px)", color: BLACK, margin: "0 0 12px", letterSpacing: "0.04em" }}>
+              <h2 style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? 18 : 24, color: BLACK, margin: "0 0 12px", letterSpacing: "1px" }}>
                 YOUR WISHLIST IS EMPTY
               </h2>
               <p style={{ fontSize: 14, color: "#888", fontFamily: mono, lineHeight: 1.7, marginBottom: 32 }}>
@@ -2700,7 +2699,7 @@ export function WishlistPage({ navigate }) {
               </p>
               <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
                 <YBtn onClick={() => navigate("#/products")} style={{ padding: "14px 28px" }}>BROWSE ALL FRAMES</YBtn>
-                <button onClick={() => navigate("#/collections/new-arrivals")} style={{ background: "none", border: `1.5px solid ${BRAND}`, color: BRAND, fontFamily: ff, fontWeight: 900, fontSize: 12, letterSpacing: "0.12em", padding: "14px 24px", cursor: "pointer" }}>
+                <button onClick={() => navigate("#/collections/new-arrivals")} style={{ background: "none", border: `1.5px solid ${BRAND}`, color: BRAND, fontFamily: ff, fontWeight: 700, fontSize: 12, letterSpacing: "0.12em", padding: "14px 24px", cursor: "pointer" }}>
                   NEW ARRIVALS
                 </button>
               </div>
@@ -2710,12 +2709,12 @@ export function WishlistPage({ navigate }) {
           <>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 32, flexWrap: "wrap", gap: 12 }}>
               <div>
-                <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 4 }}>SAVED ITEMS</div>
-                <div style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(18px, 5vw, 24px)" : "clamp(22px, 3vw, 32px)", color: BLACK, letterSpacing: "0.02em" }}>
+                <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#888", marginBottom: 4 }}>SAVED ITEMS</div>
+                <div style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? "clamp(18px, 5vw, 24px)" : "clamp(22px, 3vw, 32px)", color: BLACK, letterSpacing: "0.02em" }}>
                   {wishlist.length} {wishlist.length === 1 ? "FRAME" : "FRAMES"} SAVED
                 </div>
               </div>
-              <button onClick={() => navigate("#/products")} style={{ background: "none", border: `1.5px solid #ccc`, padding: "10px 18px", fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", cursor: "pointer", color: "#888", fontFamily: ff, transition: "all 0.2s" }}
+              <button onClick={() => navigate("#/products")} style={{ background: "none", border: `1.5px solid #ccc`, padding: "10px 18px", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", cursor: "pointer", color: "#888", fontFamily: ff, transition: "all 0.2s" }}
                 onMouseEnter={e => { e.currentTarget.style.borderColor = BLACK; e.currentTarget.style.color = BLACK; }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = "#ccc"; e.currentTarget.style.color = "#888"; }}>
                 CONTINUE SHOPPING →
@@ -2744,7 +2743,7 @@ export function WishlistPage({ navigate }) {
                       onMouseLeave={e => { e.currentTarget.style.boxShadow = "0 1px 4px rgba(0,0,0,0.04)"; e.currentTarget.style.transform = "scale(1)"; }}
                     >
                       {discount > 0 && (
-                        <div style={{ position: "absolute", top: 12, left: 12, zIndex: 3, background: BRAND, color: BRAND_TEXT, fontSize: 9, fontWeight: 900, letterSpacing: "0.1em", padding: "4px 9px", fontFamily: ff }}>
+                        <div style={{ position: "absolute", top: 12, left: 12, zIndex: 3, background: BRAND, color: BRAND_TEXT, fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", padding: "4px 9px", fontFamily: ff }}>
                           −{discount}%
                         </div>
                       )}
@@ -2789,7 +2788,7 @@ export function WishlistPage({ navigate }) {
                         <div style={{
                           position: "absolute", bottom: 0, left: 0, right: 0,
                           background: BRAND, color: BRAND_TEXT, textAlign: "center",
-                          padding: "9px", fontSize: 10, fontWeight: 900, letterSpacing: "0.14em", fontFamily: ff,
+                          padding: "9px", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", fontFamily: ff,
                           transform: "translateY(100%)", transition: "transform 0.25s ease"
                         }}
                           className="wishlist-view-overlay">
@@ -2798,12 +2797,12 @@ export function WishlistPage({ navigate }) {
                       </div>
 
                       <div style={{ padding: isMobile ? "10px 12px 12px" : "14px 16px 16px", display: "flex", flexDirection: "column", flex: 1 }}>
-                        <div style={{ fontSize: 9, color: "#aaa", letterSpacing: "0.16em", marginBottom: 3, fontFamily: ff }}>
+                        <div style={{ fontSize: 9, color: "#aaa", letterSpacing: "0.1em", marginBottom: 3, fontFamily: ff }}>
                           {item.product?.subcategory?.toUpperCase()} {item.product?.gender ? `· ${item.product.gender.toUpperCase()}` : ""}
                         </div>
                         <div
                           onClick={() => navigate(`#/products/${item.productId}`)}
-                          style={{ fontFamily: ff, fontSize: isMobile ? 13 : 15, fontWeight: 900, color: BLACK, marginBottom: 4, letterSpacing: "0.03em", cursor: "pointer", lineHeight: 1.2 }}>
+                          style={{ fontFamily: ff, fontSize: isMobile ? 13 : 15, fontWeight: 700, color: BLACK, marginBottom: 4, letterSpacing: "0.03em", cursor: "pointer", lineHeight: 1.2 }}>
                           {item.product?.name || "Unnamed Frame"}
                         </div>
                         <div style={{ fontSize: 11, color: "#999", fontFamily: mono, marginBottom: 10, lineHeight: 1.4 }}>
@@ -2811,7 +2810,7 @@ export function WishlistPage({ navigate }) {
                         </div>
 
                         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14, flexWrap: "wrap" }}>
-                          <span style={{ fontFamily: ff, fontSize: isMobile ? 13 : 15, fontWeight: 900, color: BLACK }}>
+                          <span style={{ fontFamily: ff, fontSize: isMobile ? 13 : 15, fontWeight: 700, color: BLACK }}>
                             PKR {price.toLocaleString()}
                           </span>
                           {discount > 0 && (
@@ -2827,7 +2826,7 @@ export function WishlistPage({ navigate }) {
                             disabled={isRemoving}
                             style={{
                               flex: 1, background: NAVY, color: "#fff", border: "none",
-                              padding: "10px 0", fontSize: isMobile ? 9 : 10, fontWeight: 900,
+                              padding: "10px 0", fontSize: isMobile ? 9 : 10, fontWeight: 700,
                               letterSpacing: "0.12em", cursor: isRemoving ? "not-allowed" : "pointer",
                               fontFamily: ff, transition: "background 0.18s"
                             }}
@@ -2859,8 +2858,8 @@ export function WishlistPage({ navigate }) {
 
             <FadeIn delay={200}>
               <div style={{ textAlign: "center", marginTop: 56, padding: "40px 20px", background: "#fff", border: "1px solid #e8e0d0" }}>
-                <div style={{ fontSize: 10, letterSpacing: "0.22em", color: "#888", marginBottom: 10 }}>DISCOVER MORE</div>
-                <h3 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(18px, 5vw, 24px)" : "clamp(20px, 3vw, 28px)", color: BLACK, margin: "0 0 20px", letterSpacing: "0.04em" }}>
+                <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#888", marginBottom: 10 }}>DISCOVER MORE</div>
+                <h3 style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? "clamp(18px, 5vw, 24px)" : "clamp(20px, 3vw, 28px)", color: BLACK, margin: "0 0 20px", letterSpacing: "0.04em" }}>
                   KEEP EXPLORING
                 </h3>
                 <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
@@ -2919,7 +2918,7 @@ const AddressCard = ({ addr, selected, onSelect }) => {
           background: BRAND,
           color: "#fff",
           fontSize: 8,
-          fontWeight: 900,
+          fontWeight: 700,
           padding: "2px 7px",
           letterSpacing: "0.12em",
           fontFamily: ff,
@@ -2944,7 +2943,7 @@ const AddressCard = ({ addr, selected, onSelect }) => {
 const Field = ({ label, value, onChange, placeholder, type = "text", error, full = false }) => (
   <div style={{ display: "flex", flexDirection: "column", gap: 5, gridColumn: full ? "1 / -1" : "auto" }}>
     <label style={{
-      fontSize: 10, fontWeight: 900, letterSpacing: "0.14em",
+      fontSize: 10, fontWeight: 700, letterSpacing: "0.1em",
       color: error ? "#dc2626" : "#888", fontFamily: ff,
     }}>
       {label}{error ? ` — ${error}` : ""}
@@ -3108,7 +3107,7 @@ export function CheckoutPage({ navigate }) {
 
   if (cartLoading) return (
     <div style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: ff }}>
-      <div style={{ fontSize: 12, letterSpacing: "0.2em", color: BRAND }}>LOADING...</div>
+      <div style={{ fontSize: 12, letterSpacing: "0.1em", color: BRAND }}>LOADING...</div>
     </div>
   );
   if (cartItems.length === 0 && !orderPlaced) return null;
@@ -3133,11 +3132,11 @@ export function CheckoutPage({ navigate }) {
                   background: step >= s.n ? BRAND : "#f0f0f0",
                   border: `2px solid ${step >= s.n ? BRAND : "#ddd"}`,
                   display: "flex", alignItems: "center", justifyContent: "center",
-                  fontSize: 11, fontWeight: 900, color: step >= s.n ? BRAND_TEXT : "#999", fontFamily: ff,
+                  fontSize: 11, fontWeight: 700, color: step >= s.n ? BRAND_TEXT : "#999", fontFamily: ff,
                 }}>
                   {step > s.n ? "✓" : s.n}
                 </div>
-                <span style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.12em", color: step >= s.n ? BLACK : "#999", fontFamily: ff }}>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: step >= s.n ? BLACK : "#999", fontFamily: ff }}>
                   {s.l}
                 </span>
               </div>
@@ -3153,23 +3152,23 @@ export function CheckoutPage({ navigate }) {
               <div style={{ background: "#fff", border: "1px solid #e0e8ee", padding: isMobile ? "20px" : "36px" }}>
                 <div style={{ background: "#f0f6fa", border: `1.5px solid #89c4e1`, padding: "14px 20px", marginBottom: 32, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                    <div style={{ width: 40, height: 40, borderRadius: "50%", background: BRAND, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 900, fontFamily: ff, flexShrink: 0 }}>
+                    <div style={{ width: 40, height: 40, borderRadius: "50%", background: BRAND, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 700, fontFamily: ff, flexShrink: 0 }}>
                       {userName.charAt(0).toUpperCase() || "?"}
                     </div>
                     <div>
-                      <div style={{ fontSize: 13, fontWeight: 900, color: BRAND, fontFamily: ff, letterSpacing: "0.04em" }}>{userName}</div>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: BRAND, fontFamily: ff, letterSpacing: "0.04em" }}>{userName}</div>
                       <div style={{ fontSize: 11, color: "#666", fontFamily: mono, marginTop: 2 }}>{userEmail}</div>
                     </div>
                   </div>
-                  <span style={{ fontSize: 9, fontWeight: 900, letterSpacing: "0.14em", color: "#2a8a50", background: "#eaf5ef", padding: "4px 10px", fontFamily: ff }}>SIGNED IN</span>
+                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", color: "#2a8a50", background: "#eaf5ef", padding: "4px 10px", fontFamily: ff }}>SIGNED IN</span>
                 </div>
 
-                <div style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.18em", color: BRAND, borderBottom: `2px solid ${BRAND}`, paddingBottom: 10, marginBottom: 24, fontFamily: ff }}>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: BRAND, borderBottom: `2px solid ${BRAND}`, paddingBottom: 10, marginBottom: 24, fontFamily: ff }}>
                   DELIVERY ADDRESS
                 </div>
 
                 {addressesLoading ? (
-                  <div style={{ textAlign: "center", padding: "24px 0", fontSize: 11, color: "#aaa", letterSpacing: "0.14em", fontFamily: ff }}>
+                  <div style={{ textAlign: "center", padding: "24px 0", fontSize: 11, color: "#aaa", letterSpacing: "0.1em", fontFamily: ff }}>
                     LOADING ADDRESSES…
                   </div>
                 ) : (
@@ -3206,7 +3205,7 @@ export function CheckoutPage({ navigate }) {
                         display: "flex", alignItems: "center", gap: 8,
                         background: "none", border: `1.5px dashed ${showCustomForm ? BRAND : "#bcd"}`,
                         color: showCustomForm ? BRAND : "#6a8ea0", padding: "11px 20px",
-                        fontSize: 10, fontWeight: 900, letterSpacing: "0.14em",
+                        fontSize: 10, fontWeight: 700, letterSpacing: "0.1em",
                         fontFamily: ff, cursor: "pointer", width: "100%",
                         justifyContent: "center", marginBottom: 4, transition: "all 0.15s",
                       }}
@@ -3220,7 +3219,7 @@ export function CheckoutPage({ navigate }) {
                     {showCustomForm && (
                       <FadeIn delay={0.05}>
                         <div style={{ border: `1.5px solid ${BRAND}`, padding: isMobile ? "16px" : "24px 20px", marginTop: 16, background: "#f8fbfd" }}>
-                          <div style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.16em", color: BRAND, marginBottom: 20, fontFamily: ff }}>
+                          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", color: BRAND, marginBottom: 20, fontFamily: ff }}>
                             ENTER DELIVERY DETAILS
                           </div>
                           <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 14 }}>
@@ -3238,7 +3237,7 @@ export function CheckoutPage({ navigate }) {
                 )}
 
                 <div style={{ marginTop: 32 }}>
-                  <div style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.18em", color: BRAND, borderBottom: `2px solid ${BRAND}`, paddingBottom: 10, marginBottom: 20, fontFamily: ff }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: BRAND, borderBottom: `2px solid ${BRAND}`, paddingBottom: 10, marginBottom: 20, fontFamily: ff }}>
                     PAYMENT METHOD
                   </div>
                   <div style={{ border: `2px solid #89c4e1`, background: "#e8f2f8", padding: "18px 20px" }}>
@@ -3247,7 +3246,7 @@ export function CheckoutPage({ navigate }) {
                         <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#fff" }} />
                       </div>
                       <div>
-                        <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 13, letterSpacing: "0.1em", color: BLACK, marginBottom: 4 }}>
+                        <div style={{ fontFamily: ff, fontWeight: 700, fontSize: 13, letterSpacing: "0.1em", color: BLACK, marginBottom: 4 }}>
                           CASH ON DELIVERY (COD)
                         </div>
                         <p style={{ fontSize: 12, color: "#555", fontFamily: mono, lineHeight: 1.7, margin: 0 }}>
@@ -3259,7 +3258,7 @@ export function CheckoutPage({ navigate }) {
                 </div>
 
                 <div style={{ marginTop: 32 }}>
-                  <YBtn onClick={handleProceedToReview} disabled={syncingCart || addressesLoading} style={{ width: "100%", padding: 15, fontSize: 12, letterSpacing: "0.14em" }}>
+                  <YBtn onClick={handleProceedToReview} disabled={syncingCart || addressesLoading} style={{ width: "100%", padding: 15, fontSize: 12, letterSpacing: "0.1em" }}>
                     {syncingCart ? "SYNCING CART…" : "REVIEW ORDER →"}
                   </YBtn>
                 </div>
@@ -3270,13 +3269,13 @@ export function CheckoutPage({ navigate }) {
           {step === 2 && (
             <FadeIn>
               <div style={{ background: "#fff", border: "1px solid #e0e8ee", padding: isMobile ? "20px" : "36px" }}>
-                <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 14, letterSpacing: "0.1em", color: BLACK, marginBottom: 24, paddingBottom: 16, borderBottom: "1px solid #f0ece4" }}>
+                <div style={{ fontFamily: ff, fontWeight: 700, fontSize: 14, letterSpacing: "0.1em", color: BLACK, marginBottom: 24, paddingBottom: 16, borderBottom: "1px solid #f0ece4" }}>
                   REVIEW YOUR ORDER
                 </div>
                 <div style={{ background: "#FAFAF8", border: "1px solid #e0e8ee", padding: "18px 20px", marginBottom: 24 }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-                    <div style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: BLACK, fontFamily: ff }}>DELIVERY TO</div>
-                    <button onClick={() => setStep(1)} style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.1em", color: "#888", background: "none", border: "none", cursor: "pointer", fontFamily: ff, textDecoration: "underline" }}>EDIT</button>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: BLACK, fontFamily: ff }}>DELIVERY TO</div>
+                    <button onClick={() => setStep(1)} style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", color: "#888", background: "none", border: "none", cursor: "pointer", fontFamily: ff, textDecoration: "underline" }}>EDIT</button>
                   </div>
                   <div style={{ fontSize: 13, fontWeight: 700, color: BRAND, fontFamily: ff, marginBottom: 6 }}>{activeAddress.fullName}</div>
                   <div style={{ fontSize: 12, color: "#555", fontFamily: mono, lineHeight: 1.8 }}>
@@ -3293,10 +3292,10 @@ export function CheckoutPage({ navigate }) {
                       <img src={`${item.image}`} alt={item.name} loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     </div>
                     <div style={{ flex: 1 }}>
-                      <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 13, color: BLACK }}>{item.name}</div>
+                      <div style={{ fontFamily: ff, fontWeight: 700, fontSize: 13, color: BLACK }}>{item.name}</div>
                       <div style={{ fontSize: 11, color: "#888", fontFamily: mono }}>{[cartLineOptions(item), `Qty: ${item.qty}`].filter(Boolean).join(" · ")}</div>
                     </div>
-                    <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 13, color: BLACK }}>
+                    <div style={{ fontFamily: ff, fontWeight: 700, fontSize: 13, color: BLACK }}>
                       PKR {((item.discountPrice || item.price || 0) * (item.qty || 1)).toLocaleString()}
                     </div>
                   </div>
@@ -3305,13 +3304,13 @@ export function CheckoutPage({ navigate }) {
                 <div style={{ background: "#e8f2f8", border: `1.5px solid #89c4e1`, padding: "14px 18px", marginTop: 20, display: "flex", alignItems: "center", gap: 12 }}>
                   <span style={{ fontSize: 18 }}>💵</span>
                   <div>
-                    <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 11, letterSpacing: "0.12em", color: BLACK }}>CASH ON DELIVERY</div>
+                    <div style={{ fontFamily: ff, fontWeight: 700, fontSize: 11, letterSpacing: "0.12em", color: BLACK }}>CASH ON DELIVERY</div>
                     <div style={{ fontSize: 11, color: "#888", fontFamily: mono }}>Pay PKR {grandTotal.toLocaleString()} when your order arrives</div>
                   </div>
                 </div>
 
                 <div style={{ marginTop: 28 }}>
-                  <YBtn onClick={handlePlaceOrder} disabled={submitting} style={{ width: "100%", padding: 16, fontSize: 13, letterSpacing: "0.16em" }}>
+                  <YBtn onClick={handlePlaceOrder} disabled={submitting} style={{ width: "100%", padding: 16, fontSize: 13, letterSpacing: "0.1em" }}>
                     {submitting ? "PLACING YOUR ORDER…" : `PLACE ORDER · PKR ${grandTotal.toLocaleString()}`}
                   </YBtn>
                 </div>
@@ -3323,7 +3322,7 @@ export function CheckoutPage({ navigate }) {
         <div style={{ background: "#fff", border: "1px solid #e0e8ee", position: "sticky", top: 80 }}>
           <div style={{ background: BLACK, padding: "18px 22px" }}>
             <div style={{ width: 24, height: 3, background: BRAND, marginBottom: 8 }} />
-            <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 13, color: "#fff", letterSpacing: "0.1em" }}>ORDER SUMMARY</div>
+            <div style={{ fontFamily: ff, fontWeight: 700, fontSize: 13, color: "#fff", letterSpacing: "0.1em" }}>ORDER SUMMARY</div>
           </div>
           <div style={{ padding: 20 }}>
             {cartItems.map(item => (
@@ -3332,10 +3331,10 @@ export function CheckoutPage({ navigate }) {
                   <img src={`${item.image}`} alt={item.name} loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 </div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 11, color: BLACK }}>{item.name}</div>
+                  <div style={{ fontFamily: ff, fontWeight: 700, fontSize: 11, color: BLACK }}>{item.name}</div>
                   <div style={{ fontSize: 10, color: "#aaa", fontFamily: mono }}>{[cartLineOptions(item), `× ${item.qty}`].filter(Boolean).join(" · ")}</div>
                 </div>
-                <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 11, color: BLACK }}>
+                <div style={{ fontFamily: ff, fontWeight: 700, fontSize: 11, color: BLACK }}>
                   PKR {((item.discountPrice || item.price || 0) * (item.qty || 1)).toLocaleString()}
                 </div>
               </div>
@@ -3343,17 +3342,17 @@ export function CheckoutPage({ navigate }) {
             <div style={{ borderTop: "1px solid #f0ece4", paddingTop: 14, display: "flex", flexDirection: "column", gap: 8 }}>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <span style={{ fontSize: 12, color: "#888", fontFamily: mono }}>Subtotal</span>
-                <span style={{ fontSize: 12, fontWeight: 900, fontFamily: ff, color: BLACK }}>PKR {cartTotal.toLocaleString()}</span>
+                <span style={{ fontSize: 12, fontWeight: 700, fontFamily: ff, color: BLACK }}>PKR {cartTotal.toLocaleString()}</span>
               </div>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <span style={{ fontSize: 12, color: "#888", fontFamily: mono }}>Shipping</span>
-                <span style={{ fontSize: 12, fontWeight: 900, fontFamily: ff, color: shipping === 0 ? "#16a34a" : BLACK }}>
+                <span style={{ fontSize: 12, fontWeight: 700, fontFamily: ff, color: shipping === 0 ? "#16a34a" : BLACK }}>
                   {shipping === 0 ? "FREE" : `PKR ${shipping}`}
                 </span>
               </div>
               <div style={{ display: "flex", justifyContent: "space-between", paddingTop: 10, borderTop: "2px solid #e8e0d0", marginTop: 4 }}>
-                <span style={{ fontFamily: ff, fontWeight: 900, fontSize: 13, letterSpacing: "0.08em", color: BLACK }}>TOTAL</span>
-                <span style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? 16 : 18, color: BLACK }}>PKR {grandTotal.toLocaleString()}</span>
+                <span style={{ fontFamily: ff, fontWeight: 700, fontSize: 13, letterSpacing: "0.08em", color: BLACK }}>TOTAL</span>
+                <span style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? 16 : 18, color: BLACK }}>PKR {grandTotal.toLocaleString()}</span>
               </div>
             </div>
           </div>
@@ -3383,7 +3382,7 @@ export function OrderSuccessPage({ navigate }) {
       <div style={{ textAlign: "center", maxWidth: 560, padding: "0 20px", position: "relative", zIndex: 1 }}>
         <div style={{ width: 80, height: 80, borderRadius: "50%", background: BRAND, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 32px", fontSize: 36, color: BRAND_TEXT }}>✓</div>
         <div style={{ width: 48, height: 4, background: BRAND, margin: "0 auto 24px" }}/>
-        <h1 style={{ fontFamily: ff, fontWeight: 900, fontSize: isMobile ? "clamp(32px, 10vw, 48px)" : "clamp(48px, 8vw, 80px)", lineHeight: 0.92, margin: 0 }}>
+        <h1 style={{ fontFamily: ff, fontWeight: 700, fontSize: isMobile ? "clamp(32px, 10vw, 48px)" : "clamp(48px, 8vw, 80px)", lineHeight: 0.92, margin: 0 }}>
           <span style={{ display: "block", color: "#fff", marginBottom: 10 }}>ORDER</span>
           <span style={{ display: "block", color: "#89c4e1", marginBottom: 28 }}>PLACED!</span>
         </h1>
@@ -3392,7 +3391,7 @@ export function OrderSuccessPage({ navigate }) {
         </p>
         <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
           <YBtn onClick={() => navigate("#/products")} style={{ padding: "13px 28px", fontSize: isMobile ? 10 : 12 }}>SHOP MORE FRAMES</YBtn>
-          <button onClick={() => navigate("#/")} style={{ background: "none", border: "1.5px solid rgba(255,255,255,0.2)", padding: "13px 24px", fontSize: 12, fontWeight: 900, letterSpacing: "0.1em", cursor: "pointer", color: "rgba(255,255,255,0.6)", fontFamily: ff }}>GO HOME</button>
+          <button onClick={() => navigate("#/")} style={{ background: "none", border: "1.5px solid rgba(255,255,255,0.2)", padding: "13px 24px", fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", cursor: "pointer", color: "rgba(255,255,255,0.6)", fontFamily: ff }}>GO HOME</button>
         </div>
         <div style={{ marginTop: 28, fontSize: 11, color: "#444", fontFamily: mono }}>Redirecting to home in {count}s...</div>
       </div>
@@ -3475,7 +3474,7 @@ export function ReviewSubmissionPage({ productId, reviewId, navigate }) {
 
       <div style={{ maxWidth: 680, margin: "0 auto", padding: isMobile ? "32px 16px 60px" : "56px 24px 80px" }}>
         {loading ? (
-          <div style={{ textAlign: "center", padding: "40px 0", color: "#aaa", fontFamily: ff, fontSize: 11, letterSpacing: "0.14em" }}>LOADING…</div>
+          <div style={{ textAlign: "center", padding: "40px 0", color: "#aaa", fontFamily: ff, fontSize: 11, letterSpacing: "0.1em" }}>LOADING…</div>
         ) : (
           <FadeIn>
             {product && (
@@ -3487,10 +3486,10 @@ export function ReviewSubmissionPage({ productId, reviewId, navigate }) {
                   }
                 </div>
                 <div>
-                  <div style={{ fontSize: 10, letterSpacing: "0.16em", color: "#aaa", fontFamily: ff, marginBottom: 4 }}>
+                  <div style={{ fontSize: 10, letterSpacing: "0.1em", color: "#aaa", fontFamily: ff, marginBottom: 4 }}>
                     {product.category?.toUpperCase() || "EYEWEAR"}
                   </div>
-                  <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 16, color: BLACK, letterSpacing: "0.04em", marginBottom: 4 }}>
+                  <div style={{ fontFamily: ff, fontWeight: 700, fontSize: 16, color: BLACK, letterSpacing: "0.04em", marginBottom: 4 }}>
                     {product.name}
                   </div>
                   {product.discountPrice > 0 && (
@@ -3503,12 +3502,12 @@ export function ReviewSubmissionPage({ productId, reviewId, navigate }) {
             )}
 
             <div style={{ background: "#fff", border: "1.5px solid #e8e0d0", padding: isMobile ? "20px" : "32px" }}>
-              <div style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.2em", color: BRAND, borderBottom: `2px solid ${BRAND}`, paddingBottom: 10, marginBottom: 28, fontFamily: ff }}>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: BRAND, borderBottom: `2px solid ${BRAND}`, paddingBottom: 10, marginBottom: 28, fontFamily: ff }}>
                 {existingReview ? "UPDATE YOUR REVIEW" : "YOUR REVIEW"}
               </div>
 
               <div style={{ marginBottom: 28 }}>
-                <div style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: BLACK, fontFamily: ff, marginBottom: 12 }}>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: BLACK, fontFamily: ff, marginBottom: 12 }}>
                   OVERALL RATING <span style={{ color: "#e74c3c" }}>*</span>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
@@ -3538,7 +3537,7 @@ export function ReviewSubmissionPage({ productId, reviewId, navigate }) {
               </div>
 
               <div style={{ marginBottom: 28 }}>
-                <div style={{ fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", color: BLACK, fontFamily: ff, marginBottom: 8 }}>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: BLACK, fontFamily: ff, marginBottom: 8 }}>
                   WRITTEN REVIEW <span style={{ fontSize: 10, color: "#aaa", fontWeight: 400 }}>(optional)</span>
                 </div>
                 <textarea
@@ -3577,8 +3576,8 @@ export function ReviewSubmissionPage({ productId, reviewId, navigate }) {
                   disabled={submitting || rating === 0}
                   style={{
                     background: submitting || rating === 0 ? "#ccc" : BRAND, color: "#fff",
-                    border: "none", padding: "14px 28px", fontSize: 11, fontWeight: 900,
-                    letterSpacing: "0.14em", fontFamily: ff,
+                    border: "none", padding: "14px 28px", fontSize: 11, fontWeight: 700,
+                    letterSpacing: "0.1em", fontFamily: ff,
                     cursor: submitting || rating === 0 ? "not-allowed" : "pointer",
                     transition: "background 0.2s",
                   }}
@@ -3589,7 +3588,7 @@ export function ReviewSubmissionPage({ productId, reviewId, navigate }) {
                   onClick={() => navigate("#/dashboard?tab=reviews")}
                   style={{
                     background: "none", border: `1.5px solid #ccc`, color: "#888",
-                    padding: "14px 24px", fontSize: 11, fontWeight: 900,
+                    padding: "14px 24px", fontSize: 11, fontWeight: 700,
                     letterSpacing: "0.12em", fontFamily: ff, cursor: "pointer",
                   }}
                 >
@@ -3655,7 +3654,7 @@ function ProductReviewsSection({ productId, navigate, onStats }) {
       <div style={{ maxWidth: 1400, margin: "0 auto" }}>
 
         <div style={{ position: "relative", display: "flex", flexDirection: isMobile ? "column" : "row", justifyContent: "center", alignItems: "center", marginBottom: 40, gap: 16, minHeight: 52 }}>
-          <h2 style={{ fontFamily: pdSans, fontWeight: 700, fontSize: isMobile ? 20 : 24, margin: 0, letterSpacing: "0.02em", color: BLACK }}>
+          <h2 style={{ fontFamily: pdSans, fontWeight: 700, fontSize: isMobile ? 18 : 24, margin: 0, letterSpacing: "1px", color: BLACK }}>
             CUSTOMER REVIEWS
           </h2>
           {user && (
@@ -3674,7 +3673,7 @@ function ProductReviewsSection({ productId, navigate, onStats }) {
         </div>
 
         {loading ? (
-          <div style={{ textAlign: "center", padding: "40px 0", color: "#aaa", fontFamily: pdSans, fontSize: 11, letterSpacing: "0.14em" }}>LOADING REVIEWS…</div>
+          <div style={{ textAlign: "center", padding: "40px 0", color: "#aaa", fontFamily: pdSans, fontSize: 11, letterSpacing: "0.1em" }}>LOADING REVIEWS…</div>
         ) : (
           <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "260px 1fr", gap: isMobile ? 32 : 48, alignItems: "flex-start" }}>
 
@@ -3682,7 +3681,7 @@ function ProductReviewsSection({ productId, navigate, onStats }) {
               {stats && stats.total > 0 ? (
                 <div style={{ background: "#fff", border: "1.5px solid #e8ddd0", padding: 24 }}>
                   <div style={{ textAlign: "center", marginBottom: 20, paddingBottom: 20, borderBottom: "1px solid #f0ece4" }}>
-                    <div style={{ fontFamily: pdSans, fontWeight: 900, fontSize: 52, color: BLACK, lineHeight: 1 }}>
+                    <div style={{ fontFamily: pdSans, fontWeight: 700, fontSize: 52, color: BLACK, lineHeight: 1 }}>
                       {stats.avg.toFixed(1)}
                     </div>
                     <div style={{ color: "#f5a623", fontSize: 20, letterSpacing: 3, margin: "6px 0" }}>
@@ -3694,7 +3693,7 @@ function ProductReviewsSection({ productId, navigate, onStats }) {
                   </div>
                   {stats.breakdown.map(({ star, count }) => (
                     <div key={star} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
-                      <span style={{ fontSize: 10, fontFamily: pdSans, fontWeight: 900, color: "#888", minWidth: 28, textAlign: "right" }}>{star}★</span>
+                      <span style={{ fontSize: 10, fontFamily: pdSans, fontWeight: 700, color: "#888", minWidth: 28, textAlign: "right" }}>{star}★</span>
                       <div style={{ flex: 1, height: 6, background: "#f0ece4", overflow: "hidden" }}>
                         <div style={{ height: "100%", background: "#f5a623", width: stats.total > 0 ? `${(count / stats.total) * 100}%` : "0%", transition: "width 0.4s ease" }} />
                       </div>
@@ -3711,7 +3710,7 @@ function ProductReviewsSection({ productId, navigate, onStats }) {
                       onClick={() => navigate(`#/review/${productId}`)}
                       style={{
                         marginTop: 14, background: BRAND, color: "#fff", border: "none",
-                        padding: "10px 20px", fontSize: 10, fontWeight: 900,
+                        padding: "10px 20px", fontSize: 10, fontWeight: 700,
                         letterSpacing: "0.12em", fontFamily: pdSans, cursor: "pointer",
                       }}
                     >
@@ -3736,13 +3735,13 @@ function ProductReviewsSection({ productId, navigate, onStats }) {
                           <div style={{ color: "#f5a623", fontSize: 16, letterSpacing: 2, marginBottom: 4 }}>
                             {"★".repeat(Number(r.rating) || 0)}{"☆".repeat(5 - (Number(r.rating) || 0))}
                           </div>
-                          <div style={{ fontFamily: pdSans, fontWeight: 900, fontSize: 12, color: BLACK, letterSpacing: "0.04em" }}>
+                          <div style={{ fontFamily: pdSans, fontWeight: 700, fontSize: 12, color: BLACK, letterSpacing: "0.04em" }}>
                             {r.authorName || r.fullName || "Verified Buyer"}
                           </div>
                         </div>
                         <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 6 }}>
                           {(r.verifiedPurchase === true || r.verifiedPurchase === "TRUE" || r.verifiedPurchase === "true") && (
-                            <span style={{ fontSize: 9, fontWeight: 900, letterSpacing: "0.1em", padding: "3px 8px", background: "#eaf5ef", color: "#2a8a50", fontFamily: pdSans }}>
+                            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", padding: "3px 8px", background: "#eaf5ef", color: "#2a8a50", fontFamily: pdSans }}>
                               ✓ VERIFIED PURCHASE
                             </span>
                           )}
@@ -3764,7 +3763,7 @@ function ProductReviewsSection({ productId, navigate, onStats }) {
                       onClick={() => setShowAll(v => !v)}
                       style={{
                         background: "none", border: `1.5px solid ${BLACK}`, color: BLACK,
-                        padding: "11px 24px", fontSize: 11, fontWeight: 900,
+                        padding: "11px 24px", fontSize: 11, fontWeight: 700,
                         letterSpacing: "0.12em", fontFamily: pdSans, cursor: "pointer", marginTop: 8,
                       }}
                     >

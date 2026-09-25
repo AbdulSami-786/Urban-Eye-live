@@ -49,7 +49,7 @@
 
 // // //   return (
 // // //     <div style={{ background: "#f8fbfd", border: `1.5px solid ${NAVY}`, padding: 24, marginBottom: 20 }}>
-// // //       <div style={{ fontFamily: ff, fontSize: 12, fontWeight: 900, letterSpacing: "0.14em", color: NAVY, marginBottom: 16 }}>
+// // //       <div style={{ fontFamily: ff, fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", color: NAVY, marginBottom: 16 }}>
 // // //         {initial.addressId ? "EDIT ADDRESS" : "NEW ADDRESS"}
 // // //       </div>
 // // //       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 }}>
@@ -62,7 +62,7 @@
 // // //           { label: "POSTAL CODE", key: "postalCode", placeholder: "75500"                  },
 // // //         ].map(f => (
 // // //           <div key={f.key} style={{ gridColumn: f.full ? "1 / -1" : "auto" }}>
-// // //             <div style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.12em", color: NAVY, marginBottom: 4, fontFamily: ff }}>
+// // //             <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: NAVY, marginBottom: 4, fontFamily: ff }}>
 // // //               {f.label}
 // // //             </div>
 // // //             <input
@@ -86,7 +86,7 @@
 // // //         <button onClick={() => onSave(form)} disabled={saving}
 // // //           style={{
 // // //             background: NAVY, color: "#fff", border: "none", padding: "10px 24px",
-// // //             fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", fontFamily: ff,
+// // //             fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", fontFamily: ff,
 // // //             cursor: saving ? "not-allowed" : "pointer", opacity: saving ? 0.7 : 1,
 // // //           }}>
 // // //           {saving ? "SAVING…" : "SAVE ADDRESS"}
@@ -94,7 +94,7 @@
 // // //         <button onClick={onCancel}
 // // //           style={{
 // // //             background: "none", color: NAVY, border: `1.5px solid ${NAVY}`,
-// // //             padding: "10px 20px", fontSize: 11, fontWeight: 900,
+// // //             padding: "10px 20px", fontSize: 11, fontWeight: 700,
 // // //             letterSpacing: "0.12em", fontFamily: ff, cursor: "pointer",
 // // //           }}>
 // // //           CANCEL
@@ -295,8 +295,8 @@
 
 // // //       {/* Header */}
 // // //       <div style={{ borderBottom: `3px solid ${NAVY}`, paddingBottom: 24, marginBottom: 36 }}>
-// // //         <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "#888", marginBottom: 6 }}>MY ACCOUNT</div>
-// // //         <h1 style={{ fontSize: 32, fontWeight: 900, color: NAVY, margin: 0, letterSpacing: "0.02em" }}>
+// // //         <div style={{ fontSize: 11, letterSpacing: "0.1em", color: "#888", marginBottom: 6 }}>MY ACCOUNT</div>
+// // //         <h1 style={{ fontSize: 32, fontWeight: 700, color: NAVY, margin: 0, letterSpacing: "0.02em" }}>
 // // //           {(user.name || user.fullName || "").toUpperCase()}
 // // //         </h1>
 // // //         <div style={{ fontSize: 13, color: "#777", marginTop: 4, fontFamily: mono }}>{user.email}</div>
@@ -314,8 +314,8 @@
 // // //                 color        : activeTab === tab.key ? "#fff" : NAVY,
 // // //                 border       : "none",
 // // //                 borderLeft   : `3px solid ${activeTab === tab.key ? ACCENT : "transparent"}`,
-// // //                 padding      : "12px 16px", fontSize: 11, fontWeight: 900,
-// // //                 letterSpacing: "0.14em", cursor: "pointer", fontFamily: ff,
+// // //                 padding      : "12px 16px", fontSize: 11, fontWeight: 700,
+// // //                 letterSpacing: "0.1em", cursor: "pointer", fontFamily: ff,
 // // //                 marginBottom : 2, transition: "all 0.15s",
 // // //               }}>
 // // //               {tab.label}
@@ -326,7 +326,7 @@
 // // //               display      : "block", width: "100%", textAlign: "left",
 // // //               background   : "none", color: "#c0392b", border: "none",
 // // //               borderLeft   : "3px solid transparent", padding: "12px 16px",
-// // //               fontSize     : 11, fontWeight: 900, letterSpacing: "0.14em",
+// // //               fontSize     : 11, fontWeight: 700, letterSpacing: "0.1em",
 // // //               cursor       : "pointer", fontFamily: ff, marginTop: 16,
 // // //             }}>
 // // //             SIGN OUT
@@ -366,8 +366,8 @@
 // // //               <button onClick={handleSaveProfile} disabled={profileSaving}
 // // //                 style={{
 // // //                   marginTop    : 20, background: NAVY, color: "#fff", border: "none",
-// // //                   padding      : "12px 28px", fontSize: 11, fontWeight: 900,
-// // //                   letterSpacing: "0.14em", fontFamily: ff,
+// // //                   padding      : "12px 28px", fontSize: 11, fontWeight: 700,
+// // //                   letterSpacing: "0.1em", fontFamily: ff,
 // // //                   cursor       : profileSaving ? "not-allowed" : "pointer",
 // // //                   opacity      : profileSaving ? 0.7 : 1,
 // // //                 }}>
@@ -396,7 +396,7 @@
 // // //                       <div key={order.orderId} style={{ border: `1.5px solid #dde`, padding: 20 }}>
 // // //                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
 // // //                           <div>
-// // //                             <div style={{ fontSize: 12, fontWeight: 900, color: NAVY, letterSpacing: "0.1em" }}>
+// // //                             <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, letterSpacing: "0.1em" }}>
 // // //                               ORDER #{order.orderId}
 // // //                             </div>
 // // //                             <div style={{ fontSize: 11, color: "#888", fontFamily: mono, marginTop: 2 }}>
@@ -456,7 +456,7 @@
 // // //                           <span style={{ fontSize: 11, color: "#888", fontFamily: ff, letterSpacing: "0.08em" }}>
 // // //                             {order.paymentMethod || "COD"} · {products.length} item(s)
 // // //                           </span>
-// // //                           <span style={{ fontSize: 14, fontWeight: 900, color: NAVY, fontFamily: ff }}>
+// // //                           <span style={{ fontSize: 14, fontWeight: 700, color: NAVY, fontFamily: ff }}>
 // // //                             PKR {Number(order.total).toLocaleString()}
 // // //                           </span>
 // // //                         </div>
@@ -518,7 +518,7 @@
 // // //                   <button onClick={() => setAddrModal({})}
 // // //                     style={{
 // // //                       background   : "none", border: `1.5px dashed ${NAVY}`, color: NAVY,
-// // //                       padding      : "12px 24px", fontSize: 11, fontWeight: 900,
+// // //                       padding      : "12px 24px", fontSize: 11, fontWeight: 700,
 // // //                       letterSpacing: "0.12em", fontFamily: ff, cursor: "pointer",
 // // //                     }}>
 // // //                     + ADD NEW ADDRESS
@@ -549,7 +549,7 @@
 // // //                           style={{ width: "100%", height: 140, objectFit: "contain", background: "#f8f8f8", marginBottom: 10 }}
 // // //                         />
 // // //                       )}
-// // //                       <div style={{ fontSize: 12, fontWeight: 900, color: NAVY, letterSpacing: "0.06em", marginBottom: 4 }}>
+// // //                       <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, letterSpacing: "0.06em", marginBottom: 4 }}>
 // // //                         {item.product?.name || "Unknown Product"}
 // // //                       </div>
 // // //                       <div style={{ fontSize: 13, color: NAVY, fontFamily: mono, marginBottom: 12 }}>
@@ -559,7 +559,7 @@
 // // //                         <button onClick={() => handleMoveToCart(item)}
 // // //                           style={{
 // // //                             flex         : 1, background: NAVY, color: "#fff", border: "none",
-// // //                             padding      : "8px", fontSize: 10, fontWeight: 900,
+// // //                             padding      : "8px", fontSize: 10, fontWeight: 700,
 // // //                             letterSpacing: "0.1em", fontFamily: ff, cursor: "pointer",
 // // //                           }}>
 // // //                           ADD TO CART
@@ -609,7 +609,7 @@
 // // //                           <span style={{
 // // //                             background   : r.approved === true || r.approved === "TRUE" ? "#eaf5ef" : "#fef0f0",
 // // //                             color        : r.approved === true || r.approved === "TRUE" ? "#2a8a50" : "#a33",
-// // //                             fontSize     : 9, fontWeight: 900, padding: "3px 8px",
+// // //                             fontSize     : 9, fontWeight: 700, padding: "3px 8px",
 // // //                             letterSpacing: "0.1em", fontFamily: ff,
 // // //                           }}>
 // // //                             {r.approved === true || r.approved === "TRUE" ? "PUBLISHED" : "PENDING APPROVAL"}
@@ -640,7 +640,7 @@
 // // // function SectionTitle({ children }) {
 // // //   return (
 // // //     <div style={{
-// // //       fontSize     : 11, fontWeight: 900, letterSpacing: "0.2em", color: NAVY,
+// // //       fontSize     : 11, fontWeight: 700, letterSpacing: "0.1em", color: NAVY,
 // // //       borderBottom : `2px solid ${NAVY}`, paddingBottom: 10, marginBottom: 24, fontFamily: ff,
 // // //     }}>
 // // //       {children}
@@ -651,7 +651,7 @@
 // // // function FormField({ label, value, onChange, disabled }) {
 // // //   return (
 // // //     <div>
-// // //       <div style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.12em", color: NAVY, marginBottom: 5, fontFamily: ff }}>
+// // //       <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: NAVY, marginBottom: 5, fontFamily: ff }}>
 // // //         {label}
 // // //       </div>
 // // //       <input
@@ -675,7 +675,7 @@
 // // //         background   : "none",
 // // //         border       : `1px solid ${danger ? "#e74c3c" : "#cde"}`,
 // // //         color        : danger ? "#e74c3c" : NAVY,
-// // //         padding      : "5px 12px", fontSize: 10, fontWeight: 900,
+// // //         padding      : "5px 12px", fontSize: 10, fontWeight: 700,
 // // //         letterSpacing: "0.1em", fontFamily: ff, cursor: "pointer",
 // // //       }}>
 // // //       {children}
@@ -695,7 +695,7 @@
 // // //   const c = colors[(status || "").toLowerCase()] || { bg: "#f5f5f5", color: "#555" };
 // // //   return (
 // // //     <span style={{
-// // //       background   : c.bg, color: c.color, fontSize: 9, fontWeight: 900,
+// // //       background   : c.bg, color: c.color, fontSize: 9, fontWeight: 700,
 // // //       padding      : "4px 10px", letterSpacing: "0.12em", fontFamily: ff,
 // // //     }}>
 // // //       {(status || "pending").toUpperCase()}
@@ -705,7 +705,7 @@
 
 // // // function Loader() {
 // // //   return (
-// // //     <div style={{ textAlign: "center", padding: "40px 0", color: "#aaa", fontFamily: ff, fontSize: 11, letterSpacing: "0.14em" }}>
+// // //     <div style={{ textAlign: "center", padding: "40px 0", color: "#aaa", fontFamily: ff, fontSize: 11, letterSpacing: "0.1em" }}>
 // // //       LOADING…
 // // //     </div>
 // // //   );
@@ -719,7 +719,7 @@
 // // //         <button onClick={action}
 // // //           style={{
 // // //             background   : NAVY, color: "#fff", border: "none", padding: "12px 28px",
-// // //             fontSize     : 11, fontWeight: 900, letterSpacing: "0.14em", fontFamily: ff, cursor: "pointer",
+// // //             fontSize     : 11, fontWeight: 700, letterSpacing: "0.1em", fontFamily: ff, cursor: "pointer",
 // // //           }}>
 // // //           {actionLabel}
 // // //         </button>
@@ -812,7 +812,7 @@
 
 // //   return (
 // //     <div style={{ background: "#f8fbfd", border: `1.5px solid ${NAVY}`, padding: 24, marginBottom: 20 }}>
-// //       <div style={{ fontFamily: ff, fontSize: 12, fontWeight: 900, letterSpacing: "0.14em", color: NAVY, marginBottom: 16 }}>
+// //       <div style={{ fontFamily: ff, fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", color: NAVY, marginBottom: 16 }}>
 // //         {initial.addressId ? "EDIT ADDRESS" : "NEW ADDRESS"}
 // //       </div>
 // //       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 }}>
@@ -825,7 +825,7 @@
 // //           { label: "POSTAL CODE", key: "postalCode", placeholder: "75500"                  },
 // //         ].map(f => (
 // //           <div key={f.key} style={{ gridColumn: f.full ? "1 / -1" : "auto" }}>
-// //             <div style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.12em", color: NAVY, marginBottom: 4, fontFamily: ff }}>
+// //             <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: NAVY, marginBottom: 4, fontFamily: ff }}>
 // //               {f.label}
 // //             </div>
 // //             <input
@@ -849,7 +849,7 @@
 // //         <button onClick={() => onSave(form)} disabled={saving}
 // //           style={{
 // //             background: NAVY, color: "#fff", border: "none", padding: "10px 24px",
-// //             fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", fontFamily: ff,
+// //             fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", fontFamily: ff,
 // //             cursor: saving ? "not-allowed" : "pointer", opacity: saving ? 0.7 : 1,
 // //           }}>
 // //           {saving ? "SAVING…" : "SAVE ADDRESS"}
@@ -857,7 +857,7 @@
 // //         <button onClick={onCancel}
 // //           style={{
 // //             background: "none", color: NAVY, border: `1.5px solid ${NAVY}`,
-// //             padding: "10px 20px", fontSize: 11, fontWeight: 900,
+// //             padding: "10px 20px", fontSize: 11, fontWeight: 700,
 // //             letterSpacing: "0.12em", fontFamily: ff, cursor: "pointer",
 // //           }}>
 // //           CANCEL
@@ -1005,7 +1005,7 @@
 
 // //               {/* Product Info */}
 // //               <div style={{ flex: 1, minWidth: 0 }}>
-// //                 <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 13, color: NAVY, marginBottom: 3, letterSpacing: "0.04em" }}>
+// //                 <div style={{ fontFamily: ff, fontWeight: 700, fontSize: 13, color: NAVY, marginBottom: 3, letterSpacing: "0.04em" }}>
 // //                   {product.name}
 // //                 </div>
 // //                 <div style={{ fontSize: 11, color: "#888", fontFamily: mono, marginBottom: 6 }}>
@@ -1023,7 +1023,7 @@
 // //                     <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
 // //                       <Stars rating={Number(review.rating) || 0} />
 // //                       <span style={{
-// //                         fontSize: 9, fontWeight: 900, letterSpacing: "0.1em",
+// //                         fontSize: 9, fontWeight: 700, letterSpacing: "0.1em",
 // //                         padding: "3px 8px", fontFamily: ff,
 // //                         background: review.approved === true || review.approved === "TRUE" || String(review.approved).toLowerCase() === "true"
 // //                           ? "#eaf5ef" : "#fff8e1",
@@ -1058,7 +1058,7 @@
 // //                       onClick={() => navigate(`#/review/${product.productId}?reviewId=${review.reviewId}`)}
 // //                       style={{
 // //                         background: "none", border: `1.5px solid ${NAVY}`, color: NAVY,
-// //                         padding: "8px 14px", fontSize: 10, fontWeight: 900,
+// //                         padding: "8px 14px", fontSize: 10, fontWeight: 700,
 // //                         letterSpacing: "0.1em", fontFamily: ff, cursor: "pointer",
 // //                         whiteSpace: "nowrap",
 // //                       }}
@@ -1071,7 +1071,7 @@
 // //                     onClick={() => navigate(`#/review/${product.productId}`)}
 // //                     style={{
 // //                       background: NAVY, color: "#fff", border: "none",
-// //                       padding: "8px 14px", fontSize: 10, fontWeight: 900,
+// //                       padding: "8px 14px", fontSize: 10, fontWeight: 700,
 // //                       letterSpacing: "0.1em", fontFamily: ff, cursor: "pointer",
 // //                       whiteSpace: "nowrap",
 // //                     }}
@@ -1083,7 +1083,7 @@
 // //                   onClick={() => navigate(`#/products/${product.productId}`)}
 // //                   style={{
 // //                     background: "none", border: "1.5px solid #dde", color: "#888",
-// //                     padding: "8px 14px", fontSize: 10, fontWeight: 900,
+// //                     padding: "8px 14px", fontSize: 10, fontWeight: 700,
 // //                     letterSpacing: "0.1em", fontFamily: ff, cursor: "pointer",
 // //                     whiteSpace: "nowrap",
 // //                   }}
@@ -1253,8 +1253,8 @@
 
 // //       {/* Header */}
 // //       <div style={{ borderBottom: `3px solid ${NAVY}`, paddingBottom: 24, marginBottom: 36 }}>
-// //         <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "#888", marginBottom: 6 }}>MY ACCOUNT</div>
-// //         <h1 style={{ fontSize: 32, fontWeight: 900, color: NAVY, margin: 0, letterSpacing: "0.02em" }}>
+// //         <div style={{ fontSize: 11, letterSpacing: "0.1em", color: "#888", marginBottom: 6 }}>MY ACCOUNT</div>
+// //         <h1 style={{ fontSize: 32, fontWeight: 700, color: NAVY, margin: 0, letterSpacing: "0.02em" }}>
 // //           {(user.name || user.fullName || "").toUpperCase()}
 // //         </h1>
 // //         <div style={{ fontSize: 13, color: "#777", marginTop: 4, fontFamily: mono }}>{user.email}</div>
@@ -1272,8 +1272,8 @@
 // //                 color        : activeTab === tab.key ? "#fff" : NAVY,
 // //                 border       : "none",
 // //                 borderLeft   : `3px solid ${activeTab === tab.key ? ACCENT : "transparent"}`,
-// //                 padding      : "12px 16px", fontSize: 11, fontWeight: 900,
-// //                 letterSpacing: "0.14em", cursor: "pointer", fontFamily: ff,
+// //                 padding      : "12px 16px", fontSize: 11, fontWeight: 700,
+// //                 letterSpacing: "0.1em", cursor: "pointer", fontFamily: ff,
 // //                 marginBottom : 2, transition: "all 0.15s",
 // //               }}>
 // //               {tab.label}
@@ -1284,7 +1284,7 @@
 // //               display      : "block", width: "100%", textAlign: "left",
 // //               background   : "none", color: "#c0392b", border: "none",
 // //               borderLeft   : "3px solid transparent", padding: "12px 16px",
-// //               fontSize     : 11, fontWeight: 900, letterSpacing: "0.14em",
+// //               fontSize     : 11, fontWeight: 700, letterSpacing: "0.1em",
 // //               cursor       : "pointer", fontFamily: ff, marginTop: 16,
 // //             }}>
 // //             SIGN OUT
@@ -1324,8 +1324,8 @@
 // //               <button onClick={handleSaveProfile} disabled={profileSaving}
 // //                 style={{
 // //                   marginTop    : 20, background: NAVY, color: "#fff", border: "none",
-// //                   padding      : "12px 28px", fontSize: 11, fontWeight: 900,
-// //                   letterSpacing: "0.14em", fontFamily: ff,
+// //                   padding      : "12px 28px", fontSize: 11, fontWeight: 700,
+// //                   letterSpacing: "0.1em", fontFamily: ff,
 // //                   cursor       : profileSaving ? "not-allowed" : "pointer",
 // //                   opacity      : profileSaving ? 0.7 : 1,
 // //                 }}>
@@ -1352,7 +1352,7 @@
 // //                       <div key={order.orderId} style={{ border: `1.5px solid #dde`, padding: 20 }}>
 // //                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
 // //                           <div>
-// //                             <div style={{ fontSize: 12, fontWeight: 900, color: NAVY, letterSpacing: "0.1em" }}>
+// //                             <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, letterSpacing: "0.1em" }}>
 // //                               ORDER #{order.orderId}
 // //                             </div>
 // //                             <div style={{ fontSize: 11, color: "#888", fontFamily: mono, marginTop: 2 }}>
@@ -1398,7 +1398,7 @@
 // //                           <span style={{ fontSize: 11, color: "#888", fontFamily: ff, letterSpacing: "0.08em" }}>
 // //                             {order.paymentMethod || "COD"} · {products.length} item(s)
 // //                           </span>
-// //                           <span style={{ fontSize: 14, fontWeight: 900, color: NAVY, fontFamily: ff }}>
+// //                           <span style={{ fontSize: 14, fontWeight: 700, color: NAVY, fontFamily: ff }}>
 // //                             PKR {Number(order.total).toLocaleString()}
 // //                           </span>
 // //                         </div>
@@ -1435,7 +1435,7 @@
 // //                           <span style={{
 // //                             position: "absolute", top: 10, right: 10,
 // //                             background: NAVY, color: "#fff", fontSize: 9,
-// //                             fontWeight: 900, padding: "3px 8px",
+// //                             fontWeight: 700, padding: "3px 8px",
 // //                             letterSpacing: "0.1em", fontFamily: ff,
 // //                           }}>
 // //                             DEFAULT
@@ -1457,7 +1457,7 @@
 // //                   <button onClick={() => setAddrModal({})}
 // //                     style={{
 // //                       background: "none", border: `1.5px dashed ${NAVY}`, color: NAVY,
-// //                       padding: "12px 24px", fontSize: 11, fontWeight: 900,
+// //                       padding: "12px 24px", fontSize: 11, fontWeight: 700,
 // //                       letterSpacing: "0.12em", fontFamily: ff, cursor: "pointer",
 // //                     }}>
 // //                     + ADD NEW ADDRESS
@@ -1488,7 +1488,7 @@
 // //                           style={{ width: "100%", height: 140, objectFit: "contain", background: "#f8f8f8", marginBottom: 10 }}
 // //                         />
 // //                       )}
-// //                       <div style={{ fontSize: 12, fontWeight: 900, color: NAVY, letterSpacing: "0.06em", marginBottom: 4 }}>
+// //                       <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, letterSpacing: "0.06em", marginBottom: 4 }}>
 // //                         {item.product?.name || "Unknown Product"}
 // //                       </div>
 // //                       <div style={{ fontSize: 13, color: NAVY, fontFamily: mono, marginBottom: 12 }}>
@@ -1498,7 +1498,7 @@
 // //                         <button onClick={() => handleMoveToCart(item)}
 // //                           style={{
 // //                             flex: 1, background: NAVY, color: "#fff", border: "none",
-// //                             padding: "8px", fontSize: 10, fontWeight: 900,
+// //                             padding: "8px", fontSize: 10, fontWeight: 700,
 // //                             letterSpacing: "0.1em", fontFamily: ff, cursor: "pointer",
 // //                           }}>
 // //                           ADD TO CART
@@ -1534,7 +1534,7 @@
 // // function SectionTitle({ children }) {
 // //   return (
 // //     <div style={{
-// //       fontSize: 11, fontWeight: 900, letterSpacing: "0.2em", color: NAVY,
+// //       fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: NAVY,
 // //       borderBottom: `2px solid ${NAVY}`, paddingBottom: 10, marginBottom: 24, fontFamily: ff,
 // //     }}>
 // //       {children}
@@ -1545,7 +1545,7 @@
 // // function FormField({ label, value, onChange, disabled }) {
 // //   return (
 // //     <div>
-// //       <div style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.12em", color: NAVY, marginBottom: 5, fontFamily: ff }}>
+// //       <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: NAVY, marginBottom: 5, fontFamily: ff }}>
 // //         {label}
 // //       </div>
 // //       <input
@@ -1569,7 +1569,7 @@
 // //         background: "none",
 // //         border: `1px solid ${danger ? "#e74c3c" : "#cde"}`,
 // //         color: danger ? "#e74c3c" : NAVY,
-// //         padding: "5px 12px", fontSize: 10, fontWeight: 900,
+// //         padding: "5px 12px", fontSize: 10, fontWeight: 700,
 // //         letterSpacing: "0.1em", fontFamily: ff, cursor: "pointer",
 // //       }}>
 // //       {children}
@@ -1589,7 +1589,7 @@
 // //   const c = colors[(status || "").toLowerCase()] || { bg: "#f5f5f5", color: "#555" };
 // //   return (
 // //     <span style={{
-// //       background: c.bg, color: c.color, fontSize: 9, fontWeight: 900,
+// //       background: c.bg, color: c.color, fontSize: 9, fontWeight: 700,
 // //       padding: "4px 10px", letterSpacing: "0.12em", fontFamily: ff,
 // //     }}>
 // //       {(status || "pending").toUpperCase()}
@@ -1599,7 +1599,7 @@
 
 // // function Loader() {
 // //   return (
-// //     <div style={{ textAlign: "center", padding: "40px 0", color: "#aaa", fontFamily: ff, fontSize: 11, letterSpacing: "0.14em" }}>
+// //     <div style={{ textAlign: "center", padding: "40px 0", color: "#aaa", fontFamily: ff, fontSize: 11, letterSpacing: "0.1em" }}>
 // //       LOADING…
 // //     </div>
 // //   );
@@ -1613,7 +1613,7 @@
 // //         <button onClick={action}
 // //           style={{
 // //             background: NAVY, color: "#fff", border: "none", padding: "12px 28px",
-// //             fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", fontFamily: ff, cursor: "pointer",
+// //             fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", fontFamily: ff, cursor: "pointer",
 // //           }}>
 // //           {actionLabel}
 // //         </button>
@@ -1716,7 +1716,7 @@
 
 //   return (
 //     <div style={{ background: "#f8fbfd", border: `1.5px solid ${NAVY}`, padding: 24, marginBottom: 20 }}>
-//       <div style={{ fontFamily: ff, fontSize: 12, fontWeight: 900, letterSpacing: "0.14em", color: NAVY, marginBottom: 16 }}>
+//       <div style={{ fontFamily: ff, fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", color: NAVY, marginBottom: 16 }}>
 //         {initial.addressId ? "EDIT ADDRESS" : "NEW ADDRESS"}
 //       </div>
 //       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 }}>
@@ -1729,7 +1729,7 @@
 //           { label: "POSTAL CODE", key: "postalCode", placeholder: "75500"                  },
 //         ].map(f => (
 //           <div key={f.key} style={{ gridColumn: f.full ? "1 / -1" : "auto" }}>
-//             <div style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.12em", color: NAVY, marginBottom: 4, fontFamily: ff }}>
+//             <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: NAVY, marginBottom: 4, fontFamily: ff }}>
 //               {f.label}
 //             </div>
 //             <input
@@ -1753,7 +1753,7 @@
 //         <button onClick={() => onSave(form)} disabled={saving}
 //           style={{
 //             background: NAVY, color: "#fff", border: "none", padding: "10px 24px",
-//             fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", fontFamily: ff,
+//             fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", fontFamily: ff,
 //             cursor: saving ? "not-allowed" : "pointer", opacity: saving ? 0.7 : 1,
 //           }}>
 //           {saving ? "SAVING…" : "SAVE ADDRESS"}
@@ -1761,7 +1761,7 @@
 //         <button onClick={onCancel}
 //           style={{
 //             background: "none", color: NAVY, border: `1.5px solid ${NAVY}`,
-//             padding: "10px 20px", fontSize: 11, fontWeight: 900,
+//             padding: "10px 20px", fontSize: 11, fontWeight: 700,
 //             letterSpacing: "0.12em", fontFamily: ff, cursor: "pointer",
 //           }}>
 //           CANCEL
@@ -1909,7 +1909,7 @@
 
 //               {/* Product Info */}
 //               <div style={{ flex: 1, minWidth: 0 }}>
-//                 <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 13, color: NAVY, marginBottom: 3, letterSpacing: "0.04em" }}>
+//                 <div style={{ fontFamily: ff, fontWeight: 700, fontSize: 13, color: NAVY, marginBottom: 3, letterSpacing: "0.04em" }}>
 //                   {product.name}
 //                 </div>
 //                 <div style={{ fontSize: 11, color: "#888", fontFamily: mono, marginBottom: 6 }}>
@@ -1927,7 +1927,7 @@
 //                     <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
 //                       <Stars rating={Number(review.rating) || 0} />
 //                       <span style={{
-//                         fontSize: 9, fontWeight: 900, letterSpacing: "0.1em",
+//                         fontSize: 9, fontWeight: 700, letterSpacing: "0.1em",
 //                         padding: "3px 8px", fontFamily: ff,
 //                         background: review.approved === true || review.approved === "TRUE" || String(review.approved).toLowerCase() === "true"
 //                           ? "#eaf5ef" : "#fff8e1",
@@ -1962,7 +1962,7 @@
 //                       onClick={() => navigate(`#/review/${product.productId}?reviewId=${review.reviewId}`)}
 //                       style={{
 //                         background: "none", border: `1.5px solid ${NAVY}`, color: NAVY,
-//                         padding: "8px 14px", fontSize: 10, fontWeight: 900,
+//                         padding: "8px 14px", fontSize: 10, fontWeight: 700,
 //                         letterSpacing: "0.1em", fontFamily: ff, cursor: "pointer",
 //                         whiteSpace: "nowrap",
 //                       }}
@@ -1975,7 +1975,7 @@
 //                     onClick={() => navigate(`#/review/${product.productId}`)}
 //                     style={{
 //                       background: NAVY, color: "#fff", border: "none",
-//                       padding: "8px 14px", fontSize: 10, fontWeight: 900,
+//                       padding: "8px 14px", fontSize: 10, fontWeight: 700,
 //                       letterSpacing: "0.1em", fontFamily: ff, cursor: "pointer",
 //                       whiteSpace: "nowrap",
 //                     }}
@@ -1987,7 +1987,7 @@
 //                   onClick={() => navigate(`#/products/${product.productId}`)}
 //                   style={{
 //                     background: "none", border: "1.5px solid #dde", color: "#888",
-//                     padding: "8px 14px", fontSize: 10, fontWeight: 900,
+//                     padding: "8px 14px", fontSize: 10, fontWeight: 700,
 //                     letterSpacing: "0.1em", fontFamily: ff, cursor: "pointer",
 //                     whiteSpace: "nowrap",
 //                   }}
@@ -2157,8 +2157,8 @@
 
 //       {/* Header */}
 //       <div style={{ borderBottom: `3px solid ${NAVY}`, paddingBottom: 24, marginBottom: 36 }}>
-//         <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "#888", marginBottom: 6 }}>MY ACCOUNT</div>
-//         <h1 style={{ fontSize: 32, fontWeight: 900, color: NAVY, margin: 0, letterSpacing: "0.02em" }}>
+//         <div style={{ fontSize: 11, letterSpacing: "0.1em", color: "#888", marginBottom: 6 }}>MY ACCOUNT</div>
+//         <h1 style={{ fontSize: 32, fontWeight: 700, color: NAVY, margin: 0, letterSpacing: "0.02em" }}>
 //           {(user.name || user.fullName || "").toUpperCase()}
 //         </h1>
 //         <div style={{ fontSize: 13, color: "#777", marginTop: 4, fontFamily: mono }}>{user.email}</div>
@@ -2176,8 +2176,8 @@
 //                 color        : activeTab === tab.key ? "#fff" : NAVY,
 //                 border       : "none",
 //                 borderLeft   : `3px solid ${activeTab === tab.key ? ACCENT : "transparent"}`,
-//                 padding      : "12px 16px", fontSize: 11, fontWeight: 900,
-//                 letterSpacing: "0.14em", cursor: "pointer", fontFamily: ff,
+//                 padding      : "12px 16px", fontSize: 11, fontWeight: 700,
+//                 letterSpacing: "0.1em", cursor: "pointer", fontFamily: ff,
 //                 marginBottom : 2, transition: "all 0.15s",
 //               }}>
 //               {tab.label}
@@ -2188,7 +2188,7 @@
 //               display      : "block", width: "100%", textAlign: "left",
 //               background   : "none", color: "#c0392b", border: "none",
 //               borderLeft   : "3px solid transparent", padding: "12px 16px",
-//               fontSize     : 11, fontWeight: 900, letterSpacing: "0.14em",
+//               fontSize     : 11, fontWeight: 700, letterSpacing: "0.1em",
 //               cursor       : "pointer", fontFamily: ff, marginTop: 16,
 //             }}>
 //             SIGN OUT
@@ -2228,8 +2228,8 @@
 //               <button onClick={handleSaveProfile} disabled={profileSaving}
 //                 style={{
 //                   marginTop    : 20, background: NAVY, color: "#fff", border: "none",
-//                   padding      : "12px 28px", fontSize: 11, fontWeight: 900,
-//                   letterSpacing: "0.14em", fontFamily: ff,
+//                   padding      : "12px 28px", fontSize: 11, fontWeight: 700,
+//                   letterSpacing: "0.1em", fontFamily: ff,
 //                   cursor       : profileSaving ? "not-allowed" : "pointer",
 //                   opacity      : profileSaving ? 0.7 : 1,
 //                 }}>
@@ -2256,7 +2256,7 @@
 //                       <div key={order.orderId} style={{ border: `1.5px solid #dde`, padding: 20 }}>
 //                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
 //                           <div>
-//                             <div style={{ fontSize: 12, fontWeight: 900, color: NAVY, letterSpacing: "0.1em" }}>
+//                             <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, letterSpacing: "0.1em" }}>
 //                               ORDER #{order.orderId}
 //                             </div>
 //                             <div style={{ fontSize: 11, color: "#888", fontFamily: mono, marginTop: 2 }}>
@@ -2302,7 +2302,7 @@
 //                           <span style={{ fontSize: 11, color: "#888", fontFamily: ff, letterSpacing: "0.08em" }}>
 //                             {order.paymentMethod || "COD"} · {products.length} item(s)
 //                           </span>
-//                           <span style={{ fontSize: 14, fontWeight: 900, color: NAVY, fontFamily: ff }}>
+//                           <span style={{ fontSize: 14, fontWeight: 700, color: NAVY, fontFamily: ff }}>
 //                             PKR {Number(order.total).toLocaleString()}
 //                           </span>
 //                         </div>
@@ -2339,7 +2339,7 @@
 //                           <span style={{
 //                             position: "absolute", top: 10, right: 10,
 //                             background: NAVY, color: "#fff", fontSize: 9,
-//                             fontWeight: 900, padding: "3px 8px",
+//                             fontWeight: 700, padding: "3px 8px",
 //                             letterSpacing: "0.1em", fontFamily: ff,
 //                           }}>
 //                             DEFAULT
@@ -2361,7 +2361,7 @@
 //                   <button onClick={() => setAddrModal({})}
 //                     style={{
 //                       background: "none", border: `1.5px dashed ${NAVY}`, color: NAVY,
-//                       padding: "12px 24px", fontSize: 11, fontWeight: 900,
+//                       padding: "12px 24px", fontSize: 11, fontWeight: 700,
 //                       letterSpacing: "0.12em", fontFamily: ff, cursor: "pointer",
 //                     }}>
 //                     + ADD NEW ADDRESS
@@ -2392,7 +2392,7 @@
 //                           style={{ width: "100%", height: 140, objectFit: "contain", background: "#f8f8f8", marginBottom: 10 }}
 //                         />
 //                       )}
-//                       <div style={{ fontSize: 12, fontWeight: 900, color: NAVY, letterSpacing: "0.06em", marginBottom: 4 }}>
+//                       <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, letterSpacing: "0.06em", marginBottom: 4 }}>
 //                         {item.product?.name || "Unknown Product"}
 //                       </div>
 //                       <div style={{ fontSize: 13, color: NAVY, fontFamily: mono, marginBottom: 12 }}>
@@ -2402,7 +2402,7 @@
 //                         <button onClick={() => handleMoveToCart(item)}
 //                           style={{
 //                             flex: 1, background: NAVY, color: "#fff", border: "none",
-//                             padding: "8px", fontSize: 10, fontWeight: 900,
+//                             padding: "8px", fontSize: 10, fontWeight: 700,
 //                             letterSpacing: "0.1em", fontFamily: ff, cursor: "pointer",
 //                           }}>
 //                           ADD TO CART
@@ -2438,7 +2438,7 @@
 // function SectionTitle({ children }) {
 //   return (
 //     <div style={{
-//       fontSize: 11, fontWeight: 900, letterSpacing: "0.2em", color: NAVY,
+//       fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: NAVY,
 //       borderBottom: `2px solid ${NAVY}`, paddingBottom: 10, marginBottom: 24, fontFamily: ff,
 //     }}>
 //       {children}
@@ -2449,7 +2449,7 @@
 // function FormField({ label, value, onChange, disabled }) {
 //   return (
 //     <div>
-//       <div style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.12em", color: NAVY, marginBottom: 5, fontFamily: ff }}>
+//       <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: NAVY, marginBottom: 5, fontFamily: ff }}>
 //         {label}
 //       </div>
 //       <input
@@ -2473,7 +2473,7 @@
 //         background: "none",
 //         border: `1px solid ${danger ? "#e74c3c" : "#cde"}`,
 //         color: danger ? "#e74c3c" : NAVY,
-//         padding: "5px 12px", fontSize: 10, fontWeight: 900,
+//         padding: "5px 12px", fontSize: 10, fontWeight: 700,
 //         letterSpacing: "0.1em", fontFamily: ff, cursor: "pointer",
 //       }}>
 //       {children}
@@ -2493,7 +2493,7 @@
 //   const c = colors[(status || "").toLowerCase()] || { bg: "#f5f5f5", color: "#555" };
 //   return (
 //     <span style={{
-//       background: c.bg, color: c.color, fontSize: 9, fontWeight: 900,
+//       background: c.bg, color: c.color, fontSize: 9, fontWeight: 700,
 //       padding: "4px 10px", letterSpacing: "0.12em", fontFamily: ff,
 //     }}>
 //       {(status || "pending").toUpperCase()}
@@ -2503,7 +2503,7 @@
 
 // function Loader() {
 //   return (
-//     <div style={{ textAlign: "center", padding: "40px 0", color: "#aaa", fontFamily: ff, fontSize: 11, letterSpacing: "0.14em" }}>
+//     <div style={{ textAlign: "center", padding: "40px 0", color: "#aaa", fontFamily: ff, fontSize: 11, letterSpacing: "0.1em" }}>
 //       LOADING…
 //     </div>
 //   );
@@ -2517,7 +2517,7 @@
 //         <button onClick={action}
 //           style={{
 //             background: NAVY, color: "#fff", border: "none", padding: "12px 28px",
-//             fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", fontFamily: ff, cursor: "pointer",
+//             fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", fontFamily: ff, cursor: "pointer",
 //           }}>
 //           {actionLabel}
 //         </button>
@@ -2640,7 +2640,7 @@ function AddressForm({ initial = {}, onSave, onCancel, saving }) {
 
   return (
     <div style={{ background: "#f8fbfd", border: `1.5px solid ${NAVY}`, padding: isMobile ? 16 : 24, marginBottom: 20 }}>
-      <div style={{ fontFamily: ff, fontSize: 12, fontWeight: 900, letterSpacing: "0.14em", color: NAVY, marginBottom: 16 }}>
+      <div style={{ fontFamily: ff, fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", color: NAVY, marginBottom: 16 }}>
         {initial.addressId ? "EDIT ADDRESS" : "NEW ADDRESS"}
       </div>
       <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 12, marginBottom: 12 }}>
@@ -2653,7 +2653,7 @@ function AddressForm({ initial = {}, onSave, onCancel, saving }) {
           { label: "POSTAL CODE", key: "postalCode", placeholder: "75500"                  },
         ].map(f => (
           <div key={f.key} style={{ gridColumn: f.full ? "1 / -1" : "auto" }}>
-            <div style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.12em", color: NAVY, marginBottom: 4, fontFamily: ff }}>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: NAVY, marginBottom: 4, fontFamily: ff }}>
               {f.label}
             </div>
             <input
@@ -2677,7 +2677,7 @@ function AddressForm({ initial = {}, onSave, onCancel, saving }) {
         <button onClick={() => onSave(form)} disabled={saving}
           style={{
             background: NAVY, color: "#fff", border: "none", padding: "10px 24px",
-            fontSize: 11, fontWeight: 900, letterSpacing: "0.12em", fontFamily: ff,
+            fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", fontFamily: ff,
             cursor: saving ? "not-allowed" : "pointer", opacity: saving ? 0.7 : 1,
           }}>
           {saving ? "SAVING…" : "SAVE ADDRESS"}
@@ -2685,7 +2685,7 @@ function AddressForm({ initial = {}, onSave, onCancel, saving }) {
         <button onClick={onCancel}
           style={{
             background: "none", color: NAVY, border: `1.5px solid ${NAVY}`,
-            padding: "10px 20px", fontSize: 11, fontWeight: 900,
+            padding: "10px 20px", fontSize: 11, fontWeight: 700,
             letterSpacing: "0.12em", fontFamily: ff, cursor: "pointer",
           }}>
           CANCEL
@@ -2833,7 +2833,7 @@ function ReviewsTab({ navigate, user }) {
 
               {/* Product Info */}
               <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontFamily: ff, fontWeight: 900, fontSize: 13, color: NAVY, marginBottom: 3, letterSpacing: "0.04em" }}>
+                <div style={{ fontFamily: ff, fontWeight: 700, fontSize: 13, color: NAVY, marginBottom: 3, letterSpacing: "0.04em" }}>
                   {product.name}
                 </div>
                 <div style={{ fontSize: 11, color: "#888", fontFamily: mono, marginBottom: 6 }}>
@@ -2851,7 +2851,7 @@ function ReviewsTab({ navigate, user }) {
                     <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
                       <Stars rating={Number(review.rating) || 0} />
                       <span style={{
-                        fontSize: 9, fontWeight: 900, letterSpacing: "0.1em",
+                        fontSize: 9, fontWeight: 700, letterSpacing: "0.1em",
                         padding: "3px 8px", fontFamily: ff,
                         background: review.approved === true || review.approved === "TRUE" || String(review.approved).toLowerCase() === "true"
                           ? "#eaf5ef" : "#fff8e1",
@@ -2886,7 +2886,7 @@ function ReviewsTab({ navigate, user }) {
                       onClick={() => navigate(`#/review/${product.productId}?reviewId=${review.reviewId}`)}
                       style={{
                         background: "none", border: `1.5px solid ${NAVY}`, color: NAVY,
-                        padding: "8px 14px", fontSize: 10, fontWeight: 900,
+                        padding: "8px 14px", fontSize: 10, fontWeight: 700,
                         letterSpacing: "0.1em", fontFamily: ff, cursor: "pointer",
                         whiteSpace: "nowrap",
                       }}
@@ -2899,7 +2899,7 @@ function ReviewsTab({ navigate, user }) {
                     onClick={() => navigate(`#/review/${product.productId}`)}
                     style={{
                       background: NAVY, color: "#fff", border: "none",
-                      padding: "8px 14px", fontSize: 10, fontWeight: 900,
+                      padding: "8px 14px", fontSize: 10, fontWeight: 700,
                       letterSpacing: "0.1em", fontFamily: ff, cursor: "pointer",
                       whiteSpace: "nowrap",
                     }}
@@ -2911,7 +2911,7 @@ function ReviewsTab({ navigate, user }) {
                   onClick={() => navigate(`#/products/${product.productId}`)}
                   style={{
                     background: "none", border: "1.5px solid #dde", color: "#888",
-                    padding: "8px 14px", fontSize: 10, fontWeight: 900,
+                    padding: "8px 14px", fontSize: 10, fontWeight: 700,
                     letterSpacing: "0.1em", fontFamily: ff, cursor: "pointer",
                     whiteSpace: "nowrap",
                   }}
@@ -3086,8 +3086,8 @@ export default function DashboardPage({ navigate }) {
 
       {/* Header */}
       <div style={{ borderBottom: `3px solid ${NAVY}`, paddingBottom: isMobile ? 16 : 24, marginBottom: isMobile ? 20 : 36 }}>
-        <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "#888", marginBottom: 6 }}>MY ACCOUNT</div>
-        <h1 style={{ fontSize: isMobile ? 22 : 32, fontWeight: 900, color: NAVY, margin: 0, letterSpacing: "0.02em", wordBreak: "break-word" }}>
+        <div style={{ fontSize: 11, letterSpacing: "0.1em", color: "#888", marginBottom: 6 }}>MY ACCOUNT</div>
+        <h1 style={{ fontSize: isMobile ? 22 : 32, fontWeight: 700, color: NAVY, margin: 0, letterSpacing: "0.02em", wordBreak: "break-word" }}>
           {(user.name || user.fullName || "").toUpperCase()}
         </h1>
         <div style={{ fontSize: 13, color: "#777", marginTop: 4, fontFamily: mono, wordBreak: "break-word" }}>{user.email}</div>
@@ -3108,8 +3108,8 @@ export default function DashboardPage({ navigate }) {
                 border       : "none", flexShrink: 0,
                 borderLeft   : isMobile ? "none" : `3px solid ${activeTab === tab.key ? ACCENT : "transparent"}`,
                 borderBottom : isMobile ? `3px solid ${activeTab === tab.key ? ACCENT : "transparent"}` : "none",
-                padding      : isMobile ? "10px 14px" : "12px 16px", fontSize: 11, fontWeight: 900,
-                letterSpacing: "0.14em", cursor: "pointer", fontFamily: ff,
+                padding      : isMobile ? "10px 14px" : "12px 16px", fontSize: 11, fontWeight: 700,
+                letterSpacing: "0.1em", cursor: "pointer", fontFamily: ff,
                 marginBottom : isMobile ? 0 : 2, transition: "all 0.15s", whiteSpace: "nowrap",
               }}>
               {tab.label}
@@ -3122,7 +3122,7 @@ export default function DashboardPage({ navigate }) {
               borderLeft   : isMobile ? "none" : "3px solid transparent",
               borderBottom : isMobile ? "3px solid transparent" : "none",
               padding      : isMobile ? "10px 14px" : "12px 16px",
-              fontSize     : 11, fontWeight: 900, letterSpacing: "0.14em",
+              fontSize     : 11, fontWeight: 700, letterSpacing: "0.1em",
               cursor       : "pointer", fontFamily: ff, marginTop: isMobile ? 0 : 16, whiteSpace: "nowrap",
             }}>
             SIGN OUT
@@ -3162,8 +3162,8 @@ export default function DashboardPage({ navigate }) {
               <button onClick={handleSaveProfile} disabled={profileSaving}
                 style={{
                   marginTop    : 20, background: NAVY, color: "#fff", border: "none",
-                  padding      : "12px 28px", fontSize: 11, fontWeight: 900,
-                  letterSpacing: "0.14em", fontFamily: ff,
+                  padding      : "12px 28px", fontSize: 11, fontWeight: 700,
+                  letterSpacing: "0.1em", fontFamily: ff,
                   cursor       : profileSaving ? "not-allowed" : "pointer",
                   opacity      : profileSaving ? 0.7 : 1,
                 }}>
@@ -3190,7 +3190,7 @@ export default function DashboardPage({ navigate }) {
                       <div key={order.orderId} style={{ border: `1.5px solid #dde`, padding: 20 }}>
                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
                           <div>
-                            <div style={{ fontSize: 12, fontWeight: 900, color: NAVY, letterSpacing: "0.1em" }}>
+                            <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, letterSpacing: "0.1em" }}>
                               ORDER #{order.orderId}
                             </div>
                             <div style={{ fontSize: 11, color: "#888", fontFamily: mono, marginTop: 2 }}>
@@ -3236,7 +3236,7 @@ export default function DashboardPage({ navigate }) {
                           <span style={{ fontSize: 11, color: "#888", fontFamily: ff, letterSpacing: "0.08em" }}>
                             {order.paymentMethod || "COD"} · {products.length} item(s)
                           </span>
-                          <span style={{ fontSize: 14, fontWeight: 900, color: NAVY, fontFamily: ff }}>
+                          <span style={{ fontSize: 14, fontWeight: 700, color: NAVY, fontFamily: ff }}>
                             PKR {Number(order.total).toLocaleString()}
                           </span>
                         </div>
@@ -3273,7 +3273,7 @@ export default function DashboardPage({ navigate }) {
                           <span style={{
                             position: "absolute", top: 10, right: 10,
                             background: NAVY, color: "#fff", fontSize: 9,
-                            fontWeight: 900, padding: "3px 8px",
+                            fontWeight: 700, padding: "3px 8px",
                             letterSpacing: "0.1em", fontFamily: ff,
                           }}>
                             DEFAULT
@@ -3295,7 +3295,7 @@ export default function DashboardPage({ navigate }) {
                   <button onClick={() => setAddrModal({})}
                     style={{
                       background: "none", border: `1.5px dashed ${NAVY}`, color: NAVY,
-                      padding: "12px 24px", fontSize: 11, fontWeight: 900,
+                      padding: "12px 24px", fontSize: 11, fontWeight: 700,
                       letterSpacing: "0.12em", fontFamily: ff, cursor: "pointer",
                     }}>
                     + ADD NEW ADDRESS
@@ -3328,7 +3328,7 @@ export default function DashboardPage({ navigate }) {
                           style={{ width: "100%", height: 140, objectFit: "contain", background: "#f8f8f8", marginBottom: 10 }}
                         />
                       )}
-                      <div style={{ fontSize: 12, fontWeight: 900, color: NAVY, letterSpacing: "0.06em", marginBottom: 4 }}>
+                      <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, letterSpacing: "0.06em", marginBottom: 4 }}>
                         {item.product?.name || "Unknown Product"}
                       </div>
                       <div style={{ fontSize: 13, color: NAVY, fontFamily: mono, marginBottom: 12 }}>
@@ -3338,7 +3338,7 @@ export default function DashboardPage({ navigate }) {
                         <button onClick={() => handleMoveToCart(item)}
                           style={{
                             flex: 1, background: NAVY, color: "#fff", border: "none",
-                            padding: "8px", fontSize: 10, fontWeight: 900,
+                            padding: "8px", fontSize: 10, fontWeight: 700,
                             letterSpacing: "0.1em", fontFamily: ff, cursor: "pointer",
                           }}>
                           ADD TO CART
@@ -3374,7 +3374,7 @@ export default function DashboardPage({ navigate }) {
 function SectionTitle({ children }) {
   return (
     <div style={{
-      fontSize: 11, fontWeight: 900, letterSpacing: "0.2em", color: NAVY,
+      fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: NAVY,
       borderBottom: `2px solid ${NAVY}`, paddingBottom: 10, marginBottom: 24, fontFamily: ff,
     }}>
       {children}
@@ -3385,7 +3385,7 @@ function SectionTitle({ children }) {
 function FormField({ label, value, onChange, disabled }) {
   return (
     <div>
-      <div style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.12em", color: NAVY, marginBottom: 5, fontFamily: ff }}>
+      <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: NAVY, marginBottom: 5, fontFamily: ff }}>
         {label}
       </div>
       <input
@@ -3409,7 +3409,7 @@ function InlineBtn({ children, onClick, danger }) {
         background: "none",
         border: `1px solid ${danger ? "#e74c3c" : "#cde"}`,
         color: danger ? "#e74c3c" : NAVY,
-        padding: "5px 12px", fontSize: 10, fontWeight: 900,
+        padding: "5px 12px", fontSize: 10, fontWeight: 700,
         letterSpacing: "0.1em", fontFamily: ff, cursor: "pointer",
       }}>
       {children}
@@ -3429,7 +3429,7 @@ function StatusBadge({ status }) {
   const c = colors[(status || "").toLowerCase()] || { bg: "#f5f5f5", color: "#555" };
   return (
     <span style={{
-      background: c.bg, color: c.color, fontSize: 9, fontWeight: 900,
+      background: c.bg, color: c.color, fontSize: 9, fontWeight: 700,
       padding: "4px 10px", letterSpacing: "0.12em", fontFamily: ff,
     }}>
       {(status || "pending").toUpperCase()}
@@ -3439,7 +3439,7 @@ function StatusBadge({ status }) {
 
 function Loader() {
   return (
-    <div style={{ textAlign: "center", padding: "40px 0", color: "#aaa", fontFamily: ff, fontSize: 11, letterSpacing: "0.14em" }}>
+    <div style={{ textAlign: "center", padding: "40px 0", color: "#aaa", fontFamily: ff, fontSize: 11, letterSpacing: "0.1em" }}>
       LOADING…
     </div>
   );
@@ -3453,7 +3453,7 @@ function EmptyState({ msg, action, actionLabel }) {
         <button onClick={action}
           style={{
             background: NAVY, color: "#fff", border: "none", padding: "12px 28px",
-            fontSize: 11, fontWeight: 900, letterSpacing: "0.14em", fontFamily: ff, cursor: "pointer",
+            fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", fontFamily: ff, cursor: "pointer",
           }}>
           {actionLabel}
         </button>

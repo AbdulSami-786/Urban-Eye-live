@@ -27,7 +27,7 @@
 //       style={{
 //         background: disabled ? "#ccc" : h ? "#0a2235" : BRAND,
 //         color: disabled ? "#888" : BRAND_TEXT,
-//         border: "none", padding: "13px 32px", fontSize: 12, fontWeight: 900,
+//         border: "none", padding: "13px 32px", fontSize: 12, fontWeight: 700,
 //         letterSpacing: "0.12em", cursor: disabled ? "not-allowed" : "pointer",
 //         fontFamily: ff, transition: "background 0.18s", ...style
 //       }}>
@@ -446,8 +446,8 @@
 //       {product.tag && tc && (
 //         <div style={{
 //           position: "absolute", top: 12, left: 12, zIndex: 3,
-//           background: tc.bg, color: tc.color, fontSize: 9, fontWeight: 900,
-//           letterSpacing: "0.18em", padding: "4px 10px", fontFamily: ff
+//           background: tc.bg, color: tc.color, fontSize: 9, fontWeight: 700,
+//           letterSpacing: "0.1em", padding: "4px 10px", fontFamily: ff
 //         }}>{product.tag}</div>
 //       )}
 
@@ -455,7 +455,7 @@
 //       {discount > 0 && !product.tag && (
 //         <div style={{
 //           position: "absolute", top: 12, left: 12, zIndex: 3,
-//           background: BRAND, color: BRAND_TEXT, fontSize: 9, fontWeight: 900,
+//           background: BRAND, color: BRAND_TEXT, fontSize: 9, fontWeight: 700,
 //           letterSpacing: "0.1em", padding: "4px 8px", fontFamily: ff
 //         }}>−{discount}%</div>
 //       )}
@@ -504,8 +504,8 @@
 //         )}
 //         <div style={{
 //           position: "absolute", bottom: 0, left: 0, right: 0, background: BRAND,
-//           color: BRAND_TEXT, textAlign: "center", padding: "10px", fontSize: 10, fontWeight: 900,
-//           letterSpacing: "0.14em", fontFamily: ff,
+//           color: BRAND_TEXT, textAlign: "center", padding: "10px", fontSize: 10, fontWeight: 700,
+//           letterSpacing: "0.1em", fontFamily: ff,
 //           transform: hov ? "translateY(0)" : "translateY(100%)",
 //           transition: "transform 0.28s ease"
 //         }}>
@@ -515,18 +515,18 @@
 
 //       {/* Info */}
 //       <div style={{ padding: "14px 16px 16px", display: "flex", flexDirection: "column", flex: 1 }}>
-//         <div style={{ fontSize: 9, color: "#aaa", letterSpacing: "0.16em", marginBottom: 2, fontFamily: ff }}>
+//         <div style={{ fontSize: 9, color: "#aaa", letterSpacing: "0.1em", marginBottom: 2, fontFamily: ff }}>
 //           {product.subcategory?.toUpperCase()} · {product.gender?.toUpperCase()}
 //         </div>
 //         <div
-//           style={{ fontFamily: ff, fontSize: 16, fontWeight: 900, letterSpacing: "0.03em", color: BLACK, marginBottom: 3, cursor: "pointer", lineHeight: 1.2 }}>
+//           style={{ fontFamily: ff, fontSize: 16, fontWeight: 700, letterSpacing: "0.03em", color: BLACK, marginBottom: 3, cursor: "pointer", lineHeight: 1.2 }}>
 //           {product.name}
 //         </div>
 //         <div style={{ fontSize: 11, color: "#999", fontFamily: mono, marginBottom: 10, lineHeight: 1.4 }}>
 //           {displayLabel}
 //         </div>
 //         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-//           <span style={{ fontFamily: ff, fontSize: 14, fontWeight: 900, color: BLACK }}>
+//           <span style={{ fontFamily: ff, fontSize: 14, fontWeight: 700, color: BLACK }}>
 //             PKR {discountPrice.toLocaleString()}
 //           </span>
 //           {discountPrice < price && (
@@ -540,7 +540,7 @@
 //           background: addedMsg ? "#16a34a" : hov ? BRAND : "transparent",
 //           color: addedMsg ? "#fff" : hov ? BRAND_TEXT : BLACK,
 //           border: `1.5px solid ${addedMsg ? "#16a34a" : BRAND}`,
-//           padding: "8px 0", fontSize: 10, fontWeight: 900, letterSpacing: "0.14em",
+//           padding: "8px 0", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em",
 //           cursor: "pointer", fontFamily: ff, transition: "all 0.22s", width: "100%"
 //         }}>
 //           {addedMsg ? "✓ ADDED TO BAG" : "+ ADD TO BAG"}
@@ -615,6 +615,18 @@ const BRAND_TEXT = "#ffffff";
 
 
 // ─── Button Components ────────────────────────────────────────────────────────
+// Moscot's button type: 13px Montserrat 600, uppercase, 1.6px tracking, 14px
+// vertical padding (11px on phones), square corners.
+export const MOSCOT_BUTTON = {
+  fontSize: 13,
+  fontWeight: 600,
+  letterSpacing: "1.6px",
+  lineHeight: "14px",
+  textTransform: "uppercase",
+  padding: "clamp(11px, 1.4vw, 14px) clamp(18px, 3vw, 28px)",
+  borderRadius: 0,
+};
+
 export function YBtn({ children, onClick, style = {}, disabled = false }) {
   const [h, setH] = useState(false);
   return (
@@ -627,10 +639,7 @@ export function YBtn({ children, onClick, style = {}, disabled = false }) {
         background: disabled ? "#ccc" : h ? "#0a2235" : BRAND,
         color: disabled ? "#888" : BRAND_TEXT,
         border: "none",
-        padding: "clamp(10px, 1.5vw, 16px) clamp(18px, 4vw, 32px)",
-        fontSize: "clamp(10px, 1.2vw, 14px)",
-        fontWeight: 900,
-        letterSpacing: "0.12em",
+        ...MOSCOT_BUTTON,
         cursor: disabled ? "not-allowed" : "pointer",
         fontFamily: ff,
         transition: "background 0.18s",
@@ -650,10 +659,7 @@ export function OutlineBtn({ children, dark = false, style = {} }) {
         background: "transparent",
         color: dark ? "rgba(255,255,255,0.7)" : BLACK,
         border: `1.5px solid ${dark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.25)"}`,
-        padding: "clamp(10px, 1.5vw, 14px) clamp(16px, 3vw, 28px)",
-        fontSize: "clamp(10px, 1.2vw, 13px)",
-        fontWeight: 700,
-        letterSpacing: "0.1em",
+        ...MOSCOT_BUTTON,
         cursor: "pointer",
         fontFamily: ff,
         minHeight: "44px",
@@ -1285,8 +1291,8 @@ export function ProductCard({ product, navigate, type = "default" }) {
             background: tc.bg,
             color: tc.color,
             fontSize: "clamp(8px, 1.2vw, 11px)",
-            fontWeight: 900,
-            letterSpacing: "0.16em",
+            fontWeight: 700,
+            letterSpacing: "0.1em",
             padding: "clamp(4px, 0.6vw, 6px) clamp(8px, 1vw, 12px)",
             borderRadius: 999,
             fontFamily: ff,
@@ -1307,7 +1313,7 @@ export function ProductCard({ product, navigate, type = "default" }) {
             background: BRAND,
             color: BRAND_TEXT,
             fontSize: "clamp(8px, 1.2vw, 11px)",
-            fontWeight: 900,
+            fontWeight: 700,
             letterSpacing: "0.1em",
             padding: "clamp(4px, 0.6vw, 6px) clamp(8px, 1vw, 12px)",
             borderRadius: 999,
@@ -1444,9 +1450,9 @@ export function ProductCard({ product, navigate, type = "default" }) {
         <div
           style={{
             fontFamily: ff,
-            fontSize: "clamp(15px, 2vw, 20px)",
-            fontWeight: 800,
-            letterSpacing: "0.14em",
+            fontSize: "clamp(14px, 1.3vw, 16px)",
+            fontWeight: 700,
+            letterSpacing: "1px",
             color: BLACK,
             lineHeight: 1.2,
             maxWidth: "100%",
@@ -1468,11 +1474,10 @@ export function ProductCard({ product, navigate, type = "default" }) {
         >
           <span
             style={{
-              fontFamily: ff,
-              fontSize: "clamp(13px, 1.6vw, 16px)",
-              fontWeight: 600,
-              color: "#3a3a3a",
-              letterSpacing: "0.02em",
+              fontFamily: mono,
+              fontSize: 12,
+              fontWeight: 400,
+              color: BLACK,
             }}
           >
             Rs.{Number(discountPrice).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} PKR
@@ -1481,7 +1486,7 @@ export function ProductCard({ product, navigate, type = "default" }) {
             <span
               style={{
                 fontFamily: mono,
-                fontSize: "clamp(10px, 1.2vw, 13px)",
+                fontSize: 12,
                 color: "#b8b8b8",
                 textDecoration: "line-through",
               }}
@@ -1585,11 +1590,7 @@ export function ProductCard({ product, navigate, type = "default" }) {
             background: addedMsg ? "#16a34a" : BRAND,
             color: BRAND_TEXT,
             border: "none",
-            borderRadius: 999,
-            padding: "clamp(10px, 1.3vw, 13px) clamp(20px, 3vw, 30px)",
-            fontSize: "clamp(9px, 1.2vw, 12px)",
-            fontWeight: 800,
-            letterSpacing: "0.14em",
+            ...MOSCOT_BUTTON,
             cursor: "pointer",
             fontFamily: ff,
             transition: "background 0.22s ease",
