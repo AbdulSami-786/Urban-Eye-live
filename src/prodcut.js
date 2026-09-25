@@ -1142,7 +1142,7 @@ export const PRODUCTS_DATA = [
         name: "Rose Pink",
         swatch: "#806459",
           image: "/assets/BELLA (2).jpg",
-          gallery: ["/assets/BELLA (1).jpg", "/assets/BELLA (2).jpg", "/assets/BELLA (3).jpg", "/10.jpg"],
+          gallery: ["/assets/BELLA (2).jpg", "/assets/BELLA (1).jpg", "/assets/BELLA (3).jpg", "/10.jpg"],
       },
     ],
     price: 9000,
@@ -2052,7 +2052,7 @@ export const PRODUCTS_DATA = [
           },
           {
             name: "Gradient Grey",
-            gallery: ["/assets/Sunglass/Monaco 9.png", "/assets/Sunglass/Monaco 9.png", "/assets/Sunglass/Monaco 7.png", "/10.jpg"],
+            gallery: ["/assets/Sunglass/Monaco 9.png", "/assets/Sunglass/Monaco 8.png", "/assets/Sunglass/Monaco 7.png", "/10.jpg"],
           },
         ],
       },
@@ -2539,7 +2539,7 @@ export const PRODUCTS_DATA = [
           },
           {
             name: "Gradient Green",
-            gallery: ["/assets/Sunglass/Melisa 5.png", "/assets/Sunglass/Melisa 6.png", "/assets/Sunglass/Melisa 4.png", "/10.jpg"],
+            gallery: ["/assets/Sunglass/Melisa 6.png", "/assets/Sunglass/Melisa 5.png", "/assets/Sunglass/Melisa 4.png", "/10.jpg"],
           },
         ],
       },

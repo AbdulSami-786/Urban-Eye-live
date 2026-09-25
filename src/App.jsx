@@ -980,19 +980,34 @@ function AppInner() {
             </p>
            <div style={{ display: "flex", gap: 8 }}>
   {[
-    { label: "IG", href: "https://www.instagram.com/urbaneye.1998/?hl=en" },
-    { label: "FB", href: "https://www.facebook.com/UrbanEyeKarachi/" },
+    {
+      label: "Instagram", color: "#E4405F", href: "https://www.instagram.com/urbaneye.1998/?hl=en",
+      icon: (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5.5" />
+          <circle cx="12" cy="12" r="4.5" />
+          <circle cx="17.6" cy="6.4" r="1" fill="currentColor" stroke="none" />
+        </svg>
+      ),
+    },
+    {
+      label: "Facebook", color: "#1877F2", href: "https://www.facebook.com/UrbanEyeKarachi/",
+      icon: (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+        </svg>
+      ),
+    },
   ].map((s) => (
-    <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
+    <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} title={s.label}
       style={{
-        width: 32, height: 32, border: `1px solid #1a3a52`, display: "flex",
+        width: 36, height: 36, border: `1px solid #1a3a52`, display: "flex",
         alignItems: "center", justifyContent: "center", color: "#5a8aaa",
-        fontSize: 10, textDecoration: "none", fontFamily: ff, fontWeight: 700,
-        letterSpacing: "0.05em", transition: "border-color 0.2s, color 0.2s"
+        textDecoration: "none", transition: "border-color 0.2s, color 0.2s"
       }}
-      onMouseEnter={(e) => { e.currentTarget.style.borderColor = ACCENT; e.currentTarget.style.color = ACCENT; }}
+      onMouseEnter={(e) => { e.currentTarget.style.borderColor = s.color; e.currentTarget.style.color = s.color; }}
       onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#1a3a52"; e.currentTarget.style.color = "#5a8aaa"; }}>
-      {s.label}
+      {s.icon}
     </a>
   ))}
 </div>
@@ -1022,7 +1037,7 @@ function AppInner() {
 />
           <FooterCol
             title="COMPANY"
-            links={["Our Story", "Careers"]}
+            links={["Our Story"]}
             onLinkClick={{ "Our Story": () => goTo("/story") }}
           />
         </div>
