@@ -1766,10 +1766,10 @@ export const PRODUCTS_DATA = [
         swatch: "#1a1a1a",
         image: "/assets/Sunglass/Garfield 1.jpg",
         gallery: ["/assets/Sunglass/Garfield 1.jpg", "/assets/Sunglass/Garfield 2.jpg", "/assets/Sunglass/Garfield 3.jpg", "/10.jpg"],
-        lensColor: "Honey Brown",
+        lensColor: "Night",
         lenses: [
           {
-            name: "Honey Brown",
+            name: "Night",
             gallery: ["/assets/Sunglass/Garfield 1.jpg", "/assets/Sunglass/Garfield 2.jpg", "/assets/Sunglass/Garfield 3.jpg", "/10.jpg"],
           },
           {
@@ -1787,7 +1787,7 @@ export const PRODUCTS_DATA = [
         swatch: "#4a2c17",
         image: "/assets/Sunglass/Garfield 4.jpg",
         gallery: ["/assets/Sunglass/Garfield 4.jpg", "/assets/Sunglass/Garfield 5.jpg", "/assets/Sunglass/Garfield 6.jpg", "/10.jpg"],
-        lensColor: "Brown",
+        lensColor: "Honey Brown",
         lenses: [
           {
             name: "Brown",
