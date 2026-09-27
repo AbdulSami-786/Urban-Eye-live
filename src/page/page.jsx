@@ -1420,6 +1420,7 @@ const LENS_SWATCHES = {
   "red": "#9e2a2b",
   "light blue": "#a8cfe4",
   "gradient blue": "linear-gradient(160deg, #4a7fa5, #cfe2ee)",
+  "blue mirror": "linear-gradient(160deg, #2a9fd6, #8ee6e0)",
   "gradient grey": "linear-gradient(160deg, #4a4a4a, #d6d6d6)",
   "gradient green": "linear-gradient(160deg, #2f5d3a, #cfe0cf)",
   "gradient red": "linear-gradient(160deg, #9e2a2b, #f0cfcf)",

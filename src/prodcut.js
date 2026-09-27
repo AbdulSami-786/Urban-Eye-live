@@ -2237,6 +2237,17 @@ export const PRODUCTS_DATA = [
         swatch: "#b87a3b",
         image: "/assets/Sunglass/Tom 1.jpg",
         gallery: ["/assets/Sunglass/Tom 1.jpg", "/assets/Sunglass/Tom 2.jpg", "/assets/Sunglass/Tom 3.jpg", "/10.jpg"],
+        lensColor: "Dark Green",
+        lenses: [
+          {
+            name: "Dark Green",
+            gallery: ["/assets/Sunglass/Tom 1.jpg", "/assets/Sunglass/Tom 2.jpg", "/assets/Sunglass/Tom 3.jpg", "/10.jpg"],
+          },
+          {
+            name: "Blue Mirror",
+            gallery: ["/assets/Sunglass/Tom 4.jpg", "/assets/Sunglass/Tom 5.jpeg", "/assets/Sunglass/Tom 6.jpeg", "/10.jpg"],
+          },
+        ],
       },
     ],
     price: 10500,
